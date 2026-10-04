@@ -1,152 +1,258 @@
 # -*- coding: utf-8 -*-
-"""Esquisse du rez-de-chaussée — géométrie relevée sur le plan Kozikaza du 12/01/2025."""
+"""Esquisse au crayon du rez-de-chaussée — murs seuls.
+Géométrie relevée sur le plan Kozikaza du 12/01/2025 (image), murs mesurés au pixel
+puis recalés sur les cotes imprimées."""
+import math, random
 
-M_L, M_T, M_R, M_B = 112, 86, 118, 192          # marges (cm du dessin)
-W, H = 805, 900                                  # emprise extérieure
+rnd = random.Random(20260104)
+
+M_L, M_T, M_R, M_B = 118, 92, 124, 176
+W, H = 805, 900
 VB_W, VB_H = W + M_L + M_R, H + M_T + M_B
-E = 27                                           # mur extérieur
-P = 10                                           # cloison
+E, P = 27, 10
 
-LIN, MARIN, TERRE, ECUME = '#F4EFE7', '#23403C', '#9C5231', '#E8B79A'
-GRIS, CRAIE = '#5A6A68', '#C9BFAE'
+MINE   = '#333B37'      # graphite
+HACHE  = '#6B736E'      # hachures
+COTE   = '#9C5231'
+GRIS   = '#5A6A68'
+LIN    = '#F4EFE7'
 
-def x(v): return round(v + M_L, 1)
-def y(v): return round(v + M_T, 1)
+def X(v): return round(v + M_L, 1)
+def Y(v): return round(v + M_T, 1)
 
-s = []
-def add(t): s.append(t)
+out = []
+def add(t): out.append(t)
 
-# ——— murs extérieurs : poché en evenodd ———
+# ——————————————————————— trait au crayon ———————————————————————
+PAS_PT = 34
+def main_levee(x1, y1, x2, y2, amp=1.7, over=3.2):
+    """Un seul passage de crayon : léger tremblement et dépassement aux extrémités."""
+    dx, dy = x2 - x1, y2 - y1
+    L = math.hypot(dx, dy)
+    if L < 1e-6: return ''
+    ux, uy = dx / L, dy / L
+    px, py = -uy, ux                                     # perpendiculaire
+    o1, o2 = rnd.uniform(0, over), rnd.uniform(0, over)
+    x1, y1 = x1 - ux * o1, y1 - uy * o1
+    x2, y2 = x2 + ux * o2, y2 + uy * o2
+    L += o1 + o2
+    n = max(3, int(L / PAS_PT) + 2)
+    pts, d = [], 0.0
+    for i in range(n + 1):
+        t = i / n
+        e = 0.0 if i in (0, n) else rnd.gauss(0, amp)    # bords tenus
+        d = d * 0.55 + e * 0.45                           # bruit lissé
+        pts.append((x1 + dx0 * t + px * d, y1 + dy0 * t + py * d) if False else
+                   (x1 + (x2 - x1) * t + px * d, y1 + (y2 - y1) * t + py * d))
+    s = f'M {X(pts[0][0])},{Y(pts[0][1])}'
+    for i in range(1, len(pts) - 1):
+        mx, my = (pts[i][0] + pts[i+1][0]) / 2, (pts[i][1] + pts[i+1][1]) / 2
+        s += f' Q {X(pts[i][0])},{Y(pts[i][1])} {X(mx)},{Y(my)}'
+    s += f' L {X(pts[-1][0])},{Y(pts[-1][1])}'
+    return s
+
+def trait(x1, y1, x2, y2, passes=2, w=3.4, amp=2.2, op=0.92, over=7.0, couleur=MINE):
+    for k in range(passes):
+        d = main_levee(x1, y1, x2, y2, amp=amp * (1 + .35 * k), over=over)
+        add(f'<path d="{d}" stroke="{couleur}" stroke-width="{round(w*(1-.22*k),2)}" '
+            f'fill="none" stroke-linecap="round" opacity="{round(op*(1-.3*k),2)}"/>')
+
+# ——————————————————————— géométrie ———————————————————————
 ext = [(0,0),(W,0),(W,787),(330,787),(330,H),(0,H)]
 inn = [(E,E),(W-E,E),(W-E,760),(303,760),(303,H-E),(E,H-E)]
-def poly(pts): return 'M ' + ' L '.join(f'{x(a)},{y(b)}' for a,b in pts) + ' Z'
-add(f'<path d="{poly(ext)} {poly(inn)}" fill="{MARIN}" fill-rule="evenodd"/>')
 
-# ——— cloisons ———
-cloisons = [
- (212,  27, P, 213), (212, 147, 110, P), (312,  27, P, 328),
- ( 27, 240, 195, P), (212, 250, P, 188), ( 27, 428, 195, P),
- (312, 345, 466, P),
+cloisons = [   # x0,y0,x1,y1
+ (212, 27, 222, 240), (212, 147, 322, 157), (312, 27, 322, 355),
+ ( 27, 240, 222, 250), (212, 250, 222, 428), ( 27, 428, 222, 438),
+ (312, 345, 778, 355),
 ]
-for a,b,w,h in cloisons:
-    add(f'<rect x="{x(a)}" y="{y(b)}" width="{w}" height="{h}" fill="{MARIN}"/>')
+# baies : (x0,y0,x1,y1, 'fenetre'|'porte', orientation)
+baies = [
+ (106,   0, 187,  E, 'fenetre', 'h'), (239,  0, 290,  E, 'fenetre', 'h'),
+ (516,   0, 658,  E, 'fenetre', 'h'), (  0, 350,  E, 401, 'fenetre', 'v'),
+ (  0, 444,  E, 535, 'porte',   'v'), (467, 760, 675, 787, 'fenetre', 'h'),
+ ( 94, 873, 251, H,  'fenetre', 'h'),
+ (212,  45, 222, 117, 'porte', 'v'), (232, 147, 300, 157, 'porte', 'h'),
+ (312, 245, 322, 333, 'porte', 'v'), ( 52, 428, 122, 438, 'porte', 'h'),
+]
 
-# ——— percements : on efface le mur puis on retrace l’allège ———
-def baie(a,b,w,h, vertical=False, porte=False):
-    add(f'<rect x="{x(a)}" y="{y(b)}" width="{w}" height="{h}" fill="{LIN}"/>')
-    if porte: return
-    if vertical:
-        cx = a + w/2
-        add(f'<line x1="{x(cx)}" y1="{y(b)}" x2="{x(cx)}" y2="{y(b+h)}" stroke="{MARIN}" stroke-width="3"/>')
+def rect_path(x0,y0,x1,y1):
+    return f'M {X(x0)},{Y(y0)} L {X(x1)},{Y(y0)} L {X(x1)},{Y(y1)} L {X(x0)},{Y(y1)} Z'
+def poly_path(pts):
+    return 'M ' + ' L '.join(f'{X(a)},{Y(b)}' for a,b in pts) + ' Z'
+
+# masque = emprise des murs, percements exclus (règle pair-impair)
+masque = poly_path(ext) + ' ' + poly_path(inn)
+for c in cloisons: masque += ' ' + rect_path(*c)
+for b in baies:    masque += ' ' + rect_path(b[0], b[1], b[2], b[3])
+
+add('<defs>')
+add(f'<clipPath id="murs" clip-rule="evenodd"><path d="{masque}"/></clipPath>')
+add('<filter id="grain" x="-3%" y="-3%" width="106%" height="106%">'
+    '<feTurbulence type="fractalNoise" baseFrequency="0.82" numOctaves="2" seed="5" result="n"/>'
+    '<feDisplacementMap in="SourceGraphic" in2="n" scale="2.1" '
+    'xChannelSelector="R" yChannelSelector="G"/></filter>')
+add('</defs>')
+
+add('<g filter="url(#grain)">')
+
+# ——— hachures à 45°, au crayon, dans l’épaisseur des murs ———
+bandes = [ (0,0,W,E), (0,0,E,H), (W-E,0,W,787), (303,760,W,787),
+           (303,760,330,H), (0,H-E,330,H) ] + [tuple(c) for c in cloisons]
+
+add(f'<path d="{masque}" fill-rule="evenodd" fill="{MINE}" opacity="0.14"/>')
+# les cloisons, plus minces, ont besoin d’un peu plus de corps
+_cl = ' '.join(rect_path(*c) for c in cloisons)
+def _dans_cloison(b):
+    return any(b[0] >= c[0]-1 and b[2] <= c[2]+1 and b[1] >= c[1]-1 and b[3] <= c[3]+1
+               for c in cloisons)
+_pc = ' '.join(rect_path(b[0],b[1],b[2],b[3]) for b in baies if _dans_cloison(b))
+add(f'<path d="{_cl} {_pc}" fill-rule="evenodd" fill="{MINE}" opacity="0.10"/>')
+add('<g clip-path="url(#murs)">')
+PAS_H = 5.4
+for bx0, by0, bx1, by1 in bandes:
+    c = bx0 + by0
+    cmax = bx1 + by1
+    while c < cmax:
+        xa = max(bx0, c - by1); xb = min(bx1, c - by0)
+        if xb - xa > 2:
+            d = main_levee(xa, c - xa, xb, c - xb, amp=0.9, over=1.4)
+            add(f'<path d="{d}" stroke="{HACHE}" stroke-width="2.2" fill="none" '
+                f'stroke-linecap="round" opacity="{round(rnd.uniform(.42,.62),2)}"/>')
+        c += PAS_H + rnd.uniform(-.4, .4)
+add('</g>')
+
+# ——— arêtes des murs, interrompues aux baies ———
+def segments(a, b, coupes):
+    """découpe [a,b] en retirant les intervalles de coupes"""
+    bouts = [(a, b)]
+    for c0, c1 in coupes:
+        suite = []
+        for s0, s1 in bouts:
+            if c1 <= s0 or c0 >= s1: suite.append((s0, s1)); continue
+            if c0 > s0: suite.append((s0, c0))
+            if c1 < s1: suite.append((c1, s1))
+        bouts = suite
+    return [(s0, s1) for s0, s1 in bouts if s1 - s0 > 1.5]
+
+def face_h(y, a, b, coupes):
+    for s0, s1 in segments(a, b, coupes): trait(s0, y, s1, y)
+def face_v(x, a, b, coupes):
+    for s0, s1 in segments(a, b, coupes): trait(x, s0, x, s1)
+
+cx = lambda o: [(b[0], b[2]) for b in baies if b[5] == 'h' and abs(b[1]-o) < 40]
+cy = lambda o: [(b[1], b[3]) for b in baies if b[5] == 'v' and abs(b[0]-o) < 40]
+
+face_h(0,   0, W,   [(106,187),(239,290),(516,658)])          # nord, extérieur
+face_h(E,   E, W-E, [(106,187),(239,290),(516,658)])          # nord, intérieur
+face_v(0,   0, H,   [(350,401),(444,535)])                    # ouest, extérieur
+face_v(E,   E, H-E, [(350,401),(444,535)])                    # ouest, intérieur
+face_v(W,   0, 787, [])                                       # est, extérieur
+face_v(W-E, E, 760, [])                                       # est, intérieur
+face_h(787, 330, W,   [(467,675)])                            # sud du volume, extérieur
+face_h(760, 303, W-E, [(467,675)])                            # sud du volume, intérieur
+face_v(330, 787, H,   [])                                     # aile, est extérieur
+face_v(303, 760, H-E, [])                                     # aile, est intérieur
+face_h(H,   0, 330, [(94,251)])                               # aile, sud extérieur
+face_h(H-E, E, 303, [(94,251)])                               # aile, sud intérieur
+
+# tableaux (jambages) de chaque baie
+for x0,y0,x1,y1,genre,sens in baies:
+    if sens == 'h':
+        trait(x0, y0, x0, y1, passes=1, w=1.8, over=1.2)
+        trait(x1, y0, x1, y1, passes=1, w=1.8, over=1.2)
+        if genre == 'fenetre':
+            trait(x0, (y0+y1)/2, x1, (y0+y1)/2, passes=1, w=1.5, amp=1.1, op=.6, over=0)
     else:
-        cy = b + h/2
-        add(f'<line x1="{x(a)}" y1="{y(cy)}" x2="{x(a+w)}" y2="{y(cy)}" stroke="{MARIN}" stroke-width="3"/>')
+        trait(x0, y0, x1, y0, passes=1, w=1.8, over=1.2)
+        trait(x0, y1, x1, y1, passes=1, w=1.8, over=1.2)
+        if genre == 'fenetre':
+            trait((x0+x1)/2, y0, (x0+x1)/2, y1, passes=1, w=1.5, amp=1.1, op=.6, over=0)
 
-baie(106,   0,  81, E)          # fenêtre bureau
-baie(239,   0,  51, E)          # fenêtre wc
-baie(516,   0, 142, E)          # fenêtre chambre
-baie(  0, 350,  E, 51, True)    # fenêtre salle d’eau
-baie(  0, 444,  E, 91, True, porte=True)   # porte d’entrée
-baie(467, 760, 208, E)          # baie du séjour
-baie( 94, 873, 157, E)          # fenêtre cuisine
+# arêtes des cloisons, baies déduites
+for x0,y0,x1,y1 in cloisons:
+    if (x1-x0) < (y1-y0):                                     # cloison verticale
+        c = [(b[1],b[3]) for b in baies if b[5]=='v' and abs(b[0]-x0)<6]
+        face_v(x0, y0, y1, c); face_v(x1, y0, y1, c)
+    else:
+        c = [(b[0],b[2]) for b in baies if b[5]=='h' and abs(b[1]-y0)<6]
+        face_h(y0, x0, x1, c); face_h(y1, x0, x1, c)
 
-# portes intérieures + arcs de débattement
-def porte(a,b,w,h, cx,cy, r, a0,a1):
-    add(f'<rect x="{x(a)}" y="{y(b)}" width="{w}" height="{h}" fill="{LIN}"/>')
-    import math
-    x0,y0 = cx+r*math.cos(math.radians(a0)), cy+r*math.sin(math.radians(a0))
-    x1,y1 = cx+r*math.cos(math.radians(a1)), cy+r*math.sin(math.radians(a1))
-    add(f'<path d="M {x(cx)},{y(cy)} L {x(x0)},{y(y0)} A {r},{r} 0 0 1 {x(x1)},{y(y1)} Z" '
-        f'fill="none" stroke="{CRAIE}" stroke-width="2"/>')
-
-porte(212,  45, P, 72, 212, 117, 72, -90, 0)    # bureau
-porte(232, 147, 68, P, 232, 147, 68,   0, 90)   # wc
-porte( 52, 428, 70, P, 122, 428, 70,  90, 180)  # salle d’eau
-
-# ——— mobilier, trait léger ———
-def g(*t): add('<g fill="none" stroke="'+CRAIE+'" stroke-width="2.4" stroke-linejoin="round">'+''.join(t)+'</g>')
-def R(a,b,w,h,rx=0): return f'<rect x="{x(a)}" y="{y(b)}" width="{w}" height="{h}" rx="{rx}"/>'
-def C(a,b,r): return f'<circle cx="{x(a)}" cy="{y(b)}" r="{r}"/>'
-def L(a,b,c,d): return f'<line x1="{x(a)}" y1="{y(b)}" x2="{x(c)}" y2="{y(d)}"/>'
-
-# chambre : lit 160 tête au sud, chevets de part et d’autre
-g(R(470,145,160,200,4), L(470,292,630,292), R(424,300,42,45,3), R(634,300,42,45,3))
-# bureau : plan de travail sous la fenêtre, siège
-g(R(40,40,122,58,3), C(101,124,21))
-# salle d’eau : douche, vasque
-g(R(32,252,86,86,3), C(75,295,7), R(132,256,68,44,3), C(166,278,11))
-# wc
-g(R(246,42,38,54,9))
-# cuisine en L : plan le long du mur ouest, puis le long du mur sud de l’aile
-g(R(32,566,64,297,2), L(32,676,96,676), L(32,760,96,760), C(64,620,21),
-  R(96,808,207,55,2), L(176,808,176,863), R(118,818,52,36,3))
-# table et tabourets, dans l’aile
-g(R(150,636,142,128,3), C(126,666,18), C(126,734,18), C(316,666,18), C(316,734,18))
-# séjour : fauteuil, pouf, table basse, meuble bas devant la baie
-g(C(612,600,58), R(686,520,72,140,5), R(470,528,58,58,20))
-# ——— cotes ———
-def cote(a0,b0,a1,b1, txt, dec=0, vert=False):
+# ——— cotes, au crayon elles aussi ———
+def cote(a0,b0,a1,b1,txt,dec=0,vert=False):
     if vert:
         xx = a0 + dec
-        add(f'<line x1="{x(xx)}" y1="{y(b0)}" x2="{x(xx)}" y2="{y(b1)}" stroke="{TERRE}" stroke-width="1.6"/>')
+        trait(xx, b0, xx, b1, passes=1, w=1.4, amp=1.0, op=.75, over=0, couleur=COTE)
         for bb in (b0,b1):
-            add(f'<line x1="{x(xx-9)}" y1="{y(bb)}" x2="{x(xx+9)}" y2="{y(bb)}" stroke="{TERRE}" stroke-width="1.6"/>')
-        add(f'<text x="{x(xx-13)}" y="{y((b0+b1)/2)}" fill="{TERRE}" font-size="26" '
-            f'text-anchor="middle" transform="rotate(-90 {x(xx-13)} {y((b0+b1)/2)})">{txt}</text>')
+            trait(xx-9, bb, xx+9, bb, passes=1, w=1.4, amp=.7, op=.75, over=1, couleur=COTE)
+        add(f'<text x="{X(xx-14)}" y="{Y((b0+b1)/2)}" fill="{COTE}" font-size="29" '
+            f'text-anchor="middle" transform="rotate(-90 {X(xx-14)} {Y((b0+b1)/2)})">{txt}</text>')
     else:
         yy = b0 + dec
-        add(f'<line x1="{x(a0)}" y1="{y(yy)}" x2="{x(a1)}" y2="{y(yy)}" stroke="{TERRE}" stroke-width="1.6"/>')
+        trait(a0, yy, a1, yy, passes=1, w=1.4, amp=1.0, op=.75, over=0, couleur=COTE)
         for aa in (a0,a1):
-            add(f'<line x1="{x(aa)}" y1="{y(yy-9)}" x2="{x(aa)}" y2="{y(yy+9)}" stroke="{TERRE}" stroke-width="1.6"/>')
-        add(f'<text x="{x((a0+a1)/2)}" y="{y(yy-13)}" fill="{TERRE}" font-size="26" text-anchor="middle">{txt}</text>')
+            trait(aa, yy-9, aa, yy+9, passes=1, w=1.4, amp=.7, op=.75, over=1, couleur=COTE)
+        add(f'<text x="{X((a0+a1)/2)}" y="{Y(yy-14)}" fill="{COTE}" font-size="29" '
+            f'text-anchor="middle">{txt}</text>')
 
-cote(0, 0, W, 0, '805', dec=-52)
-cote(0, 0, 0, H, '900', dec=-58, vert=True)
-cote(W, 0, W, 787, '788', dec=58, vert=True)
-cote(322, 0, 778, 0, '450', dec=58)
-cote(778, 27, 778, 345, '313', dec=-62, vert=True)
-cote(27, H, 303, H, '300', dec=44)
+cote(0, 0, W, 0, '805', dec=-56)
+cote(0, 0, 0, H, '900', dec=-62, vert=True)
+cote(W, 0, W, 787, '788', dec=62, vert=True)
+cote(322, 0, 778, 0, '450', dec=62)
+cote(778, 27, 778, 345, '313', dec=-66, vert=True)
 
-# ——— textes des pièces ———
-def piece(a,b,nom,aire=None,taille=34):
-    add(f'<text x="{x(a)}" y="{y(b)}" fill="{MARIN}" font-size="{taille}" text-anchor="middle" '
-        f'font-family="Fraunces, Georgia, serif">{nom}</text>')
+add('</g>')   # fin du grain
+
+# ——————————————————————— annotations ———————————————————————
+MAIN = 'Architects Daughter, Fraunces, Georgia, serif'
+def piece(a, b, nom, aire=None, t=36):
+    add(f'<text x="{X(a)}" y="{Y(b)}" fill="{MINE}" font-size="{t}" text-anchor="middle" '
+        f'font-family="{MAIN}">{nom}</text>')
     if aire:
-        add(f'<text x="{x(a)}" y="{y(b+30)}" fill="{GRIS}" font-size="23" text-anchor="middle" '
-            f'letter-spacing="1.6">{aire}</text>')
+        add(f'<text x="{X(a)}" y="{Y(b+33)}" fill="{GRIS}" font-size="25" text-anchor="middle" '
+            f'font-family="{MAIN}">{aire}</text>')
 
 piece(121, 150, 'Bureau', '3,7 m²')
-piece(266,  98, 'WC', None, 24)
-piece(121, 360, 'Salle d’eau', '3,1 m²')
-piece(550,  92, 'Chambre', '14,1 m²')
-piece(500, 428, 'Séjour et cuisine', '31,8 m²')
-add(f'<text x="{x(571)}" y="{y(735)}" fill="{GRIS}" font-size="20" text-anchor="middle" '
-    f'letter-spacing="2.2">BAIE SUR LA TERRASSE</text>')
-add(f'<text x="{x(76)}" y="{y(478)}" fill="{GRIS}" font-size="20" letter-spacing="2.2" '
-    f'transform="rotate(-90 {x(76)} {y(478)})">ENTRÉE</text>')
+piece(267, 100, 'WC', None, 26)
+piece(121, 352, 'Salle d’eau', '3,1 m²')
+piece(550,  96, 'Chambre', '14,1 m²')
+piece(520, 520, 'Séjour et cuisine', '31,8 m²')
+add(f'<text x="{X(571)}" y="{Y(735)}" fill="{GRIS}" font-size="23" text-anchor="middle" '
+    f'font-family="{MAIN}">baie sur la terrasse</text>')
+add(f'<text x="{X(76)}" y="{Y(478)}" fill="{GRIS}" font-size="23" font-family="{MAIN}" '
+    f'transform="rotate(-90 {X(76)} {Y(478)})">entrée</text>')
 
-# ——— nord, échelle, cartouche ———
-nx, ny = W + 56, 96
-add(f'<g stroke="{GRIS}" fill="none" stroke-width="2"><circle cx="{x(nx)}" cy="{y(ny)}" r="30"/>'
-    f'<path d="M {x(nx)},{y(ny-18)} L {x(nx-9)},{y(ny+2)} L {x(nx)},{y(ny-4)} L {x(nx+9)},{y(ny+2)} Z" fill="{GRIS}"/></g>')
-add(f'<text x="{x(nx)}" y="{y(ny+25)}" fill="{GRIS}" font-size="22" text-anchor="middle">N</text>')
+# nord
+nx, ny = W + 60, 100
+add(f'<g filter="url(#grain)">')
+trait(nx, ny-34, nx, ny+26, passes=2, w=2.4, over=2, couleur=GRIS)
+trait(nx-13, ny-18, nx, ny-36, passes=2, w=2.4, over=1.5, couleur=GRIS)
+trait(nx+13, ny-18, nx, ny-36, passes=2, w=2.4, over=1.5, couleur=GRIS)
+add('</g>')
+add(f'<text x="{X(nx)}" y="{Y(ny+48)}" fill="{GRIS}" font-size="25" text-anchor="middle" '
+    f'font-family="{MAIN}">N</text>')
 
-ex, ey = 0, H + 62
-add(f'<g stroke="{GRIS}" stroke-width="2"><line x1="{x(ex)}" y1="{y(ey)}" x2="{x(ex+200)}" y2="{y(ey)}"/>'
-    f'<line x1="{x(ex)}" y1="{y(ey-7)}" x2="{x(ex)}" y2="{y(ey+7)}"/>'
-    f'<line x1="{x(ex+100)}" y1="{y(ey-5)}" x2="{x(ex+100)}" y2="{y(ey+5)}"/>'
-    f'<line x1="{x(ex+200)}" y1="{y(ey-7)}" x2="{x(ex+200)}" y2="{y(ey+7)}"/></g>')
-add(f'<text x="{x(ex)}" y="{y(ey+28)}" fill="{GRIS}" font-size="21">0</text>')
-add(f'<text x="{x(ex+200)}" y="{y(ey+28)}" fill="{GRIS}" font-size="21" text-anchor="middle">2 m</text>')
-add(f'<text x="{x(W)}" y="{y(H+128)}" fill="{GRIS}" font-size="22" text-anchor="end" '
-    f'letter-spacing="2.4">REZ-DE-CHAUSSÉE · COTES EN CENTIMÈTRES</text>')
-add(f'<text x="{x(W)}" y="{y(H+158)}" fill="{MARIN}" font-size="27" text-anchor="end" '
-    f'font-family="Fraunces, Georgia, serif" font-style="italic">La petite vague — 55 m²</text>')
+# échelle
+ex, ey = 0, H + 64
+add('<g filter="url(#grain)">')
+trait(ex, ey, ex+200, ey, passes=1, w=1.8, over=0, couleur=GRIS)
+for t in (0, 100, 200):
+    trait(ex+t, ey-7, ex+t, ey+7, passes=1, w=1.8, over=1, couleur=GRIS)
+add('</g>')
+add(f'<text x="{X(ex)}" y="{Y(ey+30)}" fill="{GRIS}" font-size="24" font-family="{MAIN}">0</text>')
+add(f'<text x="{X(ex+200)}" y="{Y(ey+30)}" fill="{GRIS}" font-size="24" text-anchor="middle" '
+    f'font-family="{MAIN}">2 m</text>')
 
-svg = (f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {VB_W} {VB_H}" '
-       f'role="img" aria-label="Plan du rez-de-chaussée : chambre, bureau, salle d’eau, WC, '
+add(f'<text x="{X(W)}" y="{Y(H+118)}" fill="{GRIS}" font-size="25" text-anchor="end" '
+    f'font-family="{MAIN}">rez-de-chaussée · cotes en centimètres</text>')
+add(f'<text x="{X(W)}" y="{Y(H+152)}" fill="{MINE}" font-size="31" text-anchor="end" '
+    f'font-family="{MAIN}">La petite vague — 55 m²</text>')
+
+svg = (f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {VB_W} {VB_H}" role="img" '
+       f'aria-label="Plan au crayon du rez-de-chaussée : chambre, bureau, salle d’eau, WC, '
        f'séjour ouvert sur la cuisine, baie sur la terrasse" '
-       f'font-family="Jost, Helvetica Neue, Arial, sans-serif">\n'
-       + '\n'.join(s) + '\n</svg>\n')
+       f'font-family="{MAIN}">\n' + '\n'.join(out) + '\n</svg>\n')
+import re as _re
+svg = _re.sub(r'(\d)\.0(?=[,\s"])', r'\1', svg)
 open('_plan/plan.svg','w',encoding='utf-8').write(svg)
 print('viewBox', VB_W, VB_H, '|', len(svg), 'octets')

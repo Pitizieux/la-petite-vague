@@ -105,9 +105,21 @@ en arrivant sur la section Réserver.
 
 ## Le plan
 
-Le plan du rez-de-chaussée est un **SVG dessiné à la main dans le code**, inline dans
-`index.html` (section « La maison »). Il est régénéré par `_plan/gen.py` : modifiez le script,
-relancez-le, et recollez le contenu de `_plan/plan.svg` à la place du `<svg>` existant.
+Le plan du rez-de-chaussée est un **SVG dessiné dans le code, au crayon et murs seuls**,
+inline dans `index.html` (section « La maison »). Il est régénéré par `_plan/gen.py` :
+modifiez le script, relancez-le, et recollez le contenu de `_plan/plan.svg` à la place
+du `<svg>` existant.
+
+Le rendu crayon vient de trois choses : chaque trait est tracé par `main_levee()`, qui
+ajoute un tremblement lissé et un dépassement aux extrémités, puis repassé une seconde
+fois en plus clair ; les murs sont pochés par des hachures à 45° générées mur par mur et
+découpées sur un masque `evenodd` ; un filtre `feTurbulence` + `feDisplacementMap` donne
+le grain du graphite. Les étiquettes sont en **Architects Daughter** (Google Fonts),
+ajoutée au chargement des polices de la page.
+
+Pour changer le rendu : `PAS_H` règle la densité des hachures, `amp` et `over` dans
+`trait()` l’amplitude du tremblement et le dépassement, `scale` du filtre `grain` la
+granulation.
 
 Géométrie relevée sur le plan Kozikaza du 12/01/2025 (`Rez-de-chaussée 1/50`), qui est une
 image : les murs ont été mesurés au pixel puis recalés sur les cotes imprimées
