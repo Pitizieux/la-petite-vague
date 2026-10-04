@@ -134,6 +134,22 @@ section{scroll-margin-top:24px}
   .carte-photo img{height:470px}
 }
 
+/* Environnement */
+.environs{display:grid;gap:52px}
+.commune h3{font-size:clamp(24px,5.6vw,30px);line-height:1.2;padding-bottom:16px;
+  border-bottom:1px solid var(--trait)}
+.commune ul{margin:0;padding:0;list-style:none}
+.commune li{padding:26px 0;border-bottom:1px solid var(--trait)}
+.commune .nom{display:block;font-family:var(--serif);font-size:19px;line-height:1.3;margin-bottom:9px}
+.commune p{margin:0 0 12px;font-size:16px;line-height:1.8;color:var(--gris)}
+.commune a{display:inline-flex;align-items:center;gap:7px;font-size:11px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--terre)}
+.commune a::after{content:"→";font-size:13px;letter-spacing:0}
+.commune a:hover{color:#7E3F24}
+.source-ot{margin:42px 0 0;font-size:15px;line-height:1.8;color:var(--gris-clair);max-width:620px}
+.source-ot a{border-bottom:1px solid rgba(47,86,81,.35)}
+@media(min-width:900px){.environs{grid-template-columns:repeat(2,minmax(0,1fr));gap:56px}}
+
 .equipements{display:grid;gap:12px 40px;margin-top:38px;padding:0;list-style:none}
 .equipements li{display:flex;gap:12px;align-items:flex-start;font-size:16px;line-height:1.6;color:var(--gris);
   padding-bottom:12px;border-bottom:1px solid var(--trait)}
@@ -183,6 +199,7 @@ section{scroll-margin-top:24px}
     <nav class="nav">
       <a href="#maison">La maison</a>
       <a href="#lieu">Le lieu</a>
+      <a href="#environnement">Environnement</a>
       <a href="#equipements">Équipements</a>
       <a class="bouton" href="#reserver">Réserver</a>
     </nav>
@@ -302,9 +319,81 @@ section{scroll-margin-top:24px}
   <figcaption><span>La côte, du marais breton à l’île d’Yeu</span><span class="credit">© Google</span></figcaption>
 </figure>
 
-<section class="bloc" id="equipements">
+<section class="bloc" id="environnement">
   <div class="wrap">
-    <div class="chapeau">03 — Les équipements</div>
+    <div class="titre-bloc" style="margin-bottom:46px">
+      <div>
+        <div class="chapeau">03 — L’environnement</div>
+        <h2>Ce qu’il y a<br>tout <em>autour</em></h2>
+      </div>
+      <div class="intro">
+        <p>Deux communes se partagent l’horizon : Saint-Hilaire-de-Riez côté dunes et marais, Saint-Gilles-Croix-de-Vie côté port. Voici ce qu’on y va voir le plus volontiers — l’office de tourisme tient le reste à jour.</p>
+      </div>
+    </div>
+
+    <div class="environs">
+      <div class="commune">
+        <h3>Saint-Hilaire-de-Riez</h3>
+        <ul>
+          <li>
+            <span class="nom">La Corniche vendéenne</span>
+            <p>Trois kilomètres de rochers bruns entre Sion et Saint-Gilles, une heure de marche facile. Au Trou du Diable, les jours de houle, la mer remonte par la faille et retombe en écume blanche. Table d’orientation, coucher de soleil face à l’île d’Yeu.</p>
+            <a href="https://www.payssaintgilles-tourisme.fr/itineraire/decouverte-de-la-corniche-a-pied/" target="_blank" rel="noopener">L’itinéraire à pied</a>
+          </li>
+          <li>
+            <span class="nom">La Bourrine du Bois Juquaud</span>
+            <p>Une maison de marais basse et blanche, toit de roseaux, bâtie en 1818 et restée dans son jus. Une heure de visite pour comprendre comment on vivait dans le marais breton il y a un siècle.</p>
+            <a href="https://www.payssaintgilles-tourisme.fr/patrimoine-culturel/la-bourrine-du-bois-juquaud/" target="_blank" rel="noopener">Le musée</a>
+          </li>
+          <li>
+            <span class="nom">Les marais salants</span>
+            <p>Quatre mille cinq cents hectares d’eau plate et de digues, où l’on récolte encore le sel à la main. Les sauniers ouvrent leurs œillets à la visite en saison ; on repart avec un sachet de fleur de sel.</p>
+            <a href="https://www.payssaintgilles-tourisme.fr/preparer-son-sejour/a-voir-a-faire/visites-et-decouvertes/" target="_blank" rel="noopener">Visites et découvertes</a>
+          </li>
+          <li>
+            <span class="nom">Les plages et la base nautique</span>
+            <p>Douze kilomètres de sable : les Demoiselles, les Salins, les Mouettes, la Grande Plage de Sion. À la base nautique des Demoiselles, on loue un kayak, une planche ou un dériveur à l’heure.</p>
+            <a href="https://www.payssaintgilles-tourisme.fr/preparer-son-sejour/a-voir-a-faire/activites-nautiques/" target="_blank" rel="noopener">Activités nautiques</a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="commune">
+        <h3>Saint-Gilles-Croix-de-Vie</h3>
+        <ul>
+          <li>
+            <span class="nom">Le port de pêche et la criée</span>
+            <p>Quatre mille tonnes de poisson bleu par an — sardine, anchois. En fin d’après-midi, les bateaux rentrent et l’on peut suivre la vente à la criée depuis Escale Pêche, au cœur du port.</p>
+            <a href="https://www.payssaintgilles-tourisme.fr/patrimoine-culturel/escale-peche/" target="_blank" rel="noopener">Escale Pêche</a>
+          </li>
+          <li>
+            <span class="nom">La traversée vers l’île d’Yeu</span>
+            <p>Départ au pied de la tour Joséphine, embarcadère à cinq minutes d’ici en voiture. Une heure de mer, et l’on débarque à Port-Joinville pour une journée de vélo entre criques et landes.</p>
+            <a href="https://www.payssaintgilles-tourisme.fr/preparer-son-sejour/a-voir-a-faire/visites-et-decouvertes/" target="_blank" rel="noopener">L’excursion</a>
+          </li>
+          <li>
+            <span class="nom">Les marchés</span>
+            <p>Mardi, jeudi et dimanche matin place Saint-Gilles ; mercredi et samedi matin place Sainte-Croix. Poisson du jour, légumes du marais, brioche vendéenne.</p>
+            <a href="https://www.payssaintgilles-tourisme.fr/preparer-son-sejour/agenda-et-animations/" target="_blank" rel="noopener">L’agenda</a>
+          </li>
+          <li>
+            <span class="nom">Le quartier du Maroc et la Petite Île</span>
+            <p>Les ruelles basses bâties par les marins avec les pierres de lest rapportées du large, la Maison du Pêcheur, le pont de la Concorde et sa statue de marin qui sert de jauge aux crues.</p>
+            <a href="https://www.payssaintgilles-tourisme.fr/preparer-son-sejour/a-voir-a-faire/" target="_blank" rel="noopener">À voir, à faire</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <p class="source-ot">Les horaires et les tarifs changent au fil des saisons :
+      <a href="https://www.payssaintgilles-tourisme.fr/" target="_blank" rel="noopener">l’Office de tourisme du Pays de Saint-Gilles-Croix-de-Vie</a>
+      tient tout cela à jour.</p>
+  </div>
+</section>
+
+<section class="bloc" id="equipements" style="padding-top:0">
+  <div class="wrap">
+    <div class="chapeau">04 — Les équipements</div>
     <h2 style="font-size:clamp(30px,6.4vw,44px)">Tout ce qu’il faut,<br>rien de <em>plus</em></h2>
     <ul class="equipements">
       <li>Cuisine équipée : four, plaques, lave-vaisselle</li>
@@ -324,7 +413,7 @@ section{scroll-margin-top:24px}
   <div class="wrap">
     <div class="titre-bloc">
       <div>
-        <div class="chapeau">04 — Réserver</div>
+        <div class="chapeau">05 — Réserver</div>
         <h2>Les dates vivent<br>sur <em>Airbnb</em></h2>
       </div>
       <div class="intro">

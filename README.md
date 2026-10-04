@@ -36,6 +36,16 @@ git push -u origin main
 (géocodage de l’adresse ; pour une précision à la porte près, faites un appui long sur la maison
 dans Google Maps, copiez les coordonnées et remplacez les deux occurrences dans `index.html`).
 
+## Le chapitre « Environnement »
+
+Les activités (corniche, bourrine du Bois Juquaud, marais salants, criée, traversée vers
+l'île d'Yeu, marchés) viennent du site de l'Office de tourisme du Pays de Saint-Gilles-Croix-de-Vie,
+relevées le 4 octobre 2026. Le contenu est **écrit en dur** dans la page : il ne se met pas à jour
+tout seul. Chaque entrée renvoie vers la page correspondante de l'office de tourisme, qui, elle,
+reste à jour pour les horaires et les tarifs.
+
+Les jours de marché sont à revérifier avant chaque saison (ils changent entre l'été et l'hiver).
+
 ## Les photos
 
 | Fichier | Où il apparaît |
