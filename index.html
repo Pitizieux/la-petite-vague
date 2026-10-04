@@ -296,11 +296,124 @@ body{padding-bottom:0}
   width:44px;height:44px;border-radius:50%;border:1px solid rgba(247,243,236,.4);background:transparent;
   color:#F7F3EC;font-size:20px;cursor:pointer;line-height:1}
 
+/* ——— Animations douces ———
+   Tout est conditionné à la classe .anim, posée par un script en tête de page :
+   sans JavaScript, la page s’affiche normalement, rien n’est caché. */
+
+/* Apparition au défilement */
+/* :where() garde ces sélecteurs à faible priorité, pour que .vu l’emporte toujours. */
+.anim :where(.titre-bloc, .chiffres > div, .galerie figure, .couchages > div, .moment, .saison,
+  .distances li, .adresse, .carte-photo, .commune, .yeu, .equip-groupe, .pratique > div, .venir,
+  .faq details, .prix, .reserver .bouton, .source-ot, .citation blockquote, .citation cite){
+  opacity:0;transform:translateY(16px);
+}
+.anim .vu{
+  opacity:1;transform:none;
+  transition:opacity .75s ease,transform .75s cubic-bezier(.22,.61,.36,1);
+  transition-delay:var(--d,0ms);
+}
+
+/* Décalages en cascade */
+.anim .chiffres > div:nth-child(2){--d:70ms}
+.anim .chiffres > div:nth-child(3){--d:140ms}
+.anim .chiffres > div:nth-child(4){--d:210ms}
+.anim .galerie figure:nth-child(2){--d:110ms}
+.anim .galerie figure:nth-child(3){--d:220ms}
+.anim .moment:nth-child(2){--d:110ms}
+.anim .moment:nth-child(3){--d:220ms}
+.anim .saison:nth-child(2){--d:70ms}
+.anim .saison:nth-child(3){--d:140ms}
+.anim .saison:nth-child(4){--d:210ms}
+.anim .equip-groupe:nth-child(2){--d:90ms}
+.anim .equip-groupe:nth-child(3){--d:180ms}
+.anim .commune:nth-child(2){--d:120ms}
+.anim .distances li:nth-child(2){--d:50ms}
+.anim .distances li:nth-child(3){--d:100ms}
+.anim .distances li:nth-child(4){--d:150ms}
+.anim .distances li:nth-child(5){--d:200ms}
+.anim .distances li:nth-child(6){--d:250ms}
+.anim .pratique > div:nth-child(2){--d:40ms}
+.anim .pratique > div:nth-child(3){--d:80ms}
+.anim .pratique > div:nth-child(4){--d:120ms}
+.anim .pratique > div:nth-child(5){--d:160ms}
+.anim .pratique > div:nth-child(6){--d:200ms}
+.anim .pratique > div:nth-child(7){--d:240ms}
+.anim .pratique > div:nth-child(8){--d:280ms}
+.anim .faq details:nth-child(2){--d:60ms}
+.anim .faq details:nth-child(3){--d:120ms}
+.anim .faq details:nth-child(4){--d:180ms}
+.anim .faq details:nth-child(5){--d:240ms}
+.anim .citation cite{--d:160ms}
+.anim .prix{--d:80ms}
+.anim .reserver .bouton{--d:160ms}
+
+/* Entrée de l’accroche */
+@keyframes monte{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+@keyframes respire{from{transform:scale(1.045)}to{transform:scale(1)}}
+.anim .accroche .chapeau{animation:monte .8s .05s both cubic-bezier(.22,.61,.36,1)}
+.anim .accroche h1{animation:monte .9s .15s both cubic-bezier(.22,.61,.36,1)}
+.anim .accroche > div > p{animation:monte .9s .3s both cubic-bezier(.22,.61,.36,1)}
+.anim .repere{animation:monte .9s .42s both cubic-bezier(.22,.61,.36,1)}
+.anim .accroche .actions{animation:monte .9s .52s both cubic-bezier(.22,.61,.36,1)}
+.anim .accroche-photo{overflow:hidden}
+.anim .accroche-photo img{animation:respire 1.6s .1s both cubic-bezier(.22,.61,.36,1)}
+
+/* Le trait du logo se dessine */
+@keyframes trace{from{stroke-dashoffset:var(--l)}to{stroke-dashoffset:0}}
+.marque svg path.trace{stroke-dasharray:var(--l);animation:trace 1.2s both ease-out}
+.marque svg path.trace:nth-child(2){animation-delay:.34s}
+.marque svg path.trace:nth-child(3){animation-delay:.56s}
+
+/* Photos : léger rapprochement au survol */
+.galerie figure,.carte-photo,.bandeau-photo{overflow:hidden}
+.galerie img,.carte-photo img,.bandeau-photo img{
+  transition:transform 1.1s cubic-bezier(.22,.61,.36,1),filter .6s ease}
+@media(hover:hover){
+  .galerie figure:hover img,.carte-photo:hover img,.bandeau-photo:hover img{transform:scale(1.035)}
+}
+
+/* Liens et boutons */
+.lien-ot::after,.lien-fleche svg{transition:transform .4s cubic-bezier(.22,.61,.36,1)}
+.lien-ot:hover::after{transform:translateX(5px)}
+.lien-fleche:hover svg{transform:translateY(4px)}
+.nav a:not(.bouton){position:relative}
+.nav a:not(.bouton)::after{content:"";position:absolute;left:0;right:100%;bottom:-5px;height:1px;
+  background:var(--terre);transition:right .4s cubic-bezier(.22,.61,.36,1)}
+.nav a:not(.bouton):hover::after{right:0}
+.bouton{transition:background .25s ease,transform .25s cubic-bezier(.22,.61,.36,1)}
+.bouton:hover{transform:translateY(-2px)}
+.source-ot a,.pied a{transition:color .3s ease}
+
+/* FAQ : ouverture en douceur */
+.faq .reponse{display:grid;grid-template-rows:0fr;transition:grid-template-rows .45s cubic-bezier(.22,.61,.36,1)}
+.faq details[open] .reponse{grid-template-rows:1fr}
+.faq .reponse > div{overflow:hidden}
+.faq summary::after{transition:transform .35s cubic-bezier(.22,.61,.36,1)}
+.faq details[open] summary::after{transform:rotate(180deg)}
+
+/* On respecte le réglage « animations réduites » du système */
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   .barre{transition:none}
+  .anim :where(.titre-bloc, .chiffres > div, .galerie figure, .couchages > div, .moment, .saison,
+    .distances li, .adresse, .carte-photo, .commune, .yeu, .equip-groupe, .pratique > div, .venir,
+    .faq details, .prix, .reserver .bouton, .source-ot, .citation blockquote,
+    .citation cite){opacity:1;transform:none;transition:none}
+  .anim .accroche .chapeau,.anim .accroche h1,.anim .accroche > div > p,.anim .repere,
+  .anim .accroche .actions,.anim .accroche-photo img,.marque svg path.trace{animation:none;
+    stroke-dasharray:none}
+  .galerie img,.carte-photo img,.bandeau-photo img,.bouton,.lien-ot::after,
+  .lien-fleche svg,.nav a::after,.faq .reponse,.faq summary::after{transition:none}
+  .galerie figure:hover img,.carte-photo:hover img,.bandeau-photo:hover img,
+  .bouton:hover{transform:none}
 }
 </style>
+<script>
+/* Posé avant le rendu : sans JavaScript, aucune animation et rien n’est caché. */
+if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  document.documentElement.classList.add('anim');
+}
+</script>
 </head>
 <body>
 
@@ -438,7 +551,7 @@ body{padding-bottom:0}
   <div class="wrap">
     <svg class="vagues" width="120" height="12" viewBox="0 0 120 12" fill="none" aria-hidden="true">
       <defs><pattern id="vague-claire" width="30" height="12" patternUnits="userSpaceOnUse">
-        <path d="M0 6 Q 7.5 1, 15 6 T 30 6" stroke="#E8B79A" stroke-width="1.4" fill="none"/>
+        <path d="M0 6 Q 7.5 1, 15 6 T 30 6" stroke="#E8B79A" stroke-width="1.4" fill="none"/><animateTransform attributeName="patternTransform" type="translate" from="0 0" to="30 0" dur="7s" repeatCount="indefinite"/>
       </pattern></defs>
       <rect width="120" height="12" fill="url(#vague-claire)"/>
     </svg>
@@ -563,7 +676,7 @@ body{padding-bottom:0}
     <div class="yeu">
       <svg class="yeu-vagues" width="120" height="12" viewBox="0 0 120 12" fill="none" aria-hidden="true">
         <defs><pattern id="vague-yeu" width="30" height="12" patternUnits="userSpaceOnUse">
-          <path d="M0 6 Q 7.5 1, 15 6 T 30 6" stroke="#9C5231" stroke-width="1.4" fill="none"/>
+          <path d="M0 6 Q 7.5 1, 15 6 T 30 6" stroke="#9C5231" stroke-width="1.4" fill="none"/><animateTransform attributeName="patternTransform" type="translate" from="0 0" to="30 0" dur="7s" repeatCount="indefinite"/>
         </pattern></defs>
         <rect width="120" height="12" fill="url(#vague-yeu)"/>
       </svg>
@@ -727,24 +840,19 @@ body{padding-bottom:0}
     </div>
     <div class="faq">
       <details>
-        <summary>Peut-on se passer de voiture ?</summary>
-        <p>Oui, et c’est même recommandé. Les commerces sont à sept minutes à pied, la corniche à dix, la plage à quinze, le port à vingt. Le train s’arrête à Saint-Hilaire-de-Riez, et l’embarcadère pour l’île d’Yeu est à dix minutes de marche. Une voiture ne sert que pour aller plus loin dans les terres.</p>
+        <summary>Peut-on se passer de voiture ?</summary><div class="reponse"><div><p>Oui, et c’est même recommandé. Les commerces sont à sept minutes à pied, la corniche à dix, la plage à quinze, le port à vingt. Le train s’arrête à Saint-Hilaire-de-Riez, et l’embarcadère pour l’île d’Yeu est à dix minutes de marche. Une voiture ne sert que pour aller plus loin dans les terres.</p></div></div>
       </details>
       <details>
-        <summary>Que faire quand il pleut ?</summary>
-        <p>La Bourrine du Bois Juquaud, Escale Pêche au cœur de la criée, les musées de Saint-Gilles, le marché couvert. Et la maison : les tempêtes vues de la corniche sont un spectacle, et l’on rentre se sécher au chaud.</p>
+        <summary>Que faire quand il pleut ?</summary><div class="reponse"><div><p>La Bourrine du Bois Juquaud, Escale Pêche au cœur de la criée, les musées de Saint-Gilles, le marché couvert. Et la maison : les tempêtes vues de la corniche sont un spectacle, et l’on rentre se sécher au chaud.</p></div></div>
       </details>
       <details>
-        <summary>Le logement convient-il à une famille ?</summary>
-        <p><span class="ac">[À compléter : capacité réelle avec la cabine, lit enfant ou parapluie disponible, équipement bébé.]</span></p>
+        <summary>Le logement convient-il à une famille ?</summary><div class="reponse"><div><p><span class="ac">[À compléter : capacité réelle avec la cabine, lit enfant ou parapluie disponible, équipement bébé.]</span></p></div></div>
       </details>
       <details>
-        <summary>Les draps et serviettes sont-ils fournis ?</summary>
-        <p>Oui. Les lits sont faits à votre arrivée et le linge de toilette vous attend dans la salle d’eau. Vous n’avez rien à apporter.</p>
+        <summary>Les draps et serviettes sont-ils fournis ?</summary><div class="reponse"><div><p>Oui. Les lits sont faits à votre arrivée et le linge de toilette vous attend dans la salle d’eau. Vous n’avez rien à apporter.</p></div></div>
       </details>
       <details>
-        <summary>Comment réserver, et peut-on annuler ?</summary>
-        <p>Les réservations passent uniquement par Airbnb : le calendrier y est tenu à jour et les conditions d’annulation sont celles affichées sur l’annonce. Pour une question avant de réserver, la messagerie Airbnb est le plus simple.</p>
+        <summary>Comment réserver, et peut-on annuler ?</summary><div class="reponse"><div><p>Les réservations passent uniquement par Airbnb : le calendrier y est tenu à jour et les conditions d’annulation sont celles affichées sur l’annonce. Pour une question avant de réserver, la messagerie Airbnb est le plus simple.</p></div></div>
       </details>
     </div>
   </div>
@@ -804,6 +912,41 @@ body{padding-bottom:0}
   function fermer(){v.classList.remove('ouverte');img.removeAttribute('src');}
   v.addEventListener('click',fermer);
   document.addEventListener('keydown',function(e){if(e.key==='Escape')fermer();});
+
+  /* ——— Animations ——— */
+  var doux = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (doux && 'IntersectionObserver' in window) {
+    var cibles = document.querySelectorAll(
+      '.titre-bloc, .chiffres > div, .galerie figure, .couchages > div, .moment, .saison,'+
+      '.distances li, .adresse, .carte-photo, .commune, .yeu, .equip-groupe,'+
+      '.pratique > div, .venir, .faq details, .prix, .reserver .bouton, .source-ot,'+
+      '.citation blockquote, .citation cite');
+    var oeil = new IntersectionObserver(function(entrees){
+      entrees.forEach(function(e){
+        if (e.isIntersecting){ e.target.classList.add('vu'); oeil.unobserve(e.target); }
+      });
+    }, {rootMargin:'0px 0px -8% 0px', threshold:0.08});
+    cibles.forEach(function(el){ oeil.observe(el); });
+    // Ce qui est déjà à l’écran au chargement ne doit pas attendre.
+    requestAnimationFrame(function(){
+      cibles.forEach(function(el){
+        if (el.getBoundingClientRect().top < window.innerHeight) el.classList.add('vu');
+      });
+    });
+  } else {
+    document.documentElement.classList.remove('anim');
+  }
+
+  if (doux) {
+    // Le trait du logo se dessine au chargement.
+    document.querySelectorAll('.marque svg path').forEach(function(p){
+      try { p.style.setProperty('--l', p.getTotalLength()); p.classList.add('trace'); } catch(e){}
+    });
+  } else {
+    // Réglage « animations réduites » : on retire aussi la dérive des vagues.
+    document.querySelectorAll('animateTransform').forEach(function(a){ a.remove(); });
+  }
 
   var barre=document.getElementById('barre'), reserver=document.getElementById('reserver');
   function maj(){

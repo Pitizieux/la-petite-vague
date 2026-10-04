@@ -94,6 +94,21 @@ Accroche · chiffres clés · 01 La maison (galerie + couchages) · Une journée
 Sur mobile, une barre de réservation apparaît dès qu’on a dépassé l’accroche et s’efface
 en arrivant sur la section Réserver.
 
+## Les animations
+
+Discrètes et sans bibliothèque : l’accroche monte à l’ouverture, le trait du logo se dessine,
+les blocs apparaissent au défilement (en cascade pour les listes), les photos se rapprochent
+légèrement au survol, le motif de vagues dérive, la FAQ s’ouvre en douceur.
+
+Deux garde-fous :
+
+- **Sans JavaScript**, la classe `anim` n’est jamais posée et la page s’affiche entièrement —
+  rien ne reste caché.
+- Le réglage **« réduire les animations »** du système (macOS, Windows, iOS, Android) coupe
+  tout, y compris la dérive des vagues.
+
+Pour tout désactiver : supprimez le petit script en fin de `<head>`.
+
 ## À refaire au prochain passage
 
 - **La cuisine** : outils, bouteilles et reflet dans la vitre — pièce absente du site pour l’instant.
