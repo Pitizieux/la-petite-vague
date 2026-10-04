@@ -79,17 +79,13 @@ réellement convenu avec elle.
 | Fichier | Où il apparaît |
 |---|---|
 | `photos/chambre.jpg` | Accroche |
-| `photos/sejour.jpg` | Galerie, grande image |
-| `photos/detail-chambre.jpg` | Galerie, « Le coin du lit » |
-| `photos/salle-eau.jpg` | Galerie |
+| `photos/sejour.jpg` | Galerie « La maison » |
+| `photos/cuisine.jpg` | Galerie « La maison » |
+| `photos/terrasse.jpg` | Galerie « La maison » |
 | `photos/facade.jpg` | Bandeau pleine largeur |
 | `photos/carte-quartier.jpg` | Section « Le lieu » |
-| `photos/carte-cote.jpg` | Bandeau pleine largeur, bas de page |
-| `photos/coquillages.jpg` | Portfolio 02 |
-| `photos/suspension.jpg` | Portfolio 03 |
-| `photos/fenetre.jpg` | Portfolio 05 |
-| `photos/gravure.jpg` | Portfolio 06 |
-| `photos/miroir.jpg` | Portfolio 08 |
+| `photos/carte-cote.jpg` | Bandeau pleine largeur |
+| `photos/pf-*.jpg` | Portfolio « En images », onze photos |
 
 Pour remplacer une photo : gardez le même nom de fichier, largeur ~1600 px, format JPEG.
 
@@ -106,6 +102,18 @@ Accroche · chiffres clés · 01 La maison (galerie + couchages) · Une journée
 
 Sur mobile, une barre de réservation apparaît dès qu’on a dépassé l’accroche et s’efface
 en arrivant sur la section Réserver.
+
+## Le traitement des photos
+
+Toutes les photos reçoivent le même étalonnage, appliqué à la production (pas en CSS) :
+noirs levés pour un rendu mat, contraste adouci, légère chaleur, saturation retenue.
+Le portfolio le reçoit à pleine force (0,85), les autres photos à force réduite (0,45),
+de sorte que la section « En images » se détache sans jurer avec le reste.
+
+Les deux captures cartographiques ne sont pas étalonnées.
+
+Pour refaire une série, reprenez la fonction `doux()` du script de production, ou demandez
+à Claude de régénérer les photos avec une autre force.
 
 ## Les animations
 
@@ -127,11 +135,10 @@ Pour tout désactiver : supprimez le petit script en fin de `<head>`.
 - **La cuisine** : outils, bouteilles et reflet dans la vitre — pièce absente du site pour l’instant.
 - **La deuxième chambre / la cabine** : dressing à terminer, matelas sous plastique, volet fermé.
   C’est la photo qui manque le plus : on vend « 1 chambre + cabine » sans montrer la cabine.
-- **La terrasse et le jardin** : c’est le manque le plus grave. Le site annonce 110 m²
-  d’extérieurs privatifs comme premier argument, et pas une seule photo ne les montre.
-  Deux vues larges, en fin de journée, feraient une meilleure accroche que la chambre.
-- **Le bureau** : une section entière lui est consacrée, sans photo. Le bureau face à la
-  fenêtre, volet ouvert, un ordinateur posé dessus.
-- **La cuisine** : toujours absente du site.
+- **Le bureau** : une section entière lui est consacrée, toujours sans photo. Le bureau face
+  à la fenêtre, volet ouvert, un ordinateur et une tasse posés dessus.
+- **Le mobilier d’extérieur** : les photos de terrasse et de jardin sont belles mais vides.
+  Une table, deux chaises et le voile d’ombrage déployé, en fin de journée : c’est ce qui
+  fait qu’on se projette. En l’état, un voyageur peut croire qu’il n’y a rien dehors.
 - Conseils : lumière du matin ou de fin de journée, volets ouverts, appareil à hauteur de poitrine,
   depuis un angle de la pièce, **sans le mode panoramique** (il courbe les murs et les plinthes).
