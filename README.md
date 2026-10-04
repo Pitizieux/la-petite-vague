@@ -39,8 +39,8 @@ pointillé. Cherchez `class="ac"` dans le fichier, ou `[` dans le texte.
 
 **Important**
 
-- Infos pratiques : arrivée, départ, durée minimum, remise des clés, ménage, taxe de séjour,
-  animaux, stationnement.
+- Infos pratiques : arrivée, départ, durée minimum, ménage, taxe de séjour,
+  animaux, stationnement. (L’accueil est renseigné : Halo Conciergerie.)
 - Équipements : terrasse, stationnement, abri vélos, congélateur, type de cafetière.
 - Distances jusqu’aux deux gares.
 - La question « convient-il à une famille ? » dans la FAQ.
@@ -66,6 +66,16 @@ reste à jour pour les horaires et les tarifs.
 
 Les jours de marché sont à revérifier avant chaque saison (ils changent entre l'été et l'hiver).
 
+## La conciergerie
+
+L’accueil sur place et le suivi du séjour sont assurés par **Halo Conciergerie**
+(Saint-Gilles-Croix-de-Vie), citée dans les infos pratiques, la FAQ et la section Réserver,
+avec un lien vers [haloconcierge.fr](https://www.haloconcierge.fr/).
+
+La liste des prestations complémentaires est rédigée à partir de leur site. Faites-la valider
+par la conciergerie avant d’ouvrir le site au public, et ajustez-la à ce que vous avez
+réellement convenu avec elle.
+
 ## Les photos
 
 | Fichier | Où il apparaît |
@@ -88,7 +98,7 @@ vous en passer, un fond OpenStreetMap (via `openstreetmap.org` → *Partager* �
 
 Accroche · chiffres clés · 01 La maison (galerie + couchages) · Une journée ici · avis ·
 02 Le lieu (distances, adresse, carte) · 03 L’environnement (les deux communes + l’île d’Yeu) ·
-04 Les saisons · 05 Les équipements · 06 Infos pratiques (+ comment venir) ·
+04 Les saisons · 05 Les équipements · 06 Infos pratiques (+ la conciergerie, comment venir) ·
 07 Questions fréquentes · 08 Réserver · pied de page.
 
 Sur mobile, une barre de réservation apparaît dès qu’on a dépassé l’accroche et s’efface

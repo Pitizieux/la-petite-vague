@@ -230,6 +230,26 @@ section{scroll-margin-top:20px}
 .pratique dd,.pratique .valeur{margin:0;font-size:15px;line-height:1.6;color:var(--gris);text-align:right}
 @media(min-width:900px){.pratique{grid-template-columns:repeat(2,minmax(0,1fr));column-gap:56px}}
 
+/* Conciergerie */
+.conciergerie{margin-top:46px;padding:30px 24px 32px;background:var(--lin-fonce);
+  border:1px solid rgba(29,42,43,.1)}
+.conciergerie .etiquette{display:block;font-size:11px;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--terre);margin-bottom:22px}
+.conciergerie h4{font-size:clamp(23px,5.2vw,30px);line-height:1.14;margin-bottom:16px}
+.conciergerie p{margin:0 0 16px;font-size:16px;line-height:1.8;color:var(--gris)}
+.conciergerie .sous-titre{display:block;font-family:var(--serif);font-size:17px;margin-bottom:14px}
+.conciergerie ul{margin:0 0 16px;padding:0;list-style:none;display:grid;gap:9px}
+.conciergerie li{display:flex;gap:11px;align-items:flex-start;font-size:15.5px;line-height:1.65;
+  color:var(--gris)}
+.conciergerie li::before{content:"";flex:none;width:5px;height:5px;border-radius:50%;
+  background:var(--ecume);margin-top:9px}
+.conciergerie .note{margin:0;font-size:14px;line-height:1.7;color:var(--gris-clair)}
+.conciergerie-corps{display:grid;gap:30px}
+@media(min-width:900px){
+  .conciergerie{padding:36px 40px 40px}
+  .conciergerie-corps{grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);gap:56px;align-items:start}
+}
+
 .venir{margin-top:50px}
 .venir h4{font-size:20px;margin-bottom:18px}
 .venir ul{margin:0;padding:0;list-style:none;display:grid;gap:14px}
@@ -304,7 +324,8 @@ body{padding-bottom:0}
 /* :where() garde ces sélecteurs à faible priorité, pour que .vu l’emporte toujours. */
 .anim :where(.titre-bloc, .chiffres > div, .galerie figure, .couchages > div, .moment, .saison,
   .distances li, .adresse, .carte-photo, .commune, .yeu, .equip-groupe, .pratique > div, .venir,
-  .faq details, .prix, .reserver .bouton, .source-ot, .citation blockquote, .citation cite){
+  .faq details, .prix, .reserver .bouton, .source-ot, .citation blockquote, .citation cite,
+  .conciergerie){
   opacity:0;transform:translateY(16px);
 }
 .anim .vu{
@@ -398,7 +419,7 @@ body{padding-bottom:0}
   .anim :where(.titre-bloc, .chiffres > div, .galerie figure, .couchages > div, .moment, .saison,
     .distances li, .adresse, .carte-photo, .commune, .yeu, .equip-groupe, .pratique > div, .venir,
     .faq details, .prix, .reserver .bouton, .source-ot, .citation blockquote,
-    .citation cite){opacity:1;transform:none;transition:none}
+    .citation cite, .conciergerie){opacity:1;transform:none;transition:none}
   .anim .accroche .chapeau,.anim .accroche h1,.anim .accroche > div > p,.anim .repere,
   .anim .accroche .actions,.anim .accroche-photo img,.marque svg path.trace{animation:none;
     stroke-dasharray:none}
@@ -812,11 +833,33 @@ if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       <div><span class="quoi">Arrivée</span><span class="valeur">À partir de <span class="ac">[16 h]</span></span></div>
       <div><span class="quoi">Départ</span><span class="valeur">Avant <span class="ac">[10 h]</span></span></div>
       <div><span class="quoi">Durée minimum</span><span class="valeur"><span class="ac">[2 nuits hors saison, 7 en été]</span></span></div>
-      <div><span class="quoi">Remise des clés</span><span class="valeur"><span class="ac">[Boîte à clés, accueil sur place…]</span></span></div>
+      <div><span class="quoi">Accueil et remise des clés</span><span class="valeur">Sur place, par Halo Conciergerie</span></div>
       <div><span class="quoi">Ménage de fin de séjour</span><span class="valeur"><span class="ac">[Inclus / 00 €]</span></span></div>
       <div><span class="quoi">Taxe de séjour</span><span class="valeur"><span class="ac">[00 €]</span> par personne et par nuit</span></div>
       <div><span class="quoi">Animaux</span><span class="valeur"><span class="ac">[Acceptés / non acceptés]</span></span></div>
       <div><span class="quoi">Stationnement</span><span class="valeur"><span class="ac">[À préciser]</span></span></div>
+    </div>
+
+    <div class="conciergerie">
+      <span class="etiquette">Qui vous accueille</span>
+      <div class="conciergerie-corps">
+        <div>
+          <h4>Halo Conciergerie,<br>à <em>Saint-Gilles</em></h4>
+          <p>Une conciergerie professionnelle installée à Saint-Gilles-Croix-de-Vie vous reçoit à votre arrivée, vous remet les clés et vous montre la maison. Elle reste joignable pendant tout le séjour : une question, un imprévu, une envie de dernière minute, c’est à elle qu’on s’adresse.</p>
+          <a class="lien-ot" href="https://www.haloconcierge.fr/" target="_blank" rel="noopener">haloconcierge.fr</a>
+        </div>
+        <div>
+          <span class="sous-titre">Elle peut aussi s’occuper du reste</span>
+          <ul>
+            <li>Ménage en cours de séjour et change du linge</li>
+            <li>Courses déposées avant votre arrivée</li>
+            <li>Loisirs, soins et bien-être réservés pour vous</li>
+            <li>Organisation d’un moment particulier — anniversaire, dîner, demande en mariage</li>
+            <li>Coups de main du quotidien pendant le séjour</li>
+          </ul>
+          <p class="note">Ces prestations sont facultatives, à convenir directement avec la conciergerie, et facturées à part de la location.</p>
+        </div>
+      </div>
     </div>
 
     <div class="venir">
@@ -849,6 +892,9 @@ if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
         <summary>Le logement convient-il à une famille ?</summary><div class="reponse"><div><p><span class="ac">[À compléter : capacité réelle avec la cabine, lit enfant ou parapluie disponible, équipement bébé.]</span></p></div></div>
       </details>
       <details>
+        <summary>Qui nous accueille à l’arrivée ?</summary><div class="reponse"><div><p>Halo Conciergerie, une conciergerie professionnelle de Saint-Gilles-Croix-de-Vie. Elle vous remet les clés, vous fait le tour de la maison et reste joignable pendant tout le séjour. Elle propose aussi, si vous le souhaitez, du ménage en cours de séjour, des courses déposées avant votre arrivée ou l’organisation d’un moment particulier.</p></div></div>
+      </details>
+      <details>
         <summary>Les draps et serviettes sont-ils fournis ?</summary><div class="reponse"><div><p>Oui. Les lits sont faits à votre arrivée et le linge de toilette vous attend dans la salle d’eau. Vous n’avez rien à apporter.</p></div></div>
       </details>
       <details>
@@ -874,7 +920,7 @@ if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       <span class="unite">la nuit, selon la saison</span>
     </div>
     <a class="bouton" href="[LIEN-AIRBNB]" target="_blank" rel="noopener">Voir les disponibilités sur Airbnb</a>
-    <p class="mention">Une question avant de réserver ? La messagerie Airbnb reste le plus simple : on répond vite, et volontiers.</p>
+    <p class="mention">Une question avant de réserver ? La messagerie Airbnb reste le plus simple : on répond vite, et volontiers. Sur place, c’est Halo Conciergerie, à Saint-Gilles-Croix-de-Vie, qui vous accueille et veille au bon déroulement du séjour.</p>
   </div>
 </section>
 
@@ -920,7 +966,7 @@ if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     var cibles = document.querySelectorAll(
       '.titre-bloc, .chiffres > div, .galerie figure, .couchages > div, .moment, .saison,'+
       '.distances li, .adresse, .carte-photo, .commune, .yeu, .equip-groupe,'+
-      '.pratique > div, .venir, .faq details, .prix, .reserver .bouton, .source-ot,'+
+      '.pratique > div, .conciergerie, .venir, .faq details, .prix, .reserver .bouton, .source-ot,'+
       '.citation blockquote, .citation cite');
     var oeil = new IntersectionObserver(function(entrees){
       entrees.forEach(function(e){
