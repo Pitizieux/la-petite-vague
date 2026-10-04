@@ -146,6 +146,22 @@ section{scroll-margin-top:24px}
   text-transform:uppercase;color:var(--terre)}
 .commune a::after{content:"→";font-size:13px;letter-spacing:0}
 .commune a:hover{color:#7E3F24}
+.yeu{margin-top:52px;padding:40px 0 0;border-top:1px solid var(--trait)}
+.yeu-vagues{display:block;margin-bottom:26px}
+.yeu h3{font-size:clamp(28px,6.6vw,42px);line-height:1.08}
+.yeu-chapo{margin:20px 0 0;font-size:16.5px;line-height:1.85;color:var(--gris)}
+.yeu-points{display:grid;gap:24px;margin-top:34px}
+.yeu-points .nom{display:block;font-family:var(--serif);font-size:18px;margin-bottom:8px}
+.yeu-points p{margin:0;font-size:15.5px;line-height:1.75;color:var(--gris)}
+.yeu-lien{display:inline-flex;align-items:center;gap:7px;margin-top:30px;font-size:11px;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--terre)}
+.yeu-lien::after{content:"→";font-size:13px;letter-spacing:0}
+.yeu-lien:hover{color:#7E3F24}
+@media(min-width:900px){
+  .yeu-corps{display:grid;grid-template-columns:minmax(0,.82fr) minmax(0,1.18fr);gap:56px;align-items:start}
+  .yeu-chapo{margin-top:24px}
+  .yeu-points{margin-top:0;gap:28px}
+}
 .source-ot{margin:42px 0 0;font-size:15px;line-height:1.8;color:var(--gris-clair);max-width:620px}
 .source-ot a{border-bottom:1px solid rgba(47,86,81,.35)}
 @media(min-width:900px){.environs{grid-template-columns:repeat(2,minmax(0,1fr));gap:56px}}
@@ -297,7 +313,7 @@ section{scroll-margin-top:24px}
             <li><span class="nom">Corniche vendéenne</span><span class="val">10 min à pied</span></li>
             <li><span class="nom">Plage de Boisvinet</span><span class="val">15 min à pied</span></li>
             <li><span class="nom">Port de Saint-Gilles-Croix-de-Vie</span><span class="val">20 min à pied · 5 min en voiture</span></li>
-            <li><span class="nom">Embarcadère pour l’île d’Yeu</span><span class="val">5 min en voiture</span></li>
+            <li><span class="nom">Embarcadère pour l’île d’Yeu</span><span class="val">10 min à pied</span></li>
           </ul>
         </div>
         <div class="adresse">
@@ -367,11 +383,6 @@ section{scroll-margin-top:24px}
             <a href="https://www.payssaintgilles-tourisme.fr/patrimoine-culturel/escale-peche/" target="_blank" rel="noopener">Escale Pêche</a>
           </li>
           <li>
-            <span class="nom">La traversée vers l’île d’Yeu</span>
-            <p>Départ au pied de la tour Joséphine, embarcadère à cinq minutes d’ici en voiture. Une heure de mer, et l’on débarque à Port-Joinville pour une journée de vélo entre criques et landes.</p>
-            <a href="https://www.payssaintgilles-tourisme.fr/preparer-son-sejour/a-voir-a-faire/visites-et-decouvertes/" target="_blank" rel="noopener">L’excursion</a>
-          </li>
-          <li>
             <span class="nom">Les marchés</span>
             <p>Mardi, jeudi et dimanche matin place Saint-Gilles ; mercredi et samedi matin place Sainte-Croix. Poisson du jour, légumes du marais, brioche vendéenne.</p>
             <a href="https://www.payssaintgilles-tourisme.fr/preparer-son-sejour/agenda-et-animations/" target="_blank" rel="noopener">L’agenda</a>
@@ -383,6 +394,36 @@ section{scroll-margin-top:24px}
           </li>
         </ul>
       </div>
+    </div>
+
+    <div class="yeu">
+      <svg class="yeu-vagues" width="120" height="12" viewBox="0 0 120 12" fill="none" aria-hidden="true">
+        <defs><pattern id="vague-yeu" width="30" height="12" patternUnits="userSpaceOnUse">
+          <path d="M0 6 Q 7.5 1, 15 6 T 30 6" stroke="#9C5231" stroke-width="1.4" fill="none"/>
+        </pattern></defs>
+        <rect width="120" height="12" fill="url(#vague-yeu)"/>
+      </svg>
+      <div class="yeu-corps">
+        <div>
+          <h3>L’île d’Yeu,<br><em>à la journée</em></h3>
+          <p class="yeu-chapo">L’embarcadère est à dix minutes à pied : on part le matin, une heure de mer, et l’on rentre le soir avec du sel sur la peau. Vingt-trois kilomètres carrés de granit et de pins, à faire à vélo — c’est la bonne échelle.</p>
+        </div>
+        <div class="yeu-points">
+          <div>
+            <span class="nom">Deux côtes en une île</span>
+            <p>Au sud-ouest, la côte sauvage : les falaises, le port de la Meule au creux de son anse, les criques des Soux, des Fontaines, des Sabias en contrebas du Vieux Château. Au nord-est, le sable long et calme — Ker Châlon, les Sapins, les Conches, les Vieilles. Une trentaine de plages en tout, et l’on finit toujours par en trouver une déserte.</p>
+          </div>
+          <div>
+            <span class="nom">Le Vieux Château et les pierres levées</span>
+            <p>Une forteresse posée sur un îlot de rocher, bâtie entre le XIVᵉ et le XVIIᵉ siècle face au large. Ailleurs sur l’île, des dolmens et des menhirs de cinq mille ans, le Grand Phare, l’église Saint-Sauveur et les quais de Port-Joinville.</p>
+          </div>
+          <div>
+            <span class="nom">Soixante-douze kilomètres de chemins</span>
+            <p>Balisés, plats, ouverts au vélo comme à la marche. On loue une bicyclette en descendant du bateau et l’on fait le tour par le sentier côtier, en s’arrêtant où bon semble.</p>
+          </div>
+        </div>
+      </div>
+      <a class="yeu-lien" href="https://www.ile-yeu.fr/" target="_blank" rel="noopener">Office de tourisme de l’île d’Yeu</a>
     </div>
 
     <p class="source-ot">Les horaires et les tarifs changent au fil des saisons :

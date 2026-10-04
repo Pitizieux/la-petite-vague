@@ -38,9 +38,10 @@ dans Google Maps, copiez les coordonnées et remplacez les deux occurrences dans
 
 ## Le chapitre « Environnement »
 
-Les activités (corniche, bourrine du Bois Juquaud, marais salants, criée, traversée vers
-l'île d'Yeu, marchés) viennent du site de l'Office de tourisme du Pays de Saint-Gilles-Croix-de-Vie,
-relevées le 4 octobre 2026. Le contenu est **écrit en dur** dans la page : il ne se met pas à jour
+Les activités des deux communes (corniche, bourrine du Bois Juquaud, marais salants, criée,
+marchés) viennent du site de l'Office de tourisme du Pays de Saint-Gilles-Croix-de-Vie ;
+le bloc « L'île d'Yeu, à la journée » vient de celui de l'île d'Yeu (ile-yeu.fr) et la durée
+de traversée (1 h) de la Compagnie Vendéenne. Relevé le 4 octobre 2026. Le contenu est **écrit en dur** dans la page : il ne se met pas à jour
 tout seul. Chaque entrée renvoie vers la page correspondante de l'office de tourisme, qui, elle,
 reste à jour pour les horaires et les tarifs.
 
