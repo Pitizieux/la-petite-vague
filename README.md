@@ -103,6 +103,23 @@ Accroche · chiffres clés · 01 La maison (galerie + couchages) · Une journée
 Sur mobile, une barre de réservation apparaît dès qu’on a dépassé l’accroche et s’efface
 en arrivant sur la section Réserver.
 
+## Le plan
+
+Le plan du rez-de-chaussée est un **SVG dessiné à la main dans le code**, inline dans
+`index.html` (section « La maison »). Il est régénéré par `_plan/gen.py` : modifiez le script,
+relancez-le, et recollez le contenu de `_plan/plan.svg` à la place du `<svg>` existant.
+
+Géométrie relevée sur le plan Kozikaza du 12/01/2025 (`Rez-de-chaussée 1/50`), qui est une
+image : les murs ont été mesurés au pixel puis recalés sur les cotes imprimées
+(450 et 313 pour la chambre, 900 et 788 pour l’emprise). Les surfaces affichées sont
+celles du plan source.
+
+**Un écart assumé** : le plan source nomme la petite pièce « Chambre 3,7 m² ». Elle est
+nommée **Bureau** sur le site, conformément à l’usage réel et à l’annonce Airbnb.
+De même, « Salle de bain » devient « Salle d’eau » : il y a une douche, pas de baignoire.
+
+Sur mobile, le plan défile horizontalement (`min-width: 540px`) pour rester lisible.
+
 ## Le traitement des photos
 
 Toutes les photos reçoivent le même étalonnage, appliqué à la production (pas en CSS) :
