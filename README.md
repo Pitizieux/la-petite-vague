@@ -25,10 +25,29 @@ git push -u origin main
 
 ## À compléter dans `index.html`
 
-- `[LIEN-AIRBNB]` — **deux fois** (bouton de la section 04 et pied de page) : collez l’URL
-  de votre annonce Airbnb à la place, en gardant les guillemets.
-- `[Terrasse…]`, `[Stationnement…]`, `[Animaux…]` dans les équipements.
+Tout ce qui reste à remplir est **visible sur la page** : fond terracotta pâle et soulignement
+pointillé. Cherchez `class="ac"` dans le fichier, ou `[` dans le texte.
+
+**Indispensable avant d’ouvrir le site au public**
+
+- `[LIEN-AIRBNB]` — **trois fois** : bouton de la section Réserver, pied de page, barre mobile.
+  Collez l’URL de l’annonce à la place, en gardant les guillemets.
+- Le prix d’appel « à partir de `[000] €` » dans la section Réserver. Un site qui cache son prix
+  perd la moitié de ses visiteurs ; un ordre de grandeur suffit.
+- L’avis de voyageur du bandeau sombre (deux lignes copiées d’Airbnb) et son prénom.
+- La **cabine** : ce qu’elle contient exactement, et si elle ajoute un couchage.
+
+**Important**
+
+- Infos pratiques : arrivée, départ, durée minimum, remise des clés, ménage, taxe de séjour,
+  animaux, stationnement.
+- Équipements : terrasse, stationnement, abri vélos, congélateur, type de cafetière.
+- Distances jusqu’aux deux gares.
+- La question « convient-il à une famille ? » dans la FAQ.
 - `[@lapetitevague]` et le numéro de meublé de tourisme `[00000]`.
+
+Une fois une information remplie, retirez le `<span class="ac">…</span>` autour : le repère
+coloré disparaît.
 
 ## Coordonnées affichées
 
@@ -53,7 +72,7 @@ Les jours de marché sont à revérifier avant chaque saison (ils changent entre
 |---|---|
 | `photos/chambre.jpg` | Accroche |
 | `photos/sejour.jpg` | Galerie, grande image |
-| `photos/detail-chambre.jpg` | Galerie, détail |
+| `photos/detail-chambre.jpg` | Galerie, « Le coin du lit » |
 | `photos/salle-eau.jpg` | Galerie |
 | `photos/facade.jpg` | Bandeau pleine largeur |
 | `photos/carte-quartier.jpg` | Section « Le lieu » |
@@ -65,10 +84,22 @@ Les deux vues aériennes sont des captures Google : la mention « © Google » e
 chacune et dans le pied de page, comme l’exigent les conditions d’utilisation. Si vous préférez
 vous en passer, un fond OpenStreetMap (via `openstreetmap.org` → *Partager* → iframe) est libre d’usage.
 
+## Structure de la page
+
+Accroche · chiffres clés · 01 La maison (galerie + couchages) · Une journée ici · avis ·
+02 Le lieu (distances, adresse, carte) · 03 L’environnement (les deux communes + l’île d’Yeu) ·
+04 Les saisons · 05 Les équipements · 06 Infos pratiques (+ comment venir) ·
+07 Questions fréquentes · 08 Réserver · pied de page.
+
+Sur mobile, une barre de réservation apparaît dès qu’on a dépassé l’accroche et s’efface
+en arrivant sur la section Réserver.
+
 ## À refaire au prochain passage
 
 - **La cuisine** : outils, bouteilles et reflet dans la vitre — pièce absente du site pour l’instant.
-- **La deuxième chambre** : dressing à terminer, matelas encore sous plastique, volet fermé.
-- **La terrasse / l’extérieur** : il manque une vue large et lumineuse.
+- **La deuxième chambre / la cabine** : dressing à terminer, matelas sous plastique, volet fermé.
+  C’est la photo qui manque le plus : on vend « 1 chambre + cabine » sans montrer la cabine.
+- **La terrasse / l’extérieur** : il manque une vue large et lumineuse — elle ferait une bien
+  meilleure photo d’accroche que la chambre.
 - Conseils : lumière du matin ou de fin de journée, volets ouverts, appareil à hauteur de poitrine,
   depuis un angle de la pièce, **sans le mode panoramique** (il courbe les murs et les plinthes).

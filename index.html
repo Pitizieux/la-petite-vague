@@ -4,10 +4,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>La petite vague — maison de 55 m² entre mer et marais, Saint-Hilaire-de-Riez</title>
-<meta name="description" content="La petite vague : une maison de 55 m² entre l'océan et les marais, à Saint-Hilaire-de-Riez. Pour deux voyageurs : corniche à 10 minutes à pied, plage de Boisvinet à 15 minutes, port de Saint-Gilles-Croix-de-Vie à 5 minutes en voiture. Réservation sur Airbnb.">
+<meta name="description" content="La petite vague : une maison de 55 m² pour deux, entre l'océan et les marais, à Saint-Hilaire-de-Riez. Corniche à 10 minutes à pied, plage de Boisvinet à 15, embarcadère pour l'île d'Yeu à 10. Réservation sur Airbnb.">
 <meta property="og:title" content="La petite vague">
-<meta property="og:description" content="Une maison de 55 m² entre mer et marais, à Saint-Hilaire-de-Riez. Pour un week-end ou un séjour apaisé.">
+<meta property="og:description" content="Une maison de 55 m² pour deux, entre mer et marais, à Saint-Hilaire-de-Riez. Pour un week-end ou un séjour apaisé.">
 <meta property="og:image" content="photos/chambre.jpg">
+<meta property="og:type" content="website">
 <meta name="theme-color" content="#F4EFE7">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -21,7 +22,6 @@
   --sans:Jost,'Helvetica Neue',Arial,sans-serif;
   box-sizing:border-box;
   padding-top:env(safe-area-inset-top,0px);
-  padding-bottom:env(safe-area-inset-bottom,0px);
   background:#F4EFE7;
 }
 :root:not([data-theme="light"]){color-scheme:light}
@@ -31,15 +31,20 @@
 }}
 :root[data-theme="dark"]{--lin:#F4EFE7; --encre:#1D2A2B; background:#F4EFE7}
 *,*::before,*::after{box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:env(safe-area-inset-top,0px)}
+html{scroll-behavior:smooth;scroll-padding-top:20px}
 body{margin:0;background:var(--lin);color:var(--encre);font-family:var(--sans);font-weight:300;
   -webkit-font-smoothing:antialiased;overflow-x:hidden}
 img{max-width:100%;display:block}
 a{color:var(--marin-clair);text-decoration:none}
-h1,h2,h3{font-family:var(--serif);font-weight:300;letter-spacing:-.01em;margin:0}
+h1,h2,h3,h4{font-family:var(--serif);font-weight:300;letter-spacing:-.01em;margin:0}
 em{font-style:italic}
 .wrap{width:100%;max-width:1180px;margin:0 auto;padding:0 22px}
 @media(min-width:900px){.wrap{padding:0 48px}}
+
+/* À compléter — repères visibles tant que l’info manque */
+.ac{background:rgba(156,82,49,.1);border-bottom:1px dotted var(--terre);padding:0 3px;color:var(--terre)}
+.reserver .ac,.pied .ac,.citation .ac{color:var(--ecume);background:rgba(232,183,154,.16);
+  border-bottom-color:rgba(232,183,154,.7)}
 
 .chapeau{display:flex;align-items:center;gap:12px;font-size:11px;letter-spacing:.26em;
   text-transform:uppercase;color:var(--terre);margin-bottom:22px}
@@ -55,53 +60,81 @@ em{font-style:italic}
 .entete{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:20px 0 6px}
 .marque{display:flex;align-items:center;gap:11px;color:var(--encre)}
 .marque span{font-family:var(--serif);font-size:19px}
-.nav{display:none;gap:30px;align-items:center}
+.nav{display:none;gap:26px;align-items:center}
 .nav a{font-size:12.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--gris)}
-@media(min-width:900px){.nav{display:flex}.marque span{font-size:22px}}
+@media(min-width:1000px){.nav{display:flex}.marque span{font-size:22px}}
 
-.accroche{padding:34px 0 0}
-.accroche h1{font-size:clamp(56px,15vw,104px);line-height:.92;margin:0 0 24px}
-.accroche p{font-size:17px;line-height:1.8;color:var(--gris);max-width:460px;margin:0 0 30px}
-.accroche .actions{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-bottom:38px}
+/* Accroche */
+.accroche{padding:30px 0 0}
+.accroche h1{font-size:clamp(54px,14vw,100px);line-height:.92;margin:0 0 22px}
+.accroche p{font-size:17px;line-height:1.8;color:var(--gris);max-width:460px;margin:0 0 26px}
+.repere{display:flex;flex-wrap:wrap;gap:8px 18px;margin:0 0 28px;padding:0;list-style:none;
+  font-size:13px;letter-spacing:.04em;color:var(--gris-clair)}
+.repere li{display:flex;align-items:center;gap:8px}
+.repere li+li::before{content:"";width:4px;height:4px;border-radius:50%;background:var(--ecume);
+  margin-right:2px;flex:none}
+.accroche .actions{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-bottom:34px}
 .accroche-photo img{width:100%;height:clamp(260px,62vw,440px);object-fit:cover;object-position:52% 60%}
 @media(min-width:900px){
-  .accroche{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:56px;align-items:center;padding:56px 0 24px}
+  .accroche{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:56px;align-items:center;padding:52px 0 24px}
   .accroche-photo img{height:500px;object-position:52% 58%}
 }
 
-.chiffres{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px 18px;padding:34px 0;
-  border-top:1px solid var(--trait);border-bottom:1px solid var(--trait);margin-top:40px}
+.chiffres{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px 18px;padding:32px 0;
+  border-top:1px solid var(--trait);border-bottom:1px solid var(--trait);margin-top:38px}
 .chiffres div{display:flex;align-items:baseline;gap:10px}
-.chiffres b{font-family:var(--serif);font-size:27px;font-weight:400}
+.chiffres b{font-family:var(--serif);font-size:26px;font-weight:400}
 .chiffres span{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--gris-clair)}
-@media(min-width:900px){.chiffres{grid-template-columns:repeat(4,minmax(0,1fr));padding:40px 0}}
+@media(min-width:900px){.chiffres{grid-template-columns:repeat(4,minmax(0,1fr));padding:38px 0}}
 
-section{scroll-margin-top:24px}
-.bloc{padding:76px 0}
-@media(min-width:900px){.bloc{padding:104px 0}}
-.titre-bloc h2{font-size:clamp(34px,7.4vw,52px);line-height:1.06}
-.intro{margin-top:26px;display:grid;gap:16px}
+section{scroll-margin-top:20px}
+.bloc{padding:72px 0}
+@media(min-width:900px){.bloc{padding:98px 0}}
+.titre-bloc h2{font-size:clamp(33px,7.2vw,50px);line-height:1.06}
+.intro{margin-top:24px;display:grid;gap:16px}
 .intro p{margin:0;font-size:16.5px;line-height:1.85;color:var(--gris)}
 @media(min-width:900px){
-  .titre-bloc{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:64px;align-items:end}
+  .titre-bloc{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:60px;align-items:end}
   .intro{margin-top:0}
 }
 
-.galerie{display:grid;gap:16px;margin-top:44px}
+/* Galerie */
+.galerie{display:grid;gap:16px;margin-top:42px}
 .galerie figure{margin:0}
 .galerie img{width:100%;height:100%;object-fit:cover;cursor:zoom-in}
 .galerie figcaption{margin-top:11px;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#6F6152}
 .g-haut img{height:clamp(320px,78vw,520px)}
-.g-moyen img{height:clamp(240px,58vw,330px)}
+.g-moyen img{height:clamp(260px,62vw,360px);object-position:center 38%}
 @media(min-width:900px){
   .galerie{grid-template-columns:1.15fr .92fr .86fr;align-items:start;gap:24px}
   .g-haut img{height:540px}
-  .g-moyen img{height:300px}
+  .g-moyen img{height:340px}
   .g-decale{margin-top:78px}
   .g-decale img{height:400px}
 }
 
-.citation{background:var(--marin);color:#F7F3EC;text-align:center;padding:74px 0}
+/* Couchages */
+.couchages{display:grid;gap:0;margin-top:46px;border-top:1px solid var(--trait)}
+.couchages div{display:flex;align-items:baseline;justify-content:space-between;gap:20px;padding:18px 0;
+  border-bottom:1px solid var(--trait)}
+.couchages .piece{font-family:var(--serif);font-size:19px}
+.couchages .detail{font-size:14px;color:var(--gris-clair);text-align:right}
+@media(min-width:900px){.couchages{grid-template-columns:repeat(2,minmax(0,1fr));column-gap:56px}}
+
+/* Une journée ici */
+.journee{background:var(--lin-fonce)}
+.moments{display:grid;gap:34px;margin-top:44px}
+.moment{position:relative;padding-left:26px}
+.moment::before{content:"";position:absolute;left:0;top:9px;width:9px;height:9px;border-radius:50%;
+  border:1px solid var(--terre)}
+.moment .heure{display:block;font-size:11px;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--terre);margin-bottom:9px}
+.moment h4{font-size:21px;line-height:1.3;margin-bottom:9px}
+.moment p{margin:0;font-size:16px;line-height:1.8;color:var(--gris)}
+@media(min-width:900px){.moments{grid-template-columns:repeat(3,minmax(0,1fr));gap:44px}}
+
+/* Citation */
+.citation{background:var(--marin);color:#F7F3EC;text-align:center;padding:72px 0}
 .citation .vagues{display:block;margin:0 auto 22px}
 .citation blockquote{margin:0 auto;max-width:740px;font-family:var(--serif);font-style:italic;
   font-size:clamp(23px,4.6vw,36px);line-height:1.34;font-weight:300}
@@ -115,10 +148,11 @@ section{scroll-margin-top:24px}
 .credit{color:#8D8272;letter-spacing:.1em}
 @media(min-width:900px){.bandeau-photo figcaption{padding:14px 48px 0}}
 
+/* Distances */
 .distances{border-top:1px solid var(--trait)}
 .distances ul{margin:0;padding:0}
 .distances li{display:flex;align-items:baseline;justify-content:space-between;gap:18px;
-  padding:17px 0;border-bottom:1px solid var(--trait);list-style:none}
+  padding:16px 0;border-bottom:1px solid var(--trait);list-style:none}
 .distances .nom{font-family:var(--serif);font-size:19px}
 .distances .val{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--gris-clair);text-align:right}
 .adresse{margin-top:30px;display:grid;gap:10px}
@@ -135,62 +169,125 @@ section{scroll-margin-top:24px}
 }
 
 /* Environnement */
-.environs{display:grid;gap:52px}
+.environs{display:grid;gap:50px}
 .commune h3{font-size:clamp(24px,5.6vw,30px);line-height:1.2;padding-bottom:16px;
   border-bottom:1px solid var(--trait)}
 .commune ul{margin:0;padding:0;list-style:none}
-.commune li{padding:26px 0;border-bottom:1px solid var(--trait)}
+.commune li{padding:24px 0;border-bottom:1px solid var(--trait)}
 .commune .nom{display:block;font-family:var(--serif);font-size:19px;line-height:1.3;margin-bottom:9px}
 .commune p{margin:0 0 12px;font-size:16px;line-height:1.8;color:var(--gris)}
-.commune a{display:inline-flex;align-items:center;gap:7px;font-size:11px;letter-spacing:.16em;
+.lien-ot{display:inline-flex;align-items:center;gap:7px;font-size:11px;letter-spacing:.16em;
   text-transform:uppercase;color:var(--terre)}
-.commune a::after{content:"→";font-size:13px;letter-spacing:0}
-.commune a:hover{color:#7E3F24}
-.yeu{margin-top:52px;padding:40px 0 0;border-top:1px solid var(--trait)}
-.yeu-vagues{display:block;margin-bottom:26px}
+.lien-ot::after{content:"→";font-size:13px;letter-spacing:0}
+.lien-ot:hover{color:#7E3F24}
+@media(min-width:900px){.environs{grid-template-columns:repeat(2,minmax(0,1fr));gap:56px}}
+
+/* Île d’Yeu */
+.yeu{margin-top:50px;padding:38px 0 0;border-top:1px solid var(--trait)}
+.yeu-vagues{display:block;margin-bottom:24px}
 .yeu h3{font-size:clamp(28px,6.6vw,42px);line-height:1.08}
 .yeu-chapo{margin:20px 0 0;font-size:16.5px;line-height:1.85;color:var(--gris)}
-.yeu-points{display:grid;gap:24px;margin-top:34px}
+.yeu-pratique{margin-top:24px;padding-top:20px;border-top:1px solid var(--trait);display:grid;gap:10px;
+  font-size:14px;line-height:1.7;color:var(--gris-clair)}
+.yeu-pratique b{font-family:var(--serif);font-weight:400;font-size:16px;color:var(--encre)}
+.yeu-points{display:grid;gap:24px;margin-top:32px}
 .yeu-points .nom{display:block;font-family:var(--serif);font-size:18px;margin-bottom:8px}
 .yeu-points p{margin:0;font-size:15.5px;line-height:1.75;color:var(--gris)}
-.yeu-lien{display:inline-flex;align-items:center;gap:7px;margin-top:30px;font-size:11px;
-  letter-spacing:.16em;text-transform:uppercase;color:var(--terre)}
-.yeu-lien::after{content:"→";font-size:13px;letter-spacing:0}
-.yeu-lien:hover{color:#7E3F24}
 @media(min-width:900px){
   .yeu-corps{display:grid;grid-template-columns:minmax(0,.82fr) minmax(0,1.18fr);gap:56px;align-items:start}
   .yeu-chapo{margin-top:24px}
   .yeu-points{margin-top:0;gap:28px}
 }
-.source-ot{margin:42px 0 0;font-size:15px;line-height:1.8;color:var(--gris-clair);max-width:620px}
+.source-ot{margin:40px 0 0;font-size:15px;line-height:1.8;color:var(--gris-clair);max-width:640px}
 .source-ot a{border-bottom:1px solid rgba(47,86,81,.35)}
-@media(min-width:900px){.environs{grid-template-columns:repeat(2,minmax(0,1fr));gap:56px}}
 
-.equipements{display:grid;gap:12px 40px;margin-top:38px;padding:0;list-style:none}
-.equipements li{display:flex;gap:12px;align-items:flex-start;font-size:16px;line-height:1.6;color:var(--gris);
-  padding-bottom:12px;border-bottom:1px solid var(--trait)}
-.equipements li::before{content:"";flex:none;width:6px;height:6px;border-radius:50%;background:var(--ecume);margin-top:9px}
-@media(min-width:700px){.equipements{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media(min-width:1000px){.equipements{grid-template-columns:repeat(3,minmax(0,1fr))}}
+/* Saisons */
+.saisons{display:grid;gap:0;margin-top:42px;border-top:1px solid var(--trait)}
+.saison{padding:24px 0;border-bottom:1px solid var(--trait)}
+.saison .quand{display:block;font-size:11px;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--terre);margin-bottom:8px}
+.saison h4{font-size:20px;margin-bottom:8px}
+.saison p{margin:0;font-size:16px;line-height:1.8;color:var(--gris)}
+@media(min-width:900px){
+  .saisons{grid-template-columns:repeat(2,minmax(0,1fr));column-gap:56px}
+}
 
+/* Équipements par pièce */
+.equip-groupes{display:grid;gap:36px;margin-top:42px}
+.equip-groupe h4{font-size:18px;padding-bottom:12px;border-bottom:1px solid var(--trait);margin-bottom:16px}
+.equip-groupe ul{margin:0;padding:0;list-style:none;display:grid;gap:9px}
+.equip-groupe li{display:flex;gap:11px;align-items:flex-start;font-size:15.5px;line-height:1.6;color:var(--gris)}
+.equip-groupe li::before{content:"";flex:none;width:5px;height:5px;border-radius:50%;
+  background:var(--ecume);margin-top:9px}
+@media(min-width:700px){.equip-groupes{grid-template-columns:repeat(2,minmax(0,1fr));gap:36px 48px}}
+@media(min-width:1000px){.equip-groupes{grid-template-columns:repeat(3,minmax(0,1fr))}}
+
+/* Infos pratiques */
+.pratique{display:grid;gap:0;margin-top:42px;border-top:1px solid var(--trait)}
+.pratique div{display:flex;align-items:baseline;justify-content:space-between;gap:20px;padding:16px 0;
+  border-bottom:1px solid var(--trait)}
+.pratique dt,.pratique .quoi{font-family:var(--serif);font-size:18px;margin:0}
+.pratique dd,.pratique .valeur{margin:0;font-size:15px;line-height:1.6;color:var(--gris);text-align:right}
+@media(min-width:900px){.pratique{grid-template-columns:repeat(2,minmax(0,1fr));column-gap:56px}}
+
+.venir{margin-top:50px}
+.venir h4{font-size:20px;margin-bottom:18px}
+.venir ul{margin:0;padding:0;list-style:none;display:grid;gap:14px}
+.venir li{font-size:16px;line-height:1.75;color:var(--gris);padding-left:26px;position:relative}
+.venir li .mode{font-family:var(--serif);color:var(--encre)}
+.venir li::before{content:"";position:absolute;left:0;top:10px;width:9px;height:1px;background:var(--terre)}
+@media(min-width:900px){.venir ul{grid-template-columns:repeat(3,minmax(0,1fr));gap:26px}}
+
+/* FAQ */
+.faq{margin-top:42px;border-top:1px solid var(--trait)}
+.faq details{border-bottom:1px solid var(--trait)}
+.faq summary{list-style:none;cursor:pointer;padding:20px 0;display:flex;align-items:baseline;
+  justify-content:space-between;gap:20px;font-family:var(--serif);font-size:19px;line-height:1.35}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font-family:var(--sans);font-size:20px;color:var(--terre);flex:none;
+  line-height:1}
+.faq details[open] summary::after{content:"–"}
+.faq p{margin:0 0 20px;font-size:16px;line-height:1.8;color:var(--gris);max-width:720px}
+
+/* Réserver */
 .reserver{background:var(--marin);color:#F7F3EC}
 .reserver .chapeau{color:var(--ecume)}
 .reserver .chapeau::before{background:var(--ecume)}
 .reserver h2{color:#F7F3EC}
 .reserver .intro p{color:rgba(247,243,236,.78)}
-.reserver .bouton{background:var(--ecume);color:var(--marin);margin-top:34px}
+.reserver .bouton{background:var(--ecume);color:var(--marin);margin-top:32px}
 .reserver .bouton:hover{background:#F0C9B1;color:var(--marin)}
-.mention{margin-top:22px;font-size:14px;line-height:1.8;color:rgba(247,243,236,.62);max-width:520px}
+.prix{margin-top:34px;padding-top:26px;border-top:1px solid rgba(247,243,236,.18);display:flex;
+  flex-wrap:wrap;align-items:baseline;gap:8px 16px}
+.prix .montant{font-family:var(--serif);font-size:34px;color:#F7F3EC}
+.prix .unite{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:rgba(247,243,236,.6)}
+.mention{margin-top:20px;font-size:14px;line-height:1.8;color:rgba(247,243,236,.62);max-width:560px}
 
-.pied{background:var(--marin);color:#F7F3EC;padding:64px 0 26px;overflow:hidden;
+/* Pied de page */
+.pied{background:var(--marin);color:#F7F3EC;padding:60px 0 26px;overflow:hidden;
   border-top:1px solid rgba(247,243,236,.16)}
 .pied a{color:rgba(247,243,236,.82)}
 .pied-haut{display:grid;gap:26px;font-size:15px;line-height:1.75;color:rgba(247,243,236,.82)}
 @media(min-width:700px){.pied-haut{grid-template-columns:repeat(3,minmax(0,1fr))}}
 .legal{font-size:12.5px;color:rgba(247,243,236,.55);line-height:1.8}
-.signature{font-family:var(--serif);font-size:clamp(46px,15.5vw,132px);line-height:1;margin:52px 0 0;
+.signature{font-family:var(--serif);font-size:clamp(44px,15vw,132px);line-height:1;margin:48px 0 0;
   color:rgba(247,243,236,.13);white-space:nowrap}
 
+/* Barre de réservation mobile */
+.barre{position:fixed;left:0;right:0;bottom:0;z-index:40;background:var(--creme);
+  border-top:1px solid var(--trait);box-shadow:0 -8px 24px rgba(29,42,43,.08);
+  padding:10px 16px calc(10px + env(safe-area-inset-bottom,0px));
+  display:flex;align-items:center;justify-content:space-between;gap:14px;
+  transform:translateY(110%);transition:transform .25s ease}
+.barre.visible{transform:translateY(0)}
+.barre .resume{font-size:13px;line-height:1.4;color:var(--gris-clair)}
+.barre .resume b{display:block;font-family:var(--serif);font-size:16px;color:var(--encre);font-weight:400}
+.barre .bouton{min-height:46px;padding:0 20px;font-size:12px}
+@media(min-width:1000px){.barre{display:none}}
+body{padding-bottom:0}
+@media(max-width:999px){body{padding-bottom:76px}}
+
+/* Visionneuse */
 .visionneuse{position:fixed;inset:0;background:rgba(19,29,28,.94);display:none;align-items:center;
   justify-content:center;padding:18px;z-index:50}
 .visionneuse.ouverte{display:flex}
@@ -198,6 +295,11 @@ section{scroll-margin-top:24px}
 .visionneuse button{position:absolute;top:calc(14px + env(safe-area-inset-top,0px));right:16px;
   width:44px;height:44px;border-radius:50%;border:1px solid rgba(247,243,236,.4);background:transparent;
   color:#F7F3EC;font-size:20px;cursor:pointer;line-height:1}
+
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .barre{transition:none}
+}
 </style>
 </head>
 <body>
@@ -215,8 +317,9 @@ section{scroll-margin-top:24px}
     <nav class="nav">
       <a href="#maison">La maison</a>
       <a href="#lieu">Le lieu</a>
-      <a href="#environnement">Environnement</a>
+      <a href="#environnement">Autour</a>
       <a href="#equipements">Équipements</a>
+      <a href="#pratique">Pratique</a>
       <a class="bouton" href="#reserver">Réserver</a>
     </nav>
   </header>
@@ -226,6 +329,11 @@ section{scroll-margin-top:24px}
       <div class="chapeau">Saint-Hilaire-de-Riez · entre mer et marais</div>
       <h1>La petite<br><em>vague</em></h1>
       <p>Cinquante-cinq mètres carrés de calme, posés entre l’océan et les marais. Le matin, la lumière monte du marais ; le soir, la mer se retire derrière les dunes et l’on entend le vent passer dans les pins. Le temps d’un week-end, ou de tout un été.</p>
+      <ul class="repere">
+        <li>2 voyageurs</li>
+        <li>Corniche à 10 min à pied</li>
+        <li>Plage à 15 min</li>
+      </ul>
       <div class="actions">
         <a class="bouton" href="#reserver">Voir les disponibilités</a>
         <a class="lien-fleche" href="#maison">Découvrir la maison
@@ -255,7 +363,7 @@ section{scroll-margin-top:24px}
       </div>
       <div class="intro">
         <p>Du bois clair, du lin, des murs couleur de vague et beaucoup de jour. Une chambre, une cabine, et de quoi recevoir deux voyageurs sans rien de superflu : on pose son sac en arrivant, et l’on ne cherche plus rien d’autre.</p>
-        <p>Les lits sont faits à votre arrivée. La cuisine est faite pour cuisiner vraiment — du poisson pris au port le matin, du sel de Vendée, une table que personne ne quitte avant la nuit.</p>
+        <p>Les lits sont faits à votre arrivée, les serviettes pliées sur le lit. La cuisine est faite pour cuisiner vraiment — du poisson pris au port le matin, du sel de Vendée, une table que personne ne quitte avant la nuit.</p>
       </div>
     </div>
 
@@ -265,13 +373,63 @@ section{scroll-margin-top:24px}
         <figcaption>Le séjour</figcaption>
       </figure>
       <figure class="g-moyen">
-        <img src="photos/detail-chambre.jpg" alt="Suspension en verre opalin sur le mur bleu de la chambre" loading="lazy" width="1000" height="1090">
-        <figcaption>La chambre, détail</figcaption>
+        <img src="photos/detail-chambre.jpg" alt="Le coin du lit : table de chevet, suspension en verre opalin et gravure de vague sur le mur bleu" loading="lazy" width="1100" height="1494">
+        <figcaption>Le coin du lit</figcaption>
       </figure>
       <figure class="g-decale">
         <img src="photos/salle-eau.jpg" alt="La salle d’eau, douche et vasque sous un miroir rond" loading="lazy" width="1100" height="1422">
         <figcaption>La salle d’eau</figcaption>
       </figure>
+    </div>
+
+    <div class="couchages">
+      <div>
+        <span class="piece">La chambre</span>
+        <span class="detail">Un lit double <span class="ac">[140 ou 160 cm]</span></span>
+      </div>
+      <div>
+        <span class="piece">La cabine</span>
+        <span class="detail"><span class="ac">[à décrire : lit simple, lits superposés, coin bureau…]</span></span>
+      </div>
+      <div>
+        <span class="piece">La salle d’eau</span>
+        <span class="detail">Douche, vasque, sèche-serviettes · WC <span class="ac">[séparés ?]</span></span>
+      </div>
+      <div>
+        <span class="piece">Le séjour et la cuisine</span>
+        <span class="detail">Pièce de vie ouverte, table <span class="ac">[X]</span> personnes</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="bloc journee">
+  <div class="wrap">
+    <div class="titre-bloc">
+      <div>
+        <div class="chapeau">Une journée ici</div>
+        <h2>Du café du matin<br>au <em>dernier bain</em></h2>
+      </div>
+      <div class="intro">
+        <p>Rien d’obligatoire, bien sûr. Mais voilà à quoi ressemble une journée quand on ne force rien.</p>
+      </div>
+    </div>
+    <div class="moments">
+      <div class="moment">
+        <span class="heure">8 h</span>
+        <h4>Le pain, puis le marais</h4>
+        <p>Sept minutes de marche jusqu’à la boulangerie, et l’on revient par les chemins du marais : l’eau est plate, les hérons décollent sans bruit. Café sur <span class="ac">[la terrasse]</span>, le temps que la journée se décide.</p>
+      </div>
+      <div class="moment">
+        <span class="heure">Midi</span>
+        <h4>La corniche et la plage</h4>
+        <p>Dix minutes à pied et l’on y est : les rochers bruns, le Trou du Diable qui crache l’écume les jours de houle. Puis la plage de Boisvinet, en pente douce, pour le bain et la sieste.</p>
+      </div>
+      <div class="moment">
+        <span class="heure">18 h</span>
+        <h4>Le retour des bateaux</h4>
+        <p>À Saint-Gilles, les sardiniers rentrent en fin d’après-midi. On achète le poisson du jour, on remonte par le pont, et l’on cuisine en laissant la fenêtre ouverte sur le soir.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -284,8 +442,8 @@ section{scroll-margin-top:24px}
       </pattern></defs>
       <rect width="120" height="12" fill="url(#vague-claire)"/>
     </svg>
-    <blockquote>Ici, on ne règle plus ses journées sur une montre,<br>mais sur la marée.</blockquote>
-    <cite>La petite vague — Saint-Hilaire-de-Riez, Vendée</cite>
+    <blockquote><span class="ac">[Un avis de voyageur, copié depuis Airbnb — deux lignes suffisent.]</span></blockquote>
+    <cite><span class="ac">[Prénom]</span> — <span class="ac">[mois année]</span></cite>
   </div>
 </section>
 
@@ -296,7 +454,7 @@ section{scroll-margin-top:24px}
 
 <section class="bloc" id="lieu">
   <div class="wrap">
-    <div class="titre-bloc" style="margin-bottom:46px">
+    <div class="titre-bloc" style="margin-bottom:44px">
       <div>
         <div class="chapeau">02 — Le lieu</div>
         <h2>Entre la mer<br>et le <em>marais</em></h2>
@@ -311,9 +469,10 @@ section{scroll-margin-top:24px}
           <ul>
             <li><span class="nom">Commerces et boulangerie</span><span class="val">7 min à pied</span></li>
             <li><span class="nom">Corniche vendéenne</span><span class="val">10 min à pied</span></li>
+            <li><span class="nom">Embarcadère pour l’île d’Yeu</span><span class="val">10 min à pied</span></li>
             <li><span class="nom">Plage de Boisvinet</span><span class="val">15 min à pied</span></li>
             <li><span class="nom">Port de Saint-Gilles-Croix-de-Vie</span><span class="val">20 min à pied · 5 min en voiture</span></li>
-            <li><span class="nom">Embarcadère pour l’île d’Yeu</span><span class="val">10 min à pied</span></li>
+            <li><span class="nom">Gare de Saint-Hilaire-de-Riez</span><span class="val"><span class="ac">[X] min à pied</span></span></li>
           </ul>
         </div>
         <div class="adresse">
@@ -337,7 +496,7 @@ section{scroll-margin-top:24px}
 
 <section class="bloc" id="environnement">
   <div class="wrap">
-    <div class="titre-bloc" style="margin-bottom:46px">
+    <div class="titre-bloc" style="margin-bottom:44px">
       <div>
         <div class="chapeau">03 — L’environnement</div>
         <h2>Ce qu’il y a<br>tout <em>autour</em></h2>
@@ -354,22 +513,22 @@ section{scroll-margin-top:24px}
           <li>
             <span class="nom">La Corniche vendéenne</span>
             <p>Trois kilomètres de rochers bruns entre Sion et Saint-Gilles, une heure de marche facile. Au Trou du Diable, les jours de houle, la mer remonte par la faille et retombe en écume blanche. Table d’orientation, coucher de soleil face à l’île d’Yeu.</p>
-            <a href="https://www.payssaintgilles-tourisme.fr/itineraire/decouverte-de-la-corniche-a-pied/" target="_blank" rel="noopener">L’itinéraire à pied</a>
+            <a class="lien-ot" href="https://www.payssaintgilles-tourisme.fr/itineraire/decouverte-de-la-corniche-a-pied/" target="_blank" rel="noopener">L’itinéraire à pied</a>
           </li>
           <li>
             <span class="nom">La Bourrine du Bois Juquaud</span>
-            <p>Une maison de marais basse et blanche, toit de roseaux, bâtie en 1818 et restée dans son jus. Une heure de visite pour comprendre comment on vivait dans le marais breton il y a un siècle.</p>
-            <a href="https://www.payssaintgilles-tourisme.fr/patrimoine-culturel/la-bourrine-du-bois-juquaud/" target="_blank" rel="noopener">Le musée</a>
+            <p>Une maison de marais basse et blanche, toit de roseaux, bâtie en 1818 et restée dans son jus. Une heure de visite pour comprendre comment on vivait dans le marais breton il y a un siècle. Parfait les jours de pluie.</p>
+            <a class="lien-ot" href="https://www.payssaintgilles-tourisme.fr/patrimoine-culturel/la-bourrine-du-bois-juquaud/" target="_blank" rel="noopener">Le musée</a>
           </li>
           <li>
             <span class="nom">Les marais salants</span>
             <p>Quatre mille cinq cents hectares d’eau plate et de digues, où l’on récolte encore le sel à la main. Les sauniers ouvrent leurs œillets à la visite en saison ; on repart avec un sachet de fleur de sel.</p>
-            <a href="https://www.payssaintgilles-tourisme.fr/preparer-son-sejour/a-voir-a-faire/visites-et-decouvertes/" target="_blank" rel="noopener">Visites et découvertes</a>
+            <a class="lien-ot" href="https://www.payssaintgilles-tourisme.fr/preparer-son-sejour/a-voir-a-faire/visites-et-decouvertes/" target="_blank" rel="noopener">Visites et découvertes</a>
           </li>
           <li>
             <span class="nom">Les plages et la base nautique</span>
             <p>Douze kilomètres de sable : les Demoiselles, les Salins, les Mouettes, la Grande Plage de Sion. À la base nautique des Demoiselles, on loue un kayak, une planche ou un dériveur à l’heure.</p>
-            <a href="https://www.payssaintgilles-tourisme.fr/preparer-son-sejour/a-voir-a-faire/activites-nautiques/" target="_blank" rel="noopener">Activités nautiques</a>
+            <a class="lien-ot" href="https://www.payssaintgilles-tourisme.fr/preparer-son-sejour/a-voir-a-faire/activites-nautiques/" target="_blank" rel="noopener">Activités nautiques</a>
           </li>
         </ul>
       </div>
@@ -380,17 +539,22 @@ section{scroll-margin-top:24px}
           <li>
             <span class="nom">Le port de pêche et la criée</span>
             <p>Quatre mille tonnes de poisson bleu par an — sardine, anchois. En fin d’après-midi, les bateaux rentrent et l’on peut suivre la vente à la criée depuis Escale Pêche, au cœur du port.</p>
-            <a href="https://www.payssaintgilles-tourisme.fr/patrimoine-culturel/escale-peche/" target="_blank" rel="noopener">Escale Pêche</a>
+            <a class="lien-ot" href="https://www.payssaintgilles-tourisme.fr/patrimoine-culturel/escale-peche/" target="_blank" rel="noopener">Escale Pêche</a>
           </li>
           <li>
             <span class="nom">Les marchés</span>
-            <p>Mardi, jeudi et dimanche matin place Saint-Gilles ; mercredi et samedi matin place Sainte-Croix. Poisson du jour, légumes du marais, brioche vendéenne.</p>
-            <a href="https://www.payssaintgilles-tourisme.fr/preparer-son-sejour/agenda-et-animations/" target="_blank" rel="noopener">L’agenda</a>
+            <p>Mardi, jeudi et dimanche matin place Saint-Gilles ; mercredi et samedi matin place Sainte-Croix. Poisson du jour, légumes du marais, brioche vendéenne. <span class="ac">[Jours à revérifier avant la saison.]</span></p>
+            <a class="lien-ot" href="https://www.payssaintgilles-tourisme.fr/preparer-son-sejour/agenda-et-animations/" target="_blank" rel="noopener">L’agenda</a>
           </li>
           <li>
             <span class="nom">Le quartier du Maroc et la Petite Île</span>
             <p>Les ruelles basses bâties par les marins avec les pierres de lest rapportées du large, la Maison du Pêcheur, le pont de la Concorde et sa statue de marin qui sert de jauge aux crues.</p>
-            <a href="https://www.payssaintgilles-tourisme.fr/preparer-son-sejour/a-voir-a-faire/" target="_blank" rel="noopener">À voir, à faire</a>
+            <a class="lien-ot" href="https://www.payssaintgilles-tourisme.fr/preparer-son-sejour/a-voir-a-faire/" target="_blank" rel="noopener">À voir, à faire</a>
+          </li>
+          <li>
+            <span class="nom">La Vélodyssée</span>
+            <p>La véloroute du littoral passe ici : pistes plates et abritées vers Saint-Jean-de-Monts au nord, Brétignolles au sud. De quoi faire une journée entière sans jamais quitter le bord de mer.</p>
+            <a class="lien-ot" href="https://www.payssaintgilles-tourisme.fr/preparer-son-sejour/a-voir-a-faire/activites-outdoor/" target="_blank" rel="noopener">Activités outdoor</a>
           </li>
         </ul>
       </div>
@@ -407,6 +571,10 @@ section{scroll-margin-top:24px}
         <div>
           <h3>L’île d’Yeu,<br><em>à la journée</em></h3>
           <p class="yeu-chapo">L’embarcadère est à dix minutes à pied : on part le matin, une heure de mer, et l’on rentre le soir avec du sel sur la peau. Vingt-trois kilomètres carrés de granit et de pins, à faire à vélo — c’est la bonne échelle.</p>
+          <div class="yeu-pratique">
+            <p><b>La traversée</b><br>Compagnie Vendéenne, embarcadère avenue Jean Cristau. Une heure de mer, aller-retour dans la journée. Réservez à l’avance en été.</p>
+            <p><b>Sur place</b><br>Location de vélos à la descente du bateau, à Port-Joinville.</p>
+          </div>
         </div>
         <div class="yeu-points">
           <div>
@@ -419,11 +587,11 @@ section{scroll-margin-top:24px}
           </div>
           <div>
             <span class="nom">Soixante-douze kilomètres de chemins</span>
-            <p>Balisés, plats, ouverts au vélo comme à la marche. On loue une bicyclette en descendant du bateau et l’on fait le tour par le sentier côtier, en s’arrêtant où bon semble.</p>
+            <p>Balisés, plats, ouverts au vélo comme à la marche. On fait le tour par le sentier côtier, en s’arrêtant où bon semble.</p>
           </div>
         </div>
       </div>
-      <a class="yeu-lien" href="https://www.ile-yeu.fr/" target="_blank" rel="noopener">Office de tourisme de l’île d’Yeu</a>
+      <a class="lien-ot" style="margin-top:28px" href="https://www.ile-yeu.fr/" target="_blank" rel="noopener">Office de tourisme de l’île d’Yeu</a>
     </div>
 
     <p class="source-ot">Les horaires et les tarifs changent au fil des saisons :
@@ -432,21 +600,153 @@ section{scroll-margin-top:24px}
   </div>
 </section>
 
-<section class="bloc" id="equipements" style="padding-top:0">
+<section class="bloc journee" id="saisons">
   <div class="wrap">
-    <div class="chapeau">04 — Les équipements</div>
-    <h2 style="font-size:clamp(30px,6.4vw,44px)">Tout ce qu’il faut,<br>rien de <em>plus</em></h2>
-    <ul class="equipements">
-      <li>Cuisine équipée : four, plaques, lave-vaisselle</li>
-      <li>Lave-linge</li>
-      <li>Lits faits à l’arrivée, linge de toilette fourni</li>
-      <li>Salle d’eau avec douche à l’italienne</li>
-      <li>Wifi fibre</li>
-      <li>Télévision</li>
-      <li>[Terrasse et salon de jardin]</li>
-      <li>[Stationnement privé]</li>
-      <li>[Animaux acceptés / non acceptés]</li>
-    </ul>
+    <div class="titre-bloc">
+      <div>
+        <div class="chapeau">04 — Les saisons</div>
+        <h2>Quand <em>venir</em></h2>
+      </div>
+      <div class="intro">
+        <p>La maison ne se ferme pas l’hiver, et c’est peut-être là qu’elle est le plus elle-même.</p>
+      </div>
+    </div>
+    <div class="saisons">
+      <div class="saison">
+        <span class="quand">Mars à juin</span>
+        <h4>La lumière revient</h4>
+        <p>Les plages sont à vous, les chemins du marais sentent le sel et l’herbe neuve. Les terrasses rouvrent sans la foule et l’eau se réchauffe doucement. La meilleure saison pour le vélo.</p>
+      </div>
+      <div class="saison">
+        <span class="quand">Juillet et août</span>
+        <h4>Le plein été</h4>
+        <p>Les marchés débordent, les sardiniers rentrent chaque soir, les baignades durent jusqu’à vingt-deux heures. On réserve tôt — et l’on se lève tôt pour avoir la corniche pour soi.</p>
+      </div>
+      <div class="saison">
+        <span class="quand">Septembre et octobre</span>
+        <h4>L’arrière-saison</h4>
+        <p>L’eau est encore bonne, la lumière devient dorée et tout redevient tranquille. Beaucoup la préfèrent à l’été, et l’on comprend pourquoi.</p>
+      </div>
+      <div class="saison">
+        <span class="quand">Novembre à février</span>
+        <h4>Les tempêtes</h4>
+        <p>Le chauffage, un pull, et la corniche sous le vent : c’est le moment où le Trou du Diable crache le plus haut. On rentre se faire un thé, et la maison fait le reste.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="bloc" id="equipements">
+  <div class="wrap">
+    <div class="titre-bloc">
+      <div>
+        <div class="chapeau">05 — Les équipements</div>
+        <h2>Tout ce qu’il faut,<br>rien de <em>plus</em></h2>
+      </div>
+      <div class="intro">
+        <p>Vous arrivez les mains vides : le linge est fourni, les lits sont faits, la cuisine est équipée pour de vrais repas.</p>
+      </div>
+    </div>
+    <div class="equip-groupes">
+      <div class="equip-groupe">
+        <h4>La cuisine</h4>
+        <ul>
+          <li>Four et plaques de cuisson</li>
+          <li>Lave-vaisselle</li>
+          <li>Réfrigérateur <span class="ac">[avec congélateur ?]</span></li>
+          <li>Micro-ondes, bouilloire, cafetière <span class="ac">[type]</span></li>
+          <li>Vaisselle et ustensiles pour deux</li>
+        </ul>
+      </div>
+      <div class="equip-groupe">
+        <h4>Le confort</h4>
+        <ul>
+          <li>Lits faits à l’arrivée, linge de toilette fourni</li>
+          <li>Lave-linge</li>
+          <li>Wifi fibre</li>
+          <li>Télévision</li>
+          <li>Chauffage dans chaque pièce</li>
+          <li>Sèche-serviettes dans la salle d’eau</li>
+        </ul>
+      </div>
+      <div class="equip-groupe">
+        <h4>Dehors et pratique</h4>
+        <ul>
+          <li><span class="ac">[Terrasse et salon de jardin]</span></li>
+          <li><span class="ac">[Stationnement : privé, dans la rue…]</span></li>
+          <li><span class="ac">[Local ou abri pour les vélos]</span></li>
+          <li><span class="ac">[Animaux acceptés ou non]</span></li>
+          <li>Logement non-fumeur</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="bloc" id="pratique" style="padding-top:0">
+  <div class="wrap">
+    <div class="titre-bloc">
+      <div>
+        <div class="chapeau">06 — Infos pratiques</div>
+        <h2>Les détails qui<br>évitent les <em>questions</em></h2>
+      </div>
+      <div class="intro">
+        <p>Tout est aussi rappelé dans le livret d’accueil, posé sur la table en arrivant.</p>
+      </div>
+    </div>
+
+    <div class="pratique">
+      <div><span class="quoi">Arrivée</span><span class="valeur">À partir de <span class="ac">[16 h]</span></span></div>
+      <div><span class="quoi">Départ</span><span class="valeur">Avant <span class="ac">[10 h]</span></span></div>
+      <div><span class="quoi">Durée minimum</span><span class="valeur"><span class="ac">[2 nuits hors saison, 7 en été]</span></span></div>
+      <div><span class="quoi">Remise des clés</span><span class="valeur"><span class="ac">[Boîte à clés, accueil sur place…]</span></span></div>
+      <div><span class="quoi">Ménage de fin de séjour</span><span class="valeur"><span class="ac">[Inclus / 00 €]</span></span></div>
+      <div><span class="quoi">Taxe de séjour</span><span class="valeur"><span class="ac">[00 €]</span> par personne et par nuit</span></div>
+      <div><span class="quoi">Animaux</span><span class="valeur"><span class="ac">[Acceptés / non acceptés]</span></span></div>
+      <div><span class="quoi">Stationnement</span><span class="valeur"><span class="ac">[À préciser]</span></span></div>
+    </div>
+
+    <div class="venir">
+      <h4>Comment venir</h4>
+      <ul>
+        <li><span class="mode">En train</span> — la gare de Saint-Hilaire-de-Riez est sur la ligne TER Nantes–Saint-Gilles-Croix-de-Vie, à <span class="ac">[X]</span> minutes à pied de la maison. Celle de Saint-Gilles est le terminus, à <span class="ac">[X]</span> minutes.</li>
+        <li><span class="mode">En voiture</span> — environ 1 h 15 de Nantes, 1 h de La Roche-sur-Yon, 4 h 30 de Paris par l’A11 puis l’A83.</li>
+        <li><span class="mode">En avion</span> — Nantes Atlantique à une heure de route, puis train ou voiture de location.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="bloc journee" id="questions">
+  <div class="wrap">
+    <div class="titre-bloc">
+      <div>
+        <div class="chapeau">07 — Questions fréquentes</div>
+        <h2>Ce qu’on nous<br>demande <em>souvent</em></h2>
+      </div>
+    </div>
+    <div class="faq">
+      <details>
+        <summary>Peut-on se passer de voiture ?</summary>
+        <p>Oui, et c’est même recommandé. Les commerces sont à sept minutes à pied, la corniche à dix, la plage à quinze, le port à vingt. Le train s’arrête à Saint-Hilaire-de-Riez, et l’embarcadère pour l’île d’Yeu est à dix minutes de marche. Une voiture ne sert que pour aller plus loin dans les terres.</p>
+      </details>
+      <details>
+        <summary>Que faire quand il pleut ?</summary>
+        <p>La Bourrine du Bois Juquaud, Escale Pêche au cœur de la criée, les musées de Saint-Gilles, le marché couvert. Et la maison : les tempêtes vues de la corniche sont un spectacle, et l’on rentre se sécher au chaud.</p>
+      </details>
+      <details>
+        <summary>Le logement convient-il à une famille ?</summary>
+        <p><span class="ac">[À compléter : capacité réelle avec la cabine, lit enfant ou parapluie disponible, équipement bébé.]</span></p>
+      </details>
+      <details>
+        <summary>Les draps et serviettes sont-ils fournis ?</summary>
+        <p>Oui. Les lits sont faits à votre arrivée et le linge de toilette vous attend dans la salle d’eau. Vous n’avez rien à apporter.</p>
+      </details>
+      <details>
+        <summary>Comment réserver, et peut-on annuler ?</summary>
+        <p>Les réservations passent uniquement par Airbnb : le calendrier y est tenu à jour et les conditions d’annulation sont celles affichées sur l’annonce. Pour une question avant de réserver, la messagerie Airbnb est le plus simple.</p>
+      </details>
+    </div>
   </div>
 </section>
 
@@ -454,12 +754,16 @@ section{scroll-margin-top:24px}
   <div class="wrap">
     <div class="titre-bloc">
       <div>
-        <div class="chapeau">05 — Réserver</div>
+        <div class="chapeau">08 — Réserver</div>
         <h2>Les dates vivent<br>sur <em>Airbnb</em></h2>
       </div>
       <div class="intro">
-        <p>Le calendrier et les tarifs y sont tenus à jour au fil des saisons — basse lumière d’hiver, matins de juin, plein été. Les réservations se font uniquement sur Airbnb : quelques clics, et la maison vous attend, volets ouverts.</p>
+        <p>Le calendrier et les tarifs y sont tenus à jour au fil des saisons — basse lumière d’hiver, matins de juin, plein été. Quelques clics, et la maison vous attend, volets ouverts.</p>
       </div>
+    </div>
+    <div class="prix">
+      <span class="montant">à partir de <span class="ac">[000] €</span></span>
+      <span class="unite">la nuit, selon la saison</span>
     </div>
     <a class="bouton" href="[LIEN-AIRBNB]" target="_blank" rel="noopener">Voir les disponibilités sur Airbnb</a>
     <p class="mention">Une question avant de réserver ? La messagerie Airbnb reste le plus simple : on répond vite, et volontiers.</p>
@@ -470,12 +774,20 @@ section{scroll-margin-top:24px}
   <div class="wrap">
     <div class="pied-haut">
       <p>223 bis rue Georges Clemenceau<br>85270 Saint-Hilaire-de-Riez, Vendée<br><span style="color:rgba(247,243,236,.55)">46.7046, -1.9509</span></p>
-      <p><a href="[LIEN-AIRBNB]" target="_blank" rel="noopener">Réserver sur Airbnb</a><br>[@lapetitevague]</p>
-      <p class="legal">Meublé de tourisme n° [00000]<br>Mentions légales · Conditions de réservation · Confidentialité<br>Vues aériennes © Google</p>
+      <p><a href="[LIEN-AIRBNB]" target="_blank" rel="noopener">Réserver sur Airbnb</a><br><span class="ac">[@lapetitevague]</span></p>
+      <p class="legal">Meublé de tourisme n° <span class="ac">[00000]</span><br>Mentions légales · Conditions de réservation · Confidentialité<br>Vues aériennes © Google</p>
     </div>
     <p class="signature">la petite vague</p>
   </div>
 </footer>
+
+<div class="barre" id="barre">
+  <div class="resume">
+    <b>La petite vague</b>
+    2 voyageurs · Saint-Hilaire-de-Riez
+  </div>
+  <a class="bouton" href="[LIEN-AIRBNB]" target="_blank" rel="noopener">Réserver</a>
+</div>
 
 <div class="visionneuse" id="visionneuse" role="dialog" aria-modal="true" aria-label="Photo agrandie">
   <button type="button" aria-label="Fermer">×</button>
@@ -492,6 +804,16 @@ section{scroll-margin-top:24px}
   function fermer(){v.classList.remove('ouverte');img.removeAttribute('src');}
   v.addEventListener('click',fermer);
   document.addEventListener('keydown',function(e){if(e.key==='Escape')fermer();});
+
+  var barre=document.getElementById('barre'), reserver=document.getElementById('reserver');
+  function maj(){
+    var passe=window.scrollY>560;
+    var surReserver=reserver.getBoundingClientRect().top < window.innerHeight*0.9;
+    barre.classList.toggle('visible', passe && !surReserver);
+  }
+  window.addEventListener('scroll',maj,{passive:true});
+  window.addEventListener('resize',maj);
+  maj();
 })();
 </script>
 
