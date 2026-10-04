@@ -27,7 +27,6 @@ git push -u origin main
 
 - `[LIEN-AIRBNB]` — **deux fois** (bouton de la section 04 et pied de page) : collez l’URL
   de votre annonce Airbnb à la place, en gardant les guillemets.
-- `[X]` voyageurs, `[X]` chambres, minutes jusqu’à la corniche et jusqu’aux commerces.
 - `[Terrasse…]`, `[Stationnement…]`, `[Animaux…]` dans les équipements.
 - `[@lapetitevague]` et le numéro de meublé de tourisme `[00000]`.
 
