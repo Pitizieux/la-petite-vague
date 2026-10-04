@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>La petite vague — maison de 55 m² entre mer et marais, Saint-Hilaire-de-Riez</title>
-<meta name="description" content="La petite vague : une maison de 55 m² pour deux, entre l'océan et les marais, à Saint-Hilaire-de-Riez. Corniche à 10 minutes à pied, plage de Boisvinet à 15, embarcadère pour l'île d'Yeu à 10. Réservation sur Airbnb.">
+<meta name="description" content="La petite vague : maison de plain-pied pour deux à Saint-Hilaire-de-Riez, 110 m² de terrasse et jardin privatifs, bureau fermé pour le télétravail. Corniche à 10 minutes à pied, plage à 15. À partir de 75 € la nuit, sur Airbnb.">
 <meta property="og:title" content="La petite vague">
-<meta property="og:description" content="Une maison de 55 m² pour deux, entre mer et marais, à Saint-Hilaire-de-Riez. Pour un week-end ou un séjour apaisé.">
+<meta property="og:description" content="Une maison de 55 m² pour deux, terrasse et jardin privatifs, bureau pour le télétravail. Entre mer et marais, à Saint-Hilaire-de-Riez.">
 <meta property="og:image" content="photos/chambre.jpg">
 <meta property="og:type" content="website">
 <meta name="theme-color" content="#F4EFE7">
@@ -230,6 +230,66 @@ section{scroll-margin-top:20px}
 .pratique dd,.pratique .valeur{margin:0;font-size:15px;line-height:1.6;color:var(--gris);text-align:right}
 @media(min-width:900px){.pratique{grid-template-columns:repeat(2,minmax(0,1fr));column-gap:56px}}
 
+/* Le bureau */
+.bureau{background:var(--lin-fonce)}
+.bureau-points{margin:44px 0 0;padding:0;list-style:none;display:grid;gap:28px}
+.bureau-points .nom{display:block;font-family:var(--serif);font-size:20px;margin-bottom:9px}
+.bureau-points p{margin:0;font-size:16px;line-height:1.8;color:var(--gris)}
+.bureau-points li{padding-top:20px;border-top:1px solid var(--trait)}
+@media(min-width:700px){.bureau-points{grid-template-columns:repeat(2,minmax(0,1fr));gap:30px 48px}}
+@media(min-width:1000px){.bureau-points{grid-template-columns:repeat(4,minmax(0,1fr));gap:32px}}
+
+/* Portfolio */
+.portfolio{padding-bottom:84px}
+.porte{width:100%;max-width:1180px;margin:54px auto 0;padding:0 22px;display:grid;gap:52px}
+@media(min-width:900px){.porte{padding:0 48px;gap:88px;margin-top:70px}}
+.pf{margin:0}
+.pf img{width:100%;height:auto;display:block;cursor:zoom-in}
+.pf figcaption{margin-top:14px;font-family:var(--serif);font-style:italic;font-size:16px;
+  color:var(--gris-clair);display:flex;align-items:baseline;gap:12px}
+.pf .num{font-family:var(--sans);font-style:normal;font-size:11px;letter-spacing:.2em;
+  color:var(--terre);flex:none}
+.pf-paire{display:grid;gap:52px;align-items:end}
+.pf-trois{display:grid;gap:52px;align-items:start}
+.pf-pleine{margin-left:-22px;margin-right:-22px}
+@media(min-width:900px){
+  .pf-large{width:72%}
+  .pf-large:nth-of-type(odd){margin-left:auto}
+  .pf-paire{grid-template-columns:.78fr 1.22fr;gap:56px;align-items:end}
+  .pf-paire-inverse{grid-template-columns:1.22fr .78fr}
+  .pf-haut{margin-bottom:0}
+  .pf-bas{margin-bottom:52px}
+  .pf-trois{grid-template-columns:repeat(3,minmax(0,1fr));gap:48px;align-items:start}
+  .pf-trois .pf:nth-child(2){margin-top:72px}
+  .pf-trois .pf:nth-child(3){margin-top:24px}
+  .pf-pleine{margin-left:calc(50% - 50vw);margin-right:calc(50% - 50vw);width:100vw}
+  .pf-pleine figcaption{padding:0 48px}
+}
+.anim .pf{opacity:0;transform:translateY(22px)}
+.anim .pf.vu{opacity:1;transform:none;
+  transition:opacity .95s ease,transform .95s cubic-bezier(.22,.61,.36,1)}
+@media(hover:hover){.pf img{transition:transform 1.2s cubic-bezier(.22,.61,.36,1)}
+  .pf:hover img{transform:scale(1.015)}}
+
+/* Tarifs */
+.grille-tarifs{margin-top:44px;border-top:1px solid var(--trait)}
+.tarif{display:grid;gap:6px 20px;padding:22px 0;border-bottom:1px solid var(--trait)}
+.tarif .nom-saison{display:block;font-family:var(--serif);font-size:20px;line-height:1.3;margin-bottom:5px}
+.tarif .quand{display:block;font-size:13px;line-height:1.6;color:var(--gris-clair)}
+.tarif .montant{font-family:var(--serif);font-size:22px;white-space:nowrap}
+.tarif .mini{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--gris-clair)}
+@media(min-width:800px){
+  .tarif{grid-template-columns:minmax(0,1.5fr) minmax(0,.9fr) minmax(0,.8fr);align-items:baseline}
+  .tarif .montant,.tarif .mini{text-align:right}
+}
+.tarifs-notes{margin-top:34px;display:grid;gap:14px}
+.tarifs-notes p{margin:0;font-size:15.5px;line-height:1.75;color:var(--gris);padding-left:26px;
+  position:relative}
+.tarifs-notes p::before{content:"";position:absolute;left:0;top:11px;width:9px;height:1px;
+  background:var(--terre)}
+.tarifs-notes b{font-family:var(--serif);font-weight:400;color:var(--encre)}
+.tarifs-pied{margin-top:30px;font-size:14px;line-height:1.8;color:var(--gris-clair);max-width:640px}
+
 /* Conciergerie */
 .conciergerie{margin-top:46px;padding:30px 24px 32px;background:var(--lin-fonce);
   border:1px solid rgba(29,42,43,.1)}
@@ -311,10 +371,21 @@ body{padding-bottom:0}
 .visionneuse{position:fixed;inset:0;background:rgba(19,29,28,.94);display:none;align-items:center;
   justify-content:center;padding:18px;z-index:50}
 .visionneuse.ouverte{display:flex}
-.visionneuse img{max-width:100%;max-height:92vh;object-fit:contain}
-.visionneuse button{position:absolute;top:calc(14px + env(safe-area-inset-top,0px));right:16px;
+.visionneuse img{max-width:100%;max-height:84vh;object-fit:contain}
+.visionneuse .fermer{position:absolute;top:calc(14px + env(safe-area-inset-top,0px));right:16px;
   width:44px;height:44px;border-radius:50%;border:1px solid rgba(247,243,236,.4);background:transparent;
-  color:#F7F3EC;font-size:20px;cursor:pointer;line-height:1}
+  color:#F7F3EC;font-size:20px;cursor:pointer;line-height:1;z-index:2}
+.visionneuse .nav-photo{position:absolute;top:50%;transform:translateY(-50%);width:52px;height:52px;
+  border-radius:50%;border:1px solid rgba(247,243,236,.3);background:rgba(19,29,28,.5);
+  color:#F7F3EC;font-size:26px;line-height:1;cursor:pointer;z-index:2;
+  display:flex;align-items:center;justify-content:center;transition:border-color .3s,background .3s}
+.visionneuse .nav-photo:hover{border-color:rgba(247,243,236,.7);background:rgba(19,29,28,.75)}
+.visionneuse .precedent{left:12px;padding-right:3px}
+.visionneuse .suivant{right:12px;padding-left:3px}
+.visionneuse .legende{position:absolute;left:0;right:0;bottom:calc(20px + env(safe-area-inset-bottom,0px));
+  margin:0;text-align:center;font-family:var(--serif);font-style:italic;font-size:16px;
+  color:rgba(247,243,236,.76);padding:0 80px}
+@media(min-width:900px){.visionneuse .precedent{left:28px}.visionneuse .suivant{right:28px}}
 
 /* ——— Animations douces ———
    Tout est conditionné à la classe .anim, posée par un script en tête de page :
@@ -325,7 +396,7 @@ body{padding-bottom:0}
 .anim :where(.titre-bloc, .chiffres > div, .galerie figure, .couchages > div, .moment, .saison,
   .distances li, .adresse, .carte-photo, .commune, .yeu, .equip-groupe, .pratique > div, .venir,
   .faq details, .prix, .reserver .bouton, .source-ot, .citation blockquote, .citation cite,
-  .conciergerie){
+  .conciergerie, .bureau-points li, .tarif, .tarifs-notes p){
   opacity:0;transform:translateY(16px);
 }
 .anim .vu{
@@ -419,7 +490,7 @@ body{padding-bottom:0}
   .anim :where(.titre-bloc, .chiffres > div, .galerie figure, .couchages > div, .moment, .saison,
     .distances li, .adresse, .carte-photo, .commune, .yeu, .equip-groupe, .pratique > div, .venir,
     .faq details, .prix, .reserver .bouton, .source-ot, .citation blockquote,
-    .citation cite, .conciergerie){opacity:1;transform:none;transition:none}
+    .citation cite, .conciergerie, .bureau-points li, .tarif, .tarifs-notes p, .pf){opacity:1;transform:none;transition:none}
   .anim .accroche .chapeau,.anim .accroche h1,.anim .accroche > div > p,.anim .repere,
   .anim .accroche .actions,.anim .accroche-photo img,.marque svg path.trace{animation:none;
     stroke-dasharray:none}
@@ -450,9 +521,10 @@ if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     </a>
     <nav class="nav">
       <a href="#maison">La maison</a>
+      <a href="#images">En images</a>
       <a href="#lieu">Le lieu</a>
       <a href="#environnement">Autour</a>
-      <a href="#equipements">Équipements</a>
+      <a href="#tarifs">Tarifs</a>
       <a href="#pratique">Pratique</a>
       <a class="bouton" href="#reserver">Réserver</a>
     </nav>
@@ -465,8 +537,8 @@ if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       <p>Cinquante-cinq mètres carrés de calme, posés entre l’océan et les marais. Le matin, la lumière monte du marais ; le soir, la mer se retire derrière les dunes et l’on entend le vent passer dans les pins. Le temps d’un week-end, ou de tout un été.</p>
       <ul class="repere">
         <li>2 voyageurs</li>
+        <li>Terrasse et jardin privatifs</li>
         <li>Corniche à 10 min à pied</li>
-        <li>Plage à 15 min</li>
       </ul>
       <div class="actions">
         <a class="bouton" href="#reserver">Voir les disponibilités</a>
@@ -481,9 +553,9 @@ if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
   </section>
 
   <div class="chiffres">
-    <div><b>55 m²</b><span>habitables</span></div>
+    <div><b>55 m²</b><span>de plain-pied</span></div>
+    <div><b>110 m²</b><span>de terrasse et jardin</span></div>
     <div><b>2</b><span>voyageurs</span></div>
-    <div><b>1 + cabine</b><span>chambre</span></div>
     <div><b>15 min</b><span>à pied de la plage</span></div>
   </div>
 </div>
@@ -496,7 +568,7 @@ if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
         <h2>Petite, claire,<br>et pensée pour <em>ralentir</em></h2>
       </div>
       <div class="intro">
-        <p>Du bois clair, du lin, des murs couleur de vague et beaucoup de jour. Une chambre, une cabine, et de quoi recevoir deux voyageurs sans rien de superflu : on pose son sac en arrivant, et l’on ne cherche plus rien d’autre.</p>
+        <p>Du bois clair, du lin, des murs couleur de vague et beaucoup de jour. Tout est de plain-pied : une chambre, un bureau, une salle d’eau, un séjour ouvert sur la cuisine. Et, devant comme derrière, cent dix mètres carrés d’extérieurs rien qu’à vous.</p>
         <p>Les lits sont faits à votre arrivée, les serviettes pliées sur le lit. La cuisine est faite pour cuisiner vraiment — du poisson pris au port le matin, du sel de Vendée, une table que personne ne quitte avant la nuit.</p>
       </div>
     </div>
@@ -519,20 +591,50 @@ if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     <div class="couchages">
       <div>
         <span class="piece">La chambre</span>
-        <span class="detail">Un lit double <span class="ac">[140 ou 160 cm]</span></span>
+        <span class="detail">Un lit double de 160 cm</span>
       </div>
       <div>
-        <span class="piece">La cabine</span>
-        <span class="detail"><span class="ac">[à décrire : lit simple, lits superposés, coin bureau…]</span></span>
+        <span class="piece">Le bureau</span>
+        <span class="detail">Pièce à part, pour travailler au calme</span>
       </div>
       <div>
         <span class="piece">La salle d’eau</span>
-        <span class="detail">Douche, vasque, sèche-serviettes · WC <span class="ac">[séparés ?]</span></span>
+        <span class="detail">Douche, vasque, sèche-serviettes · WC séparés</span>
       </div>
       <div>
         <span class="piece">Le séjour et la cuisine</span>
         <span class="detail">Pièce de vie ouverte, table <span class="ac">[X]</span> personnes</span>
       </div>
+      <div>
+        <span class="piece">La terrasse</span>
+        <span class="detail">55 m² en façade, privatifs</span>
+      </div>
+      <div>
+        <span class="piece">Le jardin</span>
+        <span class="detail">55 m² engazonnés à l’arrière, privatifs</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="bloc bureau" id="bureau">
+  <div class="wrap">
+    <div class="titre-bloc">
+      <div>
+        <div class="chapeau">02 — Le bureau</div>
+        <h2>Télétravailler,<br>la mer <em>au bout de la rue</em></h2>
+      </div>
+      <div class="intro">
+        <p>Ce n’est pas un coin de table ni un bout de chambre : c’est une pièce à part, avec sa porte, son bureau et sa fenêtre. On y passe la matinée au calme, et l’on referme à midi.</p>
+      </div>
+    </div>
+    <div class="bureau-corps">
+      <ul class="bureau-points">
+        <li><span class="nom">Une pièce dédiée</span><p>Porte fermée, lumière du jour, et le reste de la maison qui ne bouge pas pendant que vous travaillez.</p></li>
+        <li><span class="nom">Fibre et visios</span><p>Wifi fibre, assez de débit pour enchaîner les visioconférences sans y penser.</p></li>
+        <li><span class="nom">La pause à dix minutes</span><p>La corniche à dix minutes de marche, la plage à quinze. De quoi couper vraiment entre deux réunions.</p></li>
+        <li><span class="nom">Au mois, l’hiver</span><p>Pour un séjour long hors saison, la nuitée baisse de 25 à 30 %. Une parenthèse de travail au bord de l’eau, à prix de novembre.</p></li>
+      </ul>
     </div>
   </div>
 </section>
@@ -581,16 +683,74 @@ if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
   </div>
 </section>
 
-<figure class="bandeau-photo">
-  <img src="photos/facade.jpg" alt="La maison vue depuis la rue, façade blanche et toit de tuiles" loading="lazy" width="1800" height="871">
-  <figcaption><span>La maison — 223 bis rue Georges Clemenceau, Saint-Hilaire-de-Riez</span></figcaption>
-</figure>
+<section class="bloc portfolio" id="images">
+  <div class="wrap">
+    <div class="titre-bloc" style="margin-bottom:12px">
+      <div>
+        <div class="chapeau">03 — En images</div>
+        <h2>Les petites choses<br>qu’on <em>remarque</em></h2>
+      </div>
+      <div class="intro">
+        <p>Six coquillages accrochés au mur, une suspension en osier qui chauffe la lumière, une gravure de vague au-dessus du lit. On ne les voit pas tout de suite, et puis on ne voit plus qu’elles.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="porte">
+    <figure class="pf pf-large" data-pf>
+      <img src="photos/chambre.jpg" alt="La chambre, mur bleu et lit fait, lumière du matin" loading="lazy" width="1600" height="958">
+      <figcaption><span class="num">01</span> <em>Le bleu de la chambre</em></figcaption>
+    </figure>
+
+    <div class="pf-paire">
+      <figure class="pf pf-haut" data-pf>
+        <img src="photos/coquillages.jpg" alt="Six coquillages peints en blanc, bleu et jaune, suspendus au mur" loading="lazy" width="483" height="1015">
+        <figcaption><span class="num">02</span> <em>Six coquillages, rien d’autre</em></figcaption>
+      </figure>
+      <figure class="pf pf-bas" data-pf>
+        <img src="photos/suspension.jpg" alt="Suspension en osier allumée au-dessus du mur vert du séjour" loading="lazy" width="1352" height="723">
+        <figcaption><span class="num">03</span> <em>L’osier, le soir venu</em></figcaption>
+      </figure>
+    </div>
+
+    <figure class="pf pf-pleine" data-pf>
+      <img src="photos/facade.jpg" alt="La maison vue depuis la rue, façade blanche et toit de tuiles" loading="lazy" width="1800" height="871">
+      <figcaption><span class="num">04</span> <em>La maison, un matin de juillet</em></figcaption>
+    </figure>
+
+    <div class="pf-trois">
+      <figure class="pf" data-pf>
+        <img src="photos/fenetre.jpg" alt="La fenêtre de la chambre, rideaux de lin et jardin au-dehors" loading="lazy" width="760" height="1250">
+        <figcaption><span class="num">05</span> <em>Le lin et le jour</em></figcaption>
+      </figure>
+      <figure class="pf" data-pf>
+        <img src="photos/gravure.jpg" alt="Gravure d’une vague, encadrée sur le mur bleu" loading="lazy" width="506" height="467">
+        <figcaption><span class="num">06</span> <em>Une vague au mur</em></figcaption>
+      </figure>
+      <figure class="pf" data-pf>
+        <img src="photos/detail-chambre.jpg" alt="Le coin du lit : chevet, suspension en verre opalin" loading="lazy" width="1100" height="1494">
+        <figcaption><span class="num">07</span> <em>Le côté du lit</em></figcaption>
+      </figure>
+    </div>
+
+    <div class="pf-paire pf-paire-inverse">
+      <figure class="pf pf-bas" data-pf>
+        <img src="photos/miroir.jpg" alt="Miroir rond sur le carrelage blanc texturé de la salle d’eau" loading="lazy" width="1200" height="1102">
+        <figcaption><span class="num">08</span> <em>Le rond du miroir</em></figcaption>
+      </figure>
+      <figure class="pf pf-haut" data-pf>
+        <img src="photos/salle-eau.jpg" alt="La salle d’eau, douche et vasque" loading="lazy" width="1100" height="1422">
+        <figcaption><span class="num">09</span> <em>Tout en blanc</em></figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
 
 <section class="bloc" id="lieu">
   <div class="wrap">
     <div class="titre-bloc" style="margin-bottom:44px">
       <div>
-        <div class="chapeau">02 — Le lieu</div>
+        <div class="chapeau">04 — Le lieu</div>
         <h2>Entre la mer<br>et le <em>marais</em></h2>
       </div>
       <div class="intro">
@@ -606,7 +766,7 @@ if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
             <li><span class="nom">Embarcadère pour l’île d’Yeu</span><span class="val">10 min à pied</span></li>
             <li><span class="nom">Plage de Boisvinet</span><span class="val">15 min à pied</span></li>
             <li><span class="nom">Port de Saint-Gilles-Croix-de-Vie</span><span class="val">20 min à pied · 5 min en voiture</span></li>
-            <li><span class="nom">Gare de Saint-Hilaire-de-Riez</span><span class="val"><span class="ac">[X] min à pied</span></span></li>
+            <li><span class="nom">Gare de Saint-Hilaire-de-Riez</span><span class="val">15 min à pied</span></li>
           </ul>
         </div>
         <div class="adresse">
@@ -632,7 +792,7 @@ if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
   <div class="wrap">
     <div class="titre-bloc" style="margin-bottom:44px">
       <div>
-        <div class="chapeau">03 — L’environnement</div>
+        <div class="chapeau">05 — L’environnement</div>
         <h2>Ce qu’il y a<br>tout <em>autour</em></h2>
       </div>
       <div class="intro">
@@ -738,7 +898,7 @@ if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
   <div class="wrap">
     <div class="titre-bloc">
       <div>
-        <div class="chapeau">04 — Les saisons</div>
+        <div class="chapeau">Les saisons</div>
         <h2>Quand <em>venir</em></h2>
       </div>
       <div class="intro">
@@ -774,7 +934,7 @@ if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
   <div class="wrap">
     <div class="titre-bloc">
       <div>
-        <div class="chapeau">05 — Les équipements</div>
+        <div class="chapeau">06 — Les équipements</div>
         <h2>Tout ce qu’il faut,<br>rien de <em>plus</em></h2>
       </div>
       <div class="intro">
@@ -804,16 +964,75 @@ if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
         </ul>
       </div>
       <div class="equip-groupe">
-        <h4>Dehors et pratique</h4>
+        <h4>Dehors et accès</h4>
         <ul>
-          <li><span class="ac">[Terrasse et salon de jardin]</span></li>
-          <li><span class="ac">[Stationnement : privé, dans la rue…]</span></li>
-          <li><span class="ac">[Local ou abri pour les vélos]</span></li>
-          <li><span class="ac">[Animaux acceptés ou non]</span></li>
-          <li>Logement non-fumeur</li>
+          <li>Terrasse de 55 m² en façade, privative</li>
+          <li>Jardin engazonné de 55 m² à l’arrière, privatif</li>
+          <li><span class="ac">[Salon de jardin, parasol, barbecue ?]</span></li>
+          <li>Stationnement gratuit dans la rue, places nombreuses</li>
+          <li>Maison de plain-pied, sans marche</li>
+          <li>Animaux non admis · logement non-fumeur</li>
         </ul>
       </div>
     </div>
+  </div>
+</section>
+
+<section class="bloc" id="tarifs" style="padding-top:0">
+  <div class="wrap">
+    <div class="titre-bloc">
+      <div>
+        <div class="chapeau">07 — Les tarifs</div>
+        <h2>Ce que coûte<br>une <em>nuit ici</em></h2>
+      </div>
+      <div class="intro">
+        <p>Prix par nuit pour deux, hors ménage et taxe de séjour. Le second montant s’applique aux nuits du vendredi et du samedi.</p>
+      </div>
+    </div>
+
+    <div class="grille-tarifs">
+      <div class="tarif">
+        <div>
+          <span class="nom-saison">Saison creuse</span>
+          <span class="quand">Octobre, novembre, janvier à mars hors vacances</span>
+        </div>
+        <span class="montant">75 € · 85 €</span>
+        <span class="mini">2 nuits minimum</span>
+      </div>
+      <div class="tarif">
+        <div>
+          <span class="nom-saison">Vacances scolaires, juin et septembre</span>
+          <span class="quand">Toussaint, Noël, février, printemps, et les deux mois d’épaule</span>
+        </div>
+        <span class="montant">95 € · 105 €</span>
+        <span class="mini">2 nuits · 3 en vacances</span>
+      </div>
+      <div class="tarif">
+        <div>
+          <span class="nom-saison">Ponts et week-ends fériés</span>
+          <span class="quand">Pâques, Ascension, Pentecôte</span>
+        </div>
+        <span class="montant">115 – 120 €</span>
+        <span class="mini">3 nuits minimum</span>
+      </div>
+      <div class="tarif">
+        <div>
+          <span class="nom-saison">Juillet et août</span>
+          <span class="quand">Plein été</span>
+        </div>
+        <span class="montant">120 € · 130 €</span>
+        <span class="mini">5 nuits en juillet · 7 en août</span>
+      </div>
+    </div>
+
+    <div class="tarifs-notes">
+      <p><b>À la semaine</b> — 10 % de moins hors juillet-août.</p>
+      <p><b>Au mois, l’hiver</b> — 25 à 30 % de moins. C’est la formule pensée pour le télétravail, bureau compris.</p>
+      <p><b>Ménage</b> — <span class="ac">[110 €]</span> en fin de séjour. <span class="ac">[Préciser : forfait par séjour ou par semaine.]</span></p>
+      <p><b>Taxe de séjour</b> — <span class="ac">[00 €]</span> par personne et par nuit, collectée par Airbnb.</p>
+    </div>
+
+    <p class="tarifs-pied">Ces montants sont indicatifs : le calendrier d’Airbnb fait foi, et les prix y suivent la demande au jour le jour.</p>
   </div>
 </section>
 
@@ -821,7 +1040,7 @@ if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
   <div class="wrap">
     <div class="titre-bloc">
       <div>
-        <div class="chapeau">06 — Infos pratiques</div>
+        <div class="chapeau">08 — Infos pratiques</div>
         <h2>Les détails qui<br>évitent les <em>questions</em></h2>
       </div>
       <div class="intro">
@@ -832,12 +1051,12 @@ if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     <div class="pratique">
       <div><span class="quoi">Arrivée</span><span class="valeur">À partir de <span class="ac">[16 h]</span></span></div>
       <div><span class="quoi">Départ</span><span class="valeur">Avant <span class="ac">[10 h]</span></span></div>
-      <div><span class="quoi">Durée minimum</span><span class="valeur"><span class="ac">[2 nuits hors saison, 7 en été]</span></span></div>
+      <div><span class="quoi">Durée minimum</span><span class="valeur">2 à 7 nuits selon la saison</span></div>
       <div><span class="quoi">Accueil et remise des clés</span><span class="valeur">Sur place, par Halo Conciergerie</span></div>
-      <div><span class="quoi">Ménage de fin de séjour</span><span class="valeur"><span class="ac">[Inclus / 00 €]</span></span></div>
+      <div><span class="quoi">Ménage de fin de séjour</span><span class="valeur"><span class="ac">[110 €]</span></span></div>
       <div><span class="quoi">Taxe de séjour</span><span class="valeur"><span class="ac">[00 €]</span> par personne et par nuit</span></div>
-      <div><span class="quoi">Animaux</span><span class="valeur"><span class="ac">[Acceptés / non acceptés]</span></span></div>
-      <div><span class="quoi">Stationnement</span><span class="valeur"><span class="ac">[À préciser]</span></span></div>
+      <div><span class="quoi">Animaux</span><span class="valeur">Non admis</span></div>
+      <div><span class="quoi">Stationnement</span><span class="valeur">Gratuit dans la rue</span></div>
     </div>
 
     <div class="conciergerie">
@@ -865,7 +1084,7 @@ if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     <div class="venir">
       <h4>Comment venir</h4>
       <ul>
-        <li><span class="mode">En train</span> — la gare de Saint-Hilaire-de-Riez est sur la ligne TER Nantes–Saint-Gilles-Croix-de-Vie, à <span class="ac">[X]</span> minutes à pied de la maison. Celle de Saint-Gilles est le terminus, à <span class="ac">[X]</span> minutes.</li>
+        <li><span class="mode">En train</span> — la gare de Saint-Hilaire-de-Riez est sur la ligne TER Nantes–Saint-Gilles-Croix-de-Vie, à quinze minutes à pied de la maison. Celle de Saint-Gilles est le terminus, à vingt minutes.</li>
         <li><span class="mode">En voiture</span> — environ 1 h 15 de Nantes, 1 h de La Roche-sur-Yon, 4 h 30 de Paris par l’A11 puis l’A83.</li>
         <li><span class="mode">En avion</span> — Nantes Atlantique à une heure de route, puis train ou voiture de location.</li>
       </ul>
@@ -877,7 +1096,7 @@ if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
   <div class="wrap">
     <div class="titre-bloc">
       <div>
-        <div class="chapeau">07 — Questions fréquentes</div>
+        <div class="chapeau">09 — Questions fréquentes</div>
         <h2>Ce qu’on nous<br>demande <em>souvent</em></h2>
       </div>
     </div>
@@ -889,7 +1108,10 @@ if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
         <summary>Que faire quand il pleut ?</summary><div class="reponse"><div><p>La Bourrine du Bois Juquaud, Escale Pêche au cœur de la criée, les musées de Saint-Gilles, le marché couvert. Et la maison : les tempêtes vues de la corniche sont un spectacle, et l’on rentre se sécher au chaud.</p></div></div>
       </details>
       <details>
-        <summary>Le logement convient-il à une famille ?</summary><div class="reponse"><div><p><span class="ac">[À compléter : capacité réelle avec la cabine, lit enfant ou parapluie disponible, équipement bébé.]</span></p></div></div>
+        <summary>Combien de personnes peut-on être ?</summary><div class="reponse"><div><p>Deux, et deux seulement. Il y a une chambre avec un lit de 160 cm ; la seconde pièce est un bureau, pas un couchage. C’est un logement pensé pour un couple, ou pour une personne seule qui vient travailler au calme. Les animaux ne sont pas admis.</p></div></div>
+      </details>
+      <details>
+        <summary>Peut-on y travailler quelques semaines ?</summary><div class="reponse"><div><p>C’est même une bonne idée hors saison. Le bureau est une pièce fermée avec sa fenêtre, le wifi est en fibre, et un séjour au mois bénéficie de 25 à 30 % de réduction l’hiver. La corniche est à dix minutes pour la pause de midi.</p></div></div>
       </details>
       <details>
         <summary>Qui nous accueille à l’arrivée ?</summary><div class="reponse"><div><p>Halo Conciergerie, une conciergerie professionnelle de Saint-Gilles-Croix-de-Vie. Elle vous remet les clés, vous fait le tour de la maison et reste joignable pendant tout le séjour. Elle propose aussi, si vous le souhaitez, du ménage en cours de séjour, des courses déposées avant votre arrivée ou l’organisation d’un moment particulier.</p></div></div>
@@ -908,7 +1130,7 @@ if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
   <div class="wrap">
     <div class="titre-bloc">
       <div>
-        <div class="chapeau">08 — Réserver</div>
+        <div class="chapeau">10 — Réserver</div>
         <h2>Les dates vivent<br>sur <em>Airbnb</em></h2>
       </div>
       <div class="intro">
@@ -916,7 +1138,7 @@ if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       </div>
     </div>
     <div class="prix">
-      <span class="montant">à partir de <span class="ac">[000] €</span></span>
+      <span class="montant">à partir de 75 €</span>
       <span class="unite">la nuit, selon la saison</span>
     </div>
     <a class="bouton" href="[LIEN-AIRBNB]" target="_blank" rel="noopener">Voir les disponibilités sur Airbnb</a>
@@ -937,27 +1159,48 @@ if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
 
 <div class="barre" id="barre">
   <div class="resume">
-    <b>La petite vague</b>
-    2 voyageurs · Saint-Hilaire-de-Riez
+    <b>à partir de 75 € la nuit</b>
+    2 voyageurs · terrasse et jardin
   </div>
   <a class="bouton" href="[LIEN-AIRBNB]" target="_blank" rel="noopener">Réserver</a>
 </div>
 
 <div class="visionneuse" id="visionneuse" role="dialog" aria-modal="true" aria-label="Photo agrandie">
-  <button type="button" aria-label="Fermer">×</button>
+  <button type="button" class="fermer" aria-label="Fermer">×</button>
+  <button type="button" class="nav-photo precedent" aria-label="Photo précédente">‹</button>
   <img alt="">
+  <button type="button" class="nav-photo suivant" aria-label="Photo suivante">›</button>
+  <p class="legende"></p>
 </div>
 
 <script>
 (function(){
-  var v=document.getElementById('visionneuse'), img=v.querySelector('img');
-  document.querySelectorAll('.galerie img, .bandeau-photo img, .accroche-photo img, .carte-photo img').forEach(function(el){
+  var v=document.getElementById('visionneuse'), img=v.querySelector('img'),
+      legende=v.querySelector('.legende');
+  var vues=[].slice.call(document.querySelectorAll(
+    '.pf img, .galerie img, .bandeau-photo img, .accroche-photo img, .carte-photo img'));
+  var i=0;
+  function montrer(n){
+    i=(n+vues.length)%vues.length;
+    var el=vues[i];
+    img.src=el.currentSrc||el.src; img.alt=el.alt;
+    var fc=el.closest('figure') && el.closest('figure').querySelector('figcaption em');
+    legende.textContent = fc ? fc.textContent : (el.alt||'');
+  }
+  vues.forEach(function(el,n){
     el.style.cursor='zoom-in';
-    el.addEventListener('click',function(){img.src=el.currentSrc||el.src;img.alt=el.alt;v.classList.add('ouverte');});
+    el.addEventListener('click',function(){ montrer(n); v.classList.add('ouverte'); });
   });
   function fermer(){v.classList.remove('ouverte');img.removeAttribute('src');}
-  v.addEventListener('click',fermer);
-  document.addEventListener('keydown',function(e){if(e.key==='Escape')fermer();});
+  v.addEventListener('click',function(e){ if(!e.target.closest('.nav-photo')) fermer(); });
+  v.querySelector('.precedent').addEventListener('click',function(){montrer(i-1);});
+  v.querySelector('.suivant').addEventListener('click',function(){montrer(i+1);});
+  document.addEventListener('keydown',function(e){
+    if(!v.classList.contains('ouverte')) return;
+    if(e.key==='Escape') fermer();
+    if(e.key==='ArrowLeft') montrer(i-1);
+    if(e.key==='ArrowRight') montrer(i+1);
+  });
 
   /* ——— Animations ——— */
   var doux = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -967,6 +1210,7 @@ if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       '.titre-bloc, .chiffres > div, .galerie figure, .couchages > div, .moment, .saison,'+
       '.distances li, .adresse, .carte-photo, .commune, .yeu, .equip-groupe,'+
       '.pratique > div, .conciergerie, .venir, .faq details, .prix, .reserver .bouton, .source-ot,'+
+      '.bureau-points li, .tarif, .tarifs-notes p, .pf,'+
       '.citation blockquote, .citation cite');
     var oeil = new IntersectionObserver(function(entrees){
       entrees.forEach(function(e){

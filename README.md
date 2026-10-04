@@ -32,19 +32,17 @@ pointillé. Cherchez `class="ac"` dans le fichier, ou `[` dans le texte.
 
 - `[LIEN-AIRBNB]` — **trois fois** : bouton de la section Réserver, pied de page, barre mobile.
   Collez l’URL de l’annonce à la place, en gardant les guillemets.
-- Le prix d’appel « à partir de `[000] €` » dans la section Réserver. Un site qui cache son prix
-  perd la moitié de ses visiteurs ; un ordre de grandeur suffit.
 - L’avis de voyageur du bandeau sombre (deux lignes copiées d’Airbnb) et son prénom.
-- La **cabine** : ce qu’elle contient exactement, et si elle ajoute un couchage.
+- **Ménage** : 110 € est affiché, mais il reste à préciser si c’est un forfait par séjour ou
+  par semaine. La section Tarifs et les infos pratiques portent le même repère.
+- **Taxe de séjour** : montant par personne et par nuit.
 
 **Important**
 
-- Infos pratiques : arrivée, départ, durée minimum, ménage, taxe de séjour,
-  animaux, stationnement. (L’accueil est renseigné : Halo Conciergerie.)
-- Équipements : terrasse, stationnement, abri vélos, congélateur, type de cafetière.
-- Distances jusqu’aux deux gares.
-- La question « convient-il à une famille ? » dans la FAQ.
-- `[@lapetitevague]` et le numéro de meublé de tourisme `[00000]`.
+- Places à table dans le séjour, type de cafetière, congélateur.
+- Salon de jardin, parasol, barbecue sur la terrasse.
+- `[@lapetitevague]` et le numéro de déclaration en mairie (`[00000]`).
+- Horaires d’arrivée et de départ, à valider avec Halo Conciergerie.
 
 Une fois une information remplie, retirez le `<span class="ac">…</span>` autour : le repère
 coloré disparaît.
@@ -87,6 +85,11 @@ réellement convenu avec elle.
 | `photos/facade.jpg` | Bandeau pleine largeur |
 | `photos/carte-quartier.jpg` | Section « Le lieu » |
 | `photos/carte-cote.jpg` | Bandeau pleine largeur, bas de page |
+| `photos/coquillages.jpg` | Portfolio 02 |
+| `photos/suspension.jpg` | Portfolio 03 |
+| `photos/fenetre.jpg` | Portfolio 05 |
+| `photos/gravure.jpg` | Portfolio 06 |
+| `photos/miroir.jpg` | Portfolio 08 |
 
 Pour remplacer une photo : gardez le même nom de fichier, largeur ~1600 px, format JPEG.
 
@@ -124,7 +127,11 @@ Pour tout désactiver : supprimez le petit script en fin de `<head>`.
 - **La cuisine** : outils, bouteilles et reflet dans la vitre — pièce absente du site pour l’instant.
 - **La deuxième chambre / la cabine** : dressing à terminer, matelas sous plastique, volet fermé.
   C’est la photo qui manque le plus : on vend « 1 chambre + cabine » sans montrer la cabine.
-- **La terrasse / l’extérieur** : il manque une vue large et lumineuse — elle ferait une bien
-  meilleure photo d’accroche que la chambre.
+- **La terrasse et le jardin** : c’est le manque le plus grave. Le site annonce 110 m²
+  d’extérieurs privatifs comme premier argument, et pas une seule photo ne les montre.
+  Deux vues larges, en fin de journée, feraient une meilleure accroche que la chambre.
+- **Le bureau** : une section entière lui est consacrée, sans photo. Le bureau face à la
+  fenêtre, volet ouvert, un ordinateur posé dessus.
+- **La cuisine** : toujours absente du site.
 - Conseils : lumière du matin ou de fin de journée, volets ouverts, appareil à hauteur de poitrine,
   depuis un angle de la pièce, **sans le mode panoramique** (il courbe les murs et les plinthes).
