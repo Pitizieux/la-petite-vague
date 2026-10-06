@@ -107,12 +107,15 @@ Le site étant **déjà en ligne**, ces repères sont publics : à combler vite.
 - `[X]` places à table dans le séjour · `[avec congélateur ?]` · `[type]` de cafetière
 - `[Salon de jardin, parasol, barbecue ?]`
 
-**4. Rédactionnel, quand vous aurez le temps**
+**3. Le bandeau d’avis, mis en commentaire**
 
-- L’avis de voyageur du bandeau sombre : deux lignes copiées d’Airbnb, `[Prénom]`, `[mois année]`.
-- `[@lapetitevague]` dans le pied de page : le compte Instagram, ou à supprimer s’il n’existe pas.
-- `[la terrasse]` dans « Une journée ici » : où l’on prend le café, terrasse ou jardin.
-- `[Jours à revérifier avant la saison.]` : les jours de marché changent entre l’été et l’hiver.
+Le bandeau sombre qui citait un avis de voyageur est **masqué** dans le code (cherchez
+`BANDEAU AVIS`). Il attend un avis réel : deux lignes copiées d’Airbnb, un prénom, un mois.
+Retirez les deux lignes de commentaire pour le faire réapparaître.
+
+Il n’y a pas d’avis inventé sur ce site, et il ne faut pas en mettre : un faux témoignage
+présenté comme authentique est une pratique commerciale trompeuse, et les voyageurs
+recoupent systématiquement avec les avis Airbnb.
 
 **Un point à vérifier**
 
@@ -278,7 +281,10 @@ Trois choses se décident toutes seules :
 ### Comment elle est faite
 
 Le français reste écrit en dur dans `index.html`. L’anglais vit dans un dictionnaire, où
-**chaque clé est la phrase française exacte**. Au clic, un script parcourt la page, remplace
+**chaque clé est la phrase française exacte** — à une exception près : les espaces
+insécables et fines du texte s’écrivent dans les clés comme des **espaces ordinaires**,
+parce que la comparaison normalise tous les blancs. Écrire `125 €` avec une insécable dans
+une clé la rend introuvable, et la phrase reste en français. Au clic, un script parcourt la page, remplace
 les textes reconnus et garde les originaux pour pouvoir revenir en arrière. Il n’y a donc
 qu’une seule page à maintenir, pas deux.
 
