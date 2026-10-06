@@ -31,6 +31,40 @@ certificat soit émis, en général moins d’une heure après la propagation DN
 Les quatre adresses A sont celles de GitHub Pages pour un domaine racine ; elles sont
 communes à tous les sites hébergés là, c’est normal.
 
+## Variante : héberger chez Hostinger plutôt que sur GitHub Pages
+
+Possible seulement avec un **plan d’hébergement** Hostinger — le nom de domaine seul ne
+suffit pas. Dans hPanel, si **Sites web** ne liste rien, il n’y a pas de plan.
+
+Dans ce cas on ne touche pas au DNS : le domaine pointe déjà sur l’hébergement.
+Le fichier `CNAME` et les enregistrements A de GitHub ne servent plus à rien.
+
+1. **Le certificat d’abord.** hPanel → *Sites web* → **Gérer** → **SSL** → installez le
+   certificat gratuit pour `lapetitevague85.com`. À faire **avant** de téléverser : le
+   `.htaccess` force le HTTPS, et sans certificat les visiteurs tombent sur un
+   avertissement de sécurité.
+2. **Gestionnaire de fichiers** (même menu *Gérer*) → ouvrez `public_html` → supprimez ce
+   qui s’y trouve (page de bienvenue, `default.php`). **Gardez** le dossier `.well-known`
+   s’il existe : il sert à la validation du certificat.
+3. Téléversez l’archive du site **dans `public_html`**, clic droit dessus → **Extraire**.
+   Dans la fenêtre, la destination doit être `public_html` lui-même : laissez le nom de
+   dossier vide, sinon tout atterrit dans un sous-dossier et le site reste introuvable.
+   Supprimez l’archive une fois extraite.
+4. **Vérifiez que `.htaccess` est bien là.** Il commence par un point, et les gestionnaires
+   de fichiers masquent souvent ces fichiers : cherchez l’option « afficher les fichiers
+   cachés ». S’il manque, créez-le et collez le contenu de `.htaccess` de ce dépôt.
+5. Ouvrez `https://lapetitevague85.com`, puis `/robots.txt` et `/sitemap.xml` pour vérifier
+   qu’ils répondent.
+
+**Pour modifier le site ensuite** : faites la modification ici, poussez sur GitHub pour
+garder l’historique, puis re-téléversez le ou les fichiers changés dans `public_html`
+(`index.html` seul la plupart du temps — les photos ne bougent pas). Le `.htaccess` met la
+page en cache une heure : forcez le rafraîchissement (Ctrl+F5) pour voir le résultat.
+
+**À savoir** : les adresses e-mail sur le domaine (`contact@lapetitevague85.com`) dépendent
+des enregistrements MX, pas de l’endroit où le site est hébergé. Vous pouvez donc garder la
+messagerie Hostinger **et** le site sur GitHub Pages.
+
 ## Publier une modification
 
 Le dépôt est `github.com/Pitizieux/la-petite-vague`, branche `main`, dossier racine.
