@@ -280,11 +280,16 @@ liste de relecture.
 - `fetchpriority="high"` sur la photo d’accroche, `loading="lazy"` et dimensions sur toutes
   les autres, `decoding="async"` partout.
 
-**Si le site change d’adresse** (nom de domaine à vous, autre hébergeur), six adresses
-absolues sont à mettre à jour dans le `<head>` — elles sont signalées par un commentaire
-juste au-dessus : `canonical`, `og:url`, `og:image`, `twitter:image`, puis `url` et `image`
-dans le bloc JSON-LD. Une adresse relative ne produit **aucun** aperçu : c’est la raison
-pour laquelle elles sont écrites en entier.
+- `robots.txt` et `sitemap.xml` à la racine, pour que Google trouve la page et connaisse
+  ses deux versions linguistiques.
+- Titre de 60 caractères et description de 155 : au-delà, Google coupe.
+
+**Si le site change d’adresse** (nom de domaine à vous, autre hébergeur), neuf adresses
+absolues sont à mettre à jour : six dans le `<head>` d’`index.html`, signalées par un
+commentaire juste au-dessus — `canonical`, les trois `hreflang`, `og:url`, `og:image`,
+`twitter:image`, puis `url` et `image` dans le bloc JSON-LD — plus `robots.txt` et les
+quatre adresses de `sitemap.xml`. Une adresse relative ne produit **aucun** aperçu de lien :
+c’est la raison pour laquelle elles sont écrites en entier.
 
 Après une mise en ligne, Facebook et LinkedIn gardent l’ancien aperçu en cache pendant
 quelques jours. Leurs outils de débogage respectifs permettent de forcer une relecture.

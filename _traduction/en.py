@@ -481,8 +481,8 @@ EN = {
 # Métadonnées, hors corps de page : titre de l'onglet, description pour les
 # moteurs et les aperçus de lien, et la langue déclarée.
 META = {
-  "titre": "La petite vague — a house for two, Saint-Hilaire-de-Riez",
-  "description": "La petite vague: a single-level house for two in Saint-Hilaire-de-Riez, Vendée. 110 m² of private terrace and garden, a study for working remotely. Clifftop path 10 minutes on foot, beach 15. From €75 a night, on Airbnb.",
+  "titre": "La petite vague — a house for two in Saint-Hilaire-de-Riez",
+  "description": "A single-level house for two in Saint-Hilaire-de-Riez, Vendée: private terrace and garden, a study with a door. Clifftop path 10 min on foot. From €75 a night.",
   "og_titre": "La petite vague — a house for two, between sea and marsh",
   "og_description": "Fifty-five square metres for two in Saint-Hilaire-de-Riez: private terrace and garden, a study with a door that shuts, the clifftop path ten minutes away on foot.",
 }
