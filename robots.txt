@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://pitizieux.github.io/la-petite-vague/sitemap.xml
+Sitemap: https://lapetitevague85.com/sitemap.xml

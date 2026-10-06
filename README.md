@@ -5,24 +5,46 @@ Site vitrine d’une maison de 55 m² en location saisonnière, entre mer et mar
 Une seule page, sans dépendance ni outil de build : `index.html` + le dossier `photos/`.
 Français et anglais, au choix du visiteur.
 
-## Mettre en ligne sur GitHub Pages
+## L’adresse du site
 
-1. github.com → **New repository** → nom `la-petite-vague` → **Public** → *Create repository*.
-2. Sur la page du dépôt vide : **uploading an existing file**, glissez `index.html`, `README.md`
-   et le dossier `photos/`. *Commit changes*.
-3. **Settings → Pages** → *Source* : `Deploy from a branch` → branche `main`, dossier `/ (root)` → *Save*.
-4. Une à deux minutes plus tard : `https://VOTRE-PSEUDO.github.io/la-petite-vague/`.
+**https://lapetitevague85.com** — nom de domaine déposé, servi par GitHub Pages.
 
-En ligne de commande :
+Le fichier `CNAME` à la racine du dépôt porte le domaine : **ne le supprimez pas**, GitHub
+Pages s’en sert pour accepter l’adresse. Côté registrar, la zone DNS doit contenir :
+
+| Type | Nom | Valeur |
+|---|---|---|
+| A | @ | 185.199.108.153 |
+| A | @ | 185.199.109.153 |
+| A | @ | 185.199.110.153 |
+| A | @ | 185.199.111.153 |
+| AAAA | @ | 2606:50c0:8000::153 |
+| AAAA | @ | 2606:50c0:8001::153 |
+| AAAA | @ | 2606:50c0:8002::153 |
+| AAAA | @ | 2606:50c0:8003::153 |
+| CNAME | www | pitizieux.github.io. |
+
+Puis, sur GitHub : **Settings → Pages → Custom domain** → `lapetitevague85.com` → *Save*,
+et cochez **Enforce HTTPS** une fois que la case devient disponible (elle attend que le
+certificat soit émis, en général moins d’une heure après la propagation DNS).
+
+Les quatre adresses A sont celles de GitHub Pages pour un domaine racine ; elles sont
+communes à tous les sites hébergés là, c’est normal.
+
+## Publier une modification
+
+Le dépôt est `github.com/Pitizieux/la-petite-vague`, branche `main`, dossier racine.
+GitHub Pages republie tout seul à chaque envoi, une à deux minutes après.
 
 ```bash
 cd la-petite-vague
-git init -b main
 git add .
-git commit -m "Site La petite vague"
-git remote add origin https://github.com/VOTRE-PSEUDO/la-petite-vague.git
-git push -u origin main
+git commit -m "Ce que vous avez changé"
+git push
 ```
+
+Par l’interface, sans ligne de commande : ouvrez le fichier sur github.com, le crayon en
+haut à droite, modifiez, puis *Commit changes*.
 
 ## À compléter dans `index.html`
 
