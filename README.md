@@ -3,6 +3,7 @@
 Site vitrine d’une maison de 55 m² en location saisonnière, entre mer et marais,
 223 bis rue Georges Clemenceau — 85270 Saint-Hilaire-de-Riez.
 Une seule page, sans dépendance ni outil de build : `index.html` + le dossier `photos/`.
+Français et anglais, au choix du visiteur.
 
 ## Mettre en ligne sur GitHub Pages
 
@@ -180,6 +181,56 @@ Audit WCAG 2.1 AA passé avec le plugin **Design** d’Anthropic, puis correctio
 
 Vérifié sans débordement horizontal à 1600, 1280, 1024, 768, 390, 360 et 320 px,
 au zoom 200 %, et sans erreur JavaScript.
+
+## La version anglaise
+
+Un petit drapeau en haut à droite fait basculer toute la page en anglais : l’en-tête sur
+ordinateur, la barre haute sur mobile, et la tête du sommaire plein écran. Il affiche la
+langue **vers laquelle** on va — Union Jack et « EN » quand la page est en français,
+tricolore et « FR » quand elle est en anglais.
+
+Ce qui bascule : tous les textes, les descriptions des photos (lues par les lecteurs
+d’écran), les libellés du plan, le titre de l’onglet, la description pour les moteurs de
+recherche et l’aperçu du lien. Le `lang` de la page change aussi, pour que les synthèses
+vocales prononcent correctement.
+
+Trois choses se décident toutes seules :
+
+- **au premier passage**, un navigateur qui n’est pas en français ouvre la page en anglais ;
+- **le choix est retenu** d’une visite à l’autre ;
+- **l’adresse suit** : passer en anglais ajoute `?lang=en`, ce qui rend la version anglaise
+  partageable telle quelle. Les balises `hreflang` du `<head>` l’annoncent aux moteurs.
+
+### Comment elle est faite
+
+Le français reste écrit en dur dans `index.html`. L’anglais vit dans un dictionnaire, où
+**chaque clé est la phrase française exacte**. Au clic, un script parcourt la page, remplace
+les textes reconnus et garde les originaux pour pouvoir revenir en arrière. Il n’y a donc
+qu’une seule page à maintenir, pas deux.
+
+Le dictionnaire est dans `_traduction/en.py`. Pour le modifier :
+
+```bash
+cd _traduction
+python3 gen.py      # réécrit le bloc TRADUCTION:DEBUT…FIN dans index.html
+```
+
+**Le piège à connaître** : si vous changez une phrase française dans `index.html` sans
+changer la clé correspondante dans `en.py`, cette phrase restera en français en version
+anglaise. Pour vérifier, ouvrez la page **en français**, puis la console du navigateur
+(F12 → Console) et tapez :
+
+```js
+LPV_ORPHELINS()
+```
+
+La fonction liste les textes que le dictionnaire ne connaît pas. En temps normal elle ne
+renvoie que la marque, l’adresse, les noms propres et les repères `[…]` — tout le reste doit
+avoir sa traduction.
+
+L’anglais est britannique (*metres*, *centimetres*, *neighbourhood*), les prix passent devant
+le nombre (75 € → €75), les décimales prennent un point (3,7 m² → 3.7 m²) et il n’y a pas
+d’espace avant `%` `?` `!` `:`.
 
 ## Typographie française
 
