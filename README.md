@@ -144,6 +144,34 @@ Les deux captures cartographiques ne sont pas étalonnées.
 Pour refaire une série, reprenez la fonction `doux()` du script de production, ou demandez
 à Claude de régénérer les photos avec une autre force.
 
+## Accessibilité et navigation
+
+Audit WCAG 2.1 AA passé avec le plugin **Design** d’Anthropic, puis corrections :
+
+- **Anneau de focus** terracotta de 3 px, visible au clavier uniquement (`:focus-visible`),
+  en écume sur les fonds sombres. Avant, seul l’anneau par défaut du navigateur existait.
+- **Lien d’évitement** « Aller au contenu » en premier élément tabulable, et repère `<main>`.
+- **Visionneuse au clavier** : chaque photo est un bouton (`role="button"`, `tabindex="0"`),
+  s’ouvre à Entrée ou Espace, se parcourt aux flèches, se ferme à Échap. Le focus reste
+  piégé dans la visionneuse et revient sur la photo d’origine à la fermeture. La légende
+  annonce la position (« 5 sur 18 »).
+- **Sommaire mobile** : sous 1000 px, la navigation était simplement masquée sur une page
+  de 20 000 px. Une barre haute apparaît en remontant et ouvre un sommaire plein écran.
+- **Contrastes** relevés au-dessus de 4,5:1 : `--gris-clair` passe de `#5A6A68` à `#4E5D5A`,
+  les crédits de `#8D8272` à `#766B5E`, les légendes à `#6B6052`.
+- **Cibles tactiles** portées à 44 px de haut minimum (navigation, liens office de tourisme,
+  adresse, pied de page, questions de la FAQ).
+- `scroll-padding-top` de 72 px sur mobile, pour que les ancres ne passent pas sous la barre.
+
+Vérifié sans débordement horizontal à 1280, 768, 390 et 320 px, et au zoom 200 %.
+
+## Référencement
+
+- **JSON-LD `VacationRental`** dans le `<head>` : adresse, coordonnées, surface, capacité,
+  équipements. À compléter avec l’URL de l’annonce quand le lien Airbnb sera connu.
+- Favicon en SVG inline (le trait de vague), titre raccourci à 58 caractères.
+- `fetchpriority="high"` sur la photo d’accroche, `decoding="async"` partout.
+
 ## Les animations
 
 Discrètes et sans bibliothèque : l’accroche monte à l’ouverture, le trait du logo se dessine,

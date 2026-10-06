@@ -3,21 +3,26 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>La petite vague — maison de 55 m² entre mer et marais, Saint-Hilaire-de-Riez</title>
+<title>La petite vague — maison pour deux, Saint-Hilaire-de-Riez</title>
 <meta name="description" content="La petite vague : maison de plain-pied pour deux à Saint-Hilaire-de-Riez, 110 m² de terrasse et jardin privatifs, bureau fermé pour le télétravail. Corniche à 10 minutes à pied, plage à 15. À partir de 75 € la nuit, sur Airbnb.">
 <meta property="og:title" content="La petite vague">
 <meta property="og:description" content="Une maison de 55 m² pour deux, terrasse et jardin privatifs, bureau pour le télétravail. Entre mer et marais, à Saint-Hilaire-de-Riez.">
 <meta property="og:image" content="photos/chambre.jpg">
 <meta property="og:type" content="website">
 <meta name="theme-color" content="#F4EFE7">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 96 96%27%3E%3Crect width=%2796%27 height=%2796%27 rx=%2720%27 fill=%27%23F4EFE7%27/%3E%3Cg fill=%27none%27 stroke=%27%2323403C%27 stroke-linecap=%27round%27%3E%3Cpath d=%27M8 52 C 20 32, 45 28, 59 43 C 67 52, 79 54, 92 45%27 stroke-width=%276%27/%3E%3Cpath d=%27M22 64 C 32 55, 47 53, 56 61%27 stroke-width=%274.5%27/%3E%3C/g%3E%3C/svg%3E">
+<link rel="apple-touch-icon" href="photos/chambre.jpg">
+<meta name="format-detection" content="telephone=no">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..500&family=Jost:wght@300..500&display=swap">
 <style>
 :root{
-  --lin:#F4EFE7; --lin-fonce:#E9E1D4; --encre:#1D2A2B; --gris:#33413F; --gris-clair:#5A6A68;
+  --lin:#F4EFE7; --lin-fonce:#E9E1D4; --encre:#1D2A2B; --gris:#33413F; 
   --marin:#23403C; --marin-clair:#2F5651; --terre:#9C5231; --ecume:#E8B79A; --creme:#FBF8F3;
   --trait:rgba(29,42,43,.14);
+  --gris-clair:#4E5D5A; --discret:#766B5E;
   --serif:Fraunces,Georgia,'Times New Roman',serif;
   --sans:Jost,'Helvetica Neue',Arial,sans-serif;
   box-sizing:border-box;
@@ -26,12 +31,13 @@
 }
 :root:not([data-theme="light"]){color-scheme:light}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
-  --lin:#F4EFE7; --lin-fonce:#E9E1D4; --encre:#1D2A2B; --gris:#33413F; --gris-clair:#5A6A68;
+  --lin:#F4EFE7; --lin-fonce:#E9E1D4; --encre:#1D2A2B; --gris:#33413F; 
   --marin:#23403C; --creme:#FBF8F3; background:#F4EFE7;
 }}
 :root[data-theme="dark"]{--lin:#F4EFE7; --encre:#1D2A2B; background:#F4EFE7}
 *,*::before,*::after{box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:20px}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+@media(min-width:1000px){html{scroll-padding-top:24px}}
 body{margin:0;background:var(--lin);color:var(--encre);font-family:var(--sans);font-weight:300;
   -webkit-font-smoothing:antialiased;overflow-x:hidden}
 img{max-width:100%;display:block}
@@ -58,7 +64,7 @@ em{font-style:italic}
   font-size:13px;letter-spacing:.09em;text-transform:uppercase}
 
 .entete{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:20px 0 6px}
-.marque{display:flex;align-items:center;gap:11px;color:var(--encre)}
+.marque{display:flex;align-items:center;gap:11px;color:var(--encre);min-height:44px}
 .marque span{font-family:var(--serif);font-size:19px}
 .nav{display:none;gap:26px;align-items:center}
 .nav a{font-size:12.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--gris)}
@@ -102,7 +108,7 @@ section{scroll-margin-top:20px}
 .galerie{display:grid;gap:16px;margin-top:42px}
 .galerie figure{margin:0}
 .galerie img{width:100%;height:100%;object-fit:cover;cursor:zoom-in}
-.galerie figcaption{margin-top:11px;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#6F6152}
+.galerie figcaption{margin-top:11px;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#6B6052}
 .g-haut img{height:clamp(320px,78vw,520px)}
 .g-moyen img{height:clamp(260px,62vw,360px);object-position:center 38%}
 @media(min-width:900px){
@@ -143,9 +149,9 @@ section{scroll-margin-top:20px}
 
 .bandeau-photo{margin:0}
 .bandeau-photo img{width:100%;height:clamp(200px,48vw,400px);object-fit:cover;cursor:zoom-in}
-.bandeau-photo figcaption{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#6F6152;
+.bandeau-photo figcaption{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#6B6052;
   padding:12px 22px 0;display:flex;flex-wrap:wrap;gap:6px 14px}
-.credit{color:#8D8272;letter-spacing:.1em}
+.credit{color:#766B5E;letter-spacing:.1em}
 @media(min-width:900px){.bandeau-photo figcaption{padding:14px 48px 0}}
 
 /* Distances */
@@ -161,7 +167,7 @@ section{scroll-margin-top:20px}
 .adresse .gps{font-size:14px;letter-spacing:.04em;color:var(--gris-clair)}
 .carte-photo{margin:34px 0 0}
 .carte-photo img{width:100%;height:clamp(240px,62vw,420px);object-fit:cover;cursor:zoom-in}
-.carte-photo figcaption{margin-top:11px;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#6F6152}
+.carte-photo figcaption{margin-top:11px;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#6B6052}
 @media(min-width:900px){
   .lieu-corps{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
   .carte-photo{margin:0}
@@ -239,7 +245,7 @@ section{scroll-margin-top:20px}
 .plan figcaption .num{font-family:var(--sans);font-style:normal;font-size:11px;letter-spacing:.2em;
   text-transform:uppercase;color:var(--terre)}
 .plan-aide{margin:10px 0 0;text-align:center;font-size:12px;letter-spacing:.12em;
-  text-transform:uppercase;color:#8D8272}
+  text-transform:uppercase;color:#766B5E}
 @media(min-width:760px){.plan-aide{display:none}}
 @media(min-width:900px){.plan{margin-top:70px}}
 
@@ -400,6 +406,56 @@ body{padding-bottom:0}
   color:rgba(247,243,236,.76);padding:0 80px}
 @media(min-width:900px){.visionneuse .precedent{left:28px}.visionneuse .suivant{right:28px}}
 
+/* ——— Accessibilité : focus, évitement, cibles ——— */
+:focus-visible{outline:3px solid var(--terre);outline-offset:3px}
+.reserver :focus-visible,.pied :focus-visible,.citation :focus-visible,
+.visionneuse :focus-visible{outline-color:var(--ecume)}
+:focus:not(:focus-visible){outline:none}
+
+.evitement{position:absolute;left:16px;top:-100px;z-index:60;background:var(--marin);
+  color:var(--creme);padding:14px 22px;border-radius:999px;font-size:13px;letter-spacing:.09em;
+  text-transform:uppercase;transition:top .2s}
+.evitement:focus{top:16px;color:var(--creme)}
+
+/* cibles tactiles : au moins 44 px de haut */
+.lien-ot,.source-ot a,.adresse a,.pied-haut a{min-height:44px;display:inline-flex;
+  align-items:center;gap:7px}
+.nav a:not(.bouton){min-height:44px;display:inline-flex;align-items:center}
+.faq summary{min-height:56px}
+
+/* ——— Navigation mobile ——— */
+.barre-haut{position:fixed;top:0;left:0;right:0;z-index:45;display:flex;align-items:center;
+  justify-content:space-between;gap:14px;padding:9px 16px;background:rgba(244,239,231,.94);
+  -webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--trait);transform:translateY(-110%);transition:transform .28s ease}
+.barre-haut.visible{transform:translateY(0)}
+.barre-haut .marque span{font-size:17px}
+.sommaire{display:inline-flex;align-items:center;gap:9px;min-height:44px;padding:0 6px 0 12px;
+  background:none;border:0;font-family:var(--sans);font-size:12px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--gris);cursor:pointer}
+.sommaire .barres{display:grid;gap:4px;width:20px}
+.sommaire .barres i{display:block;height:1.5px;background:var(--encre);transition:transform .25s,opacity .2s}
+.menu{position:fixed;inset:0;z-index:50;background:var(--lin);padding:0;
+  display:flex;flex-direction:column;overflow-y:auto}
+.menu[hidden]{display:none}
+.menu-tete{display:flex;align-items:center;justify-content:space-between;gap:14px;
+  padding:9px 16px;border-bottom:1px solid var(--trait)}
+.menu-fermer{display:inline-flex;align-items:center;justify-content:center;min-width:44px;
+  min-height:44px;background:none;border:0;font-size:26px;line-height:1;color:var(--encre);cursor:pointer}
+.menu ul{list-style:none;margin:0;padding:12px 22px calc(28px + env(safe-area-inset-bottom,0px))}
+.menu li{border-bottom:1px solid var(--trait)}
+.menu li a{display:flex;align-items:baseline;gap:14px;padding:19px 2px;
+  font-family:var(--serif);font-size:25px;color:var(--encre)}
+.menu li a .n{font-family:var(--sans);font-size:11px;letter-spacing:.2em;color:var(--terre);
+  min-width:26px}
+.menu li:last-child a{color:var(--terre)}
+@media(min-width:1000px){.barre-haut,.menu{display:none!important}}
+
+/* section courante dans le menu du haut */
+.nav a[aria-current="true"]{color:var(--encre)}
+.nav a[aria-current="true"]::after{right:0}
+
+
 /* ——— Animations douces ———
    Tout est conditionné à la classe .anim, posée par un script en tête de page :
    sans JavaScript, la page s’affiche normalement, rien n’est caché. */
@@ -519,8 +575,75 @@ if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
   document.documentElement.classList.add('anim');
 }
 </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "VacationRental",
+  "name": "La petite vague",
+  "description": "Maison de plain-pied de 55 m² pour deux voyageurs, avec 110 m² de terrasse et de jardin privatifs et un bureau fermé, à Saint-Hilaire-de-Riez. Corniche vendéenne à 10 minutes à pied, plage de Boisvinet à 15 minutes.",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "223 bis rue Georges Clemenceau",
+    "postalCode": "85270",
+    "addressLocality": "Saint-Hilaire-de-Riez",
+    "addressRegion": "Vendée",
+    "addressCountry": "FR"
+  },
+  "geo": { "@type": "GeoCoordinates", "latitude": 46.7046, "longitude": -1.9509 },
+  "floorSize": { "@type": "QuantitativeValue", "value": 55, "unitCode": "MTK" },
+  "numberOfBedrooms": 1,
+  "numberOfBathroomsTotal": 1,
+  "occupancy": { "@type": "QuantitativeValue", "maxValue": 2, "unitText": "voyageurs" },
+  "petsAllowed": false,
+  "smokingAllowed": false,
+  "amenityFeature": [
+    { "@type": "LocationFeatureSpecification", "name": "Terrasse privative 55 m²", "value": true },
+    { "@type": "LocationFeatureSpecification", "name": "Jardin privatif 55 m²", "value": true },
+    { "@type": "LocationFeatureSpecification", "name": "Bureau fermé", "value": true },
+    { "@type": "LocationFeatureSpecification", "name": "Wifi fibre", "value": true },
+    { "@type": "LocationFeatureSpecification", "name": "Lave-linge", "value": true },
+    { "@type": "LocationFeatureSpecification", "name": "Lave-vaisselle", "value": true },
+    { "@type": "LocationFeatureSpecification", "name": "Plain-pied", "value": true }
+  ],
+  "image": ["photos/pf-chambre.jpg", "photos/pf-terrasse.jpg", "photos/pf-jardin.jpg"]
+}
+</script>
 </head>
 <body>
+
+<a class="evitement" href="#contenu">Aller au contenu</a>
+
+<div class="barre-haut" id="barre-haut">
+  <a class="marque" href="#top">
+    <svg viewBox="0 0 96 48" width="36" height="18" fill="none" stroke="currentColor" stroke-linecap="round" aria-hidden="true">
+      <path d="M3 31 C 15 11, 40 7, 54 22 C 62 31, 74 33, 89 23" stroke-width="3.2"/>
+      <path d="M19 41 C 29 32, 44 30, 53 38" stroke-width="2.4"/>
+    </svg>
+    <span>la petite vague</span>
+  </a>
+  <button class="sommaire" type="button" id="ouvrir-menu" aria-expanded="false" aria-controls="menu">
+    Sommaire <span class="barres" aria-hidden="true"><i></i><i></i><i></i></span>
+  </button>
+</div>
+
+<nav class="menu" id="menu" aria-label="Sommaire du site" hidden>
+  <div class="menu-tete">
+    <span class="marque"><span>la petite vague</span></span>
+    <button class="menu-fermer" type="button" id="fermer-menu" aria-label="Fermer le sommaire">&times;</button>
+  </div>
+  <ul>
+    <li><a href="#maison"><span class="n">01</span> La maison</a></li>
+    <li><a href="#bureau"><span class="n">02</span> Le bureau</a></li>
+    <li><a href="#images"><span class="n">03</span> En images</a></li>
+    <li><a href="#lieu"><span class="n">04</span> Le lieu</a></li>
+    <li><a href="#environnement"><span class="n">05</span> L’environnement</a></li>
+    <li><a href="#equipements"><span class="n">06</span> Les équipements</a></li>
+    <li><a href="#tarifs"><span class="n">07</span> Les tarifs</a></li>
+    <li><a href="#pratique"><span class="n">08</span> Infos pratiques</a></li>
+    <li><a href="#questions"><span class="n">09</span> Questions fréquentes</a></li>
+    <li><a href="#reserver"><span class="n">10</span> Réserver</a></li>
+  </ul>
+</nav>
 
 <div class="wrap">
   <header class="entete">
@@ -543,6 +666,7 @@ if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     </nav>
   </header>
 
+  <main id="contenu">
   <section class="accroche" id="top">
     <div>
       <div class="chapeau">Saint-Hilaire-de-Riez · entre mer et marais</div>
@@ -561,7 +685,7 @@ if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       </div>
     </div>
     <div class="accroche-photo">
-      <img src="photos/chambre.jpg" alt="La chambre de La petite vague, mur bleu et lit fait" width="1600" height="1200">
+      <img src="photos/chambre.jpg" alt="La chambre de La petite vague, mur bleu et lit fait" width="1600" height="1200" fetchpriority="high" decoding="async">
     </div>
   </section>
 
@@ -588,15 +712,15 @@ if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
 
     <div class="galerie">
       <figure class="g-haut">
-        <img src="photos/sejour.jpg" alt="Le séjour ouvert sur la terrasse par une grande baie vitrée" loading="lazy" width="1400" height="1050">
+        <img src="photos/sejour.jpg" alt="Le séjour ouvert sur la terrasse par une grande baie vitrée" loading="lazy" decoding="async" width="1400" height="1050">
         <figcaption>Le séjour</figcaption>
       </figure>
       <figure class="g-moyen">
-        <img src="photos/cuisine.jpg" alt="La cuisine équipée et sa grande table de bois clair" loading="lazy" width="1400" height="1050">
+        <img src="photos/cuisine.jpg" alt="La cuisine équipée et sa grande table de bois clair" loading="lazy" decoding="async" width="1400" height="1050">
         <figcaption>La cuisine</figcaption>
       </figure>
       <figure class="g-decale">
-        <img src="photos/terrasse.jpg" alt="La terrasse en façade, abritée, ouverte sur le séjour" loading="lazy" width="1400" height="1050">
+        <img src="photos/terrasse.jpg" alt="La terrasse en façade, abritée, ouverte sur le séjour" loading="lazy" decoding="async" width="1400" height="1050">
         <figcaption>La terrasse</figcaption>
       </figure>
     </div>
@@ -1775,34 +1899,34 @@ if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
         <text x="816" y="278" fill="#9C5231" font-size="29" text-anchor="middle" transform="rotate(-90 816 278.0)">313</text>
         </g>
         <text x="239" y="242" fill="#333B37" font-size="36" text-anchor="middle" font-family="Architects Daughter, Fraunces, Georgia, serif">Bureau</text>
-        <text x="239" y="275" fill="#5A6A68" font-size="25" text-anchor="middle" font-family="Architects Daughter, Fraunces, Georgia, serif">3,7 m²</text>
+        <text x="239" y="275" fill="#4E5D5A" font-size="25" text-anchor="middle" font-family="Architects Daughter, Fraunces, Georgia, serif">3,7 m²</text>
         <text x="385" y="192" fill="#333B37" font-size="26" text-anchor="middle" font-family="Architects Daughter, Fraunces, Georgia, serif">WC</text>
         <text x="239" y="444" fill="#333B37" font-size="36" text-anchor="middle" font-family="Architects Daughter, Fraunces, Georgia, serif">Salle d’eau</text>
-        <text x="239" y="477" fill="#5A6A68" font-size="25" text-anchor="middle" font-family="Architects Daughter, Fraunces, Georgia, serif">3,1 m²</text>
+        <text x="239" y="477" fill="#4E5D5A" font-size="25" text-anchor="middle" font-family="Architects Daughter, Fraunces, Georgia, serif">3,1 m²</text>
         <text x="668" y="188" fill="#333B37" font-size="36" text-anchor="middle" font-family="Architects Daughter, Fraunces, Georgia, serif">Chambre</text>
-        <text x="668" y="221" fill="#5A6A68" font-size="25" text-anchor="middle" font-family="Architects Daughter, Fraunces, Georgia, serif">14,1 m²</text>
+        <text x="668" y="221" fill="#4E5D5A" font-size="25" text-anchor="middle" font-family="Architects Daughter, Fraunces, Georgia, serif">14,1 m²</text>
         <text x="638" y="612" fill="#333B37" font-size="36" text-anchor="middle" font-family="Architects Daughter, Fraunces, Georgia, serif">Séjour et cuisine</text>
-        <text x="638" y="645" fill="#5A6A68" font-size="25" text-anchor="middle" font-family="Architects Daughter, Fraunces, Georgia, serif">31,8 m²</text>
-        <text x="689" y="827" fill="#5A6A68" font-size="23" text-anchor="middle" font-family="Architects Daughter, Fraunces, Georgia, serif">baie sur la terrasse</text>
-        <text x="194" y="570" fill="#5A6A68" font-size="23" font-family="Architects Daughter, Fraunces, Georgia, serif" transform="rotate(-90 194 570)">entrée</text>
+        <text x="638" y="645" fill="#4E5D5A" font-size="25" text-anchor="middle" font-family="Architects Daughter, Fraunces, Georgia, serif">31,8 m²</text>
+        <text x="689" y="827" fill="#4E5D5A" font-size="23" text-anchor="middle" font-family="Architects Daughter, Fraunces, Georgia, serif">baie sur la terrasse</text>
+        <text x="194" y="570" fill="#4E5D5A" font-size="23" font-family="Architects Daughter, Fraunces, Georgia, serif" transform="rotate(-90 194 570)">entrée</text>
         <g filter="url(#grain)">
-        <path d="M 983,157.4 Q 984.3,178 983.7,188.3 Q 983,198.7 983,209 L 983,219.3" stroke="#5A6A68" stroke-width="2.4" fill="none" stroke-linecap="round" opacity="0.92"/>
-        <path d="M 983,158 Q 981.9,178.6 982,188.9 Q 982.1,199.2 982.3,209.6 L 982.5,219.9" stroke="#5A6A68" stroke-width="1.87" fill="none" stroke-linecap="round" opacity="0.64"/>
-        <path d="M 969.6,174.6 Q 974.3,168.3 975.9,164.6 Q 977.6,161 980.2,158 L 982.8,155" stroke="#5A6A68" stroke-width="2.4" fill="none" stroke-linecap="round" opacity="0.92"/>
-        <path d="M 970,174 Q 974.1,167.6 976.3,164.5 Q 978.5,161.4 980.8,158.3 L 983.2,155.3" stroke="#5A6A68" stroke-width="1.87" fill="none" stroke-linecap="round" opacity="0.64"/>
-        <path d="M 996.1,174.2 Q 992,167.9 989.8,164.8 Q 987.6,161.7 985.3,158.7 L 983,155.7" stroke="#5A6A68" stroke-width="2.4" fill="none" stroke-linecap="round" opacity="0.92"/>
-        <path d="M 996.6,174.8 Q 992.6,167.5 989.7,164.6 Q 986.8,161.7 984.4,158.3 L 982.1,155" stroke="#5A6A68" stroke-width="1.87" fill="none" stroke-linecap="round" opacity="0.64"/>
+        <path d="M 983,157.4 Q 984.3,178 983.7,188.3 Q 983,198.7 983,209 L 983,219.3" stroke="#4E5D5A" stroke-width="2.4" fill="none" stroke-linecap="round" opacity="0.92"/>
+        <path d="M 983,158 Q 981.9,178.6 982,188.9 Q 982.1,199.2 982.3,209.6 L 982.5,219.9" stroke="#4E5D5A" stroke-width="1.87" fill="none" stroke-linecap="round" opacity="0.64"/>
+        <path d="M 969.6,174.6 Q 974.3,168.3 975.9,164.6 Q 977.6,161 980.2,158 L 982.8,155" stroke="#4E5D5A" stroke-width="2.4" fill="none" stroke-linecap="round" opacity="0.92"/>
+        <path d="M 970,174 Q 974.1,167.6 976.3,164.5 Q 978.5,161.4 980.8,158.3 L 983.2,155.3" stroke="#4E5D5A" stroke-width="1.87" fill="none" stroke-linecap="round" opacity="0.64"/>
+        <path d="M 996.1,174.2 Q 992,167.9 989.8,164.8 Q 987.6,161.7 985.3,158.7 L 983,155.7" stroke="#4E5D5A" stroke-width="2.4" fill="none" stroke-linecap="round" opacity="0.92"/>
+        <path d="M 996.6,174.8 Q 992.6,167.5 989.7,164.6 Q 986.8,161.7 984.4,158.3 L 982.1,155" stroke="#4E5D5A" stroke-width="1.87" fill="none" stroke-linecap="round" opacity="0.64"/>
         </g>
-        <text x="983" y="240" fill="#5A6A68" font-size="25" text-anchor="middle" font-family="Architects Daughter, Fraunces, Georgia, serif">N</text>
+        <text x="983" y="240" fill="#4E5D5A" font-size="25" text-anchor="middle" font-family="Architects Daughter, Fraunces, Georgia, serif">N</text>
         <g filter="url(#grain)">
-        <path d="M 118,1056 Q 146.6,1056.1 160.9,1056.3 Q 175.1,1056.5 189.4,1056.9 Q 203.7,1057.3 218,1056.7 Q 232.3,1056.1 246.6,1055.4 Q 260.9,1054.7 275.1,1055.5 Q 289.4,1056.2 303.7,1056.2 L 318,1056.1" stroke="#5A6A68" stroke-width="1.8" fill="none" stroke-linecap="round" opacity="0.92"/>
-        <path d="M 118,1048.3 Q 119,1053.5 118.8,1056.1 Q 118.7,1058.7 118.6,1061.3 L 118.4,1063.9" stroke="#5A6A68" stroke-width="1.8" fill="none" stroke-linecap="round" opacity="0.92"/>
-        <path d="M 218,1048.2 Q 219,1053.3 218.6,1055.8 Q 218.2,1058.4 218.2,1060.9 L 218.1,1063.5" stroke="#5A6A68" stroke-width="1.8" fill="none" stroke-linecap="round" opacity="0.92"/>
-        <path d="M 318,1049 Q 315.5,1053.9 316.2,1056.3 Q 317,1058.8 317.2,1061.3 L 317.4,1063.7" stroke="#5A6A68" stroke-width="1.8" fill="none" stroke-linecap="round" opacity="0.92"/>
+        <path d="M 118,1056 Q 146.6,1056.1 160.9,1056.3 Q 175.1,1056.5 189.4,1056.9 Q 203.7,1057.3 218,1056.7 Q 232.3,1056.1 246.6,1055.4 Q 260.9,1054.7 275.1,1055.5 Q 289.4,1056.2 303.7,1056.2 L 318,1056.1" stroke="#4E5D5A" stroke-width="1.8" fill="none" stroke-linecap="round" opacity="0.92"/>
+        <path d="M 118,1048.3 Q 119,1053.5 118.8,1056.1 Q 118.7,1058.7 118.6,1061.3 L 118.4,1063.9" stroke="#4E5D5A" stroke-width="1.8" fill="none" stroke-linecap="round" opacity="0.92"/>
+        <path d="M 218,1048.2 Q 219,1053.3 218.6,1055.8 Q 218.2,1058.4 218.2,1060.9 L 218.1,1063.5" stroke="#4E5D5A" stroke-width="1.8" fill="none" stroke-linecap="round" opacity="0.92"/>
+        <path d="M 318,1049 Q 315.5,1053.9 316.2,1056.3 Q 317,1058.8 317.2,1061.3 L 317.4,1063.7" stroke="#4E5D5A" stroke-width="1.8" fill="none" stroke-linecap="round" opacity="0.92"/>
         </g>
-        <text x="118" y="1086" fill="#5A6A68" font-size="24" font-family="Architects Daughter, Fraunces, Georgia, serif">0</text>
-        <text x="318" y="1086" fill="#5A6A68" font-size="24" text-anchor="middle" font-family="Architects Daughter, Fraunces, Georgia, serif">2 m</text>
-        <text x="923" y="1110" fill="#5A6A68" font-size="25" text-anchor="end" font-family="Architects Daughter, Fraunces, Georgia, serif">rez-de-chaussée · cotes en centimètres</text>
+        <text x="118" y="1086" fill="#4E5D5A" font-size="24" font-family="Architects Daughter, Fraunces, Georgia, serif">0</text>
+        <text x="318" y="1086" fill="#4E5D5A" font-size="24" text-anchor="middle" font-family="Architects Daughter, Fraunces, Georgia, serif">2 m</text>
+        <text x="923" y="1110" fill="#4E5D5A" font-size="25" text-anchor="end" font-family="Architects Daughter, Fraunces, Georgia, serif">rez-de-chaussée · cotes en centimètres</text>
         <text x="923" y="1144" fill="#333B37" font-size="31" text-anchor="end" font-family="Architects Daughter, Fraunces, Georgia, serif">La petite vague — 55 m²</text>
         </svg>
       </div>
@@ -1893,66 +2017,66 @@ if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
 
   <div class="porte">
     <figure class="pf pf-large" data-pf>
-      <img src="photos/pf-chambre.jpg" alt="La chambre, mur bleu, lit fait et coussin de lin" loading="lazy" width="1500" height="1125">
+      <img src="photos/pf-chambre.jpg" alt="La chambre, mur bleu, lit fait et coussin de lin" loading="lazy" decoding="async" width="1500" height="1125">
       <figcaption><span class="num">01</span> <em>Le bleu de la chambre</em></figcaption>
     </figure>
 
     <div class="pf-paire">
       <figure class="pf pf-haut" data-pf>
-        <img src="photos/pf-coquillages.jpg" alt="Six coquillages peints en blanc, bleu et jaune, suspendus au mur" loading="lazy" width="1000" height="1333">
+        <img src="photos/pf-coquillages.jpg" alt="Six coquillages peints en blanc, bleu et jaune, suspendus au mur" loading="lazy" decoding="async" width="1000" height="1333">
         <figcaption><span class="num">02</span> <em>Six coquillages, rien d’autre</em></figcaption>
       </figure>
       <figure class="pf pf-bas" data-pf>
-        <img src="photos/pf-verres.jpg" alt="Deux verres sur la table basse, baie vitrée et jardin au couchant" loading="lazy" width="1500" height="1125">
+        <img src="photos/pf-verres.jpg" alt="Deux verres sur la table basse, baie vitrée et jardin au couchant" loading="lazy" decoding="async" width="1500" height="1125">
         <figcaption><span class="num">03</span> <em>L’heure des deux verres</em></figcaption>
       </figure>
     </div>
 
     <figure class="pf pf-pleine" data-pf>
-      <img src="photos/pf-terrasse.jpg" alt="La terrasse en façade, baie vitrée ouverte sur le séjour et voile d’ombrage" loading="lazy" width="1600" height="1200">
+      <img src="photos/pf-terrasse.jpg" alt="La terrasse en façade, baie vitrée ouverte sur le séjour et voile d’ombrage" loading="lazy" decoding="async" width="1600" height="1200">
       <figcaption><span class="num">04</span> <em>La terrasse, le matin</em></figcaption>
     </figure>
 
     <div class="pf-trois">
       <figure class="pf" data-pf>
-        <img src="photos/pf-miroir-chambre.jpg" alt="Le miroir rond reflétant le lit et la gravure de vague" loading="lazy" width="1300" height="975">
+        <img src="photos/pf-miroir-chambre.jpg" alt="Le miroir rond reflétant le lit et la gravure de vague" loading="lazy" decoding="async" width="1300" height="975">
         <figcaption><span class="num">05</span> <em>La chambre, dans le miroir</em></figcaption>
       </figure>
       <figure class="pf" data-pf>
-        <img src="photos/pf-miroir-dressing.jpg" alt="Reflet du dressing et des coquillages dans le miroir rond" loading="lazy" width="1000" height="1333">
+        <img src="photos/pf-miroir-dressing.jpg" alt="Reflet du dressing et des coquillages dans le miroir rond" loading="lazy" decoding="async" width="1000" height="1333">
         <figcaption><span class="num">06</span> <em>De l’autre côté</em></figcaption>
       </figure>
       <figure class="pf" data-pf>
-        <img src="photos/pf-vasque.jpg" alt="La vasque de la salle d’eau sous le miroir rond rétroéclairé" loading="lazy" width="1000" height="1333">
+        <img src="photos/pf-vasque.jpg" alt="La vasque de la salle d’eau sous le miroir rond rétroéclairé" loading="lazy" decoding="async" width="1000" height="1333">
         <figcaption><span class="num">07</span> <em>Le rond du miroir</em></figcaption>
       </figure>
     </div>
 
     <div class="pf-paire pf-paire-inverse">
       <figure class="pf pf-bas" data-pf>
-        <img src="photos/pf-sejour-soir.jpg" alt="Le séjour au coucher du soleil, fauteuil et table basse devant la baie" loading="lazy" width="1500" height="1125">
+        <img src="photos/pf-sejour-soir.jpg" alt="Le séjour au coucher du soleil, fauteuil et table basse devant la baie" loading="lazy" decoding="async" width="1500" height="1125">
         <figcaption><span class="num">08</span> <em>Le soir entre par la baie</em></figcaption>
       </figure>
       <figure class="pf pf-haut" data-pf>
-        <img src="photos/pf-douche.jpg" alt="La douche à l’italienne et le miroir rétroéclairé" loading="lazy" width="1000" height="1333">
+        <img src="photos/pf-douche.jpg" alt="La douche à l’italienne et le miroir rétroéclairé" loading="lazy" decoding="async" width="1000" height="1333">
         <figcaption><span class="num">09</span> <em>Tout en blanc</em></figcaption>
       </figure>
     </div>
 
     <figure class="pf pf-pleine" data-pf>
-      <img src="photos/pf-jardin.jpg" alt="Le jardin à l’arrière, claustra de bois et haie, en plein soleil" loading="lazy" width="1600" height="1200">
+      <img src="photos/pf-jardin.jpg" alt="Le jardin à l’arrière, claustra de bois et haie, en plein soleil" loading="lazy" decoding="async" width="1600" height="1200">
       <figcaption><span class="num">10</span> <em>Le jardin, derrière</em></figcaption>
     </figure>
 
     <figure class="pf pf-large" data-pf>
-      <img src="photos/pf-cuisine.jpg" alt="La cuisine ouverte et la grande table de bois clair" loading="lazy" width="1500" height="1125">
+      <img src="photos/pf-cuisine.jpg" alt="La cuisine ouverte et la grande table de bois clair" loading="lazy" decoding="async" width="1500" height="1125">
       <figcaption><span class="num">11</span> <em>La table du matin</em></figcaption>
     </figure>
   </div>
 </section>
 
 <figure class="bandeau-photo">
-  <img src="photos/facade.jpg" alt="La maison vue depuis la rue, façade blanche et toit de tuiles" loading="lazy" width="1800" height="871">
+  <img src="photos/facade.jpg" alt="La maison vue depuis la rue, façade blanche et toit de tuiles" loading="lazy" decoding="async" width="1800" height="871">
   <figcaption><span>La maison — 223 bis rue Georges Clemenceau, Saint-Hilaire-de-Riez</span></figcaption>
 </figure>
 
@@ -1986,7 +2110,7 @@ if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
         </div>
       </div>
       <figure class="carte-photo">
-        <img src="photos/carte-quartier.jpg" alt="Vue aérienne : la maison entre la plage de Boisvinet et le port de Saint-Gilles-Croix-de-Vie" loading="lazy" width="1400" height="738">
+        <img src="photos/carte-quartier.jpg" alt="Vue aérienne : la maison entre la plage de Boisvinet et le port de Saint-Gilles-Croix-de-Vie" loading="lazy" decoding="async" width="1400" height="738">
         <figcaption>La maison, le port et la plage <span class="credit">— © Google</span></figcaption>
       </figure>
     </div>
@@ -1994,7 +2118,7 @@ if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
 </section>
 
 <figure class="bandeau-photo">
-  <img src="photos/carte-cote.jpg" alt="La côte vendéenne, de Saint-Jean-de-Monts aux Sables, avec l’île d’Yeu au large" loading="lazy" width="1800" height="617">
+  <img src="photos/carte-cote.jpg" alt="La côte vendéenne, de Saint-Jean-de-Monts aux Sables, avec l’île d’Yeu au large" loading="lazy" decoding="async" width="1800" height="617">
   <figcaption><span>La côte, du marais breton à l’île d’Yeu</span><span class="credit">© Google</span></figcaption>
 </figure>
 
@@ -2356,6 +2480,8 @@ if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
   </div>
 </section>
 
+</main>
+
 <footer class="pied">
   <div class="wrap">
     <div class="pied-haut">
@@ -2386,30 +2512,81 @@ if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
 <script>
 (function(){
   var v=document.getElementById('visionneuse'), img=v.querySelector('img'),
-      legende=v.querySelector('.legende');
+      legende=v.querySelector('.legende'), fermerBtn=v.querySelector('.fermer'),
+      precBtn=v.querySelector('.precedent'), suivBtn=v.querySelector('.suivant');
   var vues=[].slice.call(document.querySelectorAll(
     '.pf img, .galerie img, .bandeau-photo img, .accroche-photo img, .carte-photo img'));
-  var i=0;
+  var i=0, declencheur=null;
+
   function montrer(n){
     i=(n+vues.length)%vues.length;
     var el=vues[i];
     img.src=el.currentSrc||el.src; img.alt=el.alt;
     var fc=el.closest('figure') && el.closest('figure').querySelector('figcaption em');
-    legende.textContent = fc ? fc.textContent : (el.alt||'');
+    legende.textContent=(fc ? fc.textContent : (el.alt||'')) + ' — ' + (i+1) + ' sur ' + vues.length;
   }
+  function ouvrir(n, source){
+    declencheur=source||null; montrer(n);
+    v.classList.add('ouverte'); document.body.style.overflow='hidden';
+    fermerBtn.focus();
+  }
+  function fermer(){
+    v.classList.remove('ouverte'); img.removeAttribute('src');
+    document.body.style.overflow='';
+    if(declencheur){ declencheur.focus(); declencheur=null; }
+  }
+
+  // chaque photo devient un bouton : clic, Entrée et Espace l’ouvrent
   vues.forEach(function(el,n){
+    el.setAttribute('tabindex','0');
+    el.setAttribute('role','button');
+    el.setAttribute('aria-haspopup','dialog');
+    var titre=el.getAttribute('alt')||'la photo';
+    el.setAttribute('aria-label','Agrandir : '+titre);
     el.style.cursor='zoom-in';
-    el.addEventListener('click',function(){ montrer(n); v.classList.add('ouverte'); });
+    el.addEventListener('click',function(){ ouvrir(n, el); });
+    el.addEventListener('keydown',function(e){
+      if(e.key==='Enter'||e.key===' '){ e.preventDefault(); ouvrir(n, el); }
+    });
   });
-  function fermer(){v.classList.remove('ouverte');img.removeAttribute('src');}
-  v.addEventListener('click',function(e){ if(!e.target.closest('.nav-photo')) fermer(); });
-  v.querySelector('.precedent').addEventListener('click',function(){montrer(i-1);});
-  v.querySelector('.suivant').addEventListener('click',function(){montrer(i+1);});
+
+  v.addEventListener('click',function(e){
+    if(e.target===v || e.target===img) fermer();
+  });
+  fermerBtn.addEventListener('click',fermer);
+  precBtn.addEventListener('click',function(){montrer(i-1);});
+  suivBtn.addEventListener('click',function(){montrer(i+1);});
+
   document.addEventListener('keydown',function(e){
     if(!v.classList.contains('ouverte')) return;
-    if(e.key==='Escape') fermer();
-    if(e.key==='ArrowLeft') montrer(i-1);
-    if(e.key==='ArrowRight') montrer(i+1);
+    if(e.key==='Escape'){ fermer(); return; }
+    if(e.key==='ArrowLeft'){ montrer(i-1); return; }
+    if(e.key==='ArrowRight'){ montrer(i+1); return; }
+    if(e.key==='Tab'){                    // le focus reste dans la visionneuse
+      var f=[precBtn,suivBtn,fermerBtn];
+      var k=f.indexOf(document.activeElement);
+      e.preventDefault();
+      f[(k + (e.shiftKey?-1:1) + f.length) % f.length].focus();
+    }
+  });
+
+  // ——— sommaire mobile ———
+  var menu=document.getElementById('menu'),
+      ouvrirMenu=document.getElementById('ouvrir-menu'),
+      fermerMenu=document.getElementById('fermer-menu'),
+      barreHaut=document.getElementById('barre-haut');
+  function basculerMenu(ouvert){
+    menu.hidden=!ouvert;
+    ouvrirMenu.setAttribute('aria-expanded', ouvert ? 'true' : 'false');
+    document.body.style.overflow = ouvert ? 'hidden' : '';
+    (ouvert ? fermerMenu : ouvrirMenu).focus();
+  }
+  ouvrirMenu.addEventListener('click',function(){ basculerMenu(true); });
+  menu.addEventListener('transitionend',function(){});
+  fermerMenu.addEventListener('click',function(){ basculerMenu(false); });
+  menu.addEventListener('click',function(e){ if(e.target.closest('a')) basculerMenu(false); });
+  document.addEventListener('keydown',function(e){
+    if(e.key==='Escape' && !menu.hidden) basculerMenu(false);
   });
 
   /* ——— Animations ——— */
@@ -2449,14 +2626,35 @@ if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
   }
 
   var barre=document.getElementById('barre'), reserver=document.getElementById('reserver');
+  var dernier=0;
   function maj(){
-    var passe=window.scrollY>560;
+    var y=window.scrollY;
+    var passe=y>560;
     var surReserver=reserver.getBoundingClientRect().top < window.innerHeight*0.9;
     barre.classList.toggle('visible', passe && !surReserver);
+    // la barre du haut apparaît en remontant et reste tant qu’on ne redescend pas
+    if (Math.abs(y - dernier) > 6){
+      barreHaut.classList.toggle('visible', passe && y < dernier);
+      dernier = y;
+    }
+    if (!passe) barreHaut.classList.remove('visible');
+    maj.spy && maj.spy();
   }
   window.addEventListener('scroll',maj,{passive:true});
   window.addEventListener('resize',maj);
   maj();
+
+  // section courante dans la navigation du haut
+  var liens=[].slice.call(document.querySelectorAll('.nav a[href^="#"]:not(.bouton)'));
+  var cibles=liens.map(function(a){ return document.querySelector(a.getAttribute('href')); });
+  maj.spy=function(){
+    var milieu=window.innerHeight*0.35, actif=-1;
+    cibles.forEach(function(c,n){ if(c && c.getBoundingClientRect().top <= milieu) actif=n; });
+    liens.forEach(function(a,n){
+      if(n===actif) a.setAttribute('aria-current','true'); else a.removeAttribute('aria-current');
+    });
+  };
+
 })();
 </script>
 
