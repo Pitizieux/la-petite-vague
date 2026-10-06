@@ -37,6 +37,16 @@ pointillé. Cherchez `class="ac"` dans le fichier, ou `[` dans le texte.
   par semaine. La section Tarifs et les infos pratiques portent le même repère.
 - **Taxe de séjour** : montant par personne et par nuit.
 
+**Un point à vérifier**
+
+Le site annonce l’embarcadère de l’île d’Yeu **à 10 minutes à pied** et le port de
+Saint-Gilles **à 20 minutes à pied** — ce sont les deux durées que vous aviez données.
+Les deux sont cohérentes si l’embarcadère est de votre côté du chenal et le centre du port
+de l’autre, après le pont ; c’est d’ailleurs ce que raconte la section « Une journée ici »
+(« on remonte par le pont »). Un aller-retour à pied suffit à trancher : si les deux durées
+sont proches, mieux vaut corriger, un voyageur qui compte sur dix minutes avec un bateau
+à prendre ne pardonne pas l’écart.
+
 **Important**
 
 - Places à table dans le séjour, type de cafetière, congélateur.
@@ -86,6 +96,7 @@ réellement convenu avec elle.
 | `photos/carte-quartier.jpg` | Section « Le lieu » |
 | `photos/carte-cote.jpg` | Bandeau pleine largeur |
 | `photos/pf-*.jpg` | Portfolio « En images », onze photos |
+| `photos/partage.jpg` | Nulle part sur la page : c’est la vignette d’aperçu du lien (1200 × 630, recadrée dans `pf-sejour-soir.jpg`) |
 
 Pour remplacer une photo : gardez le même nom de fichier, largeur ~1600 px, format JPEG.
 
@@ -163,6 +174,10 @@ Audit WCAG 2.1 AA passé avec le plugin **Design** d’Anthropic, puis correctio
   adresse, pied de page, questions de la FAQ).
 - `scroll-padding-top` de 72 px sur mobile, pour que les ancres ne passent pas sous la barre.
 
+- **Contraste élevé de Windows** (`forced-colors`) : les boutons et les barres reçoivent un
+  contour pour rester repérables quand le système impose ses couleurs ; le plan au crayon
+  et le trait de vague gardent leur dessin, qui deviendrait illisible autrement.
+
 Vérifié sans débordement horizontal à 1600, 1280, 1024, 768, 390, 360 et 320 px,
 au zoom 200 %, et sans erreur JavaScript.
 
@@ -201,12 +216,36 @@ s’imprime, lui, tel quel.
 Les repères `[…]` restent visibles sur le papier : c’est volontaire, ils servent de
 liste de relecture.
 
-## Référencement
+## Référencement et partage du lien
 
 - **JSON-LD `VacationRental`** dans le `<head>` : adresse, coordonnées, surface, capacité,
   équipements. À compléter avec l’URL de l’annonce quand le lien Airbnb sera connu.
-- Favicon en SVG inline (le trait de vague), titre raccourci à 58 caractères.
-- `fetchpriority="high"` sur la photo d’accroche, `decoding="async"` partout.
+- **Aperçu du lien** (Open Graph + carte Twitter) : quand vous envoyez l’adresse du site par
+  SMS, WhatsApp, Messenger ou mail, le destinataire voit une vignette avec le séjour du soir,
+  le titre et une phrase. L’image dédiée est `photos/partage.jpg`, au format 1200 × 630
+  attendu par ces applications.
+- Favicon et icône d’écran d’accueil en SVG inline (le trait de vague), titre raccourci
+  à 58 caractères.
+- `fetchpriority="high"` sur la photo d’accroche, `loading="lazy"` et dimensions sur toutes
+  les autres, `decoding="async"` partout.
+
+**Si le site change d’adresse** (nom de domaine à vous, autre hébergeur), six adresses
+absolues sont à mettre à jour dans le `<head>` — elles sont signalées par un commentaire
+juste au-dessus : `canonical`, `og:url`, `og:image`, `twitter:image`, puis `url` et `image`
+dans le bloc JSON-LD. Une adresse relative ne produit **aucun** aperçu : c’est la raison
+pour laquelle elles sont écrites en entier.
+
+Après une mise en ligne, Facebook et LinkedIn gardent l’ancien aperçu en cache pendant
+quelques jours. Leurs outils de débogage respectifs permettent de forcer une relecture.
+
+## Poids de la page
+
+Mesuré, pas estimé : 63 Ko de HTML compressé (GitHub Pages sert le gzip), et 822 Ko de
+photos au premier écran. Les images sont déjà encodées au bon point — les ré-encoder plus
+fort ne gagne que 13 % en dégradant visiblement. Rien à optimiser ici.
+
+Si vous remplacez une photo, visez 1400 à 1600 px de large et une qualité JPEG autour de 85 :
+c’est le réglage du reste de la série.
 
 ## Les animations
 

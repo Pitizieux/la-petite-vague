@@ -5,13 +5,28 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>La petite vague — maison pour deux, Saint-Hilaire-de-Riez</title>
 <meta name="description" content="La petite vague : maison de plain-pied pour deux à Saint-Hilaire-de-Riez, 110 m² de terrasse et jardin privatifs, bureau fermé pour le télétravail. Corniche à 10 minutes à pied, plage à 15. À partir de 75 € la nuit, sur Airbnb.">
-<meta property="og:title" content="La petite vague">
-<meta property="og:description" content="Une maison de 55 m² pour deux, terrasse et jardin privatifs, bureau pour le télétravail. Entre mer et marais, à Saint-Hilaire-de-Riez.">
-<meta property="og:image" content="photos/chambre.jpg">
+<!-- Aperçu du lien quand on l’envoie par SMS, WhatsApp, Messenger ou mail.
+     Ces adresses doivent être ABSOLUES : une adresse relative ne donne aucun aperçu.
+     Si le site déménage sur un nom de domaine à vous, remplacez les six adresses
+     ci-dessous (og:url, og:image, twitter:image, canonical, et "url" dans le JSON-LD). -->
+<link rel="canonical" href="https://pitizieux.github.io/la-petite-vague/">
+<meta property="og:site_name" content="La petite vague">
+<meta property="og:title" content="La petite vague — maison pour deux, entre mer et marais">
+<meta property="og:description" content="Une maison de 55 m² pour deux à Saint-Hilaire-de-Riez : terrasse et jardin privatifs, bureau fermé pour le télétravail, la corniche à dix minutes à pied.">
+<meta property="og:url" content="https://pitizieux.github.io/la-petite-vague/">
 <meta property="og:type" content="website">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:image" content="https://pitizieux.github.io/la-petite-vague/photos/partage.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Le séjour en fin de journée, deux verres sur la table basse et la baie ouverte sur le jardin">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="La petite vague — maison pour deux, entre mer et marais">
+<meta name="twitter:description" content="55 m² pour deux à Saint-Hilaire-de-Riez, terrasse et jardin privatifs, bureau fermé. La corniche à dix minutes à pied.">
+<meta name="twitter:image" content="https://pitizieux.github.io/la-petite-vague/photos/partage.jpg">
 <meta name="theme-color" content="#F4EFE7">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 96 96%27%3E%3Crect width=%2796%27 height=%2796%27 rx=%2720%27 fill=%27%23F4EFE7%27/%3E%3Cg fill=%27none%27 stroke=%27%2323403C%27 stroke-linecap=%27round%27%3E%3Cpath d=%27M8 52 C 20 32, 45 28, 59 43 C 67 52, 79 54, 92 45%27 stroke-width=%276%27/%3E%3Cpath d=%27M22 64 C 32 55, 47 53, 56 61%27 stroke-width=%274.5%27/%3E%3C/g%3E%3C/svg%3E">
-<link rel="apple-touch-icon" href="photos/chambre.jpg">
+<link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 180 180%27%3E%3Crect width=%27180%27 height=%27180%27 fill=%27%23F4EFE7%27/%3E%3Cg fill=%27none%27 stroke=%27%2323403C%27 stroke-linecap=%27round%27%3E%3Cpath d=%27M18 98 C 40 62, 86 54, 112 82 C 127 98, 149 102, 162 85%27 stroke-width=%2711%27/%3E%3Cpath d=%27M44 120 C 62 104, 90 100, 106 115%27 stroke-width=%278%27/%3E%3C/g%3E%3C/svg%3E">
 <meta name="format-detection" content="telephone=no">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -469,6 +484,17 @@ h3,h4,.nom,.piece,.nom-saison,.saison h4,.moment h4{text-wrap:balance}
 .intro p,.accroche p{hanging-punctuation:first allow-end}
 
 /* ——— Impression : la fiche pratique tient sur une page ——— */
+/* Mode contraste élevé de Windows : le système impose ses couleurs.
+   On rend les boutons et les barres repérables par un contour, et on laisse
+   le plan au crayon tel qu’il est dessiné — forcé, il devient illisible. */
+@media (forced-colors: active){
+  .bouton,.barre,.barre-haut,.menu,.conciergerie,.faq details{border:1px solid currentColor}
+  .bouton{forced-color-adjust:none;background:ButtonFace;color:ButtonText}
+  .plan-dessin svg,.marque svg,.citation svg{forced-color-adjust:none}
+  .ac{border-bottom:1px dotted currentColor}
+  .equip-groupe li::before,.moment::before{forced-color-adjust:none;background:currentColor}
+}
+
 @media print{
   @page{margin:16mm 14mm}
   :root{--lin:#fff;--lin-fonce:#fff;--creme:#fff}
@@ -636,6 +662,7 @@ if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
   "@context": "https://schema.org",
   "@type": "VacationRental",
   "name": "La petite vague",
+  "url": "https://pitizieux.github.io/la-petite-vague/",
   "description": "Maison de plain-pied de 55 m² pour deux voyageurs, avec 110 m² de terrasse et de jardin privatifs et un bureau fermé, à Saint-Hilaire-de-Riez. Corniche vendéenne à 10 minutes à pied, plage de Boisvinet à 15 minutes.",
   "address": {
     "@type": "PostalAddress",
@@ -661,7 +688,7 @@ if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     { "@type": "LocationFeatureSpecification", "name": "Lave-vaisselle", "value": true },
     { "@type": "LocationFeatureSpecification", "name": "Plain-pied", "value": true }
   ],
-  "image": ["photos/pf-chambre.jpg", "photos/pf-terrasse.jpg", "photos/pf-jardin.jpg"]
+  "image": ["https://pitizieux.github.io/la-petite-vague/photos/partage.jpg", "https://pitizieux.github.io/la-petite-vague/photos/pf-chambre.jpg", "https://pitizieux.github.io/la-petite-vague/photos/pf-terrasse.jpg", "https://pitizieux.github.io/la-petite-vague/photos/pf-jardin.jpg"]
 }
 </script>
 </head>
@@ -711,7 +738,7 @@ if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       </svg>
       <span>la petite vague</span>
     </a>
-    <nav class="nav">
+    <nav class="nav" aria-label="Sections de la page">
       <a href="#maison">La maison</a>
       <a href="#images">En images</a>
       <a href="#lieu">Le lieu</a>
@@ -762,7 +789,7 @@ if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       </div>
       <div class="intro">
         <p>Du bois clair, du lin, des murs couleur de vague et beaucoup de jour. Tout est de plain‑pied : une chambre, un bureau, une salle d’eau, un séjour ouvert sur la cuisine. Et, devant comme derrière, cent dix mètres carrés d’extérieurs rien qu’à vous.</p>
-        <p>Les lits sont faits à votre arrivée, les serviettes pliées sur le lit. La cuisine est faite pour cuisiner vraiment — du poisson pris au port le matin, du sel de Vendée, une table que personne ne quitte avant la nuit.</p>
+        <p>Le lit est fait à votre arrivée, les serviettes pliées dessus. La cuisine est faite pour cuisiner vraiment — du poisson pris au port le matin, du sel de Vendée, une table que personne ne quitte avant la nuit.</p>
       </div>
     </div>
 
@@ -2186,7 +2213,7 @@ if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
         <h2>Ce qu’il y a<br>tout <em>autour</em></h2>
       </div>
       <div class="intro">
-        <p>Deux communes se partagent l’horizon : Saint-Hilaire-de-Riez côté dunes et marais, Saint-Gilles-Croix-de-Vie côté port. Voici ce qu’on y va voir le plus volontiers — l’office de tourisme tient le reste à jour.</p>
+        <p>Deux communes se partagent l’horizon : Saint-Hilaire-de-Riez côté dunes et marais, Saint-Gilles-Croix-de-Vie côté port. Voici ce qu’on va y voir le plus volontiers — l’office de tourisme tient le reste à jour.</p>
       </div>
     </div>
 
@@ -2345,7 +2372,7 @@ if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       <div class="equip-groupe">
         <h4>Le confort</h4>
         <ul>
-          <li>Lits faits à l’arrivée, linge de toilette fourni</li>
+          <li>Lit fait à l’arrivée, linge de toilette fourni</li>
           <li>Lave-linge</li>
           <li>Wifi fibre</li>
           <li>Télévision</li>
@@ -2392,7 +2419,7 @@ if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       <div class="tarif">
         <div>
           <span class="nom-saison">Vacances scolaires, juin et septembre</span>
-          <span class="quand">Toussaint, Noël, février, printemps, et les deux mois d’épaule</span>
+          <span class="quand">Toussaint, Noël, février, printemps — et les deux mois qui encadrent l’été</span>
         </div>
         <span class="montant">95 € · 105 €</span>
         <span class="mini">2 nuits · 3 en vacances</span>
@@ -2402,7 +2429,7 @@ if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
           <span class="nom-saison">Ponts et week‑ends fériés</span>
           <span class="quand">Pâques, Ascension, Pentecôte</span>
         </div>
-        <span class="montant">115 – 120 €</span>
+        <span class="montant">115 € à 120 €</span>
         <span class="mini">3 nuits minimum</span>
       </div>
       <div class="tarif">
@@ -2466,7 +2493,7 @@ if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
             <li>Organisation d’un moment particulier — anniversaire, dîner, demande en mariage</li>
             <li>Coups de main du quotidien pendant le séjour</li>
           </ul>
-          <p class="note">Ces prestations sont facultatives, à convenir directement avec la conciergerie, et facturées à part de la location.</p>
+          <p class="note">Ces prestations sont facultatives, à convenir directement avec la conciergerie, et facturées séparément.</p>
         </div>
       </div>
     </div>
@@ -2507,10 +2534,10 @@ if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
         <summary>Qui nous accueille à l’arrivée ?</summary><div class="reponse"><div><p>Halo Conciergerie, une conciergerie professionnelle de Saint-Gilles-Croix-de-Vie. Elle vous remet les clés, vous fait le tour de la maison et reste joignable pendant tout le séjour. Elle propose aussi, si vous le souhaitez, du ménage en cours de séjour, des courses déposées avant votre arrivée ou l’organisation d’un moment particulier.</p></div></div>
       </details>
       <details>
-        <summary>Les draps et serviettes sont-ils fournis ?</summary><div class="reponse"><div><p>Oui. Les lits sont faits à votre arrivée et le linge de toilette vous attend dans la salle d’eau. Vous n’avez rien à apporter.</p></div></div>
+        <summary>Les draps et serviettes sont-ils fournis ?</summary><div class="reponse"><div><p>Oui. Le lit est fait à votre arrivée et le linge de toilette vous attend dans la salle d’eau. Vous n’avez rien à apporter.</p></div></div>
       </details>
       <details>
-        <summary>Comment réserver, et peut-on annuler ?</summary><div class="reponse"><div><p>Les réservations passent uniquement par Airbnb : le calendrier y est tenu à jour et les conditions d’annulation sont celles affichées sur l’annonce. Pour une question avant de réserver, la messagerie Airbnb est le plus simple.</p></div></div>
+        <summary>Comment réserver, et peut-on annuler ?</summary><div class="reponse"><div><p>Les réservations passent uniquement par Airbnb : le calendrier y est tenu à jour et les conditions d’annulation sont celles affichées sur l’annonce. Pour une question avant de réserver, la messagerie Airbnb est le plus direct.</p></div></div>
       </details>
     </div>
   </div>
