@@ -85,14 +85,34 @@ haut à droite, modifiez, puis *Commit changes*.
 Tout ce qui reste à remplir est **visible sur la page** : fond terracotta pâle et soulignement
 pointillé. Cherchez `class="ac"` dans le fichier, ou `[` dans le texte.
 
-**Indispensable avant d’ouvrir le site au public**
+Le site étant **déjà en ligne**, ces repères sont publics : à combler vite.
 
-- `[LIEN-AIRBNB]` — **trois fois** : bouton de la section Réserver, pied de page, barre mobile.
-  Collez l’URL de l’annonce à la place, en gardant les guillemets.
-- L’avis de voyageur du bandeau sombre (deux lignes copiées d’Airbnb) et son prénom.
-- **Ménage** : 110 € est affiché, mais il reste à préciser si c’est un forfait par séjour ou
-  par semaine. La section Tarifs et les infos pratiques portent le même repère.
-- **Taxe de séjour** : montant par personne et par nuit.
+**1. Bloquant — on ne peut pas réserver**
+
+- `[LIEN-AIRBNB]` — **trois fois** (lignes du bouton Réserver, du pied de page et de la barre
+  mobile). C’est le seul repère **invisible** sur la page, puisque c’est une adresse :
+  cherchez-le dans le fichier. Collez l’URL de l’annonce, en gardant les guillemets.
+
+**2. Ce qu’un voyageur veut savoir avant de réserver**
+
+- **Ménage** : `[110 €]` et `[Préciser : forfait par séjour ou par semaine.]` — le montant
+  apparaît **deux fois**, dans Tarifs et dans Infos pratiques.
+- **Taxe de séjour** : `[00 €]`, par personne et par nuit — **deux fois** également.
+- **Horaires** : `[16 h]` à l’arrivée, `[10 h]` au départ, à valider avec Halo Conciergerie.
+- **Numéro de déclaration en mairie** : `[00000]`, dans le pied de page. Obligation légale
+  pour un meublé de tourisme, et exigé par l’office de tourisme pour vous référencer.
+
+**3. Détails d’équipement**
+
+- `[X]` places à table dans le séjour · `[avec congélateur ?]` · `[type]` de cafetière
+- `[Salon de jardin, parasol, barbecue ?]`
+
+**4. Rédactionnel, quand vous aurez le temps**
+
+- L’avis de voyageur du bandeau sombre : deux lignes copiées d’Airbnb, `[Prénom]`, `[mois année]`.
+- `[@lapetitevague]` dans le pied de page : le compte Instagram, ou à supprimer s’il n’existe pas.
+- `[la terrasse]` dans « Une journée ici » : où l’on prend le café, terrasse ou jardin.
+- `[Jours à revérifier avant la saison.]` : les jours de marché changent entre l’été et l’hiver.
 
 **Un point à vérifier**
 
@@ -104,15 +124,13 @@ de l’autre, après le pont ; c’est d’ailleurs ce que raconte la section «
 sont proches, mieux vaut corriger, un voyageur qui compte sur dix minutes avec un bateau
 à prendre ne pardonne pas l’écart.
 
-**Important**
-
-- Places à table dans le séjour, type de cafetière, congélateur.
-- Salon de jardin, parasol, barbecue sur la terrasse.
-- `[@lapetitevague]` et le numéro de déclaration en mairie (`[00000]`).
-- Horaires d’arrivée et de départ, à valider avec Halo Conciergerie.
-
 Une fois une information remplie, retirez le `<span class="ac">…</span>` autour : le repère
-coloré disparaît.
+coloré disparaît. Et pensez au dictionnaire anglais (`_traduction/en.py`) si le texte que
+vous modifiez y a une clé — sinon il restera en français côté anglais.
+
+**Photos qui manquent** : le bureau (une section entière lui est consacrée, sans photo) et
+le mobilier d’extérieur (la terrasse et le jardin sont beaux mais vides — un voyageur peut
+croire qu’il n’y a rien dehors).
 
 ## Coordonnées affichées
 
