@@ -36,7 +36,7 @@
 }}
 :root[data-theme="dark"]{--lin:#F4EFE7; --encre:#1D2A2B; background:#F4EFE7}
 *,*::before,*::after{box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:72px}
+html{scroll-behavior:smooth;scroll-padding-top:72px;overflow-x:clip}
 @media(min-width:1000px){html{scroll-padding-top:24px}}
 body{margin:0;background:var(--lin);color:var(--encre);font-family:var(--sans);font-weight:300;
   -webkit-font-smoothing:antialiased;overflow-x:hidden}
@@ -368,6 +368,7 @@ section{scroll-margin-top:20px}
 .pied a{color:rgba(247,243,236,.82)}
 .pied-haut{display:grid;gap:26px;font-size:15px;line-height:1.75;color:rgba(247,243,236,.82)}
 @media(min-width:700px){.pied-haut{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.coord{color:rgba(247,243,236,.55)}
 .legal{font-size:12.5px;color:rgba(247,243,236,.55);line-height:1.8}
 .signature{font-family:var(--serif);font-size:clamp(44px,15vw,132px);line-height:1;margin:48px 0 0;
   color:rgba(247,243,236,.13);white-space:nowrap}
@@ -430,6 +431,10 @@ body{padding-bottom:0}
   border-bottom:1px solid var(--trait);transform:translateY(-110%);transition:transform .28s ease}
 .barre-haut.visible{transform:translateY(0)}
 .barre-haut .marque span{font-size:17px}
+.barre-haut .marque{min-width:0}
+.barre-haut .marque span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+@media(max-width:359px){.barre-haut .marque span{display:none}
+  .sommaire{font-size:11px;letter-spacing:.1em}}
 .sommaire{display:inline-flex;align-items:center;gap:9px;min-height:44px;padding:0 6px 0 12px;
   background:none;border:0;font-family:var(--sans);font-size:12px;letter-spacing:.14em;
   text-transform:uppercase;color:var(--gris);cursor:pointer}
@@ -455,6 +460,57 @@ body{padding-bottom:0}
 .nav a[aria-current="true"]{color:var(--encre)}
 .nav a[aria-current="true"]::after{right:0}
 
+
+/* ——— Finition typographique ——— */
+::selection{background:var(--ecume);color:var(--marin)}
+.reserver ::selection,.pied ::selection,.citation ::selection{background:var(--ecume);color:var(--marin)}
+p,li,figcaption,blockquote,.detail,.valeur,.quand{text-wrap:pretty}
+h3,h4,.nom,.piece,.nom-saison,.saison h4,.moment h4{text-wrap:balance}
+.intro p,.accroche p{hanging-punctuation:first allow-end}
+
+/* ——— Impression : la fiche pratique tient sur une page ——— */
+@media print{
+  @page{margin:16mm 14mm}
+  :root{--lin:#fff;--lin-fonce:#fff;--creme:#fff}
+  html{background:#fff!important}
+  body{background:#fff;color:#000;padding:0;font-size:10.5pt}
+  /* on retire l’habillage d’écran : navigation, photos, décors */
+  .barre,.barre-haut,.menu,.evitement,.visionneuse,.nav,.plan-aide,.signature,
+  .portfolio,.citation,#journee,.bandeau-photo,.galerie,.carte-photo,
+  .accroche-photo,.reserver .bouton,.lien-fleche,.accroche .actions{display:none!important}
+  .bloc{padding:14pt 0;break-inside:avoid}
+  .titre-bloc h2{font-size:18pt}
+  h2,h3,h4,.chapeau{break-after:avoid}
+  .chapeau{color:#000}
+  /* les deux bandeaux sombres repassent en noir sur blanc */
+  .reserver,.pied{background:#fff;color:#000;border-top:.5pt solid #B9B2A6}
+  .reserver :where(h2,.intro p,.chapeau,.mention,.prix .montant,.prix .unite),
+  .pied :where(.pied-haut,a,.legal,.coord,.credit,strong,b){color:#000!important}
+  .reserver .ac,.pied .ac{color:#8A4526!important;background:rgba(156,82,49,.1)!important}
+  .prix{border-top:.5pt solid #B9B2A6}
+  .pied{padding:16pt 0 0;break-inside:avoid}
+  .pied-haut{grid-template-columns:1fr!important;gap:8pt}
+  /* la FAQ s’imprime dépliée, même fermée à l’écran */
+  details>:not(summary){display:block!important}
+  details::details-content{content-visibility:visible!important;block-size:auto!important}
+  .faq .reponse{display:block!important}
+  .faq .reponse>div{overflow:visible!important}
+  .faq summary::after{display:none}
+  .faq summary{min-height:0;padding:12pt 0 4pt}
+  /* une seule colonne : pas de demi-page vide */
+  .titre-bloc,.lieu-corps,.environs,.yeu-corps,.reserver-corps,.conciergerie-corps,
+  .couchages,.pratique,.saisons,.equip-groupes,.bureau-points,.venir ul{
+    display:block!important}
+  .intro{margin-top:8pt}
+  .equip-groupe+.equip-groupe{margin-top:18pt}
+  .tarif{display:grid!important;grid-template-columns:1fr auto;gap:2pt 10pt}
+  /* l’adresse des liens, en clair : ni capitales ni interlettrage hérités */
+  .lien-ot,.source-ot a,.adresse a{display:inline!important}
+  a[href^="http"]::after{content:" (" attr(href) ")";font-size:7.5pt;color:#444;
+    text-transform:none;letter-spacing:0;font-family:var(--sans);overflow-wrap:anywhere}
+  .plan-dessin svg{max-width:420pt}
+  .anim :where(*){opacity:1!important;transform:none!important}
+}
 
 /* ——— Animations douces ———
    Tout est conditionné à la classe .anim, posée par un script en tête de page :
@@ -671,11 +727,11 @@ if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     <div>
       <div class="chapeau">Saint-Hilaire-de-Riez · entre mer et marais</div>
       <h1>La petite<br><em>vague</em></h1>
-      <p>Cinquante-cinq mètres carrés de calme, posés entre l’océan et les marais. Le matin, la lumière monte du marais ; le soir, la mer se retire derrière les dunes et l’on entend le vent passer dans les pins. Le temps d’un week-end, ou de tout un été.</p>
+      <p>Cinquante-cinq mètres carrés de calme, posés entre l’océan et les marais. Le matin, la lumière monte du marais ; le soir, la mer se retire derrière les dunes et l’on entend le vent passer dans les pins. Le temps d’un week‑end, ou de tout un été.</p>
       <ul class="repere">
         <li>2 voyageurs</li>
         <li>Terrasse et jardin privatifs</li>
-        <li>Corniche à 10 min à pied</li>
+        <li>Corniche à 10 min à pied</li>
       </ul>
       <div class="actions">
         <a class="bouton" href="#reserver">Voir les disponibilités</a>
@@ -690,10 +746,10 @@ if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
   </section>
 
   <div class="chiffres">
-    <div><b>55 m²</b><span>de plain-pied</span></div>
-    <div><b>110 m²</b><span>de terrasse et jardin</span></div>
+    <div><b>55 m²</b><span>de plain‑pied</span></div>
+    <div><b>110 m²</b><span>de terrasse et jardin</span></div>
     <div><b>2</b><span>voyageurs</span></div>
-    <div><b>15 min</b><span>à pied de la plage</span></div>
+    <div><b>15 min</b><span>à pied de la plage</span></div>
   </div>
 </div>
 
@@ -705,7 +761,7 @@ if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
         <h2>Petite, claire,<br>et pensée pour <em>ralentir</em></h2>
       </div>
       <div class="intro">
-        <p>Du bois clair, du lin, des murs couleur de vague et beaucoup de jour. Tout est de plain-pied : une chambre, un bureau, une salle d’eau, un séjour ouvert sur la cuisine. Et, devant comme derrière, cent dix mètres carrés d’extérieurs rien qu’à vous.</p>
+        <p>Du bois clair, du lin, des murs couleur de vague et beaucoup de jour. Tout est de plain‑pied : une chambre, un bureau, une salle d’eau, un séjour ouvert sur la cuisine. Et, devant comme derrière, cent dix mètres carrés d’extérieurs rien qu’à vous.</p>
         <p>Les lits sont faits à votre arrivée, les serviettes pliées sur le lit. La cuisine est faite pour cuisiner vraiment — du poisson pris au port le matin, du sel de Vendée, une table que personne ne quitte avant la nuit.</p>
       </div>
     </div>
@@ -728,7 +784,7 @@ if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     <div class="couchages">
       <div>
         <span class="piece">La chambre</span>
-        <span class="detail">Un lit double de 160 cm</span>
+        <span class="detail">Un lit double de 160 cm</span>
       </div>
       <div>
         <span class="piece">Le bureau</span>
@@ -744,11 +800,11 @@ if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       </div>
       <div>
         <span class="piece">La terrasse</span>
-        <span class="detail">55 m² en façade, privatifs</span>
+        <span class="detail">55 m² en façade, privatifs</span>
       </div>
       <div>
         <span class="piece">Le jardin</span>
-        <span class="detail">55 m² engazonnés à l’arrière, privatifs</span>
+        <span class="detail">55 m² engazonnés à l’arrière, privatifs</span>
       </div>
     </div>
 
@@ -1930,7 +1986,7 @@ if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
         <text x="923" y="1144" fill="#333B37" font-size="31" text-anchor="end" font-family="Architects Daughter, Fraunces, Georgia, serif">La petite vague — 55 m²</text>
         </svg>
       </div>
-      <figcaption><span class="num">Plan</span> <em>Le rez-de-chaussée, de plain-pied</em></figcaption>
+      <figcaption><span class="num">Plan</span> <em>Le rez-de-chaussée, de plain‑pied</em></figcaption>
       <p class="plan-aide">Faites glisser le plan pour le parcourir en entier.</p>
     </figure>
   </div>
@@ -1944,7 +2000,7 @@ if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
         <h2>Télétravailler,<br>la mer <em>au bout de la rue</em></h2>
       </div>
       <div class="intro">
-        <p>Ce n’est pas un coin de table ni un bout de chambre : c’est une pièce à part, avec sa porte, son bureau et sa fenêtre. On y passe la matinée au calme, et l’on referme à midi.</p>
+        <p>Ce n’est pas un coin de table ni un bout de chambre : c’est une pièce à part, avec sa porte, son bureau et sa fenêtre. On y passe la matinée au calme, et l’on referme à midi.</p>
       </div>
     </div>
     <div class="bureau-corps">
@@ -1952,13 +2008,13 @@ if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
         <li><span class="nom">Une pièce dédiée</span><p>Porte fermée, lumière du jour, et le reste de la maison qui ne bouge pas pendant que vous travaillez.</p></li>
         <li><span class="nom">Fibre et visios</span><p>Wifi fibre, assez de débit pour enchaîner les visioconférences sans y penser.</p></li>
         <li><span class="nom">La pause à dix minutes</span><p>La corniche à dix minutes de marche, la plage à quinze. De quoi couper vraiment entre deux réunions.</p></li>
-        <li><span class="nom">Au mois, l’hiver</span><p>Pour un séjour long hors saison, la nuitée baisse de 25 à 30 %. Une parenthèse de travail au bord de l’eau, à prix de novembre.</p></li>
+        <li><span class="nom">Au mois, l’hiver</span><p>Pour un séjour long hors saison, la nuitée baisse de 25 à 30 %. Une parenthèse de travail au bord de l’eau, à prix de novembre.</p></li>
       </ul>
     </div>
   </div>
 </section>
 
-<section class="bloc journee">
+<section class="bloc journee" id="journee">
   <div class="wrap">
     <div class="titre-bloc">
       <div>
@@ -1971,19 +2027,19 @@ if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     </div>
     <div class="moments">
       <div class="moment">
-        <span class="heure">8 h</span>
+        <span class="heure">8 h</span>
         <h4>Le pain, puis le marais</h4>
-        <p>Sept minutes de marche jusqu’à la boulangerie, et l’on revient par les chemins du marais : l’eau est plate, les hérons décollent sans bruit. Café sur <span class="ac">[la terrasse]</span>, le temps que la journée se décide.</p>
+        <p>Sept minutes de marche jusqu’à la boulangerie, et l’on revient par les chemins du marais : l’eau est plate, les hérons décollent sans bruit. Café sur <span class="ac">[la terrasse]</span>, le temps que la journée se décide.</p>
       </div>
       <div class="moment">
         <span class="heure">Midi</span>
         <h4>La corniche et la plage</h4>
-        <p>Dix minutes à pied et l’on y est : les rochers bruns, le Trou du Diable qui crache l’écume les jours de houle. Puis la plage de Boisvinet, en pente douce, pour le bain et la sieste.</p>
+        <p>Dix minutes à pied et l’on y est : les rochers bruns, le Trou du Diable qui crache l’écume les jours de houle. Puis la plage de Boisvinet, en pente douce, pour le bain et la sieste.</p>
       </div>
       <div class="moment">
-        <span class="heure">18 h</span>
+        <span class="heure">18 h</span>
         <h4>Le retour des bateaux</h4>
-        <p>À Saint-Gilles, les sardiniers rentrent en fin d’après-midi. On achète le poisson du jour, on remonte par le pont, et l’on cuisine en laissant la fenêtre ouverte sur le soir.</p>
+        <p>À Saint-Gilles, les sardiniers rentrent en fin d’après‑midi. On achète le poisson du jour, on remonte par le pont, et l’on cuisine en laissant la fenêtre ouverte sur le soir.</p>
       </div>
     </div>
   </div>
@@ -2088,19 +2144,19 @@ if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
         <h2>Entre la mer<br>et le <em>marais</em></h2>
       </div>
       <div class="intro">
-        <p>D’un côté les dunes, la corniche et l’écume qui saute sur les rochers — dix minutes de marche, pas davantage. De l’autre, les marais : des chemins plats, des reflets immobiles et des oiseaux qui s’envolent au petit matin. La maison tient entre les deux, et tout se fait à pied.</p>
+        <p>D’un côté les dunes, la corniche et l’écume qui saute sur les rochers — dix minutes de marche, pas davantage. De l’autre, les marais : des chemins plats, des reflets immobiles et des oiseaux qui s’envolent au petit matin. La maison tient entre les deux, et tout se fait à pied.</p>
       </div>
     </div>
     <div class="lieu-corps">
       <div>
         <div class="distances">
           <ul>
-            <li><span class="nom">Commerces et boulangerie</span><span class="val">7 min à pied</span></li>
-            <li><span class="nom">Corniche vendéenne</span><span class="val">10 min à pied</span></li>
-            <li><span class="nom">Embarcadère pour l’île d’Yeu</span><span class="val">10 min à pied</span></li>
-            <li><span class="nom">Plage de Boisvinet</span><span class="val">15 min à pied</span></li>
-            <li><span class="nom">Port de Saint-Gilles-Croix-de-Vie</span><span class="val">20 min à pied · 5 min en voiture</span></li>
-            <li><span class="nom">Gare de Saint-Hilaire-de-Riez</span><span class="val">15 min à pied</span></li>
+            <li><span class="nom">Commerces et boulangerie</span><span class="val">7 min à pied</span></li>
+            <li><span class="nom">Corniche vendéenne</span><span class="val">10 min à pied</span></li>
+            <li><span class="nom">Embarcadère pour l’île d’Yeu</span><span class="val">10 min à pied</span></li>
+            <li><span class="nom">Plage de Boisvinet</span><span class="val">15 min à pied</span></li>
+            <li><span class="nom">Port de Saint-Gilles-Croix-de-Vie</span><span class="val">20 min à pied · 5 min en voiture</span></li>
+            <li><span class="nom">Gare de Saint-Hilaire-de-Riez</span><span class="val">15 min à pied</span></li>
           </ul>
         </div>
         <div class="adresse">
@@ -2130,7 +2186,7 @@ if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
         <h2>Ce qu’il y a<br>tout <em>autour</em></h2>
       </div>
       <div class="intro">
-        <p>Deux communes se partagent l’horizon : Saint-Hilaire-de-Riez côté dunes et marais, Saint-Gilles-Croix-de-Vie côté port. Voici ce qu’on y va voir le plus volontiers — l’office de tourisme tient le reste à jour.</p>
+        <p>Deux communes se partagent l’horizon : Saint-Hilaire-de-Riez côté dunes et marais, Saint-Gilles-Croix-de-Vie côté port. Voici ce qu’on y va voir le plus volontiers — l’office de tourisme tient le reste à jour.</p>
       </div>
     </div>
 
@@ -2150,12 +2206,12 @@ if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
           </li>
           <li>
             <span class="nom">Les marais salants</span>
-            <p>Quatre mille cinq cents hectares d’eau plate et de digues, où l’on récolte encore le sel à la main. Les sauniers ouvrent leurs œillets à la visite en saison ; on repart avec un sachet de fleur de sel.</p>
+            <p>Quatre mille cinq cents hectares d’eau plate et de digues, où l’on récolte encore le sel à la main. Les sauniers ouvrent leurs œillets à la visite en saison ; on repart avec un sachet de fleur de sel.</p>
             <a class="lien-ot" href="https://www.payssaintgilles-tourisme.fr/preparer-son-sejour/a-voir-a-faire/visites-et-decouvertes/" target="_blank" rel="noopener">Visites et découvertes</a>
           </li>
           <li>
             <span class="nom">Les plages et la base nautique</span>
-            <p>Douze kilomètres de sable : les Demoiselles, les Salins, les Mouettes, la Grande Plage de Sion. À la base nautique des Demoiselles, on loue un kayak, une planche ou un dériveur à l’heure.</p>
+            <p>Douze kilomètres de sable : les Demoiselles, les Salins, les Mouettes, la Grande Plage de Sion. À la base nautique des Demoiselles, on loue un kayak, une planche ou un dériveur à l’heure.</p>
             <a class="lien-ot" href="https://www.payssaintgilles-tourisme.fr/preparer-son-sejour/a-voir-a-faire/activites-nautiques/" target="_blank" rel="noopener">Activités nautiques</a>
           </li>
         </ul>
@@ -2166,12 +2222,12 @@ if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
         <ul>
           <li>
             <span class="nom">Le port de pêche et la criée</span>
-            <p>Quatre mille tonnes de poisson bleu par an — sardine, anchois. En fin d’après-midi, les bateaux rentrent et l’on peut suivre la vente à la criée depuis Escale Pêche, au cœur du port.</p>
+            <p>Quatre mille tonnes de poisson bleu par an — sardine, anchois. En fin d’après‑midi, les bateaux rentrent et l’on peut suivre la vente à la criée depuis Escale Pêche, au cœur du port.</p>
             <a class="lien-ot" href="https://www.payssaintgilles-tourisme.fr/patrimoine-culturel/escale-peche/" target="_blank" rel="noopener">Escale Pêche</a>
           </li>
           <li>
             <span class="nom">Les marchés</span>
-            <p>Mardi, jeudi et dimanche matin place Saint-Gilles ; mercredi et samedi matin place Sainte-Croix. Poisson du jour, légumes du marais, brioche vendéenne. <span class="ac">[Jours à revérifier avant la saison.]</span></p>
+            <p>Mardi, jeudi et dimanche matin place Saint-Gilles ; mercredi et samedi matin place Sainte-Croix. Poisson du jour, légumes du marais, brioche vendéenne. <span class="ac">[Jours à revérifier avant la saison.]</span></p>
             <a class="lien-ot" href="https://www.payssaintgilles-tourisme.fr/preparer-son-sejour/agenda-et-animations/" target="_blank" rel="noopener">L’agenda</a>
           </li>
           <li>
@@ -2181,7 +2237,7 @@ if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
           </li>
           <li>
             <span class="nom">La Vélodyssée</span>
-            <p>La véloroute du littoral passe ici : pistes plates et abritées vers Saint-Jean-de-Monts au nord, Brétignolles au sud. De quoi faire une journée entière sans jamais quitter le bord de mer.</p>
+            <p>La véloroute du littoral passe ici : pistes plates et abritées vers Saint-Jean-de-Monts au nord, Brétignolles au sud. De quoi faire une journée entière sans jamais quitter le bord de mer.</p>
             <a class="lien-ot" href="https://www.payssaintgilles-tourisme.fr/preparer-son-sejour/a-voir-a-faire/activites-outdoor/" target="_blank" rel="noopener">Activités outdoor</a>
           </li>
         </ul>
@@ -2198,16 +2254,16 @@ if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       <div class="yeu-corps">
         <div>
           <h3>L’île d’Yeu,<br><em>à la journée</em></h3>
-          <p class="yeu-chapo">L’embarcadère est à dix minutes à pied : on part le matin, une heure de mer, et l’on rentre le soir avec du sel sur la peau. Vingt-trois kilomètres carrés de granit et de pins, à faire à vélo — c’est la bonne échelle.</p>
+          <p class="yeu-chapo">L’embarcadère est à dix minutes à pied : on part le matin, une heure de mer, et l’on rentre le soir avec du sel sur la peau. Vingt-trois kilomètres carrés de granit et de pins, à faire à vélo — c’est la bonne échelle.</p>
           <div class="yeu-pratique">
-            <p><b>La traversée</b><br>Compagnie Vendéenne, embarcadère avenue Jean Cristau. Une heure de mer, aller-retour dans la journée. Réservez à l’avance en été.</p>
+            <p><b>La traversée</b><br>Compagnie Vendéenne, embarcadère avenue Jean Cristau. Une heure de mer, aller‑retour dans la journée. Réservez à l’avance en été.</p>
             <p><b>Sur place</b><br>Location de vélos à la descente du bateau, à Port-Joinville.</p>
           </div>
         </div>
         <div class="yeu-points">
           <div>
             <span class="nom">Deux côtes en une île</span>
-            <p>Au sud-ouest, la côte sauvage : les falaises, le port de la Meule au creux de son anse, les criques des Soux, des Fontaines, des Sabias en contrebas du Vieux Château. Au nord-est, le sable long et calme — Ker Châlon, les Sapins, les Conches, les Vieilles. Une trentaine de plages en tout, et l’on finit toujours par en trouver une déserte.</p>
+            <p>Au sud-ouest, la côte sauvage : les falaises, le port de la Meule au creux de son anse, les criques des Soux, des Fontaines, des Sabias en contrebas du Vieux Château. Au nord-est, le sable long et calme — Ker Châlon, les Sapins, les Conches, les Vieilles. Une trentaine de plages en tout, et l’on finit toujours par en trouver une déserte.</p>
           </div>
           <div>
             <span class="nom">Le Vieux Château et les pierres levées</span>
@@ -2222,7 +2278,7 @@ if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       <a class="lien-ot" style="margin-top:28px" href="https://www.ile-yeu.fr/" target="_blank" rel="noopener">Office de tourisme de l’île d’Yeu</a>
     </div>
 
-    <p class="source-ot">Les horaires et les tarifs changent au fil des saisons :
+    <p class="source-ot">Les horaires et les tarifs changent au fil des saisons :
       <a href="https://www.payssaintgilles-tourisme.fr/" target="_blank" rel="noopener">l’Office de tourisme du Pays de Saint-Gilles-Croix-de-Vie</a>
       tient tout cela à jour.</p>
   </div>
@@ -2258,7 +2314,7 @@ if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       <div class="saison">
         <span class="quand">Novembre à février</span>
         <h4>Les tempêtes</h4>
-        <p>Le chauffage, un pull, et la corniche sous le vent : c’est le moment où le Trou du Diable crache le plus haut. On rentre se faire un thé, et la maison fait le reste.</p>
+        <p>Le chauffage, un pull, et la corniche sous le vent : c’est le moment où le Trou du Diable crache le plus haut. On rentre se faire un thé, et la maison fait le reste.</p>
       </div>
     </div>
   </div>
@@ -2272,7 +2328,7 @@ if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
         <h2>Tout ce qu’il faut,<br>rien de <em>plus</em></h2>
       </div>
       <div class="intro">
-        <p>Vous arrivez les mains vides : le linge est fourni, les lits sont faits, la cuisine est équipée pour de vrais repas.</p>
+        <p>Vous arrivez les mains vides : le linge est fourni, les lits sont faits, la cuisine est équipée pour de vrais repas.</p>
       </div>
     </div>
     <div class="equip-groupes">
@@ -2281,7 +2337,7 @@ if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
         <ul>
           <li>Four et plaques de cuisson</li>
           <li>Lave-vaisselle</li>
-          <li>Réfrigérateur <span class="ac">[avec congélateur ?]</span></li>
+          <li>Réfrigérateur <span class="ac">[avec congélateur ?]</span></li>
           <li>Micro-ondes, bouilloire, cafetière <span class="ac">[type]</span></li>
           <li>Vaisselle et ustensiles pour deux</li>
         </ul>
@@ -2300,11 +2356,11 @@ if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       <div class="equip-groupe">
         <h4>Dehors et accès</h4>
         <ul>
-          <li>Terrasse de 55 m² en façade, privative</li>
-          <li>Jardin engazonné de 55 m² à l’arrière, privatif</li>
-          <li><span class="ac">[Salon de jardin, parasol, barbecue ?]</span></li>
+          <li>Terrasse de 55 m² en façade, privative</li>
+          <li>Jardin engazonné de 55 m² à l’arrière, privatif</li>
+          <li><span class="ac">[Salon de jardin, parasol, barbecue ?]</span></li>
           <li>Stationnement gratuit dans la rue, places nombreuses</li>
-          <li>Maison de plain-pied, sans marche</li>
+          <li>Maison de plain‑pied, sans marche</li>
           <li>Animaux non admis · logement non-fumeur</li>
         </ul>
       </div>
@@ -2330,43 +2386,43 @@ if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
           <span class="nom-saison">Saison creuse</span>
           <span class="quand">Octobre, novembre, janvier à mars hors vacances</span>
         </div>
-        <span class="montant">75 € · 85 €</span>
-        <span class="mini">2 nuits minimum</span>
+        <span class="montant">75 € · 85 €</span>
+        <span class="mini">2 nuits minimum</span>
       </div>
       <div class="tarif">
         <div>
           <span class="nom-saison">Vacances scolaires, juin et septembre</span>
           <span class="quand">Toussaint, Noël, février, printemps, et les deux mois d’épaule</span>
         </div>
-        <span class="montant">95 € · 105 €</span>
-        <span class="mini">2 nuits · 3 en vacances</span>
+        <span class="montant">95 € · 105 €</span>
+        <span class="mini">2 nuits · 3 en vacances</span>
       </div>
       <div class="tarif">
         <div>
-          <span class="nom-saison">Ponts et week-ends fériés</span>
+          <span class="nom-saison">Ponts et week‑ends fériés</span>
           <span class="quand">Pâques, Ascension, Pentecôte</span>
         </div>
-        <span class="montant">115 – 120 €</span>
-        <span class="mini">3 nuits minimum</span>
+        <span class="montant">115 – 120 €</span>
+        <span class="mini">3 nuits minimum</span>
       </div>
       <div class="tarif">
         <div>
           <span class="nom-saison">Juillet et août</span>
           <span class="quand">Plein été</span>
         </div>
-        <span class="montant">120 € · 130 €</span>
-        <span class="mini">5 nuits en juillet · 7 en août</span>
+        <span class="montant">120 € · 130 €</span>
+        <span class="mini">5 nuits en juillet · 7 en août</span>
       </div>
     </div>
 
     <div class="tarifs-notes">
-      <p><b>À la semaine</b> — 10 % de moins hors juillet-août.</p>
-      <p><b>Au mois, l’hiver</b> — 25 à 30 % de moins. C’est la formule pensée pour le télétravail, bureau compris.</p>
-      <p><b>Ménage</b> — <span class="ac">[110 €]</span> en fin de séjour. <span class="ac">[Préciser : forfait par séjour ou par semaine.]</span></p>
-      <p><b>Taxe de séjour</b> — <span class="ac">[00 €]</span> par personne et par nuit, collectée par Airbnb.</p>
+      <p><b>À la semaine</b> — 10 % de moins hors juillet‑août.</p>
+      <p><b>Au mois, l’hiver</b> — 25 à 30 % de moins. C’est la formule pensée pour le télétravail, bureau compris.</p>
+      <p><b>Ménage</b> — <span class="ac">[110 €]</span> en fin de séjour. <span class="ac">[Préciser : forfait par séjour ou par semaine.]</span></p>
+      <p><b>Taxe de séjour</b> — <span class="ac">[00 €]</span> par personne et par nuit, collectée par Airbnb.</p>
     </div>
 
-    <p class="tarifs-pied">Ces montants sont indicatifs : le calendrier d’Airbnb fait foi, et les prix y suivent la demande au jour le jour.</p>
+    <p class="tarifs-pied">Ces montants sont indicatifs : le calendrier d’Airbnb fait foi, et les prix y suivent la demande au jour le jour.</p>
   </div>
 </section>
 
@@ -2383,12 +2439,12 @@ if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     </div>
 
     <div class="pratique">
-      <div><span class="quoi">Arrivée</span><span class="valeur">À partir de <span class="ac">[16 h]</span></span></div>
-      <div><span class="quoi">Départ</span><span class="valeur">Avant <span class="ac">[10 h]</span></span></div>
-      <div><span class="quoi">Durée minimum</span><span class="valeur">2 à 7 nuits selon la saison</span></div>
+      <div><span class="quoi">Arrivée</span><span class="valeur">À partir de <span class="ac">[16 h]</span></span></div>
+      <div><span class="quoi">Départ</span><span class="valeur">Avant <span class="ac">[10 h]</span></span></div>
+      <div><span class="quoi">Durée minimum</span><span class="valeur">2 à 7 nuits selon la saison</span></div>
       <div><span class="quoi">Accueil et remise des clés</span><span class="valeur">Sur place, par Halo Conciergerie</span></div>
-      <div><span class="quoi">Ménage de fin de séjour</span><span class="valeur"><span class="ac">[110 €]</span></span></div>
-      <div><span class="quoi">Taxe de séjour</span><span class="valeur"><span class="ac">[00 €]</span> par personne et par nuit</span></div>
+      <div><span class="quoi">Ménage de fin de séjour</span><span class="valeur"><span class="ac">[110 €]</span></span></div>
+      <div><span class="quoi">Taxe de séjour</span><span class="valeur"><span class="ac">[00 €]</span> par personne et par nuit</span></div>
       <div><span class="quoi">Animaux</span><span class="valeur">Non admis</span></div>
       <div><span class="quoi">Stationnement</span><span class="valeur">Gratuit dans la rue</span></div>
     </div>
@@ -2398,7 +2454,7 @@ if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       <div class="conciergerie-corps">
         <div>
           <h4>Halo Conciergerie,<br>à <em>Saint-Gilles</em></h4>
-          <p>Une conciergerie professionnelle installée à Saint-Gilles-Croix-de-Vie vous reçoit à votre arrivée, vous remet les clés et vous montre la maison. Elle reste joignable pendant tout le séjour : une question, un imprévu, une envie de dernière minute, c’est à elle qu’on s’adresse.</p>
+          <p>Une conciergerie professionnelle installée à Saint-Gilles-Croix-de-Vie vous reçoit à votre arrivée, vous remet les clés et vous montre la maison. Elle reste joignable pendant tout le séjour : une question, un imprévu, une envie de dernière minute, c’est à elle qu’on s’adresse.</p>
           <a class="lien-ot" href="https://www.haloconcierge.fr/" target="_blank" rel="noopener">haloconcierge.fr</a>
         </div>
         <div>
@@ -2419,7 +2475,7 @@ if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       <h4>Comment venir</h4>
       <ul>
         <li><span class="mode">En train</span> — la gare de Saint-Hilaire-de-Riez est sur la ligne TER Nantes–Saint-Gilles-Croix-de-Vie, à quinze minutes à pied de la maison. Celle de Saint-Gilles est le terminus, à vingt minutes.</li>
-        <li><span class="mode">En voiture</span> — environ 1 h 15 de Nantes, 1 h de La Roche-sur-Yon, 4 h 30 de Paris par l’A11 puis l’A83.</li>
+        <li><span class="mode">En voiture</span> — environ 1 h 15 de Nantes, 1 h de La Roche-sur-Yon, 4 h 30 de Paris par l’A11 puis l’A83.</li>
         <li><span class="mode">En avion</span> — Nantes Atlantique à une heure de route, puis train ou voiture de location.</li>
       </ul>
     </div>
@@ -2436,25 +2492,25 @@ if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     </div>
     <div class="faq">
       <details>
-        <summary>Peut-on se passer de voiture ?</summary><div class="reponse"><div><p>Oui, et c’est même recommandé. Les commerces sont à sept minutes à pied, la corniche à dix, la plage à quinze, le port à vingt. Le train s’arrête à Saint-Hilaire-de-Riez, et l’embarcadère pour l’île d’Yeu est à dix minutes de marche. Une voiture ne sert que pour aller plus loin dans les terres.</p></div></div>
+        <summary>Peut-on se passer de voiture ?</summary><div class="reponse"><div><p>Oui, et c’est même recommandé. Les commerces sont à sept minutes à pied, la corniche à dix, la plage à quinze, le port à vingt. Le train s’arrête à Saint-Hilaire-de-Riez, et l’embarcadère pour l’île d’Yeu est à dix minutes de marche. Une voiture ne sert que pour aller plus loin dans les terres.</p></div></div>
       </details>
       <details>
-        <summary>Que faire quand il pleut ?</summary><div class="reponse"><div><p>La Bourrine du Bois Juquaud, Escale Pêche au cœur de la criée, les musées de Saint-Gilles, le marché couvert. Et la maison : les tempêtes vues de la corniche sont un spectacle, et l’on rentre se sécher au chaud.</p></div></div>
+        <summary>Que faire quand il pleut ?</summary><div class="reponse"><div><p>La Bourrine du Bois Juquaud, Escale Pêche au cœur de la criée, les musées de Saint-Gilles, le marché couvert. Et la maison : les tempêtes vues de la corniche sont un spectacle, et l’on rentre se sécher au chaud.</p></div></div>
       </details>
       <details>
-        <summary>Combien de personnes peut-on être ?</summary><div class="reponse"><div><p>Deux, et deux seulement. Il y a une chambre avec un lit de 160 cm ; la seconde pièce est un bureau, pas un couchage. C’est un logement pensé pour un couple, ou pour une personne seule qui vient travailler au calme. Les animaux ne sont pas admis.</p></div></div>
+        <summary>Combien de personnes peut-on être ?</summary><div class="reponse"><div><p>Deux, et deux seulement. Il y a une chambre avec un lit de 160 cm ; la seconde pièce est un bureau, pas un couchage. C’est un logement pensé pour un couple, ou pour une personne seule qui vient travailler au calme. Les animaux ne sont pas admis.</p></div></div>
       </details>
       <details>
-        <summary>Peut-on y travailler quelques semaines ?</summary><div class="reponse"><div><p>C’est même une bonne idée hors saison. Le bureau est une pièce fermée avec sa fenêtre, le wifi est en fibre, et un séjour au mois bénéficie de 25 à 30 % de réduction l’hiver. La corniche est à dix minutes pour la pause de midi.</p></div></div>
+        <summary>Peut-on y travailler quelques semaines ?</summary><div class="reponse"><div><p>C’est même une bonne idée hors saison. Le bureau est une pièce fermée avec sa fenêtre, le wifi est en fibre, et un séjour au mois bénéficie de 25 à 30 % de réduction l’hiver. La corniche est à dix minutes pour la pause de midi.</p></div></div>
       </details>
       <details>
-        <summary>Qui nous accueille à l’arrivée ?</summary><div class="reponse"><div><p>Halo Conciergerie, une conciergerie professionnelle de Saint-Gilles-Croix-de-Vie. Elle vous remet les clés, vous fait le tour de la maison et reste joignable pendant tout le séjour. Elle propose aussi, si vous le souhaitez, du ménage en cours de séjour, des courses déposées avant votre arrivée ou l’organisation d’un moment particulier.</p></div></div>
+        <summary>Qui nous accueille à l’arrivée ?</summary><div class="reponse"><div><p>Halo Conciergerie, une conciergerie professionnelle de Saint-Gilles-Croix-de-Vie. Elle vous remet les clés, vous fait le tour de la maison et reste joignable pendant tout le séjour. Elle propose aussi, si vous le souhaitez, du ménage en cours de séjour, des courses déposées avant votre arrivée ou l’organisation d’un moment particulier.</p></div></div>
       </details>
       <details>
-        <summary>Les draps et serviettes sont-ils fournis ?</summary><div class="reponse"><div><p>Oui. Les lits sont faits à votre arrivée et le linge de toilette vous attend dans la salle d’eau. Vous n’avez rien à apporter.</p></div></div>
+        <summary>Les draps et serviettes sont-ils fournis ?</summary><div class="reponse"><div><p>Oui. Les lits sont faits à votre arrivée et le linge de toilette vous attend dans la salle d’eau. Vous n’avez rien à apporter.</p></div></div>
       </details>
       <details>
-        <summary>Comment réserver, et peut-on annuler ?</summary><div class="reponse"><div><p>Les réservations passent uniquement par Airbnb : le calendrier y est tenu à jour et les conditions d’annulation sont celles affichées sur l’annonce. Pour une question avant de réserver, la messagerie Airbnb est le plus simple.</p></div></div>
+        <summary>Comment réserver, et peut-on annuler ?</summary><div class="reponse"><div><p>Les réservations passent uniquement par Airbnb : le calendrier y est tenu à jour et les conditions d’annulation sont celles affichées sur l’annonce. Pour une question avant de réserver, la messagerie Airbnb est le plus simple.</p></div></div>
       </details>
     </div>
   </div>
@@ -2472,11 +2528,11 @@ if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       </div>
     </div>
     <div class="prix">
-      <span class="montant">à partir de 75 €</span>
+      <span class="montant">à partir de 75 €</span>
       <span class="unite">la nuit, selon la saison</span>
     </div>
     <a class="bouton" href="[LIEN-AIRBNB]" target="_blank" rel="noopener">Voir les disponibilités sur Airbnb</a>
-    <p class="mention">Une question avant de réserver ? La messagerie Airbnb reste le plus simple : on répond vite, et volontiers. Sur place, c’est Halo Conciergerie, à Saint-Gilles-Croix-de-Vie, qui vous accueille et veille au bon déroulement du séjour.</p>
+    <p class="mention">Une question avant de réserver ? La messagerie Airbnb reste le plus simple : on répond vite, et volontiers. Sur place, c’est Halo Conciergerie, à Saint-Gilles-Croix-de-Vie, qui vous accueille et veille au bon déroulement du séjour.</p>
   </div>
 </section>
 
@@ -2485,7 +2541,7 @@ if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
 <footer class="pied">
   <div class="wrap">
     <div class="pied-haut">
-      <p>223 bis rue Georges Clemenceau<br>85270 Saint-Hilaire-de-Riez, Vendée<br><span style="color:rgba(247,243,236,.55)">46.7046, -1.9509</span></p>
+      <p>223 bis rue Georges Clemenceau<br>85270 Saint-Hilaire-de-Riez, Vendée<br><span class="coord">46.7046, -1.9509</span></p>
       <p><a href="[LIEN-AIRBNB]" target="_blank" rel="noopener">Réserver sur Airbnb</a><br><span class="ac">[@lapetitevague]</span></p>
       <p class="legal">Meublé de tourisme n° <span class="ac">[00000]</span><br>Mentions légales · Conditions de réservation · Confidentialité<br>Vues aériennes © Google</p>
     </div>
@@ -2495,7 +2551,7 @@ if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
 
 <div class="barre" id="barre">
   <div class="resume">
-    <b>à partir de 75 € la nuit</b>
+    <b>à partir de 75 € la nuit</b>
     2 voyageurs · terrasse et jardin
   </div>
   <a class="bouton" href="[LIEN-AIRBNB]" target="_blank" rel="noopener">Réserver</a>
@@ -2655,6 +2711,28 @@ if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     });
   };
 
+})();
+</script>
+
+<script>
+/* À l’impression, on déplie les questions puis on remet tout comme c’était. */
+(function(){
+  var ouverts=[];
+  function avant(){
+    ouverts=[];
+    [].forEach.call(document.querySelectorAll('.faq details'), function(d){
+      if(!d.open){ ouverts.push(d); d.open=true; }
+    });
+  }
+  function apres(){ ouverts.forEach(function(d){ d.open=false; }); ouverts=[]; }
+  window.addEventListener('beforeprint', avant);
+  window.addEventListener('afterprint', apres);
+  if(window.matchMedia){
+    var mq=window.matchMedia('print');
+    var bascule=function(e){ (e.matches ? avant : apres)(); };
+    if(mq.addEventListener) mq.addEventListener('change', bascule);
+    else if(mq.addListener) mq.addListener(bascule);
+  }
 })();
 </script>
 

@@ -163,7 +163,43 @@ Audit WCAG 2.1 AA passé avec le plugin **Design** d’Anthropic, puis correctio
   adresse, pied de page, questions de la FAQ).
 - `scroll-padding-top` de 72 px sur mobile, pour que les ancres ne passent pas sous la barre.
 
-Vérifié sans débordement horizontal à 1280, 768, 390 et 320 px, et au zoom 200 %.
+Vérifié sans débordement horizontal à 1600, 1280, 1024, 768, 390, 360 et 320 px,
+au zoom 200 %, et sans erreur JavaScript.
+
+## Typographie française
+
+Les espaces fines et insécables sont **dans le texte**, pas en CSS, pour qu’elles survivent
+à un copier-coller :
+
+- `U+00A0` (espace insécable) avant `:` et devant `€` — 61 occurrences ;
+- `U+202F` (espace fine insécable) avant `? ! ;` et `%`, à l’intérieur des guillemets
+  `« »`, et entre un nombre et son unité — 18 occurrences ;
+- `U+2011` (trait d’union insécable) dans les mots courts qui se coupaient en fin de ligne :
+  `week‑end`, `juillet‑août`, `plain‑pied`, `après‑midi`, `aller‑retour`, `demi‑journée`.
+  Les noms de lieux longs (Saint‑Gilles‑Croix‑de‑Vie) restent sécables **à dessein** :
+  insécables, ils débordaient de l’écran à 320 px.
+
+Si vous retouchez un texte, ces caractères sont invisibles dans un éditeur. Le plus simple
+est de copier une phrase voisine et de la modifier, plutôt que de retaper la ponctuation.
+
+Ajouté aussi : `text-wrap: pretty` sur les paragraphes (plus de mot seul en fin de
+paragraphe), `text-wrap: balance` sur les intertitres, et une couleur de sélection
+aux teintes du site.
+
+## L’impression
+
+La page a une feuille de style d’impression : `Ctrl/Cmd + P` donne une fiche propre d’une
+quinzaine de pages, utilisable comme livret d’accueil ou comme document à envoyer.
+
+Ce qui change à l’impression : la navigation, les photos, le portfolio, la citation et la
+section « Une journée ici » disparaissent ; les deux bandeaux sombres repassent en noir sur
+blanc ; les grilles à deux colonnes se mettent sur une seule ; **les questions fréquentes
+s’impriment dépliées** (un script les ouvre sur `beforeprint` et les referme après) ;
+l’adresse de chaque lien est imprimée entre parenthèses, en minuscules. Le plan au crayon
+s’imprime, lui, tel quel.
+
+Les repères `[…]` restent visibles sur le papier : c’est volontaire, ils servent de
+liste de relecture.
 
 ## Référencement
 
