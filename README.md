@@ -276,7 +276,9 @@ Trois choses se décident toutes seules :
 - **au premier passage**, un navigateur qui n’est pas en français ouvre la page en anglais ;
 - **le choix est retenu** d’une visite à l’autre ;
 - **l’adresse suit** : passer en anglais ajoute `?lang=en`, ce qui rend la version anglaise
-  partageable telle quelle. Les balises `hreflang` du `<head>` l’annoncent aux moteurs.
+  partageable telle quelle. Elle n’est volontairement **pas** annoncée aux moteurs
+  (pas de `hreflang`) : la traduction se fait dans le navigateur, Google ne voit que le
+  français, et `?lang=en` passerait pour un doublon.
 
 ### Comment elle est faite
 
@@ -360,15 +362,14 @@ liste de relecture.
 - `fetchpriority="high"` sur la photo d’accroche, `loading="lazy"` et dimensions sur toutes
   les autres, `decoding="async"` partout.
 
-- `robots.txt` et `sitemap.xml` à la racine, pour que Google trouve la page et connaisse
-  ses deux versions linguistiques.
+- `robots.txt` et `sitemap.xml` à la racine, pour que Google trouve la page.
 - Titre de 60 caractères et description de 155 : au-delà, Google coupe.
 
-**Si le site change d’adresse** (nom de domaine à vous, autre hébergeur), neuf adresses
+**Si le site change d’adresse** (nom de domaine à vous, autre hébergeur), huit adresses
 absolues sont à mettre à jour : six dans le `<head>` d’`index.html`, signalées par un
-commentaire juste au-dessus — `canonical`, les trois `hreflang`, `og:url`, `og:image`,
-`twitter:image`, puis `url` et `image` dans le bloc JSON-LD — plus `robots.txt` et les
-quatre adresses de `sitemap.xml`. Une adresse relative ne produit **aucun** aperçu de lien :
+commentaire juste au-dessus — `canonical`, `og:url`, `og:image`,
+`twitter:image`, puis `url` et `image` dans le bloc JSON-LD — plus `robots.txt` et
+l’adresse de `sitemap.xml`. Une adresse relative ne produit **aucun** aperçu de lien :
 c’est la raison pour laquelle elles sont écrites en entier.
 
 Après une mise en ligne, Facebook et LinkedIn gardent l’ancien aperçu en cache pendant
