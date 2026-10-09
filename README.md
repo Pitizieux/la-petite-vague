@@ -98,7 +98,6 @@ Le site étant **déjà en ligne**, ces repères sont publics : à combler vite.
 - **Ménage** : `[110 €]` et `[Préciser : forfait par séjour ou par semaine.]` — le montant
   apparaît **deux fois**, dans Tarifs et dans Infos pratiques.
 - **Taxe de séjour** : `[00 €]`, par personne et par nuit — **deux fois** également.
-- **Horaires** : `[16 h]` à l’arrivée, `[10 h]` au départ, à valider avec Halo Conciergerie.
 - **Numéro de déclaration en mairie** : `[00000]`, dans le pied de page. Obligation légale
   pour un meublé de tourisme, et exigé par l’office de tourisme pour vous référencer.
 
