@@ -150,6 +150,12 @@ EN = {
 "Tout en blanc": "All in white",
 "Le jardin, derrière": "The garden, behind",
 "La table du matin": "The morning table",
+"Vu du ciel, du toit de la maison jusqu’à l’océan": "From the sky, from the roof up to the ocean",
+"La rue, la plage, puis l’océan": "The street, the beach, then the ocean",
+"La maison et son jardin, vus d’en haut": "The house and its garden, from above",
+"Le quartier vu du ciel, la plage et l’océan au loin": "The neighbourhood from the air, with the beach and the ocean beyond",
+"La maison et son jardin vus d’en haut, au coin de la rue": "The house and its garden from above, on the street corner",
+"Survol en drone, de la maison jusqu’à l’océan": "Drone flight, from the house to the ocean",
 "La maison — 223 bis rue Georges Clemenceau, Saint-Hilaire-de-Riez":
   "The house — 223 bis rue Georges Clemenceau, Saint-Hilaire-de-Riez",
 
