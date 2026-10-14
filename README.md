@@ -89,17 +89,19 @@ Le site étant **déjà en ligne**, ces repères sont publics : à combler vite.
 
 **1. Bloquant — on ne peut pas réserver**
 
-- `[LIEN-AIRBNB]` — **trois fois** (lignes du bouton Réserver, du pied de page et de la barre
-  mobile). C’est le seul repère **invisible** sur la page, puisque c’est une adresse :
-  cherchez-le dans le fichier. Collez l’URL de l’annonce, en gardant les guillemets.
+- **Lien Airbnb** — en attendant l’annonce, le bouton de la section Réserver affiche
+  « Réservations bientôt ouvertes sur Airbnb » et ne mène nulle part (plutôt qu’un lien
+  cassé). Le jour où l’annonce est en ligne, cherchez `AIRBNB :` dans `index.html` :
+  trois commentaires indiquent exactement quoi remplacer (bouton, pied de page, barre mobile).
 
 **2. Ce qu’un voyageur veut savoir avant de réserver**
 
 - **Ménage** : `[110 €]` et `[Préciser : forfait par séjour ou par semaine.]` — le montant
   apparaît **deux fois**, dans Tarifs et dans Infos pratiques.
 - **Taxe de séjour** : `[00 €]`, par personne et par nuit — **deux fois** également.
-- **Numéro de déclaration en mairie** : `[00000]`, dans le pied de page. Obligation légale
-  pour un meublé de tourisme, et exigé par l’office de tourisme pour vous référencer.
+- **Numéro de déclaration en mairie** : pas encore attribué ; la ligne a été retirée du pied
+  de page. À rajouter dès réception (obligation légale pour un meublé de tourisme, et exigé
+  par l’office de tourisme pour vous référencer).
 
 **3. Détails d’équipement**
 
@@ -174,6 +176,10 @@ réellement convenu avec elle.
 | `photos/carte-cote.jpg` | Bandeau pleine largeur |
 | `photos/pf-*.jpg` | Portfolio « En images », onze photos |
 | `photos/partage.jpg` | Nulle part sur la page : c’est la vignette d’aperçu du lien (1200 × 630, recadrée dans `pf-sejour-soir.jpg`) |
+
+La page affiche les versions **`.webp`** de ces photos (30 à 50 % plus légères) ; les `.jpg`
+restent comme originaux et servent aux aperçus de lien. Pour changer une photo, remplacez le
+`.jpg` puis régénérez le `.webp` (par ex. sur squoosh.app, qualité 80).
 
 Pour remplacer une photo : gardez le même nom de fichier, largeur ~1600 px, format JPEG.
 

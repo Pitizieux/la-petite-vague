@@ -33,7 +33,8 @@ EN = {
 "Pratique": "Practical",
 
 # ——— Accroche ————————————————————————————————————————————————
-"Saint-Hilaire-de-Riez · entre mer et marais": "Saint-Hilaire-de-Riez · between sea and marsh",
+"Location pour deux · Saint-Hilaire-de-Riez, Vendée": "A house for two · Saint-Hilaire-de-Riez, Vendée",
+"Réservations bientôt ouvertes sur Airbnb": "Booking opens soon on Airbnb",
 "Cinquante-cinq mètres carrés de calme, posés entre l’océan et les marais. Le matin, la lumière monte du marais ; le soir, la mer se retire derrière les dunes et l’on entend le vent passer dans les pins. Le temps d’un week‑end, ou de tout un été.":
   "Fifty-five square metres of quiet, set down between the ocean and the marshes. In the morning the light comes up off the water; in the evening the sea pulls back behind the dunes and you can hear the wind moving through the pines. For a weekend, or for a whole summer.",
 "2 voyageurs": "2 guests",
@@ -426,8 +427,6 @@ EN = {
 # ——— Pied de page et barre mobile —————————————————————————————
 "85270 Saint-Hilaire-de-Riez, Vendée": "85270 Saint-Hilaire-de-Riez, Vendée, France",
 "Réserver sur Airbnb": "Book on Airbnb",
-"Meublé de tourisme n°": "Registered holiday let no.",
-"Mentions légales · Conditions de réservation · Confidentialité": "Legal notice · Booking terms · Privacy",
 "Vues aériennes © Google": "Aerial views © Google",
 "à partir de 75 € la nuit": "from €75 a night",
 "2 voyageurs · terrasse et jardin": "2 guests · terrace and garden",
