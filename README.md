@@ -80,6 +80,21 @@ git push
 Par l’interface, sans ligne de commande : ouvrez le fichier sur github.com, le crayon en
 haut à droite, modifiez, puis *Commit changes*.
 
+## Animations (Motion)
+
+Les animations « vivantes » viennent de **Motion**, la bibliothèque de Framer Motion dans
+sa version sans React. Elles sont dans `mouvement.js` (racine), chargé par les deux pages :
+apparitions en cascade avec effet ressort, rideau sur les photos, parallaxe douce des grandes
+photos, chiffres clés qui défilent, fil de lecture terracotta en haut de l’écran, visionneuse
+et sommaire mobile animés, pression des boutons.
+
+- **On ne modifie pas `mouvement.js` à la main** : c’est un fichier fabriqué. La source est
+  `_mouvement/source.js`. Après modification : `cd _mouvement && npm install && npm run build`.
+- **Si `mouvement.js` manque ou plante**, la page garde ses animations CSS d’origine ;
+  sans JavaScript, rien n’est caché.
+- **Animations réduites** demandées par le système : Motion ne fait rien.
+- Hébergement Hostinger : téléverser aussi `mouvement.js` à côté d’`index.html`.
+
 ## À compléter dans `index.html`
 
 Tout ce qui reste à remplir est **visible sur la page** : fond terracotta pâle et soulignement
