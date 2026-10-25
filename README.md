@@ -95,6 +95,21 @@ et sommaire mobile animés, pression des boutons.
 - **Animations réduites** demandées par le système : Motion ne fait rien.
 - Hébergement Hostinger : téléverser aussi `mouvement.js` à côté d’`index.html`.
 
+## Calendrier des disponibilités
+
+La section Réserver affiche les dates libres et réservées, recopiées du calendrier Airbnb.
+
+- Toutes les trois heures, GitHub Actions (`.github/workflows/disponibilites.yml`) lit le
+  calendrier iCal exporté par Airbnb et écrit `disponibilites.json` (seulement des plages
+  de dates, aucun nom de voyageur). La page lit ce fichier.
+- L’adresse iCal n’est **pas** dans le dépôt, qui est public : elle est dans le secret
+  `AIRBNB_ICAL` (Settings → Secrets and variables → Actions). Pour la changer, modifiez ce secret.
+- Pour forcer une mise à jour : onglet **Actions** → *Disponibilités Airbnb* → *Run workflow*.
+- Le calendrier reste caché si le fichier est vide ou date de plus de quatre jours :
+  jamais de dates fausses affichées. Le script est dans `_dispo/maj.py`.
+- Hébergement Hostinger : le calendrier ne se met pas à jour tout seul là-bas (pas
+  d’Actions) ; il resterait caché.
+
 ## À compléter dans `index.html`
 
 Tout ce qui reste à remplir est **visible sur la page** : fond terracotta pâle et soulignement

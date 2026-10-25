@@ -586,6 +586,36 @@ h3,h4,.nom,.piece,.nom-saison,.saison h4,.moment h4{text-wrap:balance}
   .anim :where(*){opacity:1!important;transform:none!important}
 }
 
+/* Disponibilités (calendrier Airbnb recopié dans /disponibilites.json) */
+.dispo{margin-top:40px;padding-top:30px;border-top:1px solid rgba(247,243,236,.16)}
+.dispo-tete{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:22px}
+.dispo-tete h3{margin:0;font-family:var(--serif);font-weight:400;font-size:24px;color:#F7F3EC}
+.dispo-nav{display:flex;gap:8px}
+.dispo-nav button{width:44px;height:44px;border-radius:50%;border:1px solid rgba(247,243,236,.3);
+  background:transparent;color:#F7F3EC;font-size:18px;cursor:pointer;transition:border-color .3s,background .3s}
+.dispo-nav button:hover:not(:disabled){border-color:var(--ecume);background:rgba(232,183,154,.12)}
+.dispo-nav button:disabled{opacity:.3;cursor:default}
+.dispo-mois{display:grid;gap:34px}
+@media(min-width:760px){.dispo-mois{grid-template-columns:1fr 1fr;gap:48px}}
+.dispo table{width:100%;border-collapse:collapse;table-layout:fixed}
+.dispo caption{text-align:left;font-size:12px;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--ecume);padding-bottom:12px}
+.dispo abbr{text-decoration:none}
+.dispo th{font-weight:400;font-size:11px;letter-spacing:.08em;color:rgba(247,243,236,.55);padding:0 0 8px}
+.dispo td{text-align:center;padding:2px}
+.dispo td span{display:flex;align-items:center;justify-content:center;width:38px;height:38px;max-width:100%;margin:0 auto;border-radius:50%;
+  font-size:14px;color:#F7F3EC;font-variant-numeric:tabular-nums}
+.dispo td.libre span{background:rgba(232,183,154,.10)}
+.dispo td.pris span{color:rgba(247,243,236,.38);text-decoration:line-through;text-decoration-color:rgba(232,183,154,.6)}
+.dispo td.passe span{color:rgba(247,243,236,.22)}
+.dispo td.auj span{box-shadow:inset 0 0 0 1px var(--ecume)}
+.dispo-legende{display:flex;flex-wrap:wrap;gap:8px 20px;margin:22px 0 0;font-size:13px;color:rgba(247,243,236,.72)}
+.dispo-legende i{display:inline-block;width:14px;height:14px;border-radius:50%;vertical-align:-2px;margin-right:7px}
+.dispo-legende .l-libre{background:rgba(232,183,154,.28)}
+.dispo-legende .l-pris{background:transparent;box-shadow:inset 0 0 0 1px rgba(247,243,236,.3)}
+.dispo-legende .maj{flex-basis:100%;color:rgba(247,243,236,.5);font-size:12px}
+@media print{.dispo{display:none!important}}
+
 /* ——— Animations douces ———
    Tout est conditionné à la classe .anim, posée par un script en tête de page :
    sans JavaScript, la page s’affiche normalement, rien n’est caché. */
@@ -2658,6 +2688,9 @@ if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       <span class="montant">à partir de 75 €</span>
       <span class="unite">la nuit, selon la saison</span>
     </div>
+    <!-- Calendrier des disponibilités : rempli par le script « Disponibilités » en bas de page
+         à partir de /disponibilites.json. Reste caché tant que les données manquent. -->
+    <div class="dispo" id="dispo" hidden></div>
     <!-- AIRBNB : lien de l’annonce (aussi dans le pied de page, la barre mobile et le JSON-LD) -->
     <a class="bouton" href="https://www.airbnb.fr/rooms/1789342743414899078" target="_blank" rel="noopener">Voir les disponibilités sur Airbnb</a>
     <p class="mention">Une question avant de réserver ? La messagerie Airbnb reste le plus simple : on répond vite, et volontiers. Sur place, c’est Halo Conciergerie, à Saint-Gilles-Croix-de-Vie, qui vous accueille et veille au bon déroulement du séjour.</p>
@@ -2870,6 +2903,101 @@ if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
 </script>
 
 <!-- TRADUCTION:DEBUT — bloc produit par _traduction/gen.py, ne pas modifier à la main -->
+<script>
+/* Disponibilités : /disponibilites.json est recopié du calendrier iCal d'Airbnb
+   toutes les trois heures (voir _dispo/ et .github/workflows/). Le calendrier
+   reste caché si le fichier manque, est vide ou date de plus de quatre jours. */
+(function(){
+  var boite = document.getElementById('dispo');
+  if (!boite || !window.fetch) return;
+  var T = {
+    fr: {titre:'Disponibilités', libre:'Libre', pris:'Réservé', prec:'Mois précédent', suiv:'Mois suivant',
+         maj:'Mis à jour le ', foi:' · le calendrier Airbnb fait foi', nuitLibre:' : libre', nuitPrise:' : réservé'},
+    en: {titre:'Availability', libre:'Available', pris:'Booked', prec:'Previous month', suiv:'Next month',
+         maj:'Updated ', foi:' · Airbnb’s calendar is the reference', nuitLibre:': available', nuitPrise:': booked'}
+  };
+  var pris = {}, majLe = null, debut = 0, MAX = 16;
+  var auj = new Date(); auj.setHours(0,0,0,0);
+
+  function iso(d){ return d.getFullYear()+'-'+('0'+(d.getMonth()+1)).slice(-2)+'-'+('0'+d.getDate()).slice(-2); }
+  function langue(){ return document.documentElement.lang === 'en' ? 'en' : 'fr'; }
+  function nbMois(){ return window.matchMedia('(min-width:760px)').matches ? 2 : 1; }
+
+  function mois(decalage, l){
+    var d0 = new Date(auj.getFullYear(), auj.getMonth() + decalage, 1);
+    var loc = l === 'en' ? 'en-GB' : 'fr-FR';
+    var nom = new Intl.DateTimeFormat(loc, {month:'long', year:'numeric'}).format(d0);
+    var jourLong = new Intl.DateTimeFormat(loc, {weekday:'long', day:'numeric', month:'long'});
+    var h = '<table><caption>' + nom + '</caption><thead><tr>';
+    for (var k = 0; k < 7; k++){             // lundi en premier
+      var j = new Date(2024, 0, 1 + k);       // le 1er janvier 2024 est un lundi
+      var court = new Intl.DateTimeFormat(loc, {weekday:'short'}).format(j).replace('.', '');
+      var long = new Intl.DateTimeFormat(loc, {weekday:'long'}).format(j);
+      h += '<th scope="col"><abbr title="' + long + '">' + court.charAt(0).toUpperCase() + court.slice(1, 3) + '</abbr></th>';
+    }
+    h += '</tr></thead><tbody><tr>';
+    var vide = (d0.getDay() + 6) % 7;
+    for (k = 0; k < vide; k++) h += '<td></td>';
+    var d = new Date(d0), col = vide;
+    while (d.getMonth() === d0.getMonth()){
+      var cle = iso(d), passe = d < auj, occ = !!pris[cle];
+      var cls = passe ? 'passe' : (occ ? 'pris' : 'libre');
+      if (+d === +auj) cls += ' auj';
+      var label = jourLong.format(d) + (passe ? '' : (occ ? T[l].nuitPrise : T[l].nuitLibre));
+      h += '<td class="' + cls + '"><span aria-label="' + label + '">' + d.getDate() + '</span></td>';
+      col++;
+      if (col % 7 === 0) h += '</tr><tr>';
+      d.setDate(d.getDate() + 1);
+    }
+    while (col % 7) { h += '<td></td>'; col++; }
+    return h + '</tr></tbody></table>';
+  }
+
+  function dessiner(){
+    var l = langue(), n = nbMois(), t = T[l];
+    debut = Math.max(0, Math.min(debut, MAX - n));
+    var corps = '';
+    for (var i = 0; i < n; i++) corps += mois(debut + i, l);
+    var quand = new Intl.DateTimeFormat(l === 'en' ? 'en-GB' : 'fr-FR',
+      {day:'numeric', month:'long', hour:'2-digit', minute:'2-digit'}).format(majLe);
+    boite.innerHTML =
+      '<div class="dispo-tete"><h3>' + t.titre + '</h3><div class="dispo-nav">' +
+      '<button type="button" data-pas="-1" aria-label="' + t.prec + '"' + (debut === 0 ? ' disabled' : '') + '>‹</button>' +
+      '<button type="button" data-pas="1" aria-label="' + t.suiv + '"' + (debut >= MAX - n ? ' disabled' : '') + '>›</button>' +
+      '</div></div><div class="dispo-mois" aria-live="polite">' + corps + '</div>' +
+      '<p class="dispo-legende"><span><i class="l-libre"></i>' + t.libre + '</span><span><i class="l-pris"></i>' + t.pris + '</span>' +
+      '<span class="maj">' + t.maj + quand + t.foi + '</span></p>';
+  }
+
+  boite.addEventListener('click', function(e){
+    var b = e.target.closest('button[data-pas]');
+    if (!b || b.disabled) return;
+    debut += parseInt(b.getAttribute('data-pas'), 10) * nbMois();
+    dessiner();
+    var autre = boite.querySelector('button[data-pas="' + b.getAttribute('data-pas') + '"]');
+    if (autre && !autre.disabled) autre.focus();
+    else { var b2 = boite.querySelector('.dispo-nav button:not(:disabled)'); if (b2) b2.focus(); }
+  });
+
+  fetch('/disponibilites.json?h=' + Math.floor(Date.now() / 6e5), {cache:'no-cache'})
+    .then(function(r){ return r.ok ? r.json() : null; })
+    .then(function(data){
+      if (!data || !data.maj || !data.occupe) return;
+      majLe = new Date(data.maj);
+      if (isNaN(majLe) || Date.now() - majLe > 4 * 864e5) return;   // trop ancien : on ne montre rien
+      data.occupe.forEach(function(p){
+        var a = new Date(p[0] + 'T00:00:00'), b = new Date(p[1] + 'T00:00:00');
+        for (var d = new Date(a); d < b; d.setDate(d.getDate() + 1)) pris[iso(d)] = true;
+      });
+      dessiner();
+      boite.hidden = false;
+      new MutationObserver(dessiner).observe(document.documentElement, {attributes:true, attributeFilter:['lang']});
+      var mq = window.matchMedia('(min-width:760px)');
+      if (mq.addEventListener) mq.addEventListener('change', dessiner);
+    })
+    .catch(function(){});
+})();
+</script>
 <script>
 /* Bascule français / anglais.
 

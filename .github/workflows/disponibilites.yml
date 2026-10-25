@@ -1,0 +1,46 @@
+# Recopie les disponibilités Airbnb dans /disponibilites.json, toutes les trois heures.
+# L'adresse iCal est le secret AIRBNB_ICAL (Settings → Secrets and variables → Actions).
+name: Disponibilités Airbnb
+
+on:
+  schedule:
+    - cron: "17 */3 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: disponibilites
+  cancel-in-progress: false
+
+jobs:
+  maj:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Lire le calendrier Airbnb
+        env:
+          AIRBNB_ICAL: ${{ secrets.AIRBNB_ICAL }}
+        run: |
+          if [ -z "$AIRBNB_ICAL" ]; then
+            echo "Le secret AIRBNB_ICAL n'est pas encore renseigné : rien à faire."
+            exit 0
+          fi
+          python3 _dispo/maj.py "$AIRBNB_ICAL" disponibilites.json
+      - name: Publier si les dates ont changé
+        run: |
+          # On ne publie que si les plages ont changé, pas pour la seule heure de mise à jour…
+          if git diff --quiet -- disponibilites.json; then exit 0; fi
+          ancien=$(git show HEAD:disponibilites.json | python3 -c "import json,sys;print(json.load(sys.stdin)['occupe'])" 2>/dev/null || echo "")
+          nouveau=$(python3 -c "import json;print(json.load(open('disponibilites.json'))['occupe'])")
+          heure=$(git show HEAD:disponibilites.json | python3 -c "import json,sys;print(json.load(sys.stdin)['maj'] or '')" 2>/dev/null || echo "")
+          # …sauf une fois par jour, pour que « mis à jour » reste vrai.
+          if [ "$ancien" = "$nouveau" ] && [ "${heure:0:10}" = "$(date -u +%F)" ]; then
+            git checkout -- disponibilites.json; exit 0
+          fi
+          git config user.name "Disponibilités Airbnb"
+          git config user.email "actions@users.noreply.github.com"
+          git add disponibilites.json
+          git commit -m "Disponibilités Airbnb mises à jour"
+          git push
