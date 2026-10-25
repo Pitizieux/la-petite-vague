@@ -104,10 +104,9 @@ Le site étant **déjà en ligne**, ces repères sont publics : à combler vite.
 
 **1. Bloquant — on ne peut pas réserver**
 
-- **Lien Airbnb** — en attendant l’annonce, le bouton de la section Réserver affiche
-  « Réservations bientôt ouvertes sur Airbnb » et ne mène nulle part (plutôt qu’un lien
-  cassé). Le jour où l’annonce est en ligne, cherchez `AIRBNB :` dans `index.html` :
-  trois commentaires indiquent exactement quoi remplacer (bouton, pied de page, barre mobile).
+- ~~**Lien Airbnb**~~ — fait : l’annonce `https://www.airbnb.fr/rooms/1789342743414899078` est reliée au bouton Réserver, au pied
+  de page, à la barre mobile, à la page télétravail et au JSON-LD (`sameAs`). Pour la changer,
+  cherchez `AIRBNB :` dans les deux pages.
 
 **2. Ce qu’un voyageur veut savoir avant de réserver**
 
@@ -372,7 +371,7 @@ liste de relecture.
 ## Référencement et partage du lien
 
 - **JSON-LD `VacationRental`** dans le `<head>` : adresse, coordonnées, surface, capacité,
-  équipements. À compléter avec l’URL de l’annonce quand le lien Airbnb sera connu.
+  équipements, et l’annonce Airbnb dans `sameAs`.
 - **Aperçu du lien** (Open Graph + carte Twitter) : quand vous envoyez l’adresse du site par
   SMS, WhatsApp, Messenger ou mail, le destinataire voit une vignette avec le séjour du soir,
   le titre et une phrase. L’image dédiée est `photos/partage.jpg`, au format 1200 × 630

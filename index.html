@@ -712,6 +712,7 @@ if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
   "@id": "https://lapetitevague85.com/#logement",
   "name": "La petite vague",
   "url": "https://lapetitevague85.com/",
+  "sameAs": ["https://www.airbnb.fr/rooms/1789342743414899078"],
   "description": "Maison de plain-pied de 55 m² pour deux voyageurs, avec 110 m² de terrasse et de jardin privatifs et un bureau fermé, à Saint-Hilaire-de-Riez. Corniche vendéenne à 10 minutes à pied, plage de Boisvinet à 15 minutes.",
   "address": {
     "@type": "PostalAddress",
@@ -2657,9 +2658,8 @@ if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       <span class="montant">à partir de 75 €</span>
       <span class="unite">la nuit, selon la saison</span>
     </div>
-    <!-- AIRBNB : quand l’annonce est en ligne, remplacer la ligne suivante par
-         <a class="bouton" href="LIEN-DE-L-ANNONCE" target="_blank" rel="noopener">Voir les disponibilités sur Airbnb</a> -->
-    <span class="bouton bouton-attente" aria-disabled="true">Réservations bientôt ouvertes sur Airbnb</span>
+    <!-- AIRBNB : lien de l’annonce (aussi dans le pied de page, la barre mobile et le JSON-LD) -->
+    <a class="bouton" href="https://www.airbnb.fr/rooms/1789342743414899078" target="_blank" rel="noopener">Voir les disponibilités sur Airbnb</a>
     <p class="mention">Une question avant de réserver ? La messagerie Airbnb reste le plus simple : on répond vite, et volontiers. Sur place, c’est Halo Conciergerie, à Saint-Gilles-Croix-de-Vie, qui vous accueille et veille au bon déroulement du séjour.</p>
   </div>
 </section>
@@ -2670,8 +2670,8 @@ if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
   <div class="wrap">
     <div class="pied-haut">
       <p>223 bis rue Georges Clemenceau<br>85270 Saint-Hilaire-de-Riez, Vendée<br><span class="coord">46.7046, -1.9509</span></p>
-      <!-- AIRBNB : remplacer par <p><a href="LIEN-DE-L-ANNONCE" target="_blank" rel="noopener">Réserver sur Airbnb</a></p> -->
-      <p>Réservations bientôt ouvertes sur Airbnb</p>
+      <!-- AIRBNB : lien de l’annonce -->
+      <p><a href="https://www.airbnb.fr/rooms/1789342743414899078" target="_blank" rel="noopener">Réserver sur Airbnb</a></p>
       <p class="legal">Vues aériennes © Google</p>
     </div>
     <p class="signature">la petite vague</p>
@@ -2683,8 +2683,8 @@ if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     <b>à partir de 75 € la nuit</b>
     2 voyageurs · terrasse et jardin
   </div>
-  <!-- AIRBNB : remplacer href="#reserver" par le lien de l’annonce, et ajouter target="_blank" rel="noopener" -->
-  <a class="bouton" href="#reserver">Réserver</a>
+  <!-- AIRBNB : lien de l’annonce -->
+  <a class="bouton" href="https://www.airbnb.fr/rooms/1789342743414899078" target="_blank" rel="noopener">Réserver</a>
 </div>
 
 <div class="visionneuse" id="visionneuse" role="dialog" aria-modal="true" aria-label="Photo agrandie">
