@@ -3,7 +3,7 @@
 Site vitrine d’une maison de 55 m² en location saisonnière, entre mer et marais,
 223 bis rue Georges Clemenceau — 85270 Saint-Hilaire-de-Riez.
 Une seule page, sans dépendance ni outil de build : `index.html` + le dossier `photos/`.
-Français et anglais, au choix du visiteur.
+Français (`/`) et anglais (`/en/`), deux pages liées entre elles.
 
 ## L’adresse du site
 
@@ -295,54 +295,36 @@ au zoom 200 %, et sans erreur JavaScript.
 
 ## La version anglaise
 
-Un petit drapeau en haut à droite fait basculer toute la page en anglais : l’en-tête sur
-ordinateur, la barre haute sur mobile, et la tête du sommaire plein écran. Il affiche la
-langue **vers laquelle** on va — Union Jack et « EN » quand la page est en français,
-tricolore et « FR » quand elle est en anglais.
+La version anglaise est une **vraie page**, `/en/` (fichier `en/index.html`), annoncée à
+Google par des balises `hreflang` sur les deux pages et dans `sitemap.xml`. Google peut
+ainsi l’indexer et la proposer aux internautes anglophones, pendant que la page française
+reste celle que voient les francophones.
 
-Ce qui bascule : tous les textes, les descriptions des photos (lues par les lecteurs
-d’écran), les libellés du plan, le titre de l’onglet, la description pour les moteurs de
-recherche et l’aperçu du lien. Le `lang` de la page change aussi, pour que les synthèses
-vocales prononcent correctement.
-
-Trois choses se décident toutes seules :
-
-- **au premier passage**, un navigateur qui n’est pas en français ouvre la page en anglais ;
-- **le choix est retenu** d’une visite à l’autre ;
-- **l’adresse suit** : passer en anglais ajoute `?lang=en`, ce qui rend la version anglaise
-  partageable telle quelle. Elle n’est volontairement **pas** annoncée aux moteurs
-  (pas de `hreflang`) : la traduction se fait dans le navigateur, Google ne voit que le
-  français, et `?lang=en` passerait pour un doublon.
+Le petit drapeau en haut à droite est un simple lien entre les deux pages : Union Jack et
+« EN » sur la page française, tricolore et « FR » sur la page anglaise. Il n’y a **plus de
+bascule automatique** selon la langue du navigateur : Googlebot se présente en anglais, et
+la bascule lui aurait montré une page d’accueil en anglais. Les anciens liens `?lang=en` ou
+`#en` sont renvoyés vers `/en/`.
 
 ### Comment elle est faite
 
-Le français reste écrit en dur dans `index.html`. L’anglais vit dans un dictionnaire, où
-**chaque clé est la phrase française exacte** — à une exception près : les espaces
-insécables et fines du texte s’écrivent dans les clés comme des **espaces ordinaires**,
-parce que la comparaison normalise tous les blancs. Écrire `125 €` avec une insécable dans
-une clé la rend introuvable, et la phrase reste en français. Au clic, un script parcourt la page, remplace
-les textes reconnus et garde les originaux pour pouvoir revenir en arrière. Il n’y a donc
-qu’une seule page à maintenir, pas deux.
+Le français reste écrit en dur dans `index.html`, la seule page à modifier à la main.
+L’anglais vit dans un dictionnaire, `_traduction/en.py`, où **chaque clé est la phrase
+française exacte** — à une exception près : les espaces insécables et fines s’écrivent dans
+les clés comme des **espaces ordinaires**, parce que la comparaison normalise tous les
+blancs.
 
-Le dictionnaire est dans `_traduction/en.py`. Pour le modifier :
+Après **toute** modification de `index.html` (texte, photo, prix…), régénérez la page
+anglaise :
 
 ```bash
 cd _traduction
-python3 gen.py      # réécrit le bloc TRADUCTION:DEBUT…FIN dans index.html
+python3 gen.py      # réécrit en/index.html à partir de index.html et du dictionnaire
 ```
 
-**Le piège à connaître** : si vous changez une phrase française dans `index.html` sans
-changer la clé correspondante dans `en.py`, cette phrase restera en français en version
-anglaise. Pour vérifier, ouvrez la page **en français**, puis la console du navigateur
-(F12 → Console) et tapez :
-
-```js
-LPV_ORPHELINS()
-```
-
-La fonction liste les textes que le dictionnaire ne connaît pas. En temps normal elle ne
-renvoie que la marque, l’adresse, les noms propres et les repères `[…]` — tout le reste doit
-avoir sa traduction.
+Le script liste à la fin les phrases françaises que le dictionnaire ne connaît pas : ajoutez
+leur traduction dans `en.py` et relancez. **Ne modifiez jamais `en/index.html` à la main** :
+il est écrasé à chaque passage du script.
 
 L’anglais est britannique (*metres*, *centimetres*, *neighbourhood*), les prix passent devant
 le nombre (75 € → €75), les décimales prennent un point (3,7 m² → 3.7 m²) et il n’y a pas

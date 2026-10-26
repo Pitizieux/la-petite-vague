@@ -1,167 +1,159 @@
 # -*- coding: utf-8 -*-
-"""Insère la traduction anglaise dans index.html.
+"""Fabrique la version anglaise du site : /en/index.html.
 
     cd _traduction && python3 gen.py
 
-Lit en.py, fabrique le bloc JavaScript et le remplace entre les deux
-balises TRADUCTION:DEBUT / TRADUCTION:FIN dans index.html.
-Ne touche à rien d'autre dans le fichier.
+Le français reste la page de référence (index.html, écrite à la main).
+Ce script lit en.py — un dictionnaire dont chaque clé est une phrase
+française EXACTE de index.html — et écrit en/index.html, une vraie page
+anglaise que Google peut lire et indexer (balises hreflang de part et
+d'autre). Relancez-le après chaque modification de index.html.
+
+Il remplace aussi, dans index.html, le bloc entre TRADUCTION:DEBUT et
+TRADUCTION:FIN par un petit script qui renvoie les anciennes adresses
+anglaises (?lang=en, #en) vers /en/.
+
+En fin de course, il liste les phrases françaises que le dictionnaire ne
+connaît pas encore : ajoutez-les dans en.py puis relancez.
 """
-import json, os, re, sys
+import html, json, os, re, sys
 
 ICI = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, ICI)
 from en import EN, META, UI
 
-PAGE = os.path.join(ICI, '..', 'index.html')
+RACINE = os.path.join(ICI, '..')
+PAGE = os.path.join(RACINE, 'index.html')
+SORTIE = os.path.join(RACINE, 'en', 'index.html')
+SITE = 'https://lapetitevague85.com'
+
 DEBUT = '<!-- TRADUCTION:DEBUT — bloc produit par _traduction/gen.py, ne pas modifier à la main -->'
 FIN = '<!-- TRADUCTION:FIN -->'
 
-dico = json.dumps(EN, ensure_ascii=False, sort_keys=True, separators=(',', ':'))
-meta = json.dumps(META, ensure_ascii=False, separators=(',', ':'))
-ui = json.dumps(UI, ensure_ascii=False, separators=(',', ':'))
+# Noms propres et libellés déjà en anglais : rien à traduire.
+NOMS = {'English', 'Read this page in English', 'La petite', 'la petite vague', 'vague',
+        'La petite vague — 55 m²', 'Saint-Hilaire-de-Riez', 'Saint-Gilles-Croix-de-Vie',
+        '85270 Saint-Hilaire-de-Riez', '223 bis rue Georges Clemenceau', 'haloconcierge.fr',
+        '© Google', '— © Google', '46.7046, -1.9509 ·', '55 m²', '110 m²', '15 min'}
 
-JS = f'''{DEBUT}
+TITRE_EN = 'Holiday rental for two in Saint-Hilaire-de-Riez (Vendée) | La petite vague'
+
+RENVOI = f'''{DEBUT}
 <script>
-/* Bascule français / anglais.
-
-   Le français est écrit en dur dans la page ; l'anglais vit dans le
-   dictionnaire ci-dessous, dont chaque clé est la phrase française EXACTE.
-   Si vous modifiez un texte français dans la page, modifiez la clé
-   correspondante : sinon la phrase restera en français en version anglaise.
-   La console du navigateur affiche la liste des clés orphelines.
-
-   Pour régénérer ce bloc : cd _traduction && python3 gen.py */
+/* La version anglaise est une vraie page : /en/. Les anciens liens
+   (?lang=en ou #en) y sont renvoyés. Pour régénérer : cd _traduction && python3 gen.py */
 (function(){{
-  var EN = {dico};
-  var META = {meta};
-  var UI = {ui};
-
-  var html = document.documentElement;
-  var boutons = [].slice.call(document.querySelectorAll('.langue'));
-  var origines = null;          // [élément|nœud, attribut|null, valeur française]
-  var langue = 'fr';
-
-  function clef(v){{ return (v || '').replace(/\\s+/g, ' ').trim(); }}
-
-  /* On relève une fois pour toutes ce qui est traduisible, en gardant
-     la valeur française pour pouvoir revenir en arrière. */
-  function relever(){{
-    var liste = [];
-    var w = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, null, false);
-    var n;
-    while ((n = w.nextNode())){{
-      var p = n.parentElement;
-      if (!p || p.closest('script,style')) continue;
-      var k = clef(n.nodeValue);
-      if (k && Object.prototype.hasOwnProperty.call(EN, k)) liste.push([n, null, n.nodeValue, EN[k]]);
-    }}
-    ['alt','aria-label','title'].forEach(function(a){{
-      [].forEach.call(document.querySelectorAll('[' + a + ']'), function(el){{
-        var v = el.getAttribute(a), k = clef(v);
-        if (!k) return;
-        if (Object.prototype.hasOwnProperty.call(EN, k)){{ liste.push([el, a, v, EN[k]]); return; }}
-        /* « Agrandir : <description> » est fabriqué par le script de la
-           visionneuse : on traduit le préfixe et la description séparément. */
-        if (k.indexOf('Agrandir : ') === 0){{
-          var reste = clef(k.slice(11));
-          if (Object.prototype.hasOwnProperty.call(EN, reste))
-            liste.push([el, a, v, UI.agrandir + EN[reste]]);
-        }}
-      }});
-    }});
-    return liste;
-  }}
-
-  function metaSet(sel, valeur){{
-    var e = document.querySelector(sel);
-    if (e) e.setAttribute('content', valeur);
-  }}
-
-  function poser(l){{
-    if (l === langue) return;
-    if (!origines) origines = relever();
-    var vers = (l === 'en');
-    origines.forEach(function(o){{
-      var cible = o[0], attr = o[1], fr = o[2], en = o[3];
-      var v = vers ? en : fr;
-      if (vers && attr === null){{
-        /* on garde l'espacement d'origine autour du texte */
-        v = (/^\\s/.test(fr) ? ' ' : '') + en + (/\\s$/.test(fr) ? ' ' : '');
-      }}
-      if (attr) cible.setAttribute(attr, v); else cible.nodeValue = v;
-    }});
-    html.lang = l;
-    document.title = vers ? META.titre : META.titre_fr;
-    metaSet('meta[name="description"]', vers ? META.description : META.description_fr);
-    metaSet('meta[property="og:title"]', vers ? META.og_titre : META.og_titre_fr);
-    metaSet('meta[property="og:description"]', vers ? META.og_description : META.og_description_fr);
-    metaSet('meta[property="og:locale"]', vers ? 'en_GB' : 'fr_FR');
-    boutons.forEach(function(b){{
-      b.setAttribute('lang', vers ? 'fr' : 'en');
-      b.setAttribute('aria-label', vers ? 'Lire cette page en français' : 'Read this page in English');
-      b.setAttribute('title', vers ? 'Français' : 'English');
-    }});
-    window.LPV_LANGUE = langue = l;
-    try {{ localStorage.setItem('lpv-langue', l); }} catch (e) {{}}
-    try {{
-      var u = new URL(location.href);
-      if (vers) u.searchParams.set('lang', 'en'); else u.searchParams.delete('lang');
-      history.replaceState(null, '', u.pathname + u.search + u.hash);
-    }} catch (e) {{}}
-  }}
-
-  /* Le français de départ, pour pouvoir y revenir. */
-  META.titre_fr = document.title;
-  ['description_fr','og_titre_fr','og_description_fr'].forEach(function(c, i){{
-    var sel = ['meta[name="description"]','meta[property="og:title"]','meta[property="og:description"]'][i];
-    var e = document.querySelector(sel);
-    META[c] = e ? e.getAttribute('content') : '';
-  }});
-
-  boutons.forEach(function(b){{
-    b.setAttribute('lang', 'en');
-    b.setAttribute('aria-label', 'Read this page in English');
-    b.setAttribute('title', 'English');
-    b.addEventListener('click', function(){{ poser(langue === 'fr' ? 'en' : 'fr'); }});
-  }});
-
-  /* Choix au chargement : ce que le visiteur a déjà choisi, sinon l'adresse,
-     sinon la langue du navigateur. */
-  var voulu = null;
-  try {{ voulu = localStorage.getItem('lpv-langue'); }} catch (e) {{}}
-  if (!voulu){{
+  try {{
     var p = new URLSearchParams(location.search).get('lang');
-    if (p === 'en' || p === 'fr') voulu = p;
-    else if (location.hash === '#en') voulu = 'en';
-    else if (!/^fr/i.test(navigator.language || 'fr')) voulu = 'en';
-  }}
-  if (voulu === 'en') poser('en');
-
-  /* Aide à la maintenance : signale les textes français que le dictionnaire
-     ne connaît pas (visible seulement dans la console du navigateur). */
-  window.LPV_ORPHELINS = function(){{
-    if (langue !== 'fr') return ['Repassez la page en français avant de lancer ce test.'];
-    var m = [], w = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, null, false), n;
-    while ((n = w.nextNode())){{
-      var p = n.parentElement;
-      if (!p || p.closest('script,style')) continue;
-      var k = clef(n.nodeValue);
-      if (!k || k.length <= 3) continue;
-      if (/^[\\d\\s.,:°+\\/-]+$/.test(k)) continue;
-      if (Object.prototype.hasOwnProperty.call(EN, k)) continue;
-      if (m.indexOf(k) < 0) m.push(k);
-    }}
-    return m;
-  }};
+    if (p === 'en' || location.hash === '#en')
+      location.replace('/en/' + (location.hash === '#en' ? '' : location.hash));
+  }} catch (e) {{}}
 }})();
 </script>
 {FIN}'''
 
-s = open(PAGE, encoding='utf-8').read()
-if DEBUT in s:
-    s = re.sub(re.escape(DEBUT) + r'.*?' + re.escape(FIN), lambda _: JS, s, flags=re.S)
+
+def clef(v):
+    return re.sub(r'\s+', ' ', v or '').strip()
+
+
+def traduire_texte(brut, manquants):
+    k = clef(html.unescape(brut))
+    if not k:
+        return brut
+    if k in EN:
+        avant = re.match(r'^\s*', brut).group(0)
+        apres = re.search(r'\s*$', brut).group(0)
+        return avant + html.escape(EN[k], quote=False) + apres
+    if len(k) > 3 and k not in NOMS and not re.fullmatch(r'[\d\s.,:°+/×–—-]+', k):
+        manquants.add(k)
+    return brut
+
+
+def traduire_balise(balise, manquants):
+    def attr(m):
+        v = html.unescape(m.group(3))
+        k = clef(v)
+        if k in EN:
+            return m.group(1) + m.group(2) + '="' + html.escape(EN[k], quote=True) + '"'
+        if len(k) > 3 and k not in NOMS:
+            manquants.add(k)
+        return m.group(0)
+    balise = re.sub(r'(\s)(alt|aria-label|title)="([^"]*)"', attr, balise)
+    # chemins relatifs des photos et vidéos : la page vit un dossier plus bas
+    balise = re.sub(r'(\s(?:src|data-src|poster|href|srcset)=")(photos|media)/', r'\1/\2/', balise)
+    balise = re.sub(r'(,\s*)(photos|media)/', r'\1/\2/', balise)  # srcset multiples
+    return balise
+
+
+def traduire_corps(s, manquants):
+    morceaux = re.split(r'(<!--.*?-->|<script\b.*?</script>|<style\b.*?</style>|<[^>]+>)', s, flags=re.S)
+    sortie = []
+    for i, m in enumerate(morceaux):
+        if i % 2 == 0:
+            sortie.append(traduire_texte(m, manquants))
+        elif m.startswith('<!--') or m.startswith('<style'):
+            sortie.append(m)
+        elif m.startswith('<script'):
+            # libellé posé par la visionneuse photo
+            sortie.append(m.replace("'Agrandir : '", "'" + UI['agrandir'] + "'"))
+        else:
+            sortie.append(traduire_balise(m, manquants))
+    return ''.join(sortie)
+
+
+def meta(s, sel, valeur):
+    motif = r'(<meta ' + sel + r' content=")[^"]*(")'
+    return re.sub(motif, lambda m: m.group(1) + html.escape(valeur, quote=True) + m.group(2), s, count=1)
+
+
+# 1. Page française : renvoi des anciennes adresses anglaises
+fr = open(PAGE, encoding='utf-8').read()
+if DEBUT in fr:
+    fr = re.sub(re.escape(DEBUT) + r'.*?' + re.escape(FIN), lambda _: RENVOI, fr, flags=re.S)
 else:
-    s = s.replace('\n</body>', '\n' + JS + '\n</body>', 1)
-open(PAGE, 'w', encoding='utf-8').write(s)
-print('bloc de traduction inséré :', len(EN), 'phrases,', round(len(JS) / 1024), 'Ko')
+    fr = fr.replace('\n</body>', '\n' + RENVOI + '\n</body>', 1)
+open(PAGE, 'w', encoding='utf-8').write(fr)
+
+# 2. Page anglaise
+fin_tete = fr.index('</head>')
+tete, corps = fr[:fin_tete], fr[fin_tete:]
+corps = re.sub(re.escape(RENVOI), '', corps)
+manquants = set()
+corps = traduire_corps(corps, manquants)
+
+# lien de langue : vers le français
+corps = corps.replace(
+    '<a class="langue" href="/en/" hreflang="en" lang="en" aria-label="Read this page in English" title="English">',
+    '<a class="langue" href="/" hreflang="fr" lang="fr" aria-label="Lire cette page en français" title="Français">')
+# ancres internes : rester sur la page anglaise
+corps = corps.replace('href="/#', 'href="#')
+
+tete = tete.replace('<html lang="fr">', '<html lang="en">', 1)
+tete = re.sub(r'<title>.*?</title>', '<title>' + html.escape(TITRE_EN, quote=False) + '</title>', tete, count=1)
+tete = meta(tete, 'name="description"', META['description'])
+tete = meta(tete, 'property="og:title"', META['og_titre'])
+tete = meta(tete, 'property="og:description"', META['og_description'])
+tete = meta(tete, 'name="twitter:title"', META['og_titre'])
+tete = meta(tete, 'name="twitter:description"', META['og_description'])
+tete = meta(tete, 'property="og:url"', SITE + '/en/')
+tete = re.sub(r'<meta property="og:locale" content="fr_FR">',
+              '<meta property="og:locale" content="en_GB">\n<meta property="og:locale:alternate" content="fr_FR">', tete)
+alt = re.search(r'<meta property="og:image:alt" content="([^"]*)"', tete)
+if alt and clef(html.unescape(alt.group(1))) in EN:
+    tete = meta(tete, 'property="og:image:alt"', EN[clef(html.unescape(alt.group(1)))])
+tete = tete.replace('<link rel="canonical" href="https://lapetitevague85.com/">',
+                    '<link rel="canonical" href="https://lapetitevague85.com/en/">')
+tete = tete.replace('<meta charset="utf-8">',
+                    '<meta charset="utf-8">\n<script>window.LPV_LANGUE = \'en\';</script>', 1)
+
+en = tete + corps
+en = en.replace('<html lang="en">', '<html lang="en">\n<!-- Page produite par _traduction/gen.py à partir de index.html : ne pas modifier à la main. -->', 1)
+os.makedirs(os.path.dirname(SORTIE), exist_ok=True)
+open(SORTIE, 'w', encoding='utf-8').write(en)
+
+print('en/index.html écrite :', round(len(en) / 1024), 'Ko,', len(EN), 'phrases au dictionnaire')
+if manquants:
+    print(len(manquants), 'phrase(s) française(s) sans traduction :')
+    for k in sorted(manquants):
+        print('  -', k)
