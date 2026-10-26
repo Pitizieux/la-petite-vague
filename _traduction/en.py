@@ -475,6 +475,14 @@ EN = {
   "The garden at the back, wooden screen and hedge, in full sun",
 "La cuisine ouverte et la grande table de bois clair":
   "The open kitchen and the big pale wood table",
+
+# Liens vers les guides (pages en français)
+"Nos guides pour préparer le séjour :": "Our guides for planning your stay (in French):",
+"la Corniche vendéenne à pied": "the Corniche vendéenne on foot",
+"l’île d’Yeu depuis Saint-Gilles": "the Île d’Yeu from Saint-Gilles",
+"un week-end à deux": "a weekend for two",
+"Nos guides": "Our guides",
+"Télétravail au mois": "Remote work by the month",
 }
 
 # Métadonnées, hors corps de page : titre de l'onglet, description pour les
