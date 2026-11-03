@@ -372,6 +372,22 @@ EN = {
 "Coups de main du quotidien pendant le séjour": "A hand with day-to-day things during the stay",
 "Ces prestations sont facultatives, à convenir directement avec la conciergerie, et facturées séparément.":
   "These are optional, arranged directly with the concierge service, and billed separately.",
+"Détail des prestations complémentaires": "Optional extras and prices",
+"Prestations": "Optional",
+"complémentaires": "extras",
+"Linge et préparation de la maison": "Linen and getting the house ready",
+"Kit linge de lit double": "Double bed linen set",
+"Kit serviettes (une grande, une petite)": "Towel set (one large, one small)",
+"Pack linge — draps et serviettes pour deux": "Linen pack — sheets and towels for two",
+"Tapis de bain": "Bath mat",
+"Torchon": "Tea towel",
+"Lit fait à l’arrivée": "Bed made for your arrival",
+"16 €": "€16", "12 €": "€12", "35 €": "€35", "3 €": "€3", "2 €": "€2",
+"15 € / lit": "€15 per bed",
+"Tarifs de la conciergerie, à réserver et régler directement auprès d’elle.":
+  "The concierge service's prices, booked and paid directly with them.",
+"Fermer": "Close",
+"Halo Conciergerie": "Halo Conciergerie",
 
 # ——— Comment venir ————————————————————————————————————————————
 "Comment venir": "Getting here",
@@ -434,6 +450,7 @@ EN = {
 
 # ——— Visionneuse —————————————————————————————————————————————
 "Fermer": "Close",
+"Halo Conciergerie": "Halo Conciergerie",
 "Photo agrandie": "Enlarged photo",
 "Photo précédente": "Previous photo",
 "Photo suivante": "Next photo",

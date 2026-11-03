@@ -619,6 +619,26 @@ h3,h4,.nom,.piece,.nom-saison,.saison h4,.moment h4{text-wrap:balance}
 .dispo-legende .maj{flex-basis:100%;color:rgba(247,243,236,.5);font-size:12px}
 @media print{.dispo{display:none!important}}
 
+/* Prestations complémentaires (fenêtre) */
+.prestations-ouvrir{background:none;border:0;padding:0;margin-top:4px;font-family:inherit;cursor:pointer;text-align:left}
+.prestations{border:0;padding:0;max-width:min(520px,calc(100vw - 32px));width:100%;background:var(--creme);
+  color:var(--encre);box-shadow:0 30px 80px rgba(19,29,28,.35)}
+.prestations::backdrop{background:rgba(19,29,28,.55);-webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px)}
+.prestations-boite{position:relative;padding:34px 24px 26px}
+@media(min-width:600px){.prestations-boite{padding:42px 40px 34px}}
+.prestations .etiquette{display:block;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--terre);margin-bottom:10px}
+.prestations h4{font-size:clamp(24px,5.5vw,30px);line-height:1.15;margin:0 0 22px}
+.prestations table{width:100%;border-collapse:collapse;border-top:1px solid var(--trait)}
+.prestations caption{text-align:left;font-size:13px;color:var(--gris-clair);padding-bottom:10px}
+.prestations th,.prestations td{padding:13px 0;border-bottom:1px solid var(--trait);font-size:15.5px;line-height:1.5;vertical-align:baseline}
+.prestations th{font-weight:300;text-align:left;padding-right:16px}
+.prestations td{text-align:right;white-space:nowrap;font-family:var(--serif);font-size:18px}
+.prestations .note{margin:18px 0 0;font-size:14px;line-height:1.7;color:var(--gris-clair)}
+.prestations-fermer{position:absolute;top:8px;right:8px;width:44px;height:44px;border:0;background:none;
+  font-size:28px;line-height:1;color:var(--encre);cursor:pointer;border-radius:50%}
+.prestations-fermer:hover{background:var(--lin-fonce)}
+@media print{.prestations-ouvrir{display:none!important}}
+
 /* ——— Animations douces ———
    Tout est conditionné à la classe .anim, posée par un script en tête de page :
    sans JavaScript, la page s’affiche normalement, rien n’est caché. */
@@ -2652,9 +2672,28 @@ if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
             <li>A hand with day-to-day things during the stay</li>
           </ul>
           <p class="note">These are optional, arranged directly with the concierge service, and billed separately.</p>
+          <button type="button" class="lien-ot prestations-ouvrir" aria-haspopup="dialog" aria-controls="prestations">Optional extras and prices</button>
         </div>
       </div>
     </div>
+
+    <dialog class="prestations" id="prestations" aria-labelledby="prestations-titre">
+      <div class="prestations-boite">
+        <button type="button" class="prestations-fermer" aria-label="Close">&times;</button>
+        <span class="etiquette">Halo Conciergerie</span>
+        <h4 id="prestations-titre">Optional <em>extras</em></h4>
+        <table>
+          <caption>Linen and getting the house ready</caption>
+          <tr><th scope="row">Double bed linen set</th><td>€16</td></tr>
+          <tr><th scope="row">Towel set (one large, one small)</th><td>€12</td></tr>
+          <tr><th scope="row">Linen pack — sheets and towels for two</th><td>€35</td></tr>
+          <tr><th scope="row">Bath mat</th><td>€3</td></tr>
+          <tr><th scope="row">Tea towel</th><td>€2</td></tr>
+          <tr><th scope="row">Bed made for your arrival</th><td>€15 per bed</td></tr>
+        </table>
+        <p class="note">The concierge service's prices, booked and paid directly with them.</p>
+      </div>
+    </dialog>
 
     <div class="venir">
       <h4>Getting here</h4>
@@ -2960,6 +2999,19 @@ if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     l.addEventListener('click',function(){ setTimeout(etiquette,0); });
   });
   etiquette();
+})();
+</script>
+<script>
+/* Fenêtre « Prestations complémentaires » (élément <dialog> natif :
+   Échap, focus et lecteurs d’écran sont gérés par le navigateur). */
+(function(){
+  var d=document.getElementById('prestations'), o=document.querySelector('.prestations-ouvrir');
+  if(!d||!o) return;
+  if(typeof d.showModal!=='function'){ o.hidden=true; return; }
+  o.addEventListener('click',function(){ d.showModal(); });
+  d.querySelector('.prestations-fermer').addEventListener('click',function(){ d.close(); });
+  d.addEventListener('click',function(e){ if(e.target===d) d.close(); });   // clic à côté
+  d.addEventListener('close',function(){ o.focus(); });
 })();
 </script>
 </body>
