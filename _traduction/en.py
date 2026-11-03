@@ -325,10 +325,10 @@ EN = {
 "— 25 à 30 % de moins. C’est la formule pensée pour le télétravail, bureau compris.":
   "— 25–30% off. This is the one meant for working remotely, study included.",
 "Ménage": "Cleaning",
-"— forfait de 125 € en fin de séjour.": "— a flat €125 at the end of the stay.",
+"— forfait de 65 € en fin de séjour.": "— a flat €65 at the end of the stay.",
 "Taxe de séjour": "Tourist tax",
 "— collectée par Airbnb au moment de la réservation.": "— collected by Airbnb when you book.",
-"Forfait de 125 €": "Flat fee of €125",
+"Forfait de 65 €": "Flat fee of €65",
 "Collectée par Airbnb": "Collected by Airbnb",
 "Ces montants sont indicatifs : le calendrier d’Airbnb fait foi, et les prix y suivent la demande au jour le jour.":
   "These figures are a guide: the Airbnb calendar is what counts, and prices there follow demand day by day.",
@@ -345,7 +345,7 @@ EN = {
 "À partir de 17 h": "From 5 pm",
 "Départ": "Check-out",
 "Avant": "Before",
-"Avant 9 h": "Before 9 am",
+"Vers 9 h – 10 h": "Around 9–10 am",
 "Durée minimum": "Minimum stay",
 "2 à 7 nuits selon la saison": "2 to 7 nights depending on the season",
 "Accueil et remise des clés": "Welcome and keys",
