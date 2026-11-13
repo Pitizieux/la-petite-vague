@@ -167,6 +167,13 @@ p,li{text-wrap:pretty}
 .pied-haut{display:grid;gap:22px}
 @media(min-width:700px){.pied-haut{grid-template-columns:repeat(2,minmax(0,1fr))}}
 .legal{font-size:12.5px;color:rgba(247,243,236,.55)}
+.cartes-guides{margin:44px 0 0;padding:0;list-style:none;display:grid;gap:22px}
+@media(min-width:800px){.cartes-guides{grid-template-columns:repeat(2,minmax(0,1fr));gap:28px}}
+.cartes-guides a{display:grid;gap:14px;color:var(--encre)}
+.cartes-guides img{width:100%;height:220px;object-fit:cover}
+.cartes-guides h3{font-size:24px;line-height:1.15}
+.cartes-guides p{margin:0;font-size:15.5px;line-height:1.75;color:var(--gris)}
+.cartes-guides .suite{font-size:12.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--terre)}
 </style>
 <!-- Animations Motion (Framer Motion sans React) : source dans _mouvement/ -->
 <script src="/mouvement.js" defer></script>
@@ -248,7 +255,7 @@ p,li{text-wrap:pretty}
       <div><span class="quand">Avant le travail</span><p>Sept minutes de marche jusqu’à la boulangerie, retour par les chemins du marais. Café sur la terrasse, puis la porte du bureau se ferme.</p></div>
       <div><span class="quand">À midi</span><p>La Corniche vendéenne est à dix minutes. Une boucle sur les rochers, le Trou du Diable les jours de houle, et l’on est rentré pour la réunion de 14 h.</p></div>
       <div><span class="quand">En fin de journée</span><p>La plage de Boisvinet à quinze minutes pour le coucher de soleil, ou le port de Saint-Gilles quand les sardiniers rentrent, pour le poisson du soir.</p></div>
-      <div><span class="quand">Le samedi</span><p>Marché place Sainte-Croix le matin, puis la Vélodyssée le long de la côte, sur des pistes plates vers Saint-Jean-de-Monts ou Brétignolles.</p></div>
+      <div><span class="quand">Le samedi</span><p>Marché côté Croix-de-Vie le matin, puis la Vélodyssée le long de la côte, sur des pistes plates vers Saint-Jean-de-Monts ou Brétignolles.</p></div>
       <div><span class="quand">Le dimanche</span><p>Les marais salants et la Bourrine du Bois Juquaud côté Saint-Hilaire, ou le quartier du Maroc côté Saint-Gilles. Aux beaux jours, l’embarcadère pour l’île d’Yeu est à dix minutes à pied (traversées selon la saison).</p></div>
     </div>
     <figure class="photo">
@@ -333,9 +340,45 @@ p,li{text-wrap:pretty}
       </details>
       <details>
         <summary>Que faire le soir et le week-end en hiver ?</summary>
-        <p>C’est la saison où la corniche est la plus spectaculaire : par gros temps, le Trou du Diable crache l’écume très haut. Les jours de pluie, la Bourrine du Bois Juquaud et Escale Pêche, au cœur de la criée, valent le détour. Et le soir, la maison est chauffée dans chaque pièce.</p>
+        <p>C’est la saison où la corniche est la plus spectaculaire : par gros temps, le Trou du Diable crache l’écume très haut. Les jours de pluie, la Bourrine du Bois Juquaud et Escale Pêche, au cœur de la criée, valent le détour. Et le soir, la maison est chauffée dans chaque pièce. Plus d’idées dans <a href="/guides/saint-hilaire-de-riez-en-hiver/">notre guide de l’hiver</a>.</p>
       </details>
     </div>
+  </div>
+</section>
+<section class="bloc fonce" id="a-lire">
+  <div class="wrap">
+    <div class="titre-bloc">
+      <div>
+        <div class="chapeau">À lire aussi</div>
+        <h2>Préparer son séjour<br>sur la côte</h2>
+      </div>
+    </div>
+    <ul class="cartes-guides">
+      <li><a href="/guides/saint-hilaire-de-riez-en-hiver/">
+        <img src="/photos/pf-sejour-soir.webp" alt="" width="1500" height="1125" loading="lazy" decoding="async">
+        <h3>Saint-Hilaire-de-Riez en hiver</h3>
+        <p>La corniche par gros temps, les marchés toute l’année, les oiseaux du marais et le marché de Noël.</p>
+        <span class="suite">Lire →</span>
+      </a></li>
+      <li><a href="/guides/corniche-vendeenne/">
+        <img src="/photos/vue-ciel-ocean.webp" alt="" width="1600" height="900" loading="lazy" decoding="async">
+        <h3>La Corniche vendéenne à pied</h3>
+        <p>Trois kilomètres de rochers entre Grosse Terre et Sion, le Trou du Diable les jours de houle.</p>
+        <span class="suite">Lire →</span>
+      </a></li>
+      <li><a href="/guides/ile-d-yeu/">
+        <img src="/photos/carte-cote.webp" alt="" width="1800" height="617" loading="lazy" decoding="async">
+        <h3>L’île d’Yeu depuis Saint-Gilles</h3>
+        <p>La traversée, le vélo à Port-Joinville, la côte sauvage et le port de la Meule.</p>
+        <span class="suite">Lire →</span>
+      </a></li>
+      <li><a href="/guides/week-end-en-amoureux-vendee/">
+        <img src="/photos/pf-verres.webp" alt="" width="1500" height="1125" loading="lazy" decoding="async">
+        <h3>Un week-end à deux à Saint-Gilles-Croix-de-Vie</h3>
+        <p>Le marché, le port, la corniche au couchant, puis les marais salants de Saint-Hilaire.</p>
+        <span class="suite">Lire →</span>
+      </a></li>
+    </ul>
   </div>
 </section>
 </main>
