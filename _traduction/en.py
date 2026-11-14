@@ -136,7 +136,8 @@ EN = {
 "★★★★★": "★★★★★",
 "« Maison cosy et propre, très bien équipée. On se sent comme à la maison, rien à redire. Un petit livret d’accueil est à disposition avec toutes les informations nécessaires pour le séjour. Merci à vous. »":
   "“A cosy, clean house, very well equipped. You feel right at home — nothing to fault. A little welcome booklet is there with all the information you need for your stay. Thank you.”",
-"Vanessa — séjour à deux, novembre 2026 — avis Airbnb": "Vanessa — stay for two, November 2026 — Airbnb review (translated from French)",
+"Avis 5 étoiles sur Airbnb": "5-star review on Airbnb",
+"Vanessa — séjour à deux, novembre 2026": "Vanessa — stay for two, November 2026 (translated from French)",
 "[mois année]": "[month year]",
 
 # ——— 03 En images ————————————————————————————————————————————
