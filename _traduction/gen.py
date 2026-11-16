@@ -23,8 +23,9 @@ sys.path.insert(0, ICI)
 from en import EN, META, UI
 
 RACINE = os.path.join(ICI, '..')
-PAGE = os.path.join(RACINE, 'index.html')
-SORTIE = os.path.join(RACINE, 'en', 'index.html')
+# LPV_PAGE / LPV_SORTIE : pour fabriquer une autre paire de pages (un aperçu, par exemple)
+PAGE = os.environ.get('LPV_PAGE') or os.path.join(RACINE, 'index.html')
+SORTIE = os.environ.get('LPV_SORTIE') or os.path.join(RACINE, 'en', 'index.html')
 SITE = 'https://lapetitevague85.com'
 
 DEBUT = '<!-- TRADUCTION:DEBUT — bloc produit par _traduction/gen.py, ne pas modifier à la main -->'

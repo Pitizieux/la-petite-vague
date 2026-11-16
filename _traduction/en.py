@@ -505,6 +505,9 @@ EN = {
 "l’île d’Yeu depuis Saint-Gilles": "the Île d’Yeu from Saint-Gilles",
 "un week-end à deux": "a weekend for two",
 "Nos guides": "Our guides",
+"Autour de la maison": "Around the house",
+"L’île d’Yeu": "Île d’Yeu",
+"Photos de la maison": "Photos of the house",
 "Instagram · @lapetitevague85": "Instagram · @lapetitevague85",
 "Télétravail au mois": "Remote work by the month",
 }
