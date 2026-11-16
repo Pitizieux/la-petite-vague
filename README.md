@@ -82,18 +82,22 @@ haut à droite, modifiez, puis *Commit changes*.
 
 ## Animations (Motion)
 
-Les animations « vivantes » viennent de **Motion**, la bibliothèque de Framer Motion dans
-sa version sans React. Elles sont dans `mouvement.js` (racine), chargé par les deux pages :
-apparitions en cascade avec effet ressort, rideau sur les photos, parallaxe douce des grandes
-photos, chiffres clés qui défilent, fil de lecture terracotta en haut de l’écran, visionneuse
-et sommaire mobile animés, pression des boutons.
+Le motion design vient de **Motion**, la bibliothèque de Framer Motion dans sa version sans React.
 
-- **On ne modifie pas `mouvement.js` à la main** : c’est un fichier fabriqué. La source est
-  `_mouvement/source.js`. Après modification : `cd _mouvement && npm install && npm run build`.
-- **Si `mouvement.js` manque ou plante**, la page garde ses animations CSS d’origine ;
-  sans JavaScript, rien n’est caché.
-- **Animations réduites** demandées par le système : Motion ne fait rien.
-- Hébergement Hostinger : téléverser aussi `mouvement.js` à côté d’`index.html`.
+- **Page d’accueil** (refonte de novembre 2026) : `accueil.js`, fabriqué depuis `_mouvement/accueil.js`.
+  Ouverture mot à mot, houle sur le bord de la photo (CSS), titres dévoilés ligne par ligne,
+  photos en rideau, scène « Une journée ici » qui reste à l’écran pendant que le soleil
+  traverse le ciel, chiffres qui comptent, étoiles de l’avis.
+- **Autres pages** (guides, télétravail) : `mouvement.js`, fabriqué depuis `_mouvement/source.js`.
+- **On ne modifie pas ces deux fichiers à la main.** Après modification d’une source :
+  `cd _mouvement && npm install && npm run build`.
+- La page d’accueil pose la classe `mo` sur `<html>` seulement si le JavaScript tourne et que
+  le système accepte le mouvement. Sans elle, rien n’est caché. Si `accueil.js` n’arrive pas
+  ou plante, la classe est retirée : le contenu reste lisible.
+- Les éléments révélés au défilement portent `data-r` (`titre`, `photo`, `liste`, ou vide).
+- Les fonctions de la page (visionneuse, pellicule de photos, onglets « Autour », plan
+  interactif, sommaire, calendrier) sont dans les scripts en bas d’`index.html`, sans dépendance.
+- Hébergement Hostinger : téléverser aussi `accueil.js` et `mouvement.js`.
 
 ## Calendrier des disponibilités
 

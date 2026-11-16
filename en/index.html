@@ -31,7 +31,7 @@
 <meta name="twitter:title" content="La petite vague — a house for two, between sea and marsh">
 <meta name="twitter:description" content="Fifty-five square metres for two in Saint-Hilaire-de-Riez: private terrace and garden, a study with a door that shuts, the clifftop path ten minutes away on foot.">
 <meta name="twitter:image" content="https://lapetitevague85.com/photos/partage.jpg">
-<meta name="theme-color" content="#F4EFE7">
+<meta name="theme-color" content="#23403C">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 96 96%27%3E%3Crect width=%2796%27 height=%2796%27 rx=%2720%27 fill=%27%23F4EFE7%27/%3E%3Cg fill=%27none%27 stroke=%27%2323403C%27 stroke-linecap=%27round%27%3E%3Cpath d=%27M8 52 C 20 32, 45 28, 59 43 C 67 52, 79 54, 92 45%27 stroke-width=%276%27/%3E%3Cpath d=%27M22 64 C 32 55, 47 53, 56 61%27 stroke-width=%274.5%27/%3E%3C/g%3E%3C/svg%3E">
 <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 180 180%27%3E%3Crect width=%27180%27 height=%27180%27 fill=%27%23F4EFE7%27/%3E%3Cg fill=%27none%27 stroke=%27%2323403C%27 stroke-linecap=%27round%27%3E%3Cpath d=%27M18 98 C 40 62, 86 54, 112 82 C 127 98, 149 102, 162 85%27 stroke-width=%2711%27/%3E%3Cpath d=%27M44 120 C 62 104, 90 100, 106 115%27 stroke-width=%278%27/%3E%3C/g%3E%3C/svg%3E">
 <meta name="format-detection" content="telephone=no">
@@ -41,561 +41,485 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..500&family=Jost:wght@300..500&display=swap">
 <style>
 :root{
-  --lin:#F4EFE7; --lin-fonce:#E9E1D4; --encre:#1D2A2B; --gris:#33413F; 
-  --marin:#23403C; --marin-clair:#2F5651; --terre:#9C5231; --ecume:#E8B79A; --creme:#FBF8F3;
-  --trait:rgba(29,42,43,.14);
-  --gris-clair:#4E5D5A; --discret:#766B5E;
+  --lin:#F4EFE7; --lin-fonce:#E9E1D4; --creme:#FBF8F3;
+  --encre:#1D2A2B; --gris:#33413F; --gris-clair:#4E5D5A;
+  --marin:#23403C; --marin-nuit:#1A322F; --marin-clair:#2F5651;
+  --vague:#4E6A73; --vague-pale:#DCE5E5;
+  --terre:#9C5231; --ecume:#E8B79A;
+  --trait:rgba(29,42,43,.14); --trait-clair:rgba(247,243,236,.2);
   --serif:Fraunces,Georgia,'Times New Roman',serif;
   --sans:Jost,'Helvetica Neue',Arial,sans-serif;
-  box-sizing:border-box;
-  padding-top:env(safe-area-inset-top,0px);
-  background:#F4EFE7;
+  --doux:cubic-bezier(.22,1,.36,1);
+  --marge:22px;
+  color-scheme:light;
+  background:#23403C;
 }
-:root:not([data-theme="light"]){color-scheme:light}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
-  --lin:#F4EFE7; --lin-fonce:#E9E1D4; --encre:#1D2A2B; --gris:#33413F; 
-  --marin:#23403C; --creme:#FBF8F3; background:#F4EFE7;
-}}
-:root[data-theme="dark"]{--lin:#F4EFE7; --encre:#1D2A2B; background:#F4EFE7}
+@media(min-width:900px){:root{--marge:48px}}
 *,*::before,*::after{box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:72px;overflow-x:clip}
-@media(min-width:1000px){html{scroll-padding-top:24px}}
+html{scroll-behavior:smooth;scroll-padding-top:84px;-webkit-text-size-adjust:100%}
 body{margin:0;background:var(--lin);color:var(--encre);font-family:var(--sans);font-weight:300;
-  -webkit-font-smoothing:antialiased;overflow-x:hidden}
-img{max-width:100%;display:block}
+  font-size:17px;line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden;overflow-x:clip}
+img,video{max-width:100%;display:block}
+img{height:auto}
 a{color:var(--marin-clair);text-decoration:none}
-h1,h2,h3,h4{font-family:var(--serif);font-weight:300;letter-spacing:-.01em;margin:0}
-em{font-style:italic}
-.wrap{width:100%;max-width:1180px;margin:0 auto;padding:0 22px}
-@media(min-width:900px){.wrap{padding:0 48px}}
+h1,h2,h3,h4{font-family:var(--serif);font-weight:300;letter-spacing:-.02em;margin:0}
+h1 em,h2 em,h3 em,h4 em{font-style:normal}
+p{margin:0}
+ul{margin:0;padding:0;list-style:none}
+figure{margin:0}
+button{font:inherit;color:inherit}
+.wrap{width:100%;max-width:1240px;margin:0 auto;padding:0 var(--marge)}
 
-/* À compléter — repères visibles tant que l’info manque */
-.ac{background:rgba(156,82,49,.1);border-bottom:1px dotted var(--terre);padding:0 3px;color:var(--terre)}
-.reserver .ac,.pied .ac,.citation .ac{color:var(--ecume);background:rgba(232,183,154,.16);
-  border-bottom-color:rgba(232,183,154,.7)}
+::focus-visible{outline:3px solid var(--terre);outline-offset:3px}
+:focus:not(:focus-visible){outline:none}
+.sombre :focus-visible,.visionneuse :focus-visible{outline-color:var(--ecume)}
+::selection{background:var(--marin);color:var(--creme)}
+.sombre ::selection{background:var(--ecume);color:var(--marin)}
+.evitement{position:absolute;left:16px;top:-100px;z-index:70;background:var(--marin);color:var(--creme);
+  padding:12px 18px;border-radius:999px}
+.evitement:focus{top:16px;color:var(--creme)}
 
-.chapeau{display:flex;align-items:center;gap:12px;font-size:11px;letter-spacing:.26em;
-  text-transform:uppercase;color:var(--terre);margin-bottom:22px}
-.chapeau::before{content:"";width:34px;height:1px;background:var(--terre);flex:none}
+/* ——— Boutons et liens ——— */
+.bouton{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:0 28px;
+  background:var(--marin);color:var(--creme);font-family:var(--sans);font-size:16px;font-weight:400;
+  border-radius:999px;border:0;cursor:pointer;text-align:center;
+  transition:background-color .25s,color .25s}
+.bouton:hover{background:var(--marin-nuit);color:var(--creme)}
+.sombre .bouton{background:var(--ecume);color:var(--marin-nuit)}
+.sombre .bouton:hover{background:#F1C9B0;color:var(--marin-nuit)}
+.lien-ot,.lien-fleche{display:inline-block;font-size:15px;font-weight:400;color:var(--terre);cursor:pointer;
+  background:linear-gradient(currentColor,currentColor) 0 100%/100% 1px no-repeat;padding-bottom:3px;
+  transition:background-size .45s var(--doux)}
+.lien-ot:hover,.lien-fleche:hover{background-size:0 1px;background-position:100% 100%}
+button.lien-ot{border:0;background-color:transparent;padding:0 0 3px;text-align:left}
+.sombre .lien-ot,.sombre .lien-fleche{color:var(--ecume)}
 
-.bouton{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:0 30px;
-  background:var(--marin);color:var(--creme);font-size:13px;letter-spacing:.09em;text-transform:uppercase;
-  border-radius:999px;border:0;font-family:var(--sans);cursor:pointer;transition:background .2s;text-align:center}
-.bouton:hover{background:#1A322F;color:var(--creme)}
-.lien-fleche{display:inline-flex;align-items:center;gap:9px;min-height:52px;color:var(--encre);
-  font-size:13px;letter-spacing:.09em;text-transform:uppercase}
+/* ——— En-tête ——— */
+.entete{position:fixed;top:0;left:0;right:0;z-index:45;display:flex;align-items:center;gap:14px;
+  padding:calc(10px + env(safe-area-inset-top,0px)) var(--marge) 10px;color:var(--creme);
+  transition:transform .5s var(--doux),background-color .35s,color .35s,box-shadow .35s}
+.entete.pose{background:rgba(244,239,231,.92);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);
+  color:var(--encre);box-shadow:0 1px 0 var(--trait)}
+.entete.cache{transform:translateY(-110%)}
+.marque{display:flex;align-items:center;gap:11px;color:inherit;min-height:44px;min-width:0}
+.marque span{font-family:var(--serif);font-size:19px;white-space:nowrap}
+.nav{display:none;position:relative;gap:4px;align-items:center;margin-left:auto}
+.nav a{position:relative;padding:10px 12px;font-size:15px;color:inherit;opacity:.78;transition:opacity .25s}
+.nav a:hover,.nav a[aria-current]{opacity:1}
+.nav-trait{position:absolute;left:0;bottom:2px;height:2px;width:1px;background:currentColor;border-radius:2px;
+  transform-origin:0 50%;opacity:0;pointer-events:none;
+  transition:transform .55s var(--doux),opacity .3s}
+.entete > .bouton{display:none;min-height:44px;padding:0 22px;font-size:15px;background:var(--ecume);color:var(--marin-nuit)}
+.entete.pose > .bouton{background:var(--marin);color:var(--creme)}
+.entete > .langue{margin-left:auto}
+.sommaire{display:inline-flex;align-items:center;gap:9px;min-height:44px;padding:0 4px 0 10px;
+  background:none;border:0;cursor:pointer;font-size:15px;font-weight:400}
+.sommaire .barres{display:grid;gap:5px;width:22px}
+.sommaire .barres i{display:block;height:1.5px;background:currentColor}
+@media(min-width:1000px){
+  .nav{display:flex}
+  .entete > .bouton{display:inline-flex}
+  .entete > .langue{margin-left:0}
+  .sommaire{display:none}
+  .marque span{font-size:22px}
+}
+/* fil de lecture : la progression dans la page */
+.fil{position:absolute;left:0;right:0;bottom:-1px;height:2px;background:var(--terre);
+  transform:scaleX(0);transform-origin:0 50%;opacity:0;transition:opacity .3s}
+.entete.pose .fil{opacity:1}
 
-.entete{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:20px 0 6px}
-.marque{display:flex;align-items:center;gap:11px;color:var(--encre);min-height:44px}
-.marque span{font-family:var(--serif);font-size:19px}
-.nav{display:none;gap:26px;align-items:center}
-.nav a{font-size:12.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--gris)}
-.nav a.bouton,.nav a.bouton:hover{color:var(--creme)}
-@media(min-width:1000px){.nav{display:flex}.marque span{font-size:22px}}
-
-/* Sélecteur de langue : un petit drapeau et le code de la langue vers
-   laquelle on bascule. Trois exemplaires — en-tête, barre mobile, sommaire. */
+/* Sélecteur de langue */
 .langue{display:inline-flex;align-items:center;gap:7px;min-height:44px;padding:0 4px;
-  background:none;border:0;cursor:pointer;font-family:var(--sans);font-size:11.5px;
-  letter-spacing:.14em;text-transform:uppercase;color:var(--gris-clair);
-  transition:color .2s ease}
-.langue:hover{color:var(--encre)}
+  font-size:13px;font-weight:400;letter-spacing:.06em;color:inherit;opacity:.85;transition:opacity .2s}
+.langue:hover{opacity:1}
 .langue .drapeau{display:block;width:22px;height:14px;border-radius:2px;overflow:hidden;
   box-shadow:inset 0 0 0 1px rgba(29,42,43,.22);flex:none}
 .langue .drapeau svg{display:block;width:100%;height:100%}
-.langue .drapeau .fr,.langue .drapeau .en{transition:opacity .2s ease}
-.menu-tete .langue{margin-left:auto}
-.barre-haut .langue{margin-left:auto;padding-right:2px}
-@media(max-width:359px){.langue .code{display:none}.langue{gap:0}}
+.langue .drapeau svg path{fill:none}
 html[lang="fr"] .langue .fr{display:none}
 html[lang="en"] .langue .en{display:none}
-.langue .drapeau svg path{fill:none}
-/* Sur mobile la navigation est masquée : le drapeau prend sa place à droite. */
-.entete > .langue{margin-left:auto}
-@media(min-width:1000px){.entete .nav{margin-left:auto}.entete > .langue{margin-left:0}}
+@media(max-width:359px){.langue .code{display:none}}
 
-/* Accroche */
-.accroche{padding:30px 0 0}
-.accroche h1{font-size:clamp(54px,14vw,100px);line-height:.92;margin:0 0 22px}
-/* Le chapeau fait partie du titre (mots-clés pour les moteurs) mais garde son allure de petite ligne. */
-.accroche h1 .chapeau{font-family:var(--sans);font-weight:300;line-height:1.5;letter-spacing:.26em}
-.accroche h1 .h1-nom{display:block}
-.accroche p{font-size:17px;line-height:1.8;color:var(--gris);max-width:460px;margin:0 0 26px}
-.repere{display:flex;flex-wrap:wrap;gap:8px 18px;margin:0 0 28px;padding:0;list-style:none;
-  font-size:13px;letter-spacing:.04em;color:var(--gris-clair)}
-.repere li{display:flex;align-items:center;gap:8px}
-.repere li+li::before{content:"";width:4px;height:4px;border-radius:50%;background:var(--ecume);
-  margin-right:2px;flex:none}
-.accroche .actions{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-bottom:34px}
-.accroche-photo img{width:100%;height:clamp(260px,62vw,440px);object-fit:cover;object-position:52% 60%}
+/* Sommaire plein écran (mobile) */
+.menu{position:fixed;inset:0;z-index:50;background:var(--marin);color:var(--creme);overflow-y:auto;
+  padding-top:env(safe-area-inset-top,0px)}
+.menu[hidden]{display:none}
+.menu-tete{display:flex;align-items:center;gap:14px;padding:10px var(--marge)}
+.menu-tete .langue{margin-left:auto}
+.menu-fermer{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;
+  background:none;border:1px solid var(--trait-clair);border-radius:50%;font-size:24px;line-height:1;cursor:pointer}
+.menu ul{padding:12px var(--marge) calc(32px + env(safe-area-inset-bottom,0px))}
+.menu li{border-bottom:1px solid var(--trait-clair)}
+.menu li a{display:block;padding:15px 0;font-family:var(--serif);font-size:clamp(26px,7.4vw,34px);
+  line-height:1.15;letter-spacing:-.02em;color:var(--creme)}
+.menu li:last-child a{color:var(--ecume)}
+
+/* ——— Accroche ——— */
+.accroche{position:relative;background:var(--marin);color:var(--creme);
+  padding-top:calc(88px + env(safe-area-inset-top,0px));overflow:hidden}
+.chapeau{font-family:var(--sans);font-size:15px;font-weight:400;letter-spacing:0;line-height:1.5;
+  color:var(--terre);margin-bottom:14px}
+.sombre .chapeau{color:var(--ecume)}
+.accroche h1 .chapeau{display:block;margin-bottom:clamp(10px,2vw,22px)}
+.accroche h1 .h1-nom{display:block;font-size:clamp(72px,26.5vw,150px);line-height:.84;letter-spacing:-.045em;
+  margin-left:-.04em;padding-bottom:.12em}
+.accroche-bas{display:grid;gap:26px;margin-top:clamp(18px,3vw,34px);padding-bottom:clamp(44px,7vw,84px)}
+.accroche-bas p{font-size:17px;line-height:1.75;color:rgba(251,248,243,.86);max-width:50ch}
+.repere{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px;font-size:14px;color:rgba(251,248,243,.9)}
+.repere li{border:1px solid rgba(251,248,243,.3);border-radius:999px;padding:4px 14px}
+.actions{display:flex;flex-wrap:wrap;gap:14px 26px;align-items:center}
+.lien-fleche{display:inline-flex;align-items:center;gap:9px}
+.lien-fleche svg{flex:none}
 @media(min-width:900px){
-  .accroche{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:56px;align-items:center;padding:52px 0 24px}
-  .accroche-photo img{height:500px;object-position:52% 58%}
+  .accroche h1 .h1-nom br{display:none}
+  .accroche h1 .h1-nom{font-size:clamp(100px,17.6vw,246px);white-space:nowrap}
+  .accroche-bas{grid-template-columns:minmax(0,1fr) auto;gap:64px;align-items:end}
+  .repere{justify-content:flex-end}
+  .actions{justify-content:flex-end}
 }
+.accroche-photo{position:relative;height:max(46vh,300px);overflow:hidden;background:var(--marin-nuit)}
+.accroche-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 62%}
+.accroche-photo img + img{display:none}
+/* la houle : le bord de la photo est une vague qui dérive */
+.houle{position:absolute;left:0;right:0;top:-1px;height:clamp(26px,5.4vw,70px);z-index:2;pointer-events:none;overflow:hidden}
+.houle i{position:absolute;top:0;left:0;height:100%;width:calc(100% + 1200px);
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 60' preserveAspectRatio='none'%3E%3Cpath fill='%2323403C' d='M0 0H1200V30C1100 30 1050 52 950 52C820 52 800 14 650 14C520 14 480 44 340 44C220 44 150 30 0 30Z'/%3E%3C/svg%3E") repeat-x 0 0/1200px 100%}
+.houle i:first-child{opacity:.5;height:128%;background-position:520px 0}
+.houle.claire i{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 60' preserveAspectRatio='none'%3E%3Cpath fill='%23E9E1D4' d='M0 0H1200V30C1100 30 1050 52 950 52C820 52 800 14 650 14C520 14 480 44 340 44C220 44 150 30 0 30Z'/%3E%3C/svg%3E")}
+@media (prefers-reduced-motion:no-preference){
+  .houle i{animation:derive 19s linear infinite}
+  .houle i:first-child{animation-duration:31s;animation-direction:reverse}
+  .accroche-photo img + img{display:block;opacity:0;animation:diapo 21s linear 7s infinite}
+  .accroche-photo img + img + img{animation-delay:14s}
+}
+@keyframes derive{to{transform:translate3d(-1200px,0,0)}}
+@keyframes diapo{0%,100%{opacity:0}5%,33%{opacity:1}39%{opacity:0}}
 
-.chiffres{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px 18px;padding:32px 0;
-  border-top:1px solid var(--trait);border-bottom:1px solid var(--trait);margin-top:38px}
-.chiffres div{display:flex;align-items:baseline;gap:10px}
-.chiffres b{font-family:var(--serif);font-size:26px;font-weight:400}
-.chiffres span{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--gris-clair)}
-@media(min-width:900px){.chiffres{grid-template-columns:repeat(4,minmax(0,1fr));padding:38px 0}}
+.chiffres{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:30px 20px;padding:clamp(40px,6vw,72px) 0 0}
+.chiffres b{display:block;font-family:var(--serif);font-weight:300;font-size:clamp(42px,6.4vw,84px);line-height:1;
+  letter-spacing:-.04em;font-variant-numeric:tabular-nums lining-nums;white-space:nowrap}
+.chiffres span{display:block;margin-top:8px;font-size:15px;color:var(--gris-clair)}
+@media(min-width:760px){.chiffres{grid-template-columns:repeat(4,minmax(0,1fr))}}
 
-section{scroll-margin-top:20px}
-.bloc{padding:72px 0}
-@media(min-width:900px){.bloc{padding:98px 0}}
-.titre-bloc h2{font-size:clamp(33px,7.2vw,50px);line-height:1.06}
-.intro{margin-top:24px;display:grid;gap:16px}
-.intro p{margin:0;font-size:16.5px;line-height:1.85;color:var(--gris)}
+/* ——— Blocs ——— */
+.bloc{padding:clamp(64px,8.5vw,124px) 0}
+.bloc.serre{padding-top:0}
+.fonce{background:var(--lin-fonce)}
+.titre-bloc{display:grid;gap:22px;margin-bottom:clamp(36px,5vw,68px)}
+.titre-bloc h2{font-size:clamp(36px,5.3vw,68px);line-height:1.02;letter-spacing:-.035em}
+.intro{display:grid;gap:16px}
+.intro p{font-size:17px;line-height:1.75;color:var(--gris);max-width:52ch}
+.sombre .intro p{color:rgba(251,248,243,.84)}
 @media(min-width:900px){
-  .titre-bloc{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:60px;align-items:end}
-  .intro{margin-top:0}
+  .titre-bloc{grid-template-columns:minmax(0,1.3fr) minmax(0,.7fr);gap:64px;align-items:end}
 }
+h2 .ligne,.h1-nom .mot{display:inline-block;overflow:hidden;vertical-align:top;padding:.14em .06em .18em;margin:-.14em -.06em -.18em}
+h2 .ligne{display:block}
+h2 .ligne > span,.h1-nom .mot > span{display:inline-block;will-change:transform}
 
-/* Galerie */
-.galerie{display:grid;gap:16px;margin-top:42px}
-.galerie figure{margin:0}
-.galerie img{width:100%;height:100%;object-fit:cover;cursor:zoom-in}
-.galerie figcaption{margin-top:11px;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#6B6052}
-.g-haut img{height:clamp(320px,78vw,520px)}
-.g-moyen img{height:clamp(260px,62vw,360px);object-position:center 38%}
+/* La maison */
+.galerie{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.galerie figure{position:relative}
+.galerie figure,.carte-photo{overflow:hidden}
+.galerie img{width:100%;object-fit:cover;aspect-ratio:3/4}
+.galerie .g-haut{grid-column:1/-1}
+.galerie .g-haut img{aspect-ratio:4/3}
+.galerie figcaption,.pf figcaption{margin-top:10px;font-size:15px;color:var(--gris-clair)}
+.pf figcaption .num{display:none}
 @media(min-width:900px){
-  .galerie{grid-template-columns:1.15fr .92fr .86fr;align-items:start;gap:24px}
-  .g-haut img{height:540px}
-  .g-moyen img{height:340px}
-  .g-decale{margin-top:78px}
-  .g-decale img{height:400px}
+  .galerie{grid-template-columns:5fr 4fr 3fr;gap:28px;align-items:start}
+  .galerie .g-haut{grid-column:auto}
+  .galerie .g-haut img{aspect-ratio:4/5}
+  .galerie .g-moyen{margin-top:26%}
+  .galerie .g-moyen img{aspect-ratio:1/1}
+  .galerie .g-decale{margin-top:9%}
+  .galerie .g-decale img{aspect-ratio:3/4}
 }
-
-/* Couchages */
-.couchages{display:grid;gap:0;margin-top:46px;border-top:1px solid var(--trait)}
-.couchages div{display:flex;align-items:baseline;justify-content:space-between;gap:20px;padding:18px 0;
-  border-bottom:1px solid var(--trait)}
-.couchages .piece{font-family:var(--serif);font-size:19px}
-.couchages .detail{font-size:14px;color:var(--gris-clair);text-align:right}
-@media(min-width:900px){.couchages{grid-template-columns:repeat(2,minmax(0,1fr));column-gap:56px}}
-
-/* Une journée ici */
-.journee{background:var(--lin-fonce)}
-.moments{display:grid;gap:34px;margin-top:44px}
-.moment{position:relative;padding-left:26px}
-.moment::before{content:"";position:absolute;left:0;top:9px;width:9px;height:9px;border-radius:50%;
-  border:1px solid var(--terre)}
-.moment .heure{display:block;font-size:11px;letter-spacing:.2em;text-transform:uppercase;
-  color:var(--terre);margin-bottom:9px}
-.moment h4{font-size:21px;line-height:1.3;margin-bottom:9px}
-.moment p{margin:0;font-size:16px;line-height:1.8;color:var(--gris)}
-@media(min-width:900px){.moments{grid-template-columns:repeat(3,minmax(0,1fr));gap:44px}}
-
-/* Citation */
-.citation{background:var(--marin);color:#F7F3EC;text-align:center;padding:72px 0}
-.citation .vagues{display:block;margin:0 auto 22px}
-.citation blockquote{margin:0 auto;max-width:740px;font-family:var(--serif);font-style:italic;
-  font-size:clamp(23px,4.6vw,36px);line-height:1.34;font-weight:300;text-wrap:balance}
-.citation .note-airbnb{margin:24px 0 0;font-family:var(--sans);font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:#F7F3EC}
-.citation .etoiles{display:block;margin-bottom:8px;color:var(--ecume);font-size:16px;letter-spacing:.32em}
-.citation .note-airbnb + cite{margin-top:10px}
-.citation cite{display:block;margin-top:20px;font-family:var(--sans);font-style:normal;font-size:11px;
-  letter-spacing:.2em;text-transform:uppercase;color:rgba(247,243,236,.62)}
-
-.bandeau-photo{margin:0}
-.bandeau-photo img{width:100%;height:clamp(200px,48vw,400px);object-fit:cover;cursor:zoom-in}
-.bandeau-photo figcaption{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#6B6052;
-  padding:12px 22px 0;display:flex;flex-wrap:wrap;gap:6px 14px}
-.credit{color:#766B5E;letter-spacing:.1em}
-@media(min-width:900px){.bandeau-photo figcaption{padding:14px 48px 0}}
-
-/* Distances */
-.distances{border-top:1px solid var(--trait)}
-.distances ul{margin:0;padding:0}
-.distances li{display:flex;align-items:baseline;justify-content:space-between;gap:18px;
-  padding:16px 0;border-bottom:1px solid var(--trait);list-style:none}
-.distances .nom{font-family:var(--serif);font-size:19px}
-.distances .val{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--gris-clair);text-align:right}
-.adresse{margin-top:30px;display:grid;gap:10px}
-.adresse .etiquette{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--terre)}
-.adresse .rue{font-family:var(--serif);font-size:20px;line-height:1.45}
-.adresse .gps{font-size:14px;letter-spacing:.04em;color:var(--gris-clair)}
-.carte-photo{margin:34px 0 0}
-.carte-photo img{width:100%;height:clamp(240px,62vw,420px);object-fit:cover;cursor:zoom-in}
-.carte-photo figcaption{margin-top:11px;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#6B6052}
+.interieur{display:grid;gap:34px;margin-top:clamp(56px,8vw,110px);align-items:center}
+.plan-dessin svg{display:block;width:100%;max-width:560px;height:auto;margin:0 auto}
+.plan figcaption{margin-top:12px;font-size:15px;color:var(--gris-clair);text-align:center}
+.plan figcaption .num{display:none}
+.zones > *{fill:var(--vague);opacity:0;cursor:pointer;transition:opacity .4s var(--doux);mix-blend-mode:multiply}
+.zones > .actif{opacity:.3}
+.couchages{border-top:1px solid var(--trait)}
+.couchages > *{display:grid;gap:2px;width:100%;padding:16px 0 16px 0;border:0;border-bottom:1px solid var(--trait);
+  background:none;text-align:left;position:relative;
+  transition:padding-left .45s var(--doux)}
+.couchages button{cursor:pointer}
+.couchages > *::before{content:"";position:absolute;left:0;top:50%;width:12px;height:2px;background:var(--terre);
+  transform:scaleX(0);transform-origin:0 50%;transition:transform .45s var(--doux)}
+.couchages > .actif{padding-left:24px}
+.couchages > .actif::before{transform:scaleX(1)}
+.couchages .piece{font-family:var(--serif);font-size:clamp(22px,2.4vw,28px);letter-spacing:-.02em;line-height:1.2}
+.couchages .detail{font-size:15px;color:var(--gris-clair)}
 @media(min-width:900px){
-  .lieu-corps{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
-  .carte-photo{margin:0}
-  .carte-photo img{height:470px}
+  .interieur{grid-template-columns:minmax(0,1fr) minmax(0,.9fr);gap:72px}
 }
-
-/* Environnement */
-.environs{display:grid;gap:50px}
-.commune h3{font-size:clamp(24px,5.6vw,30px);line-height:1.2;padding-bottom:16px;
-  border-bottom:1px solid var(--trait)}
-.commune ul{margin:0;padding:0;list-style:none}
-.commune li{padding:24px 0;border-bottom:1px solid var(--trait)}
-.commune .nom{display:block;font-family:var(--serif);font-size:19px;line-height:1.3;margin-bottom:9px}
-.commune p{margin:0 0 12px;font-size:16px;line-height:1.8;color:var(--gris)}
-.lien-ot{display:inline-flex;align-items:center;gap:7px;font-size:11px;letter-spacing:.16em;
-  text-transform:uppercase;color:var(--terre)}
-.lien-ot::after{content:"→";font-size:13px;letter-spacing:0}
-.lien-ot:hover{color:#7E3F24}
-@media(min-width:900px){.environs{grid-template-columns:repeat(2,minmax(0,1fr));gap:56px}}
-
-/* Île d’Yeu */
-.yeu{margin-top:50px;padding:38px 0 0;border-top:1px solid var(--trait)}
-.yeu-vagues{display:block;margin-bottom:24px}
-.yeu h3{font-size:clamp(28px,6.6vw,42px);line-height:1.08}
-.yeu-chapo{margin:20px 0 0;font-size:16.5px;line-height:1.85;color:var(--gris)}
-.yeu-pratique{margin-top:24px;padding-top:20px;border-top:1px solid var(--trait);display:grid;gap:10px;
-  font-size:14px;line-height:1.7;color:var(--gris-clair)}
-.yeu-pratique b{font-family:var(--serif);font-weight:400;font-size:16px;color:var(--encre)}
-.yeu-points{display:grid;gap:24px;margin-top:32px}
-.yeu-points .nom{display:block;font-family:var(--serif);font-size:18px;margin-bottom:8px}
-.yeu-points p{margin:0;font-size:15.5px;line-height:1.75;color:var(--gris)}
-@media(min-width:900px){
-  .yeu-corps{display:grid;grid-template-columns:minmax(0,.82fr) minmax(0,1.18fr);gap:56px;align-items:start}
-  .yeu-chapo{margin-top:24px}
-  .yeu-points{margin-top:0;gap:28px}
-}
-.source-ot{margin:40px 0 0;font-size:15px;line-height:1.8;color:var(--gris-clair);max-width:640px}
-.source-ot a{border-bottom:1px solid rgba(47,86,81,.35)}
-
-/* Saisons */
-.saisons{display:grid;gap:0;margin-top:42px;border-top:1px solid var(--trait)}
-.saison{padding:24px 0;border-bottom:1px solid var(--trait)}
-.saison .quand{display:block;font-size:11px;letter-spacing:.2em;text-transform:uppercase;
-  color:var(--terre);margin-bottom:8px}
-.saison h4{font-size:20px;margin-bottom:8px}
-.saison p{margin:0;font-size:16px;line-height:1.8;color:var(--gris)}
-@media(min-width:900px){
-  .saisons{grid-template-columns:repeat(2,minmax(0,1fr));column-gap:56px}
-}
-
-/* Équipements par pièce */
-.equip-groupes{display:grid;gap:36px;margin-top:42px}
-.equip-groupe h4{font-size:18px;padding-bottom:12px;border-bottom:1px solid var(--trait);margin-bottom:16px}
-.equip-groupe ul{margin:0;padding:0;list-style:none;display:grid;gap:9px}
-.equip-groupe li{display:flex;gap:11px;align-items:flex-start;font-size:15.5px;line-height:1.6;color:var(--gris)}
-.equip-groupe li::before{content:"";flex:none;width:5px;height:5px;border-radius:50%;
-  background:var(--ecume);margin-top:9px}
-@media(min-width:700px){.equip-groupes{grid-template-columns:repeat(2,minmax(0,1fr));gap:36px 48px}}
-@media(min-width:1000px){.equip-groupes{grid-template-columns:repeat(3,minmax(0,1fr))}}
-
-/* Infos pratiques */
-.pratique{display:grid;gap:0;margin-top:42px;border-top:1px solid var(--trait)}
-.pratique div{display:flex;align-items:baseline;justify-content:space-between;gap:20px;padding:16px 0;
-  border-bottom:1px solid var(--trait)}
-.pratique dt,.pratique .quoi{font-family:var(--serif);font-size:18px;margin:0}
-.pratique dd,.pratique .valeur{margin:0;font-size:15px;line-height:1.6;color:var(--gris);text-align:right}
-@media(min-width:900px){.pratique{grid-template-columns:repeat(2,minmax(0,1fr));column-gap:56px}}
-
-/* Plan */
-.plan{margin:56px 0 0}
-.plan-dessin{overflow-x:auto;-webkit-overflow-scrolling:touch}
-.plan-dessin svg{display:block;width:100%;min-width:540px;max-width:860px;height:auto;margin:0 auto}
-.plan figcaption{margin-top:16px;font-family:var(--serif);font-style:italic;font-size:16px;
-  color:var(--gris-clair);display:flex;align-items:baseline;gap:12px;justify-content:center}
-.plan figcaption .num{font-family:var(--sans);font-style:normal;font-size:11px;letter-spacing:.2em;
-  text-transform:uppercase;color:var(--terre)}
-.plan-aide{margin:10px 0 0;text-align:center;font-size:12px;letter-spacing:.12em;
-  text-transform:uppercase;color:#766B5E}
-@media(min-width:760px){.plan-aide{display:none}}
-@media(min-width:900px){.plan{margin-top:70px}}
 
 /* Le bureau */
-.bureau{background:var(--lin-fonce)}
-.bureau-points{margin:44px 0 0;padding:0;list-style:none;display:grid;gap:28px}
-.bureau-points .nom{display:block;font-family:var(--serif);font-size:20px;margin-bottom:9px}
-.bureau-points p{margin:0;font-size:16px;line-height:1.8;color:var(--gris)}
-.bureau-points li{padding-top:20px;border-top:1px solid var(--trait)}
-.bureau-suite{margin:34px 0 0}
-@media(min-width:700px){.bureau-points{grid-template-columns:repeat(2,minmax(0,1fr));gap:30px 48px}}
-@media(min-width:1000px){.bureau-points{grid-template-columns:repeat(4,minmax(0,1fr));gap:32px}}
+.bureau{background:var(--vague);color:var(--creme)}
+.bureau-points{display:grid;gap:0}
+.bureau-points li{padding:22px 0;border-top:1px solid rgba(251,248,243,.28)}
+.bureau-points .nom{display:block;font-family:var(--serif);font-size:23px;letter-spacing:-.02em;line-height:1.2;margin-bottom:8px}
+.bureau-points p{font-size:16px;line-height:1.7;color:rgba(251,248,243,.86)}
+.bureau-suite{margin-top:30px;font-size:16px}
+.bureau-suite a:not(.lien-ot){color:var(--terre);text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1px}
+@media(min-width:620px){.bureau-points{grid-template-columns:repeat(2,minmax(0,1fr));column-gap:36px}}
+@media(min-width:1000px){.bureau-points{grid-template-columns:repeat(4,minmax(0,1fr))}}
 
-/* Portfolio */
-.portfolio{padding-bottom:84px}
-.porte{width:100%;max-width:1180px;margin:54px auto 0;padding:0 22px;display:grid;gap:52px}
-@media(min-width:900px){.porte{padding:0 48px;gap:88px;margin-top:70px}}
-.pf{margin:0}
-.pf img{width:100%;height:auto;display:block;cursor:zoom-in}
-.pf figcaption{margin-top:14px;font-family:var(--serif);font-style:italic;font-size:16px;
-  color:var(--gris-clair);display:flex;align-items:baseline;gap:12px}
-.pf .num{font-family:var(--sans);font-style:normal;font-size:11px;letter-spacing:.2em;
-  color:var(--terre);flex:none}
-.pf-paire{display:grid;gap:52px;align-items:end}
-.pf-trois{display:grid;gap:52px;align-items:start}
-.pf-pleine{margin-left:-22px;margin-right:-22px}
+/* Une journée ici */
+.journee{position:relative;background:var(--vague-pale)}
+.journee .titre-bloc{margin-bottom:clamp(28px,4vw,48px)}
+.ciel{display:none}
+.moments{display:grid;gap:30px}
+.moment .heure{display:block;font-family:var(--serif);font-size:clamp(44px,7vw,64px);line-height:1;letter-spacing:-.04em;
+  color:var(--marin);margin-bottom:12px}
+.moment h3{font-size:24px;line-height:1.2;margin-bottom:8px}
+.moment p{font-size:16px;line-height:1.75;color:var(--gris);max-width:46ch}
+@media(min-width:900px){.moments{grid-template-columns:repeat(3,minmax(0,1fr));gap:48px}}
+/* version animée : la scène reste à l’écran pendant que la journée passe */
+.journee.scene{padding:0;height:250vh}
+.journee.scene .journee-cadre{position:sticky;top:0;height:100vh;height:100svh;display:flex;flex-direction:column;
+  justify-content:center;overflow:hidden;padding:76px 0 34px}
+.journee.scene .titre-bloc{margin-bottom:0}
+.journee.scene .titre-bloc h2{font-size:clamp(30px,4.4vw,56px)}
+.journee.scene .ciel{display:block;position:relative;height:clamp(84px,17vh,170px);margin:clamp(6px,2vh,22px) 0 clamp(8px,2vh,24px)}
+.ciel svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.ciel .arc{fill:none;stroke:var(--encre);stroke-opacity:.22;stroke-width:1;stroke-dasharray:2 7;vector-effect:non-scaling-stroke}
+.ciel .soleil{position:absolute;left:0;top:0;width:34px;height:34px;margin:-17px 0 0 -17px;border-radius:50%;
+  background:var(--terre);box-shadow:0 0 0 10px rgba(156,82,49,.14),0 0 0 24px rgba(156,82,49,.07);will-change:transform}
+.journee.scene .moments{position:relative;display:block;min-height:clamp(250px,36vh,330px)}
+.journee.scene .moment{position:absolute;inset:0;display:grid;grid-template-columns:minmax(0,1fr);align-content:start;
+  opacity:0;visibility:hidden;transform:translateY(26px);
+  transition:opacity .5s var(--doux),transform .7s var(--doux),visibility 0s .5s}
+.journee.scene .moment.actif{opacity:1;visibility:visible;transform:none;transition-delay:.12s,.12s,0s}
+.journee.scene .moment.passe{transform:translateY(-26px)}
+.journee.scene .moment .heure{font-size:clamp(64px,13vw,150px);margin-bottom:6px}
+.journee.scene .moment h3{font-size:clamp(24px,2.6vw,34px)}
 @media(min-width:900px){
-  .pf-large{width:72%}
-  .pf-large:nth-of-type(odd){margin-left:auto}
-  .pf-paire{grid-template-columns:.78fr 1.22fr;gap:56px;align-items:end}
-  .pf-paire-inverse{grid-template-columns:1.22fr .78fr}
-  .pf-haut{margin-bottom:0}
-  .pf-bas{margin-bottom:52px}
-  .pf-trois{grid-template-columns:repeat(3,minmax(0,1fr));gap:48px;align-items:start}
-  .pf-trois .pf:nth-child(2){margin-top:72px}
-  .pf-trois .pf:nth-child(3){margin-top:24px}
-  .pf-pleine{margin-left:calc(50% - 50vw);margin-right:calc(50% - 50vw);width:100vw}
-  .pf-pleine figcaption{padding:0 48px}
+  .journee.scene .moment{grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);column-gap:64px;align-items:end}
+  .journee.scene .moment .heure{grid-row:1/3;align-self:end;line-height:.9;margin:0}
+  .journee.scene .moment h3{align-self:end}
 }
-.anim .pf{opacity:0;transform:translateY(22px)}
-.anim .pf.vu{opacity:1;transform:none;
-  transition:opacity .95s ease,transform .95s cubic-bezier(.22,.61,.36,1)}
-@media(hover:hover){.pf img{transition:transform 1.2s cubic-bezier(.22,.61,.36,1)}
-  .pf:hover img{transform:scale(1.015)}}
+.journee-pas{display:none}
+.journee.scene .journee-pas{display:flex;gap:8px;margin-top:18px}
+.journee-pas i{display:block;height:2px;width:34px;background:rgba(29,42,43,.2);border-radius:2px;overflow:hidden;position:relative}
+.journee-pas i::after{content:"";position:absolute;inset:0;background:var(--terre);transform:scaleX(var(--p,0));transform-origin:0 50%}
 
-/* Tarifs */
-.grille-tarifs{margin-top:44px;border-top:1px solid var(--trait)}
-.tarif{display:grid;gap:6px 20px;padding:22px 0;border-bottom:1px solid var(--trait)}
-.tarif .nom-saison{display:block;font-family:var(--serif);font-size:20px;line-height:1.3;margin-bottom:5px}
-.tarif .quand{display:block;font-size:13px;line-height:1.6;color:var(--gris-clair)}
-.tarif .montant{font-family:var(--serif);font-size:22px;white-space:nowrap}
-.tarif .mini{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--gris-clair)}
-@media(min-width:800px){
-  .tarif{grid-template-columns:minmax(0,1.5fr) minmax(0,.9fr) minmax(0,.8fr);align-items:baseline}
-  .tarif .montant,.tarif .mini{text-align:right}
-}
-.tarifs-notes{margin-top:34px;display:grid;gap:14px}
-.tarifs-notes p{margin:0;font-size:15.5px;line-height:1.75;color:var(--gris);padding-left:26px;
-  position:relative}
-.tarifs-notes p::before{content:"";position:absolute;left:0;top:11px;width:9px;height:1px;
-  background:var(--terre)}
-.tarifs-notes b{font-family:var(--serif);font-weight:400;color:var(--encre)}
-.tarifs-pied{margin-top:30px;font-size:14px;line-height:1.8;color:var(--gris-clair);max-width:640px}
+/* Avis */
+.citation{background:var(--marin);color:#F7F3EC;text-align:center;padding:clamp(72px,10vw,130px) 0}
+.citation .vagues{display:block;margin:0 auto 26px}
+.citation blockquote{margin:0 auto;max-width:880px;font-family:var(--serif);font-weight:300;
+  font-size:clamp(24px,3.6vw,44px);line-height:1.28;letter-spacing:-.02em;text-wrap:balance}
+.citation .note-airbnb{margin-top:30px;font-size:16px;font-weight:400}
+.citation .etoiles{display:block;margin-bottom:8px;color:var(--ecume);font-size:20px;letter-spacing:.3em}
+.citation .etoiles b{display:inline-block;font-weight:400}
+.citation cite{display:block;margin-top:6px;font-style:normal;font-size:15px;color:rgba(247,243,236,.7)}
 
-/* Conciergerie */
-.conciergerie{margin-top:46px;padding:30px 24px 32px;background:var(--lin-fonce);
-  border:1px solid rgba(29,42,43,.1)}
-.conciergerie .etiquette{display:block;font-size:11px;letter-spacing:.2em;text-transform:uppercase;
-  color:var(--terre);margin-bottom:22px}
-.conciergerie h4{font-size:clamp(23px,5.2vw,30px);line-height:1.14;margin-bottom:16px}
-.conciergerie p{margin:0 0 16px;font-size:16px;line-height:1.8;color:var(--gris)}
-.conciergerie .sous-titre{display:block;font-family:var(--serif);font-size:17px;margin-bottom:14px}
-.conciergerie ul{margin:0 0 16px;padding:0;list-style:none;display:grid;gap:9px}
-.conciergerie li{display:flex;gap:11px;align-items:flex-start;font-size:15.5px;line-height:1.65;
-  color:var(--gris)}
-.conciergerie li::before{content:"";flex:none;width:5px;height:5px;border-radius:50%;
-  background:var(--ecume);margin-top:9px}
-.conciergerie .note{margin:0;font-size:14px;line-height:1.7;color:var(--gris-clair)}
-.conciergerie-corps{display:grid;gap:30px}
-@media(min-width:900px){
-  .conciergerie{padding:36px 40px 40px}
-  .conciergerie-corps{grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);gap:56px;align-items:start}
-}
-
-.venir{margin-top:50px}
-.venir h4{font-size:20px;margin-bottom:18px}
-.venir ul{margin:0;padding:0;list-style:none;display:grid;gap:14px}
-.venir li{font-size:16px;line-height:1.75;color:var(--gris);padding-left:26px;position:relative}
-.venir li .mode{font-family:var(--serif);color:var(--encre)}
-.venir li::before{content:"";position:absolute;left:0;top:10px;width:9px;height:1px;background:var(--terre)}
-@media(min-width:900px){.venir ul{grid-template-columns:repeat(3,minmax(0,1fr));gap:26px}}
-
-/* FAQ */
-.faq{margin-top:42px;border-top:1px solid var(--trait)}
-.faq details{border-bottom:1px solid var(--trait)}
-.faq summary{list-style:none;cursor:pointer;padding:20px 0;display:flex;align-items:baseline;
-  justify-content:space-between;gap:20px;font-family:var(--serif);font-size:19px;line-height:1.35}
-.faq summary::-webkit-details-marker{display:none}
-.faq summary::after{content:"+";font-family:var(--sans);font-size:20px;color:var(--terre);flex:none;
-  line-height:1}
-.faq details[open] summary::after{content:"–"}
-.faq p{margin:0 0 20px;font-size:16px;line-height:1.8;color:var(--gris);max-width:720px}
-
-/* Réserver */
-.reserver{background:var(--marin);color:#F7F3EC}
-.reserver .chapeau{color:var(--ecume)}
-.reserver .chapeau::before{background:var(--ecume)}
-.reserver h2{color:#F7F3EC}
-.reserver .intro p{color:rgba(247,243,236,.78)}
-.reserver .bouton{background:var(--ecume);color:var(--marin);margin-top:32px}
-.reserver .bouton:hover{background:#F0C9B1;color:var(--marin)}
-.reserver .bouton-attente,.reserver .bouton-attente:hover{cursor:default;transform:none;background:var(--ecume)}
-.prix{margin-top:34px;padding-top:26px;border-top:1px solid rgba(247,243,236,.18);display:flex;
-  flex-wrap:wrap;align-items:baseline;gap:8px 16px}
-.prix .montant{font-family:var(--serif);font-size:34px;color:#F7F3EC}
-.prix .unite{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:rgba(247,243,236,.6)}
-.mention{margin-top:20px;font-size:14px;line-height:1.8;color:rgba(247,243,236,.62);max-width:560px}
-
-/* Pied de page */
-.pied{background:var(--marin);color:#F7F3EC;padding:60px 0 26px;overflow:hidden;
-  border-top:1px solid rgba(247,243,236,.16)}
-.pied a{color:rgba(247,243,236,.82)}
-.pied-haut{display:grid;gap:26px;font-size:15px;line-height:1.75;color:rgba(247,243,236,.82)}
-@media(min-width:700px){.pied-haut{grid-template-columns:repeat(3,minmax(0,1fr))}}
-.coord{color:rgba(247,243,236,.55)}
-.legal{font-size:12.5px;color:rgba(247,243,236,.55);line-height:1.8}
-.signature{font-family:var(--serif);font-size:clamp(44px,15vw,132px);line-height:1;margin:48px 0 0;
-  color:rgba(247,243,236,.13);white-space:nowrap}
-
-/* Barre de réservation mobile */
-.barre{position:fixed;left:0;right:0;bottom:0;z-index:40;background:var(--creme);
-  border-top:1px solid var(--trait);box-shadow:0 -8px 24px rgba(29,42,43,.08);
-  padding:10px 16px calc(10px + env(safe-area-inset-bottom,0px));
-  display:flex;align-items:center;justify-content:space-between;gap:14px;
-  transform:translateY(110%);transition:transform .25s ease}
-.barre.visible{transform:translateY(0)}
-.barre .resume{font-size:13px;line-height:1.4;color:var(--gris-clair)}
-.barre .resume b{display:block;font-family:var(--serif);font-size:16px;color:var(--encre);font-weight:400}
-.barre .bouton{min-height:46px;padding:0 20px;font-size:12px}
-@media(min-width:1000px){.barre{display:none}}
-body{padding-bottom:0}
-@media(max-width:999px){body{padding-bottom:76px}}
-
-/* Visionneuse */
-.visionneuse{position:fixed;inset:0;background:rgba(19,29,28,.94);display:none;align-items:center;
-  justify-content:center;padding:18px;z-index:50}
-.visionneuse.ouverte{display:flex}
-.visionneuse img{max-width:100%;max-height:84vh;object-fit:contain}
-.visionneuse .fermer{position:absolute;top:calc(14px + env(safe-area-inset-top,0px));right:16px;
-  width:44px;height:44px;border-radius:50%;border:1px solid rgba(247,243,236,.4);background:transparent;
-  color:#F7F3EC;font-size:20px;cursor:pointer;line-height:1;z-index:2}
-.visionneuse .nav-photo{position:absolute;top:50%;transform:translateY(-50%);width:52px;height:52px;
-  border-radius:50%;border:1px solid rgba(247,243,236,.3);background:rgba(19,29,28,.5);
-  color:#F7F3EC;font-size:26px;line-height:1;cursor:pointer;z-index:2;
-  display:flex;align-items:center;justify-content:center;transition:border-color .3s,background .3s}
-.visionneuse .nav-photo:hover{border-color:rgba(247,243,236,.7);background:rgba(19,29,28,.75)}
-.visionneuse .precedent{left:12px;padding-right:3px}
-.visionneuse .suivant{right:12px;padding-left:3px}
-.visionneuse .legende{position:absolute;left:0;right:0;bottom:calc(20px + env(safe-area-inset-bottom,0px));
-  margin:0;text-align:center;font-family:var(--serif);font-style:italic;font-size:16px;
-  color:rgba(247,243,236,.76);padding:0 80px}
-@media(min-width:900px){.visionneuse .precedent{left:28px}.visionneuse .suivant{right:28px}}
-
-
-/* Vidéo drone */
-.video-cadre{position:relative;overflow:hidden;background:var(--lin-fonce)}
-.pf video{width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;display:block}
-.video-pause{position:absolute;right:14px;bottom:14px;width:44px;height:44px;border-radius:50%;
-  border:1px solid rgba(247,243,236,.55);background:rgba(19,29,28,.45);color:#F7F3EC;cursor:pointer;
-  display:flex;align-items:center;justify-content:center;
-  -webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);transition:background .3s}
-.video-pause:hover{background:rgba(19,29,28,.7)}
+/* En images : une pellicule qu’on fait glisser */
+.portfolio{overflow:hidden}
+.portfolio .titre-bloc{margin-bottom:clamp(28px,4vw,48px)}
+.pellicule{--h:min(58vh,66vw);display:flex;align-items:flex-start;gap:clamp(10px,1.4vw,20px);overflow-x:auto;overflow-y:hidden;
+  padding:0 max(var(--marge),calc((100vw - 1240px)/2 + var(--marge)));
+  scroll-snap-type:x proximity;scrollbar-width:none;-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain}
+.pellicule::-webkit-scrollbar{display:none}
+.pellicule.glisse{scroll-snap-type:none;cursor:grabbing}
+.pellicule.glisse img{pointer-events:none}
+.pf{flex:none;scroll-snap-align:center}
+.pf img,.pf .video-cadre{height:var(--h);width:auto;max-width:none;aspect-ratio:var(--r,4/3);object-fit:cover;background:var(--lin-fonce)}
+.pf figcaption{max-width:0;min-width:100%}
+.pf figcaption em{font-style:normal}
+.video-cadre{position:relative;overflow:hidden}
+.video-cadre video{width:100%;height:100%;object-fit:cover}
+.video-pause{position:absolute;right:12px;bottom:12px;width:44px;height:44px;border-radius:50%;border:0;
+  display:flex;align-items:center;justify-content:center;background:rgba(19,29,28,.55);color:#F7F3EC;cursor:pointer}
 .video-pause .i-lire{display:none}
 .video-pause[aria-pressed="true"] .i-lire{display:block}
 .video-pause[aria-pressed="true"] .i-pause{display:none}
-.video-pause:focus-visible{outline-color:var(--ecume)}
-@media(min-width:900px){.video-pause{right:28px;bottom:24px}}
-@media print{.pf-video{display:none}}
+.pellicule-barre{display:flex;align-items:center;gap:18px;margin-top:22px}
+.pellicule-barre .compte{font-size:15px;font-variant-numeric:tabular-nums;color:var(--gris-clair);min-width:5.2ch}
+.pellicule-barre .avance{flex:1;height:2px;background:var(--trait);position:relative;overflow:hidden;border-radius:2px}
+.pellicule-barre .avance i{position:absolute;inset:0;background:var(--terre);transform:scaleX(0);transform-origin:0 50%}
+.rond{width:48px;height:48px;flex:none;border-radius:50%;border:1px solid rgba(29,42,43,.3);background:none;cursor:pointer;
+  display:inline-flex;align-items:center;justify-content:center;transition:background-color .25s,color .25s,border-color .25s,opacity .25s}
+.rond:hover:not(:disabled){background:var(--marin);border-color:var(--marin);color:var(--creme)}
+.rond:disabled{opacity:.3;cursor:default}
+.pellicule-barre[hidden]{display:none}
 
-/* ——— Accessibilité : focus, évitement, cibles ——— */
-:focus-visible{outline:3px solid var(--terre);outline-offset:3px}
-.reserver :focus-visible,.pied :focus-visible,.citation :focus-visible,
-.visionneuse :focus-visible{outline-color:var(--ecume)}
-:focus:not(:focus-visible){outline:none}
+/* Bandeaux photo */
+.bandeau-photo{position:relative;height:clamp(240px,46vw,600px);overflow:hidden;background:var(--lin-fonce)}
+.bandeau-photo img{width:100%;height:100%;object-fit:cover}
+.bandeau-photo figcaption{position:absolute;left:var(--marge);right:var(--marge);bottom:16px;display:flex;flex-wrap:wrap;gap:8px}
+.bandeau-photo figcaption span{background:rgba(26,50,47,.78);color:#F7F3EC;font-size:14px;padding:6px 14px;border-radius:999px;
+  -webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
 
-.evitement{position:absolute;left:16px;top:-100px;z-index:60;background:var(--marin);
-  color:var(--creme);padding:14px 22px;border-radius:999px;font-size:13px;letter-spacing:.09em;
-  text-transform:uppercase;transition:top .2s}
-.evitement:focus{top:16px;color:var(--creme)}
-
-/* cibles tactiles : au moins 44 px de haut */
-.lien-ot,.source-ot a,.adresse a,.pied-haut a{min-height:44px;display:inline-flex;
-  align-items:center;gap:7px}
-.nav a:not(.bouton){min-height:44px;display:inline-flex;align-items:center}
-.faq summary{min-height:56px}
-
-/* ——— Navigation mobile ——— */
-.barre-haut{position:fixed;top:0;left:0;right:0;z-index:45;display:flex;align-items:center;
-  justify-content:space-between;gap:14px;padding:9px 16px;background:rgba(244,239,231,.94);
-  -webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);
-  border-bottom:1px solid var(--trait);transform:translateY(-110%);transition:transform .28s ease}
-.barre-haut.visible{transform:translateY(0)}
-.barre-haut .marque span{font-size:17px}
-.barre-haut .marque{min-width:0}
-.barre-haut .marque span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-@media(max-width:359px){.barre-haut .marque span{display:none}
-  .sommaire{font-size:11px;letter-spacing:.1em}}
-.sommaire{display:inline-flex;align-items:center;gap:9px;min-height:44px;padding:0 6px 0 12px;
-  background:none;border:0;font-family:var(--sans);font-size:12px;letter-spacing:.14em;
-  text-transform:uppercase;color:var(--gris);cursor:pointer}
-.sommaire .barres{display:grid;gap:4px;width:20px}
-.sommaire .barres i{display:block;height:1.5px;background:var(--encre);transition:transform .25s,opacity .2s}
-.menu{position:fixed;inset:0;z-index:50;background:var(--lin);padding:0;
-  display:flex;flex-direction:column;overflow-y:auto}
-.menu[hidden]{display:none}
-.menu-tete{display:flex;align-items:center;justify-content:space-between;gap:14px;
-  padding:9px 16px;border-bottom:1px solid var(--trait)}
-.menu-fermer{display:inline-flex;align-items:center;justify-content:center;min-width:44px;
-  min-height:44px;background:none;border:0;font-size:26px;line-height:1;color:var(--encre);cursor:pointer}
-.menu ul{list-style:none;margin:0;padding:12px 22px calc(28px + env(safe-area-inset-bottom,0px))}
-.menu li{border-bottom:1px solid var(--trait)}
-.menu li a{display:flex;align-items:baseline;gap:14px;padding:19px 2px;
-  font-family:var(--serif);font-size:25px;color:var(--encre)}
-.menu li a .n{font-family:var(--sans);font-size:11px;letter-spacing:.2em;color:var(--terre);
-  min-width:26px}
-.menu li:last-child a{color:var(--terre)}
-@media(min-width:1000px){.barre-haut,.menu{display:none!important}}
-
-/* section courante dans le menu du haut */
-.nav a[aria-current="true"]{color:var(--encre)}
-.nav a[aria-current="true"]::after{right:0}
-
-
-/* ——— Finition typographique ——— */
-::selection{background:var(--ecume);color:var(--marin)}
-.reserver ::selection,.pied ::selection,.citation ::selection{background:var(--ecume);color:var(--marin)}
-p,li,figcaption,blockquote,.detail,.valeur,.quand{text-wrap:pretty}
-h3,h4,.nom,.piece,.nom-saison,.saison h4,.moment h4{text-wrap:balance}
-.intro p,.accroche p{hanging-punctuation:first allow-end}
-
-/* ——— Impression : la fiche pratique tient sur une page ——— */
-/* Mode contraste élevé de Windows : le système impose ses couleurs.
-   On rend les boutons et les barres repérables par un contour, et on laisse
-   le plan au crayon tel qu’il est dessiné — forcé, il devient illisible. */
-@media (forced-colors: active){
-  .bouton,.barre,.barre-haut,.menu,.conciergerie,.faq details{border:1px solid currentColor}
-  .langue .drapeau svg{forced-color-adjust:none}
-  .bouton{forced-color-adjust:none;background:ButtonFace;color:ButtonText}
-  .plan-dessin svg,.marque svg,.citation svg{forced-color-adjust:none}
-  .ac{border-bottom:1px dotted currentColor}
-  .equip-groupe li::before,.moment::before{forced-color-adjust:none;background:currentColor}
+/* Le lieu */
+.lieu-corps{display:grid;gap:40px}
+.distances li{position:relative;display:flex;align-items:baseline;justify-content:space-between;gap:18px;padding:15px 0 17px}
+.distances .nom{font-family:var(--serif);font-size:clamp(20px,2.1vw,24px);letter-spacing:-.02em;line-height:1.25}
+.distances .val{font-size:15px;color:var(--gris-clair);text-align:right;white-space:nowrap}
+.distances .pas{position:absolute;left:0;right:0;bottom:0;height:1px;background:var(--trait)}
+.distances .pas::after{content:"";position:absolute;left:0;top:-1px;height:3px;border-radius:2px;background:var(--marin);
+  width:calc(var(--m) / 20 * 100%);transform-origin:0 50%}
+.adresse{margin-top:34px;display:grid;gap:6px}
+.adresse .etiquette,.conciergerie .etiquette,.prestations .etiquette{font-size:15px;font-weight:400;color:var(--terre)}
+.adresse .rue{font-family:var(--serif);font-size:22px;line-height:1.35;letter-spacing:-.02em}
+.adresse .gps{font-size:15px;color:var(--gris-clair)}
+.adresse .gps a{color:var(--terre);text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1px}
+.carte-photo img{width:100%;aspect-ratio:4/3;object-fit:cover}
+.carte-photo figcaption{margin-top:10px;font-size:15px;color:var(--gris-clair)}
+@media(max-width:560px){.distances li{flex-direction:column;gap:2px}.distances .val{text-align:left;white-space:normal}}
+@media(min-width:900px){
+  .lieu-corps{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:72px;align-items:start}
+  .carte-photo{position:sticky;top:96px}
 }
 
-@media print{
-  @page{margin:16mm 14mm}
-  :root{--lin:#fff;--lin-fonce:#fff;--creme:#fff}
-  html{background:#fff!important}
-  body{background:#fff;color:#000;padding:0;font-size:10.5pt}
-  /* on retire l’habillage d’écran : navigation, photos, décors */
-  .barre,.barre-haut,.menu,.evitement,.visionneuse,.nav,.plan-aide,.signature,.langue,
-  .portfolio,.citation,#journee,.bandeau-photo,.galerie,.carte-photo,
-  .accroche-photo,.reserver .bouton,.lien-fleche,.accroche .actions{display:none!important}
-  .bloc{padding:14pt 0;break-inside:avoid}
-  .titre-bloc h2{font-size:18pt}
-  h2,h3,h4,.chapeau{break-after:avoid}
-  .chapeau{color:#000}
-  /* les deux bandeaux sombres repassent en noir sur blanc */
-  .reserver,.pied{background:#fff;color:#000;border-top:.5pt solid #B9B2A6}
-  .reserver :where(h2,.intro p,.chapeau,.mention,.prix .montant,.prix .unite),
-  .pied :where(.pied-haut,a,.legal,.coord,.credit,strong,b){color:#000!important}
-  .reserver .ac,.pied .ac{color:#8A4526!important;background:rgba(156,82,49,.1)!important}
-  .prix{border-top:.5pt solid #B9B2A6}
-  .pied{padding:16pt 0 0;break-inside:avoid}
-  .pied-haut{grid-template-columns:1fr!important;gap:8pt}
-  /* la FAQ s’imprime dépliée, même fermée à l’écran */
-  details>:not(summary){display:block!important}
-  details::details-content{content-visibility:visible!important;block-size:auto!important}
-  .faq .reponse{display:block!important}
-  .faq .reponse>div{overflow:visible!important}
-  .faq summary::after{display:none}
-  .faq summary{min-height:0;padding:12pt 0 4pt}
-  /* une seule colonne : pas de demi-page vide */
-  .titre-bloc,.lieu-corps,.environs,.yeu-corps,.reserver-corps,.conciergerie-corps,
-  .couchages,.pratique,.saisons,.equip-groupes,.bureau-points,.venir ul{
-    display:block!important}
-  .intro{margin-top:8pt}
-  .equip-groupe+.equip-groupe{margin-top:18pt}
-  .tarif{display:grid!important;grid-template-columns:1fr auto;gap:2pt 10pt}
-  /* l’adresse des liens, en clair : ni capitales ni interlettrage hérités */
-  .lien-ot,.source-ot a,.adresse a{display:inline!important}
-  a[href^="http"]::after{content:" (" attr(href) ")";font-size:7.5pt;color:#444;
-    text-transform:none;letter-spacing:0;font-family:var(--sans);overflow-wrap:anywhere}
-  .plan-dessin svg{max-width:420pt}
-  .anim :where(*){opacity:1!important;transform:none!important}
+/* L’environnement */
+.onglets{position:relative;display:flex;gap:6px;margin-bottom:8px;overflow-x:auto;scrollbar-width:none;
+  border-bottom:1px solid var(--trait)}
+.onglets::-webkit-scrollbar{display:none}
+@media(max-width:700px){.onglets{margin-right:calc(var(--marge) * -1);padding-right:var(--marge);
+  -webkit-mask-image:linear-gradient(90deg,#000 82%,transparent);mask-image:linear-gradient(90deg,#000 82%,transparent)}}
+.onglets[hidden]{display:none}
+.onglets button{flex:none;padding:14px 16px 16px;border:0;background:none;cursor:pointer;font-family:var(--serif);
+  font-size:clamp(19px,2.2vw,26px);letter-spacing:-.02em;color:var(--gris-clair);transition:color .3s}
+.onglets button:first-child{padding-left:0}
+.onglets button[aria-selected="true"]{color:var(--encre)}
+.onglets .onglet-trait{position:absolute;left:0;bottom:-1px;height:3px;width:1px;background:var(--terre);
+  transform-origin:0 50%;transition:transform .55s var(--doux);pointer-events:none}
+.environs{display:grid;gap:50px}
+.commune h3{font-size:clamp(26px,3vw,36px);line-height:1.1;margin-bottom:6px}
+.commune ul{display:grid}
+.commune li{padding:24px 0;border-bottom:1px solid var(--trait)}
+.commune .nom,.yeu-points .nom{display:block;font-family:var(--serif);font-size:22px;letter-spacing:-.02em;line-height:1.25;margin-bottom:8px}
+.commune p,.yeu-points p{font-size:16px;line-height:1.75;color:var(--gris);margin-bottom:12px;max-width:56ch}
+.yeu-points p{margin-bottom:0}
+.yeu-vagues{display:none}
+.yeu h3{font-size:clamp(30px,4.4vw,52px);line-height:1.02;letter-spacing:-.03em}
+.yeu-chapo{margin-top:18px;font-size:17px;line-height:1.75;color:var(--gris);max-width:52ch}
+.yeu-pratique{margin-top:24px;padding-top:20px;border-top:1px solid var(--trait);display:grid;gap:14px;font-size:16px;color:var(--gris)}
+.yeu-pratique b{font-family:var(--serif);font-weight:400;font-size:19px;color:var(--encre)}
+.yeu-points{display:grid;gap:26px;margin-top:32px}
+.yeu > .lien-ot{margin-top:28px}
+.source-ot{margin-top:44px;font-size:16px;color:var(--gris);max-width:68ch}
+.source-ot a{color:var(--terre);text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1px}
+@media(min-width:900px){
+  .commune ul{grid-template-columns:repeat(2,minmax(0,1fr));column-gap:64px}
+  .yeu-corps{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:72px;align-items:start}
+  .yeu-points{margin-top:0}
 }
+/* avec les onglets : un seul volet à la fois */
+.environs.a-onglets{display:block}
+.environs.a-onglets > [hidden]{display:none}
+.environs.a-onglets > *{padding-top:10px}
+.environs.a-onglets .commune h3{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
+.environs.a-onglets .yeu{padding-top:34px}
 
-/* Disponibilités (calendrier Airbnb recopié dans /disponibilites.json) */
-.dispo{margin-top:40px;padding-top:30px;border-top:1px solid rgba(247,243,236,.16)}
+/* Les saisons */
+.saisons{display:grid;gap:34px}
+.saison{border-top:1px solid var(--trait);padding-top:18px}
+.mois{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:3px;margin-bottom:18px}
+.mois i{position:relative;font-style:normal;font-size:11px;font-weight:400;line-height:1;text-align:center;
+  padding-top:11px;color:rgba(29,42,43,.34)}
+.mois i::before{content:"";position:absolute;left:0;right:0;top:0;height:4px;border-radius:2px;background:rgba(29,42,43,.12)}
+.mois i.on{color:var(--encre)}
+.mois i.on::before{background:var(--marin)}
+.mois i.auj::after{content:"";position:absolute;left:50%;top:-9px;width:5px;height:5px;margin-left:-2.5px;border-radius:50%;background:var(--terre)}
+.saison .quand{display:block;font-size:15px;font-weight:400;color:var(--terre);margin-bottom:6px}
+.saison h3{font-size:26px;line-height:1.15;margin-bottom:10px}
+.saison p{font-size:16px;line-height:1.75;color:var(--gris)}
+@media(min-width:680px){.saisons{grid-template-columns:repeat(2,minmax(0,1fr));gap:44px 40px}}
+@media(min-width:1100px){.saisons{grid-template-columns:repeat(4,minmax(0,1fr))}}
+
+/* Les équipements */
+.equip-groupes{display:grid;gap:36px}
+.equip-groupe h3{font-size:26px;line-height:1.15;padding-bottom:14px;border-bottom:1px solid var(--trait)}
+.equip-groupe li{padding:11px 0;border-bottom:1px solid var(--trait);font-size:16px;color:var(--gris)}
+@media(min-width:900px){.equip-groupes{grid-template-columns:repeat(3,minmax(0,1fr));gap:56px}}
+
+/* Les tarifs */
+.grille-tarifs{border-top:1px solid var(--trait)}
+.tarif{display:grid;gap:8px;padding:22px 0;border-bottom:1px solid var(--trait)}
+.tarif .nom-saison{display:block;font-family:var(--serif);font-size:clamp(22px,2.3vw,27px);letter-spacing:-.02em;line-height:1.2}
+.tarif .quand{display:block;font-size:15px;color:var(--gris-clair);margin-top:3px}
+.tarif .montant{font-family:var(--serif);font-size:clamp(28px,3.4vw,40px);letter-spacing:-.03em;line-height:1.1;
+  font-variant-numeric:lining-nums;white-space:nowrap}
+.tarif .mini{font-size:15px;color:var(--gris-clair)}
+.plage{display:block;position:relative;height:3px;margin-top:10px;border-radius:2px;background:rgba(29,42,43,.1)}
+.plage::after{content:"";position:absolute;top:0;bottom:0;border-radius:2px;background:var(--terre);
+  left:calc((var(--a) - 70) / 65 * 100%);width:calc((var(--b) - var(--a)) / 65 * 100%);transform-origin:0 50%}
+@media(min-width:900px){
+  .tarif{grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr) minmax(0,.7fr);gap:40px;align-items:center}
+  .tarif .mini{text-align:right}
+}
+.tarifs-notes{display:grid;gap:10px;margin-top:34px;font-size:16px;color:var(--gris)}
+.tarifs-notes b{font-family:var(--serif);font-weight:400;font-size:19px;color:var(--encre)}
+.tarifs-pied{margin-top:22px;font-size:15px;color:var(--gris-clair);max-width:62ch}
+@media(min-width:900px){.tarifs-notes{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px 64px}}
+
+/* Infos pratiques */
+.pratique{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 24px;border-top:1px solid var(--trait)}
+.pratique > div{padding:18px 0;border-bottom:1px solid var(--trait)}
+.pratique .quoi{display:block;font-size:15px;color:var(--gris-clair)}
+.pratique .valeur{display:block;font-family:var(--serif);font-size:clamp(19px,2vw,23px);letter-spacing:-.02em;line-height:1.25;margin-top:4px}
+@media(min-width:900px){.pratique{grid-template-columns:repeat(4,minmax(0,1fr));gap:0 40px}}
+.conciergerie{margin-top:clamp(44px,6vw,72px);background:var(--lin-fonce);padding:clamp(26px,4vw,52px)}
+.conciergerie-corps{display:grid;gap:30px;margin-top:10px}
+.conciergerie h3{font-size:clamp(28px,3.6vw,44px);line-height:1.05;letter-spacing:-.03em;margin-bottom:16px}
+.conciergerie p{font-size:16px;line-height:1.75;color:var(--gris);margin-bottom:16px;max-width:52ch}
+.conciergerie .sous-titre{display:block;font-family:var(--serif);font-size:21px;letter-spacing:-.02em;margin-bottom:8px}
+.conciergerie li{padding:10px 0;border-bottom:1px solid var(--trait);font-size:16px;color:var(--gris)}
+.conciergerie .note,.prestations .note{margin:16px 0 14px;font-size:15px;color:var(--gris-clair)}
+@media(min-width:900px){.conciergerie-corps{grid-template-columns:repeat(2,minmax(0,1fr));gap:64px}}
+.venir{margin-top:clamp(44px,6vw,72px)}
+.venir h3{font-size:26px;line-height:1.15;margin-bottom:16px}
+.venir ul{display:grid;gap:16px;font-size:16px;line-height:1.75;color:var(--gris)}
+.venir .mode{font-family:var(--serif);font-size:19px;color:var(--encre)}
+@media(min-width:900px){.venir ul{grid-template-columns:repeat(3,minmax(0,1fr));gap:48px}}
+
+/* Fenêtre des prestations */
+.prestations{border:0;padding:0;max-width:min(520px,calc(100vw - 32px));width:100%;background:var(--creme);
+  color:var(--encre);box-shadow:0 30px 80px rgba(19,29,28,.35)}
+.prestations::backdrop{background:rgba(19,29,28,.55);-webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px)}
+.prestations-boite{position:relative;padding:34px 24px 26px}
+@media(min-width:600px){.prestations-boite{padding:42px 40px 34px}}
+.prestations h3{font-size:clamp(26px,5.5vw,32px);line-height:1.1;margin:6px 0 20px}
+.prestations table{width:100%;border-collapse:collapse;border-top:1px solid var(--trait)}
+.prestations caption{text-align:left;font-size:15px;color:var(--gris-clair);padding-bottom:10px}
+.prestations th,.prestations td{padding:13px 0;border-bottom:1px solid var(--trait);font-size:16px;line-height:1.5;vertical-align:baseline}
+.prestations th{font-weight:300;text-align:left;padding-right:16px}
+.prestations td{text-align:right;white-space:nowrap;font-family:var(--serif);font-size:19px}
+.prestations-fermer{position:absolute;top:8px;right:8px;width:44px;height:44px;border:0;background:none;
+  font-size:28px;line-height:1;cursor:pointer;border-radius:50%}
+.prestations-fermer:hover{background:var(--lin-fonce)}
+
+/* Questions */
+.faq{border-top:1px solid var(--trait)}
+.faq details{border-bottom:1px solid var(--trait)}
+.faq summary{list-style:none;cursor:pointer;padding:20px 0;min-height:60px;display:flex;align-items:center;
+  justify-content:space-between;gap:18px;font-family:var(--serif);font-size:clamp(21px,2.4vw,28px);letter-spacing:-.02em;line-height:1.2}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"";flex:none;width:14px;height:14px;
+  background:linear-gradient(var(--terre),var(--terre)) 50% 50%/100% 2px no-repeat,
+             linear-gradient(var(--terre),var(--terre)) 50% 50%/2px 100% no-repeat;
+  transition:transform .45s var(--doux)}
+.faq details[open] summary::after{transform:rotate(135deg)}
+.faq .reponse{display:grid;grid-template-rows:0fr;transition:grid-template-rows .5s var(--doux)}
+.faq details[open] .reponse{grid-template-rows:1fr}
+.faq .reponse > div{overflow:hidden}
+.faq p{padding-bottom:22px;font-size:17px;line-height:1.75;color:var(--gris);max-width:68ch}
+
+/* Réserver */
+.reserver{position:relative;background:var(--marin);color:var(--creme);padding-top:clamp(110px,14vw,200px)}
+.prix{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 14px;padding-top:26px;border-top:1px solid var(--trait-clair)}
+.prix .montant{font-family:var(--serif);font-size:clamp(40px,6vw,76px);line-height:1;letter-spacing:-.04em}
+.prix .unite{font-size:16px;color:rgba(247,243,236,.72)}
+.reserver > .wrap > .bouton{margin-top:34px;min-height:60px;padding:0 34px;font-size:17px}
+.mention{margin-top:24px;font-size:15px;line-height:1.7;color:rgba(247,243,236,.7);max-width:62ch}
+.dispo{margin-top:40px;padding-top:30px;border-top:1px solid var(--trait-clair)}
+.dispo[hidden]{display:none}
 .dispo-tete{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:22px}
-.dispo-tete h3{margin:0;font-family:var(--serif);font-weight:400;font-size:24px;color:#F7F3EC}
+.dispo-tete h3{font-size:28px;color:#F7F3EC}
 .dispo-nav{display:flex;gap:8px}
 .dispo-nav button{width:44px;height:44px;border-radius:50%;border:1px solid rgba(247,243,236,.3);
   background:transparent;color:#F7F3EC;font-size:18px;cursor:pointer;transition:border-color .3s,background .3s}
@@ -604,161 +528,107 @@ h3,h4,.nom,.piece,.nom-saison,.saison h4,.moment h4{text-wrap:balance}
 .dispo-mois{display:grid;gap:34px}
 @media(min-width:760px){.dispo-mois{grid-template-columns:1fr 1fr;gap:48px}}
 .dispo table{width:100%;border-collapse:collapse;table-layout:fixed}
-.dispo caption{text-align:left;font-size:12px;letter-spacing:.18em;text-transform:uppercase;
-  color:var(--ecume);padding-bottom:12px}
+.dispo caption{text-align:left;font-size:15px;font-weight:400;color:var(--ecume);padding-bottom:12px}
+.dispo caption::first-letter{text-transform:uppercase}
 .dispo abbr{text-decoration:none}
-.dispo th{font-weight:400;font-size:11px;letter-spacing:.08em;color:rgba(247,243,236,.55);padding:0 0 8px}
+.dispo th{font-weight:400;font-size:12px;color:rgba(247,243,236,.55);padding:0 0 8px}
 .dispo td{text-align:center;padding:2px}
 .dispo td span{display:flex;align-items:center;justify-content:center;width:38px;height:38px;max-width:100%;margin:0 auto;border-radius:50%;
   font-size:14px;color:#F7F3EC;font-variant-numeric:tabular-nums}
-.dispo td.libre span{background:rgba(232,183,154,.10)}
+.dispo td.libre span{background:rgba(232,183,154,.12)}
 .dispo td.pris span{color:rgba(247,243,236,.38);text-decoration:line-through;text-decoration-color:rgba(232,183,154,.6)}
 .dispo td.passe span{color:rgba(247,243,236,.22)}
 .dispo td.auj span{box-shadow:inset 0 0 0 1px var(--ecume)}
-.dispo-legende{display:flex;flex-wrap:wrap;gap:8px 20px;margin:22px 0 0;font-size:13px;color:rgba(247,243,236,.72)}
+.dispo-legende{display:flex;flex-wrap:wrap;gap:8px 20px;margin-top:22px;font-size:14px;color:rgba(247,243,236,.72)}
 .dispo-legende i{display:inline-block;width:14px;height:14px;border-radius:50%;vertical-align:-2px;margin-right:7px}
 .dispo-legende .l-libre{background:rgba(232,183,154,.28)}
-.dispo-legende .l-pris{background:transparent;box-shadow:inset 0 0 0 1px rgba(247,243,236,.3)}
-.dispo-legende .maj{flex-basis:100%;color:rgba(247,243,236,.5);font-size:12px}
-@media print{.dispo{display:none!important}}
+.dispo-legende .l-pris{box-shadow:inset 0 0 0 1px rgba(247,243,236,.3)}
+.dispo-legende .maj{flex-basis:100%;color:rgba(247,243,236,.5);font-size:13px}
 
-/* Prestations complémentaires (fenêtre) */
-.prestations-ouvrir{background:none;border:0;padding:0;margin-top:4px;font-family:inherit;cursor:pointer;text-align:left}
-.prestations{border:0;padding:0;max-width:min(520px,calc(100vw - 32px));width:100%;background:var(--creme);
-  color:var(--encre);box-shadow:0 30px 80px rgba(19,29,28,.35)}
-.prestations::backdrop{background:rgba(19,29,28,.55);-webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px)}
-.prestations-boite{position:relative;padding:34px 24px 26px}
-@media(min-width:600px){.prestations-boite{padding:42px 40px 34px}}
-.prestations .etiquette{display:block;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--terre);margin-bottom:10px}
-.prestations h4{font-size:clamp(24px,5.5vw,30px);line-height:1.15;margin:0 0 22px}
-.prestations table{width:100%;border-collapse:collapse;border-top:1px solid var(--trait)}
-.prestations caption{text-align:left;font-size:13px;color:var(--gris-clair);padding-bottom:10px}
-.prestations th,.prestations td{padding:13px 0;border-bottom:1px solid var(--trait);font-size:15.5px;line-height:1.5;vertical-align:baseline}
-.prestations th{font-weight:300;text-align:left;padding-right:16px}
-.prestations td{text-align:right;white-space:nowrap;font-family:var(--serif);font-size:18px}
-.prestations .note{margin:18px 0 0;font-size:14px;line-height:1.7;color:var(--gris-clair)}
-.prestations-fermer{position:absolute;top:8px;right:8px;width:44px;height:44px;border:0;background:none;
-  font-size:28px;line-height:1;color:var(--encre);cursor:pointer;border-radius:50%}
-.prestations-fermer:hover{background:var(--lin-fonce)}
-@media print{.prestations-ouvrir{display:none!important}}
+/* Pied */
+.pied{background:var(--marin);color:#F7F3EC;padding:44px 0 26px;overflow:hidden;
+  padding-bottom:calc(26px + env(safe-area-inset-bottom,0px))}
+.pied a{color:rgba(247,243,236,.88);text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1px;
+  text-decoration-color:rgba(247,243,236,.35)}
+.pied a:hover{text-decoration-color:currentColor}
+.pied-haut{display:grid;gap:22px;padding-top:36px;border-top:1px solid var(--trait-clair);font-size:16px;line-height:1.85;color:rgba(247,243,236,.82)}
+.pied-haut .coord,.pied-haut .legal{color:rgba(247,243,236,.55);font-size:14px}
+@media(min-width:760px){.pied-haut{grid-template-columns:1.1fr 1fr auto;gap:48px}}
+.signature{margin:clamp(30px,5vw,60px) 0 0 -.04em;font-family:var(--serif);font-weight:300;font-size:clamp(50px,17.6vw,246px);
+  line-height:.9;letter-spacing:-.045em;white-space:nowrap;color:rgba(247,243,236,.16)}
+@media(max-width:999px){.pied{padding-bottom:calc(96px + env(safe-area-inset-bottom,0px))}}
 
-/* ——— Animations douces ———
-   Tout est conditionné à la classe .anim, posée par un script en tête de page :
-   sans JavaScript, la page s’affiche normalement, rien n’est caché. */
+/* Barre de réservation (mobile) */
+.barre{position:fixed;left:0;right:0;bottom:0;z-index:40;display:flex;align-items:center;justify-content:space-between;gap:14px;
+  background:var(--creme);box-shadow:0 -1px 0 var(--trait),0 -10px 30px rgba(29,42,43,.08);
+  padding:10px var(--marge) calc(10px + env(safe-area-inset-bottom,0px));
+  transform:translateY(110%);transition:transform .5s var(--doux)}
+.barre.visible{transform:none}
+.barre .resume{font-size:14px;line-height:1.35;color:var(--gris-clair)}
+.barre .resume b{display:block;font-family:var(--serif);font-weight:400;font-size:17px;color:var(--encre)}
+.barre .bouton{min-height:46px;padding:0 22px}
+@media(min-width:1000px){.barre{display:none}}
 
-/* Apparition au défilement */
-/* :where() garde ces sélecteurs à faible priorité, pour que .vu l’emporte toujours. */
-.anim :where(.titre-bloc, .chiffres > div, .galerie figure, .couchages > div, .moment, .saison,
-  .distances li, .adresse, .carte-photo, .commune, .yeu, .equip-groupe, .pratique > div, .venir,
-  .faq details, .prix, .reserver .bouton, .source-ot, .citation blockquote, .citation cite,
-  .conciergerie, .bureau-points li, .tarif, .tarifs-notes p, .plan){
-  opacity:0;transform:translateY(16px);
-}
-.anim .vu{
-  opacity:1;transform:none;
-  transition:opacity .75s ease,transform .75s cubic-bezier(.22,.61,.36,1);
-  transition-delay:var(--d,0ms);
-}
+/* Visionneuse */
+.visionneuse{position:fixed;inset:0;z-index:60;background:rgba(19,29,28,.95);display:none;align-items:center;justify-content:center;
+  padding:56px 12px 64px}
+.visionneuse.ouverte{display:flex}
+.visionneuse img{max-width:100%;max-height:100%;object-fit:contain}
+.visionneuse button{position:absolute;display:flex;align-items:center;justify-content:center;width:48px;height:48px;border-radius:50%;
+  border:1px solid rgba(247,243,236,.3);background:rgba(19,29,28,.5);color:#F7F3EC;font-size:24px;line-height:1;cursor:pointer}
+.visionneuse button:hover{border-color:rgba(247,243,236,.7)}
+.visionneuse .fermer{top:calc(10px + env(safe-area-inset-top,0px));right:12px}
+.visionneuse .precedent{left:12px;top:50%;margin-top:-24px}
+.visionneuse .suivant{right:12px;top:50%;margin-top:-24px}
+.visionneuse .legende{position:absolute;left:0;right:0;bottom:calc(20px + env(safe-area-inset-bottom,0px));
+  text-align:center;font-size:15px;color:rgba(247,243,236,.82);padding:0 16px}
 
-/* Décalages en cascade */
-.anim .chiffres > div:nth-child(2){--d:70ms}
-.anim .chiffres > div:nth-child(3){--d:140ms}
-.anim .chiffres > div:nth-child(4){--d:210ms}
-.anim .galerie figure:nth-child(2){--d:110ms}
-.anim .galerie figure:nth-child(3){--d:220ms}
-.anim .moment:nth-child(2){--d:110ms}
-.anim .moment:nth-child(3){--d:220ms}
-.anim .saison:nth-child(2){--d:70ms}
-.anim .saison:nth-child(3){--d:140ms}
-.anim .saison:nth-child(4){--d:210ms}
-.anim .equip-groupe:nth-child(2){--d:90ms}
-.anim .equip-groupe:nth-child(3){--d:180ms}
-.anim .commune:nth-child(2){--d:120ms}
-.anim .distances li:nth-child(2){--d:50ms}
-.anim .distances li:nth-child(3){--d:100ms}
-.anim .distances li:nth-child(4){--d:150ms}
-.anim .distances li:nth-child(5){--d:200ms}
-.anim .distances li:nth-child(6){--d:250ms}
-.anim .pratique > div:nth-child(2){--d:40ms}
-.anim .pratique > div:nth-child(3){--d:80ms}
-.anim .pratique > div:nth-child(4){--d:120ms}
-.anim .pratique > div:nth-child(5){--d:160ms}
-.anim .pratique > div:nth-child(6){--d:200ms}
-.anim .pratique > div:nth-child(7){--d:240ms}
-.anim .pratique > div:nth-child(8){--d:280ms}
-.anim .faq details:nth-child(2){--d:60ms}
-.anim .faq details:nth-child(3){--d:120ms}
-.anim .faq details:nth-child(4){--d:180ms}
-.anim .faq details:nth-child(5){--d:240ms}
-.anim .citation cite{--d:160ms}
-.anim .prix{--d:80ms}
-.anim .reserver .bouton{--d:160ms}
+/* ——— États de départ des animations ———
+   .mo n’est posée que si le JavaScript tourne et que le système accepte le mouvement.
+   Si mouvement.js n’arrive pas, la classe est retirée et tout redevient visible. */
+.mo [data-r]:not(.vu){opacity:0}
+.mo [data-r="titre"]:not(.vu){opacity:1;visibility:hidden}
+.mo [data-r="liste"]:not(.vu){opacity:1}
+.mo [data-r="liste"]:not(.vu) > *{opacity:0}
+.mo .accroche:not(.vu) .h1-nom,.mo .accroche:not(.vu) .chapeau,.mo .accroche:not(.vu) .accroche-bas{visibility:hidden}
+.mo .distances:not(.vu) .pas::after,.mo .tarif:not(.vu) .plage::after{transform:scaleX(0)}
+.distances .pas::after,.plage::after{transition:transform 1.2s var(--doux) .15s}
+.distances li:nth-child(2) .pas::after{transition-delay:.22s}
+.distances li:nth-child(3) .pas::after{transition-delay:.29s}
+.distances li:nth-child(4) .pas::after{transition-delay:.36s}
+.distances li:nth-child(5) .pas::after{transition-delay:.43s}
+.distances li:nth-child(6) .pas::after{transition-delay:.5s}
 
-/* Entrée de l’accroche */
-@keyframes monte{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
-@keyframes respire{from{transform:scale(1.045)}to{transform:scale(1)}}
-.anim .accroche .chapeau{animation:monte .8s .05s both cubic-bezier(.22,.61,.36,1)}
-.anim .accroche h1 .h1-nom{animation:monte .9s .15s both cubic-bezier(.22,.61,.36,1)}
-.anim .accroche > div > p{animation:monte .9s .3s both cubic-bezier(.22,.61,.36,1)}
-.anim .repere{animation:monte .9s .42s both cubic-bezier(.22,.61,.36,1)}
-.anim .accroche .actions{animation:monte .9s .52s both cubic-bezier(.22,.61,.36,1)}
-.anim .accroche-photo{overflow:hidden}
-.anim .accroche-photo img{animation:respire 1.6s .1s both cubic-bezier(.22,.61,.36,1)}
-
-/* Le trait du logo se dessine */
-@keyframes trace{from{stroke-dashoffset:var(--l)}to{stroke-dashoffset:0}}
-.marque svg path.trace{stroke-dasharray:var(--l);animation:trace 1.2s both ease-out}
-.marque svg path.trace:nth-child(2){animation-delay:.34s}
-.marque svg path.trace:nth-child(3){animation-delay:.56s}
-
-/* Photos : léger rapprochement au survol */
-.galerie figure,.carte-photo,.bandeau-photo{overflow:hidden}
-.galerie img,.carte-photo img,.bandeau-photo img{
-  transition:transform 1.1s cubic-bezier(.22,.61,.36,1),filter .6s ease}
-@media(hover:hover){
-  .galerie figure:hover img,.carte-photo:hover img,.bandeau-photo:hover img{transform:scale(1.035)}
-}
-
-/* Liens et boutons */
-.lien-ot::after,.lien-fleche svg{transition:transform .4s cubic-bezier(.22,.61,.36,1)}
-.lien-ot:hover::after{transform:translateX(5px)}
-.lien-fleche:hover svg{transform:translateY(4px)}
-.nav a:not(.bouton){position:relative}
-.nav a:not(.bouton)::after{content:"";position:absolute;left:0;right:100%;bottom:-5px;height:1px;
-  background:var(--terre);transition:right .4s cubic-bezier(.22,.61,.36,1)}
-.nav a:not(.bouton):hover::after{right:0}
-.bouton{transition:background .25s ease,transform .25s cubic-bezier(.22,.61,.36,1)}
-.bouton:hover{transform:translateY(-2px)}
-.source-ot a,.pied a{transition:color .3s ease}
-
-/* FAQ : ouverture en douceur */
-.faq .reponse{display:grid;grid-template-rows:0fr;transition:grid-template-rows .45s cubic-bezier(.22,.61,.36,1)}
-.faq details[open] .reponse{grid-template-rows:1fr}
-.faq .reponse > div{overflow:hidden}
-.faq summary::after{transition:transform .35s cubic-bezier(.22,.61,.36,1)}
-.faq details[open] summary::after{transform:rotate(180deg)}
-
-/* On respecte le réglage « animations réduites » du système */
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
-  .barre{transition:none}
-  .anim :where(.titre-bloc, .chiffres > div, .galerie figure, .couchages > div, .moment, .saison,
-    .distances li, .adresse, .carte-photo, .commune, .yeu, .equip-groupe, .pratique > div, .venir,
-    .faq details, .prix, .reserver .bouton, .source-ot, .citation blockquote,
-    .citation cite, .conciergerie, .bureau-points li, .tarif, .tarifs-notes p, .pf, .plan){opacity:1;transform:none;transition:none}
-  .anim .accroche .chapeau,.anim .accroche h1 .h1-nom,.anim .accroche > div > p,.anim .repere,
-  .anim .accroche .actions,.anim .accroche-photo img,.marque svg path.trace{animation:none;
-    stroke-dasharray:none}
-  .galerie img,.carte-photo img,.bandeau-photo img,.bouton,.lien-ot::after,
-  .lien-fleche svg,.nav a::after,.faq .reponse,.faq summary::after{transition:none}
-  .galerie figure:hover img,.carte-photo:hover img,.bandeau-photo:hover img,
-  .bouton:hover{transform:none}
+  *,*::before,*::after{transition-duration:.01ms!important;animation-duration:.01ms!important;animation-iteration-count:1!important}
+}
+@media (forced-colors:active){
+  .bouton,.rond,.menu-fermer{border:1px solid ButtonText}
+  .houle{display:none}
+  .mois i.on::before,.plage::after,.distances .pas::after{background:Highlight}
+}
+@media print{
+  .entete,.barre,.menu,.visionneuse,.houle,.pellicule-barre,.onglets,.ciel,.journee-pas,.dispo,.prestations-ouvrir,.pf-video,.accroche-photo img + img{display:none!important}
+  body{background:#fff;font-size:11pt}
+  .accroche,.bureau,.citation,.reserver,.pied{background:#fff!important;color:#000!important}
+  .accroche-bas p,.repere,.intro p,.bureau-points p,.citation cite,.prix .unite,.mention,.pied-haut{color:#222!important}
+  .bloc{padding:28px 0}
+  .pellicule{flex-wrap:wrap;overflow:visible;--h:150px}
+  .journee.scene{height:auto}
+  .journee.scene .journee-cadre{position:static;height:auto}
+  .journee.scene .moments{display:grid}
+  .journee.scene .moment{position:static;opacity:1;visibility:visible;transform:none}
+  .environs.a-onglets > [hidden]{display:block!important}
+  .signature{display:none}
 }
 </style>
 <script>
-/* Posé avant le rendu : sans JavaScript, aucune animation et rien n’est caché. */
+/* Posé avant le rendu. Sans JavaScript, ou si le système demande des animations
+   réduites, rien n’est caché. Si mouvement.js n’arrive pas, on rend la main. */
 if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-  document.documentElement.classList.add('anim');
+  document.documentElement.classList.add('mo');
+  setTimeout(function(){ if (!window.LPV_mo) document.documentElement.classList.remove('mo'); }, 3500);
 }
 </script>
 <script type="application/ld+json">
@@ -820,31 +690,43 @@ if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
   ]
 }
 </script>
-<!-- Animations Motion (Framer Motion sans React) : source dans _mouvement/ -->
-<script src="/mouvement.js" defer></script>
+<!-- Animations Motion (Framer Motion sans React) : source dans _mouvement/accueil.js -->
+<script src="/accueil.js" defer></script>
 </head>
 <body>
 
 <a class="evitement" href="#contenu">Skip to content</a>
 
-<div class="barre-haut" id="barre-haut">
+<header class="entete" id="entete">
   <a class="marque" href="#top">
-    <svg viewBox="0 0 96 48" width="36" height="18" fill="none" stroke="currentColor" stroke-linecap="round" aria-hidden="true">
+    <svg viewBox="0 0 96 48" width="40" height="20" fill="none" stroke="currentColor" stroke-linecap="round" aria-hidden="true">
       <path d="M3 31 C 15 11, 40 7, 54 22 C 62 31, 74 33, 89 23" stroke-width="3.2"/>
       <path d="M19 41 C 29 32, 44 30, 53 38" stroke-width="2.4"/>
+      <path d="M62 42 C 68 38, 77 38, 83 42" stroke-width="1.8"/>
     </svg>
     <span>la petite vague</span>
   </a>
+  <nav class="nav" aria-label="Page sections">
+    <a href="#maison">The house</a>
+    <a href="#images">In pictures</a>
+    <a href="#lieu">Where it is</a>
+    <a href="#environnement">Around</a>
+    <a href="#tarifs">Rates</a>
+    <a href="#pratique">Practical</a>
+    <span class="nav-trait" aria-hidden="true"></span>
+  </nav>
   <a class="langue" href="/" hreflang="fr" lang="fr" aria-label="Lire cette page en français" title="Français">
-  <span class="drapeau" aria-hidden="true"><svg viewBox="0 0 60 36">
+    <span class="drapeau" aria-hidden="true"><svg viewBox="0 0 60 36">
     <g class="en"><rect width="60" height="36" fill="#012169"/><path d="M0 0 60 36M60 0 0 36" stroke="#fff" stroke-width="7"/><path d="M0 0 60 36M60 0 0 36" stroke="#C8102E" stroke-width="3.4"/><path d="M30 0v36M0 18h60" stroke="#fff" stroke-width="12"/><path d="M30 0v36M0 18h60" stroke="#C8102E" stroke-width="7"/></g>
     <g class="fr"><rect width="20" height="36" fill="#0055A4"/><rect x="20" width="20" height="36" fill="#fff"/><rect x="40" width="20" height="36" fill="#EF4135"/></g>
   </svg></span><span class="code en">EN</span><span class="code fr">FR</span>
-    </a>
+  </a>
+  <a class="bouton" href="#reserver">Book</a>
   <button class="sommaire" type="button" id="ouvrir-menu" aria-expanded="false" aria-controls="menu">
-    Contents <span class="barres" aria-hidden="true"><i></i><i></i><i></i></span>
+    Contents <span class="barres" aria-hidden="true"><i></i><i></i></span>
   </button>
-</div>
+  <span class="fil" id="fil" aria-hidden="true"></span>
+</header>
 
 <nav class="menu" id="menu" aria-label="Site contents" hidden>
   <div class="menu-tete">
@@ -858,73 +740,54 @@ if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     <button class="menu-fermer" type="button" id="fermer-menu" aria-label="Close the contents">&times;</button>
   </div>
   <ul>
-    <li><a href="#maison"><span class="n">01</span> The house</a></li>
-    <li><a href="#bureau"><span class="n">02</span> The study</a></li>
-    <li><a href="#images"><span class="n">03</span> In pictures</a></li>
-    <li><a href="#lieu"><span class="n">04</span> Where it is</a></li>
-    <li><a href="#environnement"><span class="n">05</span> Around here</a></li>
-    <li><a href="#equipements"><span class="n">06</span> What's included</a></li>
-    <li><a href="#tarifs"><span class="n">07</span> Rates</a></li>
-    <li><a href="#pratique"><span class="n">08</span> Good to know</a></li>
-    <li><a href="#questions"><span class="n">09</span> Common questions</a></li>
-    <li><a href="#reserver"><span class="n">10</span> Book</a></li>
+    <li><a href="#maison">The house</a></li>
+    <li><a href="#bureau">The study</a></li>
+    <li><a href="#images">In pictures</a></li>
+    <li><a href="#lieu">Where it is</a></li>
+    <li><a href="#environnement">Around here</a></li>
+    <li><a href="#equipements">What's included</a></li>
+    <li><a href="#tarifs">Rates</a></li>
+    <li><a href="#pratique">Good to know</a></li>
+    <li><a href="#questions">Common questions</a></li>
+    <li><a href="#reserver">Book</a></li>
   </ul>
 </nav>
 
-<div class="wrap">
-  <header class="entete">
-    <a class="marque" href="#top">
-      <svg viewBox="0 0 96 48" width="44" height="22" fill="none" stroke="currentColor" stroke-linecap="round" aria-hidden="true">
-        <path d="M3 31 C 15 11, 40 7, 54 22 C 62 31, 74 33, 89 23" stroke-width="3.2"/>
-        <path d="M19 41 C 29 32, 44 30, 53 38" stroke-width="2.4"/>
-        <path d="M62 42 C 68 38, 77 38, 83 42" stroke-width="1.8"/>
-      </svg>
-      <span>la petite vague</span>
-    </a>
-    <nav class="nav" aria-label="Page sections">
-      <a href="#maison">The house</a>
-      <a href="#images">In pictures</a>
-      <a href="#lieu">Where it is</a>
-      <a href="#environnement">Around</a>
-      <a href="#tarifs">Rates</a>
-      <a href="#pratique">Practical</a>
-      <a class="bouton" href="#reserver">Book</a>
-    </nav>
-    <a class="langue" href="/" hreflang="fr" lang="fr" aria-label="Lire cette page en français" title="Français">
-      <span class="drapeau" aria-hidden="true"><svg viewBox="0 0 60 36">
-      <g class="en"><rect width="60" height="36" fill="#012169"/><path d="M0 0 60 36M60 0 0 36" stroke="#fff" stroke-width="7"/><path d="M0 0 60 36M60 0 0 36" stroke="#C8102E" stroke-width="3.4"/><path d="M30 0v36M0 18h60" stroke="#fff" stroke-width="12"/><path d="M30 0v36M0 18h60" stroke="#C8102E" stroke-width="7"/></g>
-      <g class="fr"><rect width="20" height="36" fill="#0055A4"/><rect x="20" width="20" height="36" fill="#fff"/><rect x="40" width="20" height="36" fill="#EF4135"/></g>
-    </svg></span><span class="code en">EN</span><span class="code fr">FR</span>
-    </a>
-  </header>
-
-  <main id="contenu">
-  <section class="accroche" id="top">
-    <div>
-      <h1><span class="chapeau">A house for two · Saint-Hilaire-de-Riez, Vendée</span><span class="h1-nom">La petite<br><em>vague</em></span></h1>
+<main id="contenu">
+<section class="accroche sombre" id="top">
+  <div class="wrap">
+    <h1><span class="chapeau">A house for two · Saint-Hilaire-de-Riez, Vendée</span><span class="h1-nom">La petite<br> <em>vague</em></span></h1>
+    <div class="accroche-bas">
       <p>Fifty-five square metres of quiet, set down between the ocean and the marshes. In the morning the light comes up off the water; in the evening the sea pulls back behind the dunes and you can hear the wind moving through the pines. For a weekend, or for a whole summer.</p>
-      <ul class="repere">
-        <li>2 guests</li>
-        <li>Private terrace and garden</li>
-        <li>Clifftop path 10 min on foot</li>
-      </ul>
-      <div class="actions">
-        <a class="bouton" href="#reserver">See available dates</a>
-        <a class="lien-fleche" href="#maison">Look round the house
-          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v16"/><path d="M6 14l6 6 6-6"/></svg>
-        </a>
+      <div>
+        <ul class="repere">
+          <li>2 guests</li>
+          <li>Private terrace and garden</li>
+          <li>Clifftop path 10 min on foot</li>
+        </ul>
+        <div class="actions">
+          <a class="bouton" href="#reserver">See available dates</a>
+          <a class="lien-fleche" href="#maison">Look round the house
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v16"/><path d="M6 14l6 6 6-6"/></svg>
+          </a>
+        </div>
       </div>
     </div>
-    <div class="accroche-photo">
-      <img src="/photos/chambre.webp" alt="The bedroom at La petite vague, blue wall and made bed" width="1600" height="1200" fetchpriority="high" decoding="async">
-    </div>
-  </section>
+  </div>
+  <div class="accroche-photo">
+    <div class="houle" aria-hidden="true"><i></i><i></i></div>
+    <img src="/photos/chambre.webp" alt="The bedroom at La petite vague, blue wall and made bed" width="1600" height="1200" fetchpriority="high" decoding="async">
+    <img src="/photos/pf-sejour-soir.webp" alt="The living room at sunset, armchair and coffee table in front of the glass" width="1500" height="1125" loading="lazy" decoding="async">
+    <img src="/photos/pf-terrasse.webp" alt="The front terrace, glass door open onto the living room, and a shade sail" width="1600" height="1200" loading="lazy" decoding="async">
+  </div>
+</section>
 
-  <div class="chiffres">
-    <div><b>55 m²</b><span>all on one level</span></div>
-    <div><b>110 m²</b><span>of terrace and garden</span></div>
+<div class="wrap">
+  <div class="chiffres" data-r="liste">
+    <div><b>55 m²</b><span>all on one level</span></div>
+    <div><b>110 m²</b><span>of terrace and garden</span></div>
     <div><b>2</b><span>guests</span></div>
-    <div><b>15 min</b><span>walk to the beach</span></div>
+    <div><b>15 min</b><span>walk to the beach</span></div>
   </div>
 </div>
 
@@ -932,58 +795,32 @@ if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
   <div class="wrap">
     <div class="titre-bloc">
       <div>
-        <div class="chapeau">01 — The house</div>
-        <h2>Small, bright,<br>and built for <em>slowing down</em></h2>
+        <div class="chapeau" data-r>The house</div>
+        <h2 data-r="titre">Small, bright,<br>and built for <em>slowing down</em></h2>
       </div>
-      <div class="intro">
+      <div class="intro" data-r>
         <p>Pale wood, linen, walls the colour of a wave, and a great deal of daylight. Everything is on one level: a bedroom, a study, a shower room, a living room open onto the kitchen. And front and back, a hundred and ten square metres of outdoors that are yours alone.</p>
         <p>The bed is made when you arrive, the towels folded on top. The kitchen is meant for proper cooking — fish bought at the harbour that morning, Vendée salt, a table nobody leaves before dark.</p>
       </div>
     </div>
 
     <div class="galerie">
-      <figure class="g-haut">
-        <img src="/photos/sejour.webp" alt="The living room opening onto the terrace through a wide glass door" loading="lazy" decoding="async" width="1400" height="1050">
+      <figure class="g-haut" data-para="-30">
+        <img data-r="photo" src="/photos/sejour.webp" alt="The living room opening onto the terrace through a wide glass door" loading="lazy" decoding="async" width="1400" height="1050">
         <figcaption>The living room</figcaption>
       </figure>
-      <figure class="g-moyen">
-        <img src="/photos/cuisine.webp" alt="The fitted kitchen and its big pale wood table" loading="lazy" decoding="async" width="1400" height="1050">
+      <figure class="g-moyen" data-para="40">
+        <img data-r="photo" src="/photos/cuisine.webp" alt="The fitted kitchen and its big pale wood table" loading="lazy" decoding="async" width="1400" height="1050">
         <figcaption>The kitchen</figcaption>
       </figure>
-      <figure class="g-decale">
-        <img src="/photos/terrasse.webp" alt="The sheltered terrace at the front, opening onto the living room" loading="lazy" decoding="async" width="1400" height="1050">
+      <figure class="g-decale" data-para="-70">
+        <img data-r="photo" src="/photos/terrasse.webp" alt="The sheltered terrace at the front, opening onto the living room" loading="lazy" decoding="async" width="1400" height="1050">
         <figcaption>The terrace</figcaption>
       </figure>
     </div>
 
-    <div class="couchages">
-      <div>
-        <span class="piece">The bedroom</span>
-        <span class="detail">One double bed, 160 cm</span>
-      </div>
-      <div>
-        <span class="piece">The study</span>
-        <span class="detail">A room of its own, for working in peace</span>
-      </div>
-      <div>
-        <span class="piece">The shower room</span>
-        <span class="detail">Shower, basin, heated towel rail · separate WC</span>
-      </div>
-      <div>
-        <span class="piece">The living room and kitchen</span>
-        <span class="detail">Open living space, table for four</span>
-      </div>
-      <div>
-        <span class="piece">The terrace</span>
-        <span class="detail">55 m² at the front, private</span>
-      </div>
-      <div>
-        <span class="piece">The garden</span>
-        <span class="detail">55 m² of lawn at the back, private</span>
-      </div>
-    </div>
-
-    <figure class="plan">
+    <div class="interieur">
+      <figure class="plan" data-r>
       <div class="plan-dessin">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1047 1168" role="img" aria-label="Pencil plan of the ground floor: bedroom, study, shower room, WC, living room open onto the kitchen, sliding door to the terrace" font-family="Architects Daughter, Fraunces, Georgia, serif">
         <defs>
@@ -2159,27 +1996,48 @@ if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
         <text x="318" y="1086" fill="#4E5D5A" font-size="24" text-anchor="middle" font-family="Architects Daughter, Fraunces, Georgia, serif">2 m</text>
         <text x="923" y="1110" fill="#4E5D5A" font-size="25" text-anchor="end" font-family="Architects Daughter, Fraunces, Georgia, serif">ground floor · dimensions in centimetres</text>
         <text x="923" y="1144" fill="#333B37" font-size="31" text-anchor="end" font-family="Architects Daughter, Fraunces, Georgia, serif">La petite vague — 55 m²</text>
+        <g class="zones" aria-hidden="true">
+          <rect data-zone="chambre" x="440" y="119" width="456" height="318"/>
+          <rect data-zone="bureau" x="145" y="119" width="185" height="213"/>
+          <path data-zone="eau" d="M145 342H330V520H145Z M340 119H430V239H340Z"/>
+          <path data-zone="sejour" d="M340 249H430V447H896V852H421V965H145V530H340Z"/>
+          <rect data-zone="terrasse" x="585" y="838" width="208" height="56"/>
+        </g>
         </svg>
       </div>
       <figcaption><span class="num">Floor plan</span> <em>The ground floor, all on one level</em></figcaption>
-      <p class="plan-aide">Drag the plan sideways to see all of it.</p>
     </figure>
+      <div class="couchages" data-r="liste">
+        <button type="button" data-piece="chambre" aria-pressed="false"><span class="piece">The bedroom</span>
+        <span class="detail">One double bed, 160 cm</span></button>
+        <button type="button" data-piece="bureau" aria-pressed="false"><span class="piece">The study</span>
+        <span class="detail">A room of its own, for working in peace</span></button>
+        <button type="button" data-piece="eau" aria-pressed="false"><span class="piece">The shower room</span>
+        <span class="detail">Shower, basin, heated towel rail · separate WC</span></button>
+        <button type="button" data-piece="sejour" aria-pressed="false"><span class="piece">The living room and kitchen</span>
+        <span class="detail">Open living space, table for four</span></button>
+        <button type="button" data-piece="terrasse" aria-pressed="false"><span class="piece">The terrace</span>
+        <span class="detail">55 m² at the front, private</span></button>
+        <div><span class="piece">The garden</span>
+        <span class="detail">55 m² of lawn at the back, private</span></div>
+      </div>
+    </div>
   </div>
 </section>
 
-<section class="bloc bureau" id="bureau">
+<section class="bloc bureau sombre" id="bureau">
   <div class="wrap">
     <div class="titre-bloc">
       <div>
-        <div class="chapeau">02 — The study</div>
-        <h2>Working from here,<br>the sea <em>at the end of the road</em></h2>
+        <div class="chapeau" data-r>The study</div>
+        <h2 data-r="titre">Working from here,<br>the sea <em>at the end of the road</em></h2>
       </div>
-      <div class="intro">
+      <div class="intro" data-r>
         <p>Not a corner of the table, not a nook in the bedroom: a room of its own, with a door, a desk and a window. You spend the morning in it, and close the door at lunchtime.</p>
       </div>
     </div>
     <div class="bureau-corps">
-      <ul class="bureau-points">
+      <ul class="bureau-points" data-r="liste">
         <li><span class="nom">A room kept for it</span><p>A door that shuts, daylight, and the rest of the house staying put while you work.</p></li>
         <li><span class="nom">Fibre, and video calls</span><p>Fibre wifi, with enough headroom to run video calls back to back without thinking about it.</p></li>
         <li><span class="nom">A ten-minute break</span><p>The clifftop path is ten minutes away on foot, the beach fifteen. Enough to properly stop between two meetings.</p></li>
@@ -2191,33 +2049,40 @@ if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
 </section>
 
 <section class="bloc journee" id="journee">
+  <div class="journee-cadre">
   <div class="wrap">
     <div class="titre-bloc">
       <div>
-        <div class="chapeau">A day here</div>
-        <h2>From the first coffee<br>to the <em>last swim</em></h2>
+        <div class="chapeau" data-r>A day here</div>
+        <h2 data-r="titre">From the first coffee<br>to the <em>last swim</em></h2>
       </div>
-      <div class="intro">
+      <div class="intro" data-r>
         <p>None of it compulsory, of course. But this is what a day looks like when nothing is forced.</p>
       </div>
+    </div>
+    <div class="ciel" aria-hidden="true">
+      <svg viewBox="0 0 1000 200" preserveAspectRatio="none"><path class="arc" d="M0 190 Q 500 -150 1000 190"/></svg>
+      <span class="soleil"></span>
     </div>
     <div class="moments">
       <div class="moment">
         <span class="heure">8 am</span>
-        <h4>Bread first, then the marsh</h4>
+        <h3>Bread first, then the marsh</h3>
         <p>Seven minutes' walk to the bakery, then back along the marsh paths: the water flat, herons lifting off without a sound. Coffee on the terrace, while the day makes up its mind.</p>
       </div>
       <div class="moment">
         <span class="heure">Midday</span>
-        <h4>The clifftop path and the beach</h4>
+        <h3>The clifftop path and the beach</h3>
         <p>Ten minutes on foot and you're there: brown rock, and the Trou du Diable throwing up spray on a swell. Then Boisvinet beach, shelving gently, for a swim and a doze.</p>
       </div>
       <div class="moment">
         <span class="heure">6 pm</span>
-        <h4>The boats come in</h4>
+        <h3>The boats come in</h3>
         <p>Over in Saint-Gilles the sardine boats come in late in the afternoon. You buy the day's catch, walk back over the bridge, and cook with the window open on the evening.</p>
       </div>
     </div>
+    <div class="journee-pas" aria-hidden="true"><i></i><i></i><i></i></div>
+  </div>
   </div>
 </section>
 
@@ -2231,168 +2096,166 @@ if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       </pattern></defs>
       <rect width="120" height="12" fill="url(#vague-claire)"/>
     </svg>
-    <blockquote>“A cosy, clean house, very well equipped. You feel right at home — nothing to fault. A little welcome booklet is there with all the information you need for your stay. Thank you.”</blockquote>
-    <p class="note-airbnb"><span class="etoiles" aria-hidden="true">★★★★★</span> 5-star review on Airbnb</p>
+    <blockquote data-r>“A cosy, clean house, very well equipped. You feel right at home — nothing to fault. A little welcome booklet is there with all the information you need for your stay. Thank you.”</blockquote>
+    <p class="note-airbnb"><span class="etoiles" aria-hidden="true"><b>★</b><b>★</b><b>★</b><b>★</b><b>★</b></span> 5-star review on Airbnb</p>
     <cite>Vanessa — stay for two, November 2026 (translated from French)</cite>
   </div>
 </section>
 
 <section class="bloc portfolio" id="images">
   <div class="wrap">
-    <div class="titre-bloc" style="margin-bottom:12px">
+    <div class="titre-bloc">
       <div>
-        <div class="chapeau">03 — In pictures</div>
-        <h2>The small things<br>you end up <em>noticing</em></h2>
+        <div class="chapeau" data-r>In pictures</div>
+        <h2 data-r="titre">The small things<br>you end up <em>noticing</em></h2>
       </div>
-      <div class="intro">
+      <div class="intro" data-r>
         <p>Six shells hung on the wall, two glasses left on the coffee table as the sun drops, the bed reappearing in the round mirror. You don't notice them at first, and then you see nothing else.</p>
       </div>
     </div>
   </div>
 
-  <div class="porte">
-    <figure class="pf pf-large" data-pf>
+  <div class="pellicule" id="pellicule" tabindex="0" role="group" aria-label="Photos of the house" data-r>
+    <figure class="pf" style="--r:1500/1125">
       <img src="/photos/pf-chambre.webp" alt="The bedroom, blue wall, made bed and linen cushion" loading="lazy" decoding="async" width="1500" height="1125">
-      <figcaption><span class="num">01</span> <em>The blue of the bedroom</em></figcaption>
+      <figcaption><em>The blue of the bedroom</em></figcaption>
     </figure>
-
-    <div class="pf-paire">
-      <figure class="pf pf-haut" data-pf>
-        <img src="/photos/pf-coquillages.webp" alt="Six shells painted white, blue and yellow, hung on the wall" loading="lazy" decoding="async" width="1000" height="1333">
-        <figcaption><span class="num">02</span> <em>Six shells, nothing else</em></figcaption>
-      </figure>
-      <figure class="pf pf-bas" data-pf>
-        <img src="/photos/pf-verres.webp" alt="Two glasses on the coffee table, glass door and garden at sunset" loading="lazy" decoding="async" width="1500" height="1125">
-        <figcaption><span class="num">03</span> <em>The hour of two glasses</em></figcaption>
-      </figure>
-    </div>
-
-    <figure class="pf pf-pleine" data-pf>
+    <figure class="pf" style="--r:1000/1333">
+      <img src="/photos/pf-coquillages.webp" alt="Six shells painted white, blue and yellow, hung on the wall" loading="lazy" decoding="async" width="1000" height="1333">
+      <figcaption><em>Six shells, nothing else</em></figcaption>
+    </figure>
+    <figure class="pf" style="--r:1500/1125">
+      <img src="/photos/pf-verres.webp" alt="Two glasses on the coffee table, glass door and garden at sunset" loading="lazy" decoding="async" width="1500" height="1125">
+      <figcaption><em>The hour of two glasses</em></figcaption>
+    </figure>
+    <figure class="pf" style="--r:1600/1200">
       <img src="/photos/pf-terrasse.webp" alt="The front terrace, glass door open onto the living room, and a shade sail" loading="lazy" decoding="async" width="1600" height="1200">
-      <figcaption><span class="num">04</span> <em>The terrace, in the morning</em></figcaption>
+      <figcaption><em>The terrace, in the morning</em></figcaption>
     </figure>
-
-    <div class="pf-trois">
-      <figure class="pf" data-pf>
-        <img src="/photos/pf-miroir-chambre.webp" alt="The round mirror reflecting the bed and the wave print" loading="lazy" decoding="async" width="1300" height="975">
-        <figcaption><span class="num">05</span> <em>The bedroom, in the mirror</em></figcaption>
-      </figure>
-      <figure class="pf" data-pf>
-        <img src="/photos/pf-miroir-dressing.webp" alt="The dressing area and the shells reflected in the round mirror" loading="lazy" decoding="async" width="1000" height="1333">
-        <figcaption><span class="num">06</span> <em>The other side</em></figcaption>
-      </figure>
-      <figure class="pf" data-pf>
-        <img src="/photos/pf-vasque.webp" alt="The shower room basin under the backlit round mirror" loading="lazy" decoding="async" width="1000" height="1333">
-        <figcaption><span class="num">07</span> <em>The round of the mirror</em></figcaption>
-      </figure>
-    </div>
-
-    <div class="pf-paire pf-paire-inverse">
-      <figure class="pf pf-bas" data-pf>
-        <img src="/photos/pf-sejour-soir.webp" alt="The living room at sunset, armchair and coffee table in front of the glass" loading="lazy" decoding="async" width="1500" height="1125">
-        <figcaption><span class="num">08</span> <em>Evening comes in through the glass</em></figcaption>
-      </figure>
-      <figure class="pf pf-haut" data-pf>
-        <img src="/photos/pf-douche.webp" alt="The walk-in shower and the backlit mirror" loading="lazy" decoding="async" width="1000" height="1333">
-        <figcaption><span class="num">09</span> <em>All in white</em></figcaption>
-      </figure>
-    </div>
-
-    <figure class="pf pf-pleine" data-pf>
+    <figure class="pf" style="--r:1300/975">
+      <img src="/photos/pf-miroir-chambre.webp" alt="The round mirror reflecting the bed and the wave print" loading="lazy" decoding="async" width="1300" height="975">
+      <figcaption><em>The bedroom, in the mirror</em></figcaption>
+    </figure>
+    <figure class="pf" style="--r:1000/1333">
+      <img src="/photos/pf-miroir-dressing.webp" alt="The dressing area and the shells reflected in the round mirror" loading="lazy" decoding="async" width="1000" height="1333">
+      <figcaption><em>The other side</em></figcaption>
+    </figure>
+    <figure class="pf" style="--r:1000/1333">
+      <img src="/photos/pf-vasque.webp" alt="The shower room basin under the backlit round mirror" loading="lazy" decoding="async" width="1000" height="1333">
+      <figcaption><em>The round of the mirror</em></figcaption>
+    </figure>
+    <figure class="pf" style="--r:1500/1125">
+      <img src="/photos/pf-sejour-soir.webp" alt="The living room at sunset, armchair and coffee table in front of the glass" loading="lazy" decoding="async" width="1500" height="1125">
+      <figcaption><em>Evening comes in through the glass</em></figcaption>
+    </figure>
+    <figure class="pf" style="--r:1000/1333">
+      <img src="/photos/pf-douche.webp" alt="The walk-in shower and the backlit mirror" loading="lazy" decoding="async" width="1000" height="1333">
+      <figcaption><em>All in white</em></figcaption>
+    </figure>
+    <figure class="pf" style="--r:1600/1200">
       <img src="/photos/pf-jardin.webp" alt="The garden at the back, wooden screen and hedge, in full sun" loading="lazy" decoding="async" width="1600" height="1200">
-      <figcaption><span class="num">10</span> <em>The garden, behind</em></figcaption>
+      <figcaption><em>The garden, behind</em></figcaption>
     </figure>
-
-    <figure class="pf pf-large" data-pf>
+    <figure class="pf" style="--r:1500/1125">
       <img src="/photos/pf-cuisine.webp" alt="The open kitchen and the big pale wood table" loading="lazy" decoding="async" width="1500" height="1125">
-      <figcaption><span class="num">11</span> <em>The morning table</em></figcaption>
+      <figcaption><em>The morning table</em></figcaption>
     </figure>
-
-    <figure class="pf pf-pleine pf-video" data-pf>
+    <figure class="pf pf-video" style="--r:16/9">
       <div class="video-cadre">
-        <video id="video-drone" data-src="/media/drone.mp4" poster="/media/drone-poster.jpg" muted loop playsinline preload="none" aria-label="Drone flight, from the house to the ocean"></video>
-        <button type="button" class="video-pause" id="video-pause" aria-pressed="false">
+      <video id="video-drone" data-src="/media/drone.mp4" poster="/media/drone-poster.jpg" muted loop playsinline preload="none" aria-label="Drone flight, from the house to the ocean"></video>
+      <button type="button" class="video-pause" id="video-pause" aria-pressed="false">
           <svg class="i-pause" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M8 5v14M16 5v14" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>
           <svg class="i-lire" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M8 5l11 7-11 7z" fill="currentColor"/></svg>
-        </button>
+      </button>
       </div>
-      <figcaption><span class="num">12</span> <em>From the sky, from the roof up to the ocean</em></figcaption>
+      <figcaption><em>From the sky, from the roof up to the ocean</em></figcaption>
     </figure>
-
-    <div class="pf-paire">
-      <figure class="pf pf-haut" data-pf>
-        <img src="/photos/vue-ciel-ocean.webp" alt="The neighbourhood from the air, with the beach and the ocean beyond" loading="lazy" width="2048" height="1152">
-        <figcaption><span class="num">13</span> <em>The street, the beach, then the ocean</em></figcaption>
-      </figure>
-      <figure class="pf pf-bas" data-pf>
-        <img src="/photos/vue-ciel-maison.webp" alt="The house and its garden from above, on the street corner" loading="lazy" width="2048" height="1152">
-        <figcaption><span class="num">14</span> <em>The house and its garden, from above</em></figcaption>
-      </figure>
+    <figure class="pf" style="--r:2048/1152">
+      <img src="/photos/vue-ciel-ocean.webp" alt="The neighbourhood from the air, with the beach and the ocean beyond" loading="lazy" width="2048" height="1152">
+      <figcaption><em>The street, the beach, then the ocean</em></figcaption>
+    </figure>
+    <figure class="pf" style="--r:2048/1152">
+      <img src="/photos/vue-ciel-maison.webp" alt="The house and its garden from above, on the street corner" loading="lazy" width="2048" height="1152">
+      <figcaption><em>The house and its garden, from above</em></figcaption>
+    </figure>
+  </div>
+  <div class="wrap">
+    <div class="pellicule-barre" id="pellicule-barre" hidden>
+      <button type="button" class="rond precedent" aria-label="Previous photo"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12H4"/><path d="M10 6l-6 6 6 6"/></svg></button>
+      <button type="button" class="rond suivant" aria-label="Next photo"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16"/><path d="M14 6l6 6-6 6"/></svg></button>
+      <span class="avance" aria-hidden="true"><i></i></span>
+      <span class="compte" aria-hidden="true"></span>
     </div>
   </div>
 </section>
 
-<figure class="bandeau-photo">
+<figure class="bandeau-photo" data-bandeau>
   <img src="/photos/facade.webp" alt="The house from the street, white front and tiled roof" loading="lazy" decoding="async" width="1800" height="871">
   <figcaption><span>The house — 223 bis rue Georges Clemenceau, Saint-Hilaire-de-Riez</span></figcaption>
 </figure>
 
 <section class="bloc" id="lieu">
   <div class="wrap">
-    <div class="titre-bloc" style="margin-bottom:44px">
+    <div class="titre-bloc">
       <div>
-        <div class="chapeau">04 — Where it is</div>
-        <h2>Between the sea<br>and the <em>marsh</em></h2>
+        <div class="chapeau" data-r>Where it is</div>
+        <h2 data-r="titre">Between the sea<br>and the <em>marsh</em></h2>
       </div>
-      <div class="intro">
+      <div class="intro" data-r>
         <p>On one side the dunes, the clifftop path and the spray jumping off the rocks — ten minutes on foot, no more. On the other the marshes: flat paths, still reflections, birds lifting off at first light. The house sits between the two, and everything is walkable.</p>
       </div>
     </div>
     <div class="lieu-corps">
       <div>
-        <div class="distances">
+        <div class="distances" data-r="liste">
           <ul>
-            <li><span class="nom">Shops and bakery</span><span class="val">7 min walk</span></li>
-            <li><span class="nom">The Corniche vendéenne</span><span class="val">10 min walk</span></li>
-            <li><span class="nom">Ferry pier for the Île d'Yeu</span><span class="val">10 min walk</span></li>
-            <li><span class="nom">Boisvinet beach</span><span class="val">15 min walk</span></li>
-            <li><span class="nom">Saint-Gilles-Croix-de-Vie harbour</span><span class="val">20 min walk · 5 min drive</span></li>
-            <li><span class="nom">Saint-Hilaire-de-Riez station</span><span class="val">15 min walk</span></li>
+            <li><span class="nom">Shops and bakery</span><span class="val">7 min walk</span><i class="pas" aria-hidden="true" style="--m:7"></i></li>
+            <li><span class="nom">The Corniche vendéenne</span><span class="val">10 min walk</span><i class="pas" aria-hidden="true" style="--m:10"></i></li>
+            <li><span class="nom">Ferry pier for the Île d'Yeu</span><span class="val">10 min walk</span><i class="pas" aria-hidden="true" style="--m:10"></i></li>
+            <li><span class="nom">Boisvinet beach</span><span class="val">15 min walk</span><i class="pas" aria-hidden="true" style="--m:15"></i></li>
+            <li><span class="nom">Saint-Gilles-Croix-de-Vie harbour</span><span class="val">20 min walk · 5 min drive</span><i class="pas" aria-hidden="true" style="--m:20"></i></li>
+            <li><span class="nom">Saint-Hilaire-de-Riez station</span><span class="val">15 min walk</span><i class="pas" aria-hidden="true" style="--m:15"></i></li>
           </ul>
         </div>
-        <div class="adresse">
+        <div class="adresse" data-r>
           <span class="etiquette">The address</span>
           <span class="rue">223 bis rue Georges Clemenceau<br>85270 Saint-Hilaire-de-Riez</span>
           <span class="gps">46.7046, -1.9509 · <a href="https://www.google.com/maps/search/?api=1&amp;query=46.7046,-1.9509" target="_blank" rel="noopener">open in Maps</a></span>
         </div>
       </div>
       <figure class="carte-photo">
-        <img src="/photos/carte-quartier.webp" alt="Aerial view: the house between Boisvinet beach and Saint-Gilles-Croix-de-Vie harbour" loading="lazy" decoding="async" width="1400" height="738">
+        <img data-r="photo" src="/photos/carte-quartier.webp" alt="Aerial view: the house between Boisvinet beach and Saint-Gilles-Croix-de-Vie harbour" loading="lazy" decoding="async" width="1400" height="738">
         <figcaption>The house, the harbour and the beach <span class="credit">— © Google</span></figcaption>
       </figure>
     </div>
   </div>
 </section>
 
-<figure class="bandeau-photo">
+<figure class="bandeau-photo" data-bandeau>
   <img src="/photos/carte-cote.webp" alt="The Vendée coast, from Saint-Jean-de-Monts to Les Sables, with the Île d&#x27;Yeu offshore" loading="lazy" decoding="async" width="1800" height="617">
   <figcaption><span>The coast, from the Breton marsh to the Île d'Yeu</span><span class="credit">© Google</span></figcaption>
 </figure>
 
 <section class="bloc" id="environnement">
   <div class="wrap">
-    <div class="titre-bloc" style="margin-bottom:44px">
+    <div class="titre-bloc">
       <div>
-        <div class="chapeau">05 — Around here</div>
-        <h2>What's<br>all <em>around</em></h2>
+        <div class="chapeau" data-r>Around here</div>
+        <h2 data-r="titre">What's<br>all <em>around</em></h2>
       </div>
-      <div class="intro">
+      <div class="intro" data-r>
         <p>Two towns share the horizon: Saint-Hilaire-de-Riez on the dune and marsh side, Saint-Gilles-Croix-de-Vie on the harbour side. Here's what we go and see most often — the tourist office keeps the rest up to date.</p>
       </div>
     </div>
 
-    <div class="environs">
-      <div class="commune">
+    <div class="onglets" id="onglets" role="tablist" aria-label="Around the house" hidden>
+      <button type="button" role="tab" id="onglet-hilaire" aria-controls="volet-hilaire" aria-selected="true">Saint-Hilaire-de-Riez</button>
+      <button type="button" role="tab" id="onglet-gilles" aria-controls="volet-gilles" aria-selected="false">Saint-Gilles-Croix-de-Vie</button>
+      <button type="button" role="tab" id="onglet-yeu" aria-controls="volet-yeu" aria-selected="false">Île d’Yeu</button>
+      <span class="onglet-trait" aria-hidden="true"></span>
+    </div>
+    <div class="environs" id="environs">
+      <div class="commune" id="volet-hilaire" role="tabpanel" aria-labelledby="onglet-hilaire">
         <h3>Saint-Hilaire-de-Riez</h3>
         <ul>
           <li>
@@ -2418,7 +2281,7 @@ if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
         </ul>
       </div>
 
-      <div class="commune">
+      <div class="commune" id="volet-gilles" role="tabpanel" aria-labelledby="onglet-gilles">
         <h3>Saint-Gilles-Croix-de-Vie</h3>
         <ul>
           <li>
@@ -2443,9 +2306,7 @@ if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
           </li>
         </ul>
       </div>
-    </div>
-
-    <div class="yeu">
+    <div class="yeu" id="volet-yeu" role="tabpanel" aria-labelledby="onglet-yeu">
       <svg class="yeu-vagues" width="120" height="12" viewBox="0 0 120 12" fill="none" aria-hidden="true">
         <defs><pattern id="vague-yeu" width="30" height="12" patternUnits="userSpaceOnUse">
           <path d="M0 6 Q 7.5 1, 15 6 T 30 6" stroke="#9C5231" stroke-width="1.4" fill="none"/><animateTransform attributeName="patternTransform" type="translate" from="0 0" to="30 0" dur="7s" repeatCount="indefinite"/>
@@ -2476,7 +2337,8 @@ if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
           </div>
         </div>
       </div>
-      <a class="lien-ot" style="margin-top:28px" href="https://www.ile-yeu.fr/" target="_blank" rel="noopener">Île d'Yeu tourist office</a>
+      <a class="lien-ot" href="https://www.ile-yeu.fr/" target="_blank" rel="noopener">Île d'Yeu tourist office</a>
+    </div>
     </div>
 
     <p class="source-ot">Opening times and prices change with the season:
@@ -2490,36 +2352,40 @@ if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
   </div>
 </section>
 
-<section class="bloc journee" id="saisons">
+<section class="bloc fonce" id="saisons">
   <div class="wrap">
     <div class="titre-bloc">
       <div>
-        <div class="chapeau">The seasons</div>
-        <h2>When to <em>come</em></h2>
+        <div class="chapeau" data-r>The seasons</div>
+        <h2 data-r="titre">When to <em>come</em></h2>
       </div>
-      <div class="intro">
+      <div class="intro" data-r>
         <p>The house doesn't close for winter, and that may be when it is most itself.</p>
       </div>
     </div>
-    <div class="saisons">
+    <div class="saisons" data-r="liste">
       <div class="saison">
+        <span class="mois" aria-hidden="true"><i>J</i><i>F</i><i class="on">M</i><i class="on">A</i><i class="on">M</i><i class="on">J</i><i>J</i><i>A</i><i>S</i><i>O</i><i>N</i><i>D</i></span>
         <span class="quand">March to June</span>
-        <h4>The light comes back</h4>
+        <h3>The light comes back</h3>
         <p>The beaches are yours, the marsh paths smell of salt and new grass. The cafés put their tables out again without the crowds, and the water slowly warms. The best season for cycling.</p>
       </div>
       <div class="saison">
+        <span class="mois" aria-hidden="true"><i>J</i><i>F</i><i>M</i><i>A</i><i>M</i><i>J</i><i class="on">J</i><i class="on">A</i><i>S</i><i>O</i><i>N</i><i>D</i></span>
         <span class="quand">July and August</span>
-        <h4>High summer</h4>
+        <h3>High summer</h3>
         <p>The markets overflow, the sardine boats come in every evening, and people are still swimming at ten at night. Book early — and get up early, to have the clifftop path to yourself.</p>
       </div>
       <div class="saison">
+        <span class="mois" aria-hidden="true"><i>J</i><i>F</i><i>M</i><i>A</i><i>M</i><i>J</i><i>J</i><i>A</i><i class="on">S</i><i class="on">O</i><i>N</i><i>D</i></span>
         <span class="quand">September and October</span>
-        <h4>The after-season</h4>
+        <h3>The after-season</h3>
         <p>The water is still good, the light turns golden and everything goes quiet again. Plenty of people prefer it to summer, and you can see why.</p>
       </div>
       <div class="saison">
+        <span class="mois" aria-hidden="true"><i class="on">J</i><i class="on">F</i><i>M</i><i>A</i><i>M</i><i>J</i><i>J</i><i>A</i><i>S</i><i>O</i><i class="on">N</i><i class="on">D</i></span>
         <span class="quand">November to February</span>
-        <h4>The storms</h4>
+        <h3>The storms</h3>
         <p>The heating on, a jumper, and the clifftop path in the wind: this is when the Trou du Diable throws water highest. You come back in and make tea, and the house does the rest.</p>
       </div>
     </div>
@@ -2530,16 +2396,16 @@ if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
   <div class="wrap">
     <div class="titre-bloc">
       <div>
-        <div class="chapeau">06 — What's included</div>
-        <h2>Everything you need,<br>nothing <em>more</em></h2>
+        <div class="chapeau" data-r>What's included</div>
+        <h2 data-r="titre">Everything you need,<br>nothing <em>more</em></h2>
       </div>
-      <div class="intro">
+      <div class="intro" data-r>
         <p>You arrive empty-handed: linen provided, the bed made, the kitchen equipped for real meals.</p>
       </div>
     </div>
-    <div class="equip-groupes">
+    <div class="equip-groupes" data-r="liste">
       <div class="equip-groupe">
-        <h4>The kitchen</h4>
+        <h3>The kitchen</h3>
         <ul>
           <li>Oven and hob</li>
           <li>Dishwasher</li>
@@ -2549,7 +2415,7 @@ if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
         </ul>
       </div>
       <div class="equip-groupe">
-        <h4>Comfort</h4>
+        <h3>Comfort</h3>
         <ul>
           <li>Bed made on arrival, towels provided</li>
           <li>Washing machine</li>
@@ -2560,7 +2426,7 @@ if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
         </ul>
       </div>
       <div class="equip-groupe">
-        <h4>Outside and access</h4>
+        <h3>Outside and access</h3>
         <ul>
           <li>55 m² private terrace at the front</li>
           <li>55 m² private lawn at the back</li>
@@ -2574,54 +2440,54 @@ if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
   </div>
 </section>
 
-<section class="bloc" id="tarifs" style="padding-top:0">
+<section class="bloc serre" id="tarifs">
   <div class="wrap">
     <div class="titre-bloc">
       <div>
-        <div class="chapeau">07 — Rates</div>
-        <h2>What a night<br>here <em>costs</em></h2>
+        <div class="chapeau" data-r>Rates</div>
+        <h2 data-r="titre">What a night<br>here <em>costs</em></h2>
       </div>
-      <div class="intro">
+      <div class="intro" data-r>
         <p>Per night for two, before cleaning and tourist tax. The second figure applies to Friday and Saturday nights.</p>
       </div>
     </div>
 
     <div class="grille-tarifs">
-      <div class="tarif">
+      <div class="tarif" data-r>
         <div>
           <span class="nom-saison">Low season</span>
           <span class="quand">October, November, January to March outside the holidays</span>
         </div>
-        <span class="montant">€75 · €85</span>
+        <span><span class="montant">€75 · €85</span><span class="plage" aria-hidden="true" style="--a:75;--b:85"></span></span>
         <span class="mini">2 nights minimum</span>
       </div>
-      <div class="tarif">
+      <div class="tarif" data-r>
         <div>
           <span class="nom-saison">School holidays, June and September</span>
           <span class="quand">All Saints', Christmas, February, Easter holidays — and the two months either side of summer</span>
         </div>
-        <span class="montant">€95 · €105</span>
+        <span><span class="montant">€95 · €105</span><span class="plage" aria-hidden="true" style="--a:95;--b:105"></span></span>
         <span class="mini">2 nights · 3 in the holidays</span>
       </div>
-      <div class="tarif">
+      <div class="tarif" data-r>
         <div>
           <span class="nom-saison">Long weekends and bank holidays</span>
           <span class="quand">Easter, Ascension, Whitsun</span>
         </div>
-        <span class="montant">€115 to €120</span>
+        <span><span class="montant">€115 to €120</span><span class="plage" aria-hidden="true" style="--a:115;--b:120"></span></span>
         <span class="mini">3 nights minimum</span>
       </div>
-      <div class="tarif">
+      <div class="tarif" data-r>
         <div>
           <span class="nom-saison">July and August</span>
           <span class="quand">High summer</span>
         </div>
-        <span class="montant">€120 · €130</span>
+        <span><span class="montant">€120 · €130</span><span class="plage" aria-hidden="true" style="--a:120;--b:130"></span></span>
         <span class="mini">5 nights in July · 7 in August</span>
       </div>
     </div>
 
-    <div class="tarifs-notes">
+    <div class="tarifs-notes" data-r="liste">
       <p><b>By the week</b> — 10% off outside July and August.</p>
       <p><b>By the month, in winter</b> — 25–30% off. This is the one meant for working remotely, study included.</p>
       <p><b>Cleaning</b> — a flat €65 at the end of the stay.</p>
@@ -2632,19 +2498,19 @@ if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
   </div>
 </section>
 
-<section class="bloc" id="pratique" style="padding-top:0">
+<section class="bloc serre" id="pratique">
   <div class="wrap">
     <div class="titre-bloc">
       <div>
-        <div class="chapeau">08 — Good to know</div>
-        <h2>The details that<br>save you <em>asking</em></h2>
+        <div class="chapeau" data-r>Good to know</div>
+        <h2 data-r="titre">The details that<br>save you <em>asking</em></h2>
       </div>
-      <div class="intro">
+      <div class="intro" data-r>
         <p>All of it is in the welcome book too, waiting on the table when you arrive.</p>
       </div>
     </div>
 
-    <div class="pratique">
+    <div class="pratique" data-r="liste">
       <div><span class="quoi">Check-in</span><span class="valeur">From 5 pm</span></div>
       <div><span class="quoi">Check-out</span><span class="valeur">Around 9–10 am</span></div>
       <div><span class="quoi">Minimum stay</span><span class="valeur">2 to 7 nights depending on the season</span></div>
@@ -2655,11 +2521,11 @@ if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       <div><span class="quoi">Parking</span><span class="valeur">Free in the street</span></div>
     </div>
 
-    <div class="conciergerie">
+    <div class="conciergerie" data-r>
       <span class="etiquette">Who meets you</span>
       <div class="conciergerie-corps">
         <div>
-          <h4>Halo Conciergerie,<br>in <em>Saint-Gilles</em></h4>
+          <h3>Halo Conciergerie,<br>in <em>Saint-Gilles</em></h3>
           <p>A professional concierge service based in Saint-Gilles-Croix-de-Vie meets you on arrival, hands over the keys and shows you round. They stay reachable for the whole stay: a question, something unexpected, a last-minute idea — they're who you ask.</p>
           <a class="lien-ot" href="https://www.haloconcierge.fr/" target="_blank" rel="noopener">haloconcierge.fr</a>
         </div>
@@ -2682,7 +2548,7 @@ if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       <div class="prestations-boite">
         <button type="button" class="prestations-fermer" aria-label="Close">&times;</button>
         <span class="etiquette">Halo Conciergerie</span>
-        <h4 id="prestations-titre">Optional <em>extras</em></h4>
+        <h3 id="prestations-titre">Optional <em>extras</em></h3>
         <table>
           <caption>Linen and getting the house ready</caption>
           <tr><th scope="row">Double bed linen set</th><td>€16</td></tr>
@@ -2696,8 +2562,8 @@ if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       </div>
     </dialog>
 
-    <div class="venir">
-      <h4>Getting here</h4>
+    <div class="venir" data-r>
+      <h3>Getting here</h3>
       <ul>
         <li><span class="mode">By train</span> — Saint-Hilaire-de-Riez station is on the Nantes–Saint-Gilles-Croix-de-Vie regional line, fifteen minutes' walk from the house. Saint-Gilles is the end of the line, twenty minutes away.</li>
         <li><span class="mode">By car</span> — about 1 hr 15 from Nantes, 1 hr from La Roche-sur-Yon, 4 hr 30 from Paris via the A11 then the A83.</li>
@@ -2707,15 +2573,15 @@ if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
   </div>
 </section>
 
-<section class="bloc journee" id="questions">
+<section class="bloc fonce" id="questions">
   <div class="wrap">
     <div class="titre-bloc">
       <div>
-        <div class="chapeau">09 — Common questions</div>
-        <h2>What people<br>ask us <em>most</em></h2>
+        <div class="chapeau" data-r>Common questions</div>
+        <h2 data-r="titre">What people<br>ask us <em>most</em></h2>
       </div>
     </div>
-    <div class="faq">
+    <div class="faq" data-r="liste">
       <details>
         <summary>Can we manage without a car?</summary><div class="reponse"><div><p>Yes, and we'd recommend it. The shops are seven minutes' walk away, the clifftop path ten, the beach fifteen, the harbour twenty. The train stops at Saint-Hilaire-de-Riez, and the Île d'Yeu pier is a ten-minute walk. A car is only useful for going further inland.</p></div></div>
       </details>
@@ -2741,18 +2607,19 @@ if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
   </div>
 </section>
 
-<section class="bloc reserver" id="reserver">
+<section class="bloc reserver sombre" id="reserver">
+  <div class="houle claire" aria-hidden="true"><i></i><i></i></div>
   <div class="wrap">
     <div class="titre-bloc">
       <div>
-        <div class="chapeau">10 — Book</div>
-        <h2>The calendar lives<br>on <em>Airbnb</em></h2>
+        <div class="chapeau" data-r>Book</div>
+        <h2 data-r="titre">The calendar lives<br>on <em>Airbnb</em></h2>
       </div>
-      <div class="intro">
+      <div class="intro" data-r>
         <p>Dates and prices are kept up to date there through the seasons — low winter light, June mornings, high summer. A few clicks, and the house is waiting for you with the shutters open.</p>
       </div>
     </div>
-    <div class="prix">
+    <div class="prix" data-r>
       <span class="montant">from €75</span>
       <span class="unite">a night, depending on the season</span>
     </div>
@@ -2767,7 +2634,7 @@ if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
 
 </main>
 
-<footer class="pied">
+<footer class="pied sombre">
   <div class="wrap">
     <div class="pied-haut">
       <p>223 bis rue Georges Clemenceau<br>85270 Saint-Hilaire-de-Riez, Vendée, France<br><span class="coord">46.7046, -1.9509</span></p>
@@ -2797,20 +2664,24 @@ if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
 </div>
 
 <script>
+/* ——— Fonctions de la page (sans dépendance). Les animations sont à part, dans mouvement.js. ——— */
 (function(){
+  var EN = window.LPV_LANGUE === 'en';
+  function tous(sel, racine){ return [].slice.call((racine || document).querySelectorAll(sel)); }
+
+  /* ——— Visionneuse : chaque photo s’ouvre en grand ——— */
   var v=document.getElementById('visionneuse'), img=v.querySelector('img'),
       legende=v.querySelector('.legende'), fermerBtn=v.querySelector('.fermer'),
       precBtn=v.querySelector('.precedent'), suivBtn=v.querySelector('.suivant');
-  var vues=[].slice.call(document.querySelectorAll(
-    '.pf img, .galerie img, .bandeau-photo img, .accroche-photo img, .carte-photo img'));
+  var vues=tous('.pf img, .galerie img, .bandeau-photo img, .carte-photo img');
   var i=0, declencheur=null;
 
   function montrer(n){
     i=(n+vues.length)%vues.length;
     var el=vues[i];
     img.src=el.currentSrc||el.src; img.alt=el.alt;
-    var fc=el.closest('figure') && el.closest('figure').querySelector('figcaption em');
-    var joint = (window.LPV_LANGUE === 'en') ? ' of ' : ' sur ';
+    var fig=el.closest('figure'), fc=fig && fig.querySelector('figcaption em');
+    var joint = EN ? ' of ' : ' sur ';
     legende.textContent=(fc ? fc.textContent : (el.alt||'')) + ' — ' + (i+1) + joint + vues.length;
   }
   function ouvrir(n, source){
@@ -2821,48 +2692,46 @@ if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
   function fermer(){
     v.classList.remove('ouverte'); img.removeAttribute('src');
     document.body.style.overflow='';
-    if(declencheur){ declencheur.focus(); declencheur=null; }
+    if(declencheur){ declencheur.focus({preventScroll:true}); declencheur=null; }
   }
-
-  // chaque photo devient un bouton : clic, Entrée et Espace l’ouvrent
   vues.forEach(function(el,n){
     el.setAttribute('tabindex','0');
     el.setAttribute('role','button');
     el.setAttribute('aria-haspopup','dialog');
-    var titre=el.getAttribute('alt')||'la photo';
-    el.setAttribute('aria-label','Enlarge: '+titre);
+    el.setAttribute('aria-label','Enlarge: '+(el.getAttribute('alt')||''));
     el.style.cursor='zoom-in';
-    el.addEventListener('click',function(){ ouvrir(n, el); });
+    el.addEventListener('click',function(){ if(!el.closest('.glisse-recent')) ouvrir(n, el); });
     el.addEventListener('keydown',function(e){
       if(e.key==='Enter'||e.key===' '){ e.preventDefault(); ouvrir(n, el); }
     });
   });
-
-  v.addEventListener('click',function(e){
-    if(e.target===v || e.target===img) fermer();
-  });
+  v.addEventListener('click',function(e){ if(e.target===v || e.target===img) fermer(); });
   fermerBtn.addEventListener('click',fermer);
   precBtn.addEventListener('click',function(){montrer(i-1);});
   suivBtn.addEventListener('click',function(){montrer(i+1);});
-
+  var x0=null;                                    // balayage au doigt
+  v.addEventListener('touchstart',function(e){ x0=e.touches[0].clientX; },{passive:true});
+  v.addEventListener('touchend',function(e){
+    if(x0===null) return;
+    var dx=e.changedTouches[0].clientX-x0; x0=null;
+    if(Math.abs(dx)>50) montrer(i+(dx<0?1:-1));
+  });
   document.addEventListener('keydown',function(e){
     if(!v.classList.contains('ouverte')) return;
     if(e.key==='Escape'){ fermer(); return; }
     if(e.key==='ArrowLeft'){ montrer(i-1); return; }
     if(e.key==='ArrowRight'){ montrer(i+1); return; }
-    if(e.key==='Tab'){                    // le focus reste dans la visionneuse
-      var f=[precBtn,suivBtn,fermerBtn];
-      var k=f.indexOf(document.activeElement);
+    if(e.key==='Tab'){
+      var f=[precBtn,suivBtn,fermerBtn], k=f.indexOf(document.activeElement);
       e.preventDefault();
       f[(k + (e.shiftKey?-1:1) + f.length) % f.length].focus();
     }
   });
 
-  // ——— sommaire mobile ———
+  /* ——— Sommaire (mobile) ——— */
   var menu=document.getElementById('menu'),
       ouvrirMenu=document.getElementById('ouvrir-menu'),
-      fermerMenu=document.getElementById('fermer-menu'),
-      barreHaut=document.getElementById('barre-haut');
+      fermerMenu=document.getElementById('fermer-menu');
   function basculerMenu(ouvert){
     menu.hidden=!ouvert;
     ouvrirMenu.setAttribute('aria-expanded', ouvert ? 'true' : 'false');
@@ -2870,150 +2739,330 @@ if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     (ouvert ? fermerMenu : ouvrirMenu).focus();
   }
   ouvrirMenu.addEventListener('click',function(){ basculerMenu(true); });
-  menu.addEventListener('transitionend',function(){});
   fermerMenu.addEventListener('click',function(){ basculerMenu(false); });
   menu.addEventListener('click',function(e){ if(e.target.closest('a')) basculerMenu(false); });
   document.addEventListener('keydown',function(e){
     if(e.key==='Escape' && !menu.hidden) basculerMenu(false);
   });
 
-  /* ——— Animations ——— */
-  var doux = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  /* ——— En-tête : se pose après l’accroche, s’efface en descendant, revient en remontant ——— */
+  var entete=document.getElementById('entete'), accroche=document.getElementById('top'),
+      barre=document.getElementById('barre'), reserver=document.getElementById('reserver'),
+      fil=document.getElementById('fil');
+  var liens=tous('.nav a'), trait=document.querySelector('.nav-trait');
+  var photoAccroche=accroche.querySelector('.accroche-photo');
+  var sections=liens.map(function(a){ return document.querySelector(a.getAttribute('href')); });
+  var dernierY=window.scrollY, actif=-2, attente=false;
 
-  if (doux && 'IntersectionObserver' in window) {
-    var cibles = document.querySelectorAll(
-      '.titre-bloc, .chiffres > div, .galerie figure, .couchages > div, .moment, .saison,'+
-      '.distances li, .adresse, .carte-photo, .commune, .yeu, .equip-groupe,'+
-      '.pratique > div, .conciergerie, .venir, .faq details, .prix, .reserver .bouton, .source-ot,'+
-      '.bureau-points li, .tarif, .tarifs-notes p, .pf, .plan,'+
-      '.citation blockquote, .citation cite');
-    var oeil = new IntersectionObserver(function(entrees){
-      entrees.forEach(function(e){
-        if (e.isIntersecting){ e.target.classList.add('vu'); oeil.unobserve(e.target); }
-      });
-    }, {rootMargin:'0px 0px -8% 0px', threshold:0.08});
-    cibles.forEach(function(el){ oeil.observe(el); });
-    // mouvement.js (Motion) reprend la main sur ces apparitions s’il se charge.
-    window.LPV_apparition = { oeil: oeil, cibles: cibles };
-    // Ce qui est déjà à l’écran au chargement ne doit pas attendre.
-    requestAnimationFrame(function(){
-      cibles.forEach(function(el){
-        if (el.getBoundingClientRect().top < window.innerHeight) el.classList.add('vu');
-      });
-    });
-  } else {
-    document.documentElement.classList.remove('anim');
+  function placerTrait(){
+    var a=liens[actif];
+    if(!a){ trait.style.opacity='0'; return; }
+    trait.style.opacity='1';
+    trait.style.transform='translateX('+(a.offsetLeft+12)+'px) scaleX('+(a.offsetWidth-24)+')';
   }
-
-  if (doux) {
-    // Le trait du logo se dessine au chargement.
-    document.querySelectorAll('.marque svg path').forEach(function(p){
-      try { p.style.setProperty('--l', p.getTotalLength()); p.classList.add('trace'); } catch(e){}
-    });
-  } else {
-    // Réglage « animations réduites » : on retire aussi la dérive des vagues.
-    document.querySelectorAll('animateTransform').forEach(function(a){ a.remove(); });
-  }
-
-  var barre=document.getElementById('barre'), reserver=document.getElementById('reserver');
-  var dernier=0;
   function maj(){
-    var y=window.scrollY;
-    var passe=y>560;
-    var surReserver=reserver.getBoundingClientRect().top < window.innerHeight*0.9;
-    barre.classList.toggle('visible', passe && !surReserver);
-    // la barre du haut apparaît en remontant et reste tant qu’on ne redescend pas
-    if (Math.abs(y - dernier) > 6){
-      barreHaut.classList.toggle('visible', passe && y < dernier);
-      dernier = y;
+    attente=false;
+    var y=window.scrollY, h=window.innerHeight;
+    var finAccroche=(photoAccroche ? photoAccroche.offsetTop : accroche.offsetHeight)-70;
+    entete.classList.toggle('pose', y>finAccroche);
+    if(Math.abs(y-dernierY)>6){
+      entete.classList.toggle('cache', y>finAccroche+200 && y>dernierY && !entete.contains(document.activeElement));
+      dernierY=y;
     }
-    if (!passe) barreHaut.classList.remove('visible');
-    maj.spy && maj.spy();
+    var total=document.documentElement.scrollHeight-h;
+    fil.style.transform='scaleX('+(total>0 ? Math.min(1,y/total) : 0)+')';
+    var surReserver=reserver.getBoundingClientRect().top < h*0.85;
+    barre.classList.toggle('visible', y>finAccroche && !surReserver);
+    var n=-1;
+    sections.forEach(function(c,k){ if(c && c.getBoundingClientRect().top <= h*0.4) n=k; });
+    if(n!==actif){
+      actif=n;
+      liens.forEach(function(a,k){
+        if(k===n) a.setAttribute('aria-current','true'); else a.removeAttribute('aria-current');
+      });
+      placerTrait();
+    }
   }
-  window.addEventListener('scroll',maj,{passive:true});
-  window.addEventListener('resize',maj);
+  function demander(){ if(!attente){ attente=true; requestAnimationFrame(maj); } }
+  window.addEventListener('scroll',demander,{passive:true});
+  window.addEventListener('resize',function(){ demander(); placerTrait(); });
+  if(document.fonts && document.fonts.ready) document.fonts.ready.then(placerTrait);
   maj();
 
-  // section courante dans la navigation du haut
-  var liens=[].slice.call(document.querySelectorAll('.nav a[href^="#"]:not(.bouton)'));
-  var cibles=liens.map(function(a){ return document.querySelector(a.getAttribute('href')); });
-  maj.spy=function(){
-    var milieu=window.innerHeight*0.35, actif=-1;
-    cibles.forEach(function(c,n){ if(c && c.getBoundingClientRect().top <= milieu) actif=n; });
-    liens.forEach(function(a,n){
-      if(n===actif) a.setAttribute('aria-current','true'); else a.removeAttribute('aria-current');
+  /* ——— Le plan : la liste des pièces éclaire la pièce sur le dessin, et inversement ——— */
+  var pieces=tous('.couchages [data-piece]'), zones=tous('.zones [data-zone]');
+  function eclairer(nom){
+    pieces.forEach(function(p){
+      var oui=p.getAttribute('data-piece')===nom;
+      p.classList.toggle('actif', oui);
+      if(p.tagName==='BUTTON') p.setAttribute('aria-pressed', oui ? 'true' : 'false');
     });
-  };
-
-})();
-</script>
-
-<script>
-/* À l’impression, on déplie les questions puis on remet tout comme c’était. */
-(function(){
-  var ouverts=[];
-  function avant(){
-    ouverts=[];
-    [].forEach.call(document.querySelectorAll('.faq details'), function(d){
-      if(!d.open){ ouverts.push(d); d.open=true; }
-    });
+    zones.forEach(function(z){ z.classList.toggle('actif', z.getAttribute('data-zone')===nom); });
   }
-  function apres(){ ouverts.forEach(function(d){ d.open=false; }); ouverts=[]; }
-  window.addEventListener('beforeprint', avant);
-  window.addEventListener('afterprint', apres);
-  if(window.matchMedia){
-    var mq=window.matchMedia('print');
-    var bascule=function(e){ (e.matches ? avant : apres)(); };
-    if(mq.addEventListener) mq.addEventListener('change', bascule);
-    else if(mq.addListener) mq.addListener(bascule);
-  }
-})();
-</script>
-
-
-<script>
-/* Vidéo drone : lecture en boucle, sans son ; bouton pause ;
-   arrêtée d’office si le système demande des animations réduites. */
-(function(){
-  var v=document.getElementById('video-drone'), b=document.getElementById('video-pause');
-  if(!v||!b) return;
-  function etiquette(){
-    var en=(window.LPV_LANGUE==='en'), arret=v.paused;
-    b.setAttribute('aria-pressed', arret?'true':'false');
-    b.setAttribute('aria-label', arret ? (en?'Play the video':'Lire la vidéo')
-                                      : (en?'Pause the video':'Mettre la vidéo en pause'));
-  }
-  /* La vidéo (plusieurs Mo) n’est téléchargée qu’à l’approche de son emplacement :
-     la page s’affiche plus vite, ce que Google mesure. */
-  var calme=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  function charger(){ if(!v.getAttribute('src')){ v.src=v.getAttribute('data-src'); } }
-  function lancer(){ charger(); var p=v.play(); if(p&&p.catch) p.catch(function(){}); }
-  if('IntersectionObserver' in window){
-    var guet=new IntersectionObserver(function(e){
-      if(e[0].isIntersecting){ guet.disconnect(); if(calme) charger(); else lancer(); }
-    },{rootMargin:'300px 0px'});
-    guet.observe(v);
-  } else if(!calme){ lancer(); } else { charger(); }
-  b.addEventListener('click',function(){ if(v.paused) lancer(); else v.pause(); });
-  v.addEventListener('play',etiquette); v.addEventListener('pause',etiquette);
-  document.querySelectorAll('.langue').forEach(function(l){
-    l.addEventListener('click',function(){ setTimeout(etiquette,0); });
+  var choisie='';
+  pieces.forEach(function(p){
+    var nom=p.getAttribute('data-piece');
+    p.addEventListener('mouseenter',function(){ eclairer(nom); });
+    p.addEventListener('focus',function(){ eclairer(nom); });
+    p.addEventListener('mouseleave',function(){ eclairer(choisie); });
+    p.addEventListener('blur',function(){ eclairer(choisie); });
+    p.addEventListener('click',function(){ choisie=(choisie===nom ? '' : nom); eclairer(choisie); });
   });
-  etiquette();
-})();
-</script>
-<script>
-/* Fenêtre « Prestations complémentaires » (élément <dialog> natif :
-   Échap, focus et lecteurs d’écran sont gérés par le navigateur). */
-(function(){
+  zones.forEach(function(z){
+    var nom=z.getAttribute('data-zone');
+    z.addEventListener('mouseenter',function(){ eclairer(nom); });
+    z.addEventListener('mouseleave',function(){ eclairer(choisie); });
+    z.addEventListener('click',function(){ choisie=(choisie===nom ? '' : nom); eclairer(choisie); });
+  });
+
+  /* ——— La pellicule de photos : flèches, glisser à la souris, compteur ——— */
+  var pel=document.getElementById('pellicule'), pb=document.getElementById('pellicule-barre');
+  if(pel && pb){
+    var figs=tous('.pf', pel), compte=pb.querySelector('.compte'), avance=pb.querySelector('.avance i'),
+        pPrec=pb.querySelector('.precedent'), pSuiv=pb.querySelector('.suivant');
+    pb.hidden=false;
+    function centre(f){ return f.offsetLeft + f.offsetWidth/2 - pel.clientWidth/2; }
+    function courante(){
+      var milieu=pel.scrollLeft + pel.clientWidth/2, k=0, mieux=1e9;
+      figs.forEach(function(f,n){
+        var d=Math.abs(f.offsetLeft + f.offsetWidth/2 - milieu);
+        if(d<mieux){ mieux=d; k=n; }
+      });
+      return k;
+    }
+    function majPel(){
+      var max=pel.scrollWidth-pel.clientWidth, p=max>0 ? pel.scrollLeft/max : 0;
+      avance.style.transform='scaleX('+Math.max(.04,p)+')';
+      var k = p>=.995 ? figs.length-1 : (p<=.005 ? 0 : courante());
+      compte.textContent=(k+1)+' / '+figs.length;
+      pPrec.disabled = p<=.005; pSuiv.disabled = p>=.995;
+    }
+    function aller(d){
+      var k=Math.max(0,Math.min(figs.length-1,courante()+d));
+      pel.scrollTo({left:centre(figs[k]),behavior:'smooth'});
+    }
+    pPrec.addEventListener('click',function(){ aller(-1); });
+    pSuiv.addEventListener('click',function(){ aller(1); });
+    pel.addEventListener('scroll',function(){ requestAnimationFrame(majPel); },{passive:true});
+    window.addEventListener('resize',majPel);
+    pel.addEventListener('keydown',function(e){
+      if(e.target!==pel) return;
+      if(e.key==='ArrowRight'){ e.preventDefault(); aller(1); }
+      if(e.key==='ArrowLeft'){ e.preventDefault(); aller(-1); }
+    });
+    // glisser à la souris (le doigt, lui, fait défiler nativement)
+    var depart=null, bouge=false, vit=0, dernierX=0, dernierT=0, elan=0;
+    pel.addEventListener('pointerdown',function(e){
+      if(e.pointerType!=='mouse' || e.button!==0) return;
+      depart={x:e.clientX, s:pel.scrollLeft}; bouge=false; vit=0; dernierX=e.clientX; dernierT=e.timeStamp;
+      cancelAnimationFrame(elan);
+    });
+    window.addEventListener('pointermove',function(e){
+      if(!depart) return;
+      var dx=e.clientX-depart.x;
+      if(!bouge && Math.abs(dx)>5){ bouge=true; pel.classList.add('glisse'); }
+      if(bouge){
+        pel.scrollLeft=depart.s-dx;
+        var dt=e.timeStamp-dernierT;
+        if(dt>0){ vit=(e.clientX-dernierX)/dt; dernierX=e.clientX; dernierT=e.timeStamp; }
+      }
+    });
+    window.addEventListener('pointerup',function(){
+      if(!depart) return;
+      depart=null;
+      if(!bouge) return;
+      pel.classList.add('glisse-recent');
+      setTimeout(function(){ pel.classList.remove('glisse-recent'); },80);
+      var v0=-vit*16;                       // on laisse filer, puis on se cale
+      (function pas(){
+        if(Math.abs(v0)<.6){ pel.classList.remove('glisse'); return; }
+        pel.scrollLeft+=v0; v0*=.94; elan=requestAnimationFrame(pas);
+      })();
+    });
+    pel.addEventListener('dragstart',function(e){ e.preventDefault(); });
+    majPel();
+  }
+
+  /* ——— Autour : trois onglets au lieu de trois longs blocs ——— */
+  var onglets=document.getElementById('onglets'), env=document.getElementById('environs');
+  if(onglets && env){
+    var tabs=tous('button',onglets), volets=tabs.map(function(b){ return document.getElementById(b.getAttribute('aria-controls')); });
+    var oTrait=onglets.querySelector('.onglet-trait');
+    onglets.hidden=false; env.classList.add('a-onglets');
+    function choisir(n, focus){
+      tabs.forEach(function(b,k){
+        var oui=k===n;
+        b.setAttribute('aria-selected', oui ? 'true' : 'false');
+        b.tabIndex = oui ? 0 : -1;
+        volets[k].hidden=!oui;
+      });
+      var b=tabs[n], g=b===tabs[0] ? 0 : 16;
+      oTrait.style.transform='translateX('+(b.offsetLeft+g)+'px) scaleX('+(b.offsetWidth-16-g)+')';
+      if(focus){ b.focus(); }
+      if(b.scrollIntoView && onglets.scrollWidth>onglets.clientWidth)
+        onglets.scrollTo({left:b.offsetLeft-20,behavior:'smooth'});
+      env.dispatchEvent(new CustomEvent('lpv:onglet',{detail:volets[n]}));
+    }
+    tabs.forEach(function(b,n){
+      b.addEventListener('click',function(){ choisir(n); });
+      b.addEventListener('keydown',function(e){
+        var d = e.key==='ArrowRight' ? 1 : (e.key==='ArrowLeft' ? -1 : 0);
+        if(d){ e.preventDefault(); choisir((n+d+tabs.length)%tabs.length, true); }
+      });
+    });
+    choisir(0);
+    window.addEventListener('resize',function(){
+      var n=tabs.findIndex(function(b){ return b.getAttribute('aria-selected')==='true'; });
+      choisir(n<0?0:n);
+    });
+    if(document.fonts && document.fonts.ready) document.fonts.ready.then(function(){ choisir(0); });
+  }
+
+  /* ——— Le mois en cours, sur la frise des saisons ——— */
+  var m=new Date().getMonth();
+  tous('.mois').forEach(function(f){ var c=f.children[m]; if(c) c.classList.add('auj'); });
+
+  /* ——— Fenêtre « Prestations complémentaires » ——— */
   var d=document.getElementById('prestations'), o=document.querySelector('.prestations-ouvrir');
-  if(!d||!o) return;
-  if(typeof d.showModal!=='function'){ o.hidden=true; return; }
-  o.addEventListener('click',function(){ d.showModal(); });
-  d.querySelector('.prestations-fermer').addEventListener('click',function(){ d.close(); });
-  d.addEventListener('click',function(e){ if(e.target===d) d.close(); });   // clic à côté
-  d.addEventListener('close',function(){ o.focus(); });
+  if(d && o){
+    if(typeof d.showModal!=='function'){ o.hidden=true; }
+    else {
+      o.addEventListener('click',function(){ d.showModal(); });
+      d.querySelector('.prestations-fermer').addEventListener('click',function(){ d.close(); });
+      d.addEventListener('click',function(e){ if(e.target===d) d.close(); });
+      d.addEventListener('close',function(){ o.focus(); });
+    }
+  }
+
+  /* ——— Vidéo drone : chargée à l’approche, en boucle et sans son, avec un bouton pause ——— */
+  var vid=document.getElementById('video-drone'), vb=document.getElementById('video-pause');
+  if(vid && vb){
+    var calme=window.matchMedia('(prefers-reduced-motion: reduce)').matches, voulu=!calme;
+    function etiquette(){
+      var arret=vid.paused;
+      vb.setAttribute('aria-pressed', arret?'true':'false');
+      vb.setAttribute('aria-label', arret ? (EN?'Play the video':'Lire la vidéo')
+                                          : (EN?'Pause the video':'Mettre la vidéo en pause'));
+    }
+    function charger(){ if(!vid.getAttribute('src')) vid.src=vid.getAttribute('data-src'); }
+    function lancer(){ charger(); var p=vid.play(); if(p&&p.catch) p.catch(function(){}); }
+    if('IntersectionObserver' in window){
+      new IntersectionObserver(function(e){
+        if(e[0].isIntersecting){ if(voulu) lancer(); else charger(); }
+        else if(!vid.paused){ vid.pause(); }
+      },{rootMargin:'0px 200px',threshold:.15}).observe(vid);
+    } else if(voulu){ lancer(); }
+    vb.addEventListener('click',function(){ if(vid.paused){ voulu=true; lancer(); } else { voulu=false; vid.pause(); } });
+    vid.addEventListener('play',etiquette); vid.addEventListener('pause',etiquette);
+    etiquette();
+  }
+
+  /* ——— À l’impression, on déplie les questions puis on remet tout comme c’était ——— */
+  var ouverts=[];
+  window.addEventListener('beforeprint',function(){
+    ouverts=[];
+    tous('.faq details').forEach(function(x){ if(!x.open){ ouverts.push(x); x.open=true; } });
+  });
+  window.addEventListener('afterprint',function(){ ouverts.forEach(function(x){ x.open=false; }); ouverts=[]; });
 })();
 </script>
+
+<script>
+/* Disponibilités : /disponibilites.json est recopié du calendrier iCal d’Airbnb
+   toutes les trois heures (voir _dispo/ et .github/workflows/). Le calendrier
+   reste caché si le fichier manque, est vide ou date de plus de quatre jours. */
+(function(){
+  var boite = document.getElementById('dispo');
+  if (!boite || !window.fetch) return;
+  var T = {
+    fr: {titre:'Disponibilités', libre:'Libre', pris:'Réservé', prec:'Mois précédent', suiv:'Mois suivant',
+         maj:'Mis à jour le ', foi:' · le calendrier Airbnb fait foi', nuitLibre:' : libre', nuitPrise:' : réservé'},
+    en: {titre:'Availability', libre:'Available', pris:'Booked', prec:'Previous month', suiv:'Next month',
+         maj:'Updated ', foi:' · Airbnb’s calendar is the reference', nuitLibre:': available', nuitPrise:': booked'}
+  };
+  var pris = {}, majLe = null, debut = 0, MAX = 16;
+  var auj = new Date(); auj.setHours(0,0,0,0);
+  var l = window.LPV_LANGUE === 'en' ? 'en' : 'fr';
+
+  function iso(d){ return d.getFullYear()+'-'+('0'+(d.getMonth()+1)).slice(-2)+'-'+('0'+d.getDate()).slice(-2); }
+  function nbMois(){ return window.matchMedia('(min-width:760px)').matches ? 2 : 1; }
+
+  function mois(decalage){
+    var d0 = new Date(auj.getFullYear(), auj.getMonth() + decalage, 1);
+    var loc = l === 'en' ? 'en-GB' : 'fr-FR';
+    var nom = new Intl.DateTimeFormat(loc, {month:'long', year:'numeric'}).format(d0);
+    var jourLong = new Intl.DateTimeFormat(loc, {weekday:'long', day:'numeric', month:'long'});
+    var h = '<table><caption>' + nom + '</caption><thead><tr>';
+    for (var k = 0; k < 7; k++){
+      var j = new Date(2024, 0, 1 + k);       // le 1er janvier 2024 est un lundi
+      var court = new Intl.DateTimeFormat(loc, {weekday:'short'}).format(j).replace('.', '');
+      var long = new Intl.DateTimeFormat(loc, {weekday:'long'}).format(j);
+      h += '<th scope="col"><abbr title="' + long + '">' + court.charAt(0).toUpperCase() + court.slice(1, 3) + '</abbr></th>';
+    }
+    h += '</tr></thead><tbody><tr>';
+    var vide = (d0.getDay() + 6) % 7;
+    for (k = 0; k < vide; k++) h += '<td></td>';
+    var d = new Date(d0), col = vide;
+    while (d.getMonth() === d0.getMonth()){
+      var cle = iso(d), passe = d < auj, occ = !!pris[cle];
+      var cls = passe ? 'passe' : (occ ? 'pris' : 'libre');
+      if (+d === +auj) cls += ' auj';
+      var label = jourLong.format(d) + (passe ? '' : (occ ? T[l].nuitPrise : T[l].nuitLibre));
+      h += '<td class="' + cls + '"><span aria-label="' + label + '">' + d.getDate() + '</span></td>';
+      col++;
+      if (col % 7 === 0) h += '</tr><tr>';
+      d.setDate(d.getDate() + 1);
+    }
+    while (col % 7) { h += '<td></td>'; col++; }
+    return h + '</tr></tbody></table>';
+  }
+
+  function dessiner(){
+    var n = nbMois(), t = T[l];
+    debut = Math.max(0, Math.min(debut, MAX - n));
+    var corps = '';
+    for (var i = 0; i < n; i++) corps += mois(debut + i);
+    var quand = new Intl.DateTimeFormat(l === 'en' ? 'en-GB' : 'fr-FR',
+      {day:'numeric', month:'long', hour:'2-digit', minute:'2-digit'}).format(majLe);
+    boite.innerHTML =
+      '<div class="dispo-tete"><h3>' + t.titre + '</h3><div class="dispo-nav">' +
+      '<button type="button" data-pas="-1" aria-label="' + t.prec + '"' + (debut === 0 ? ' disabled' : '') + '>‹</button>' +
+      '<button type="button" data-pas="1" aria-label="' + t.suiv + '"' + (debut >= MAX - n ? ' disabled' : '') + '>›</button>' +
+      '</div></div><div class="dispo-mois" aria-live="polite">' + corps + '</div>' +
+      '<p class="dispo-legende"><span><i class="l-libre"></i>' + t.libre + '</span><span><i class="l-pris"></i>' + t.pris + '</span>' +
+      '<span class="maj">' + t.maj + quand + t.foi + '</span></p>';
+  }
+
+  boite.addEventListener('click', function(e){
+    var b = e.target.closest('button[data-pas]');
+    if (!b || b.disabled) return;
+    var sens = b.getAttribute('data-pas');
+    debut += parseInt(sens, 10) * nbMois();
+    dessiner();
+    var autre = boite.querySelector('button[data-pas="' + sens + '"]');
+    if (autre && !autre.disabled) autre.focus();
+    else { var b2 = boite.querySelector('.dispo-nav button:not(:disabled)'); if (b2) b2.focus(); }
+  });
+
+  fetch('/disponibilites.json?h=' + Math.floor(Date.now() / 6e5), {cache:'no-cache'})
+    .then(function(r){ return r.ok ? r.json() : null; })
+    .then(function(data){
+      if (!data || !data.maj || !data.occupe) return;
+      majLe = new Date(data.maj);
+      if (isNaN(majLe) || Date.now() - majLe > 4 * 864e5) return;   // trop ancien : on ne montre rien
+      data.occupe.forEach(function(p){
+        var a = new Date(p[0] + 'T00:00:00'), b = new Date(p[1] + 'T00:00:00');
+        for (var d = new Date(a); d < b; d.setDate(d.getDate() + 1)) pris[iso(d)] = true;
+      });
+      dessiner();
+      boite.hidden = false;
+      var mq = window.matchMedia('(min-width:760px)');
+      if (mq.addEventListener) mq.addEventListener('change', dessiner);
+    })
+    .catch(function(){});
+})();
+</script>
+
+
 </body>
 </html>

@@ -1,7 +1,8 @@
 /* La petite vague — motion design, avec Motion (la bibliothèque Framer Motion,
    dans sa version sans React).
 
-   Ce fichier est la SOURCE. La page charge mouvement.js, fabriqué à partir d'ici :
+   Ce fichier est la SOURCE de la page d'accueil, qui charge /accueil.js, fabriqué à partir d'ici
+   (les autres pages gardent /mouvement.js, fabriqué depuis source.js) :
        cd _mouvement && npm install && npm run build
 
    Principes :
